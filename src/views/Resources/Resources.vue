@@ -76,10 +76,10 @@ $chevronDown: '~@/assets/images/chevron-down.png';
   $darkGray: rgb(51,51,51);
   $usgsGreen: rgb(51,120,53);
   $usgsBlue: rgb(0,38,76);
-  $fireRed: rgb(163,54,48);
-  $fireRedlight: rgba(163,54,48,0.8);
-  $fireYellow: rgb(249,178,68);
-  $fireYellowlight: rgba(249,178,68,0.8);
+  $fireRed: rgb(250,109,49);
+  $fireRedlight: rgba(250,109,49,0.5);
+  $fireYellow: rgb(245,169,60);
+  $fireYellowlight: rgba(245,169,60,0.5);
 
 
   h2{
@@ -91,14 +91,14 @@ $chevronDown: '~@/assets/images/chevron-down.png';
   .usa-accordion__button{
     background-image: url($chevronDown);
     background-size: 15px 10px;
-    background-color: $fireRed;
-    color: $white;
+    background-color: $fireYellow;
+    color: $darkGray;
   }
   .usa-accordion__button[aria-expanded=false]{
     background-image: url($chevronLeft);
     background-size: 10px 15px;
-    background-color: $white;
-    color: $fireRed;
+    background-color: $darkGray;
+    color: $fireYellow;
   }
 
 #app h2.usa-accordion__heading {

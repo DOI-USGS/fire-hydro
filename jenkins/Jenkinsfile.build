@@ -28,7 +28,7 @@ pipeline {
                           extensions: [],
                           gitTool: 'Default',
                           submoduleCfg: [],
-                          userRemoteConfigs: [[url: 'https://github.com/usgs-makerspace/CHANGE_THIS_TO_NAME_OF_PROJECT.git']]
+                          userRemoteConfigs: [[url: 'https://github.com/usgs-makerspace/fire-hydro.git']]
                         ])
                 }
         }
@@ -37,9 +37,9 @@ pipeline {
             steps {
 
                 sh """
-                    docker build . --tag="CHANGE_THIS_TO_NAME_OF_PROJECT-docker" --build-arg BUILDTARGET=${params.BUILD_DEST} --build-arg VUE_BUILD_MODE=${params.VUE_BUILD_MODE}
-                    docker run CHANGE_THIS_TO_NAME_OF_PROJECT-docker
-                    pathtemplate=":tmp/CHANGE_THIS_TO_NAME_OF_PROJECT/dist"
+                    docker build . --tag="fire-hydro-docker" --build-arg BUILDTARGET=${params.BUILD_DEST} --build-arg VUE_BUILD_MODE=${params.VUE_BUILD_MODE}
+                    docker run fire-hydro-docker
+                    pathtemplate=":tmp/fire-hydro/dist"
                     dockerinstanceid=\$( docker ps -l -q )
                     docker cp  "\${dockerinstanceid}\${pathtemplate}" "$WORKSPACE"
                     docker rm "\${dockerinstanceid}"
@@ -52,13 +52,13 @@ pipeline {
             steps {
                 script {
                     if ("${params.BUILD_DEST}" == "prod") {
-                        targetDomain = "s3://water-visualizations-prod-website/visualizations/CHANGE_THIS_TO_NAME_OF_PROJECT"
+                        targetDomain = "s3://water-visualizations-prod-website/visualizations/fire-hydro"
                     }
                     else if ("${params.BUILD_DEST}" == "beta") {
-                        targetDomain = "s3://water-visualizations-beta-website/visualizations/CHANGE_THIS_TO_NAME_OF_PROJECT"
+                        targetDomain = "s3://water-visualizations-beta-website/visualizations/fire-hydro"
                     }
                     else {
-                        targetDomain = "s3://water-visualizations-test-website/visualizations/CHANGE_THIS_TO_NAME_OF_PROJECT"
+                        targetDomain = "s3://water-visualizations-test-website/visualizations/fire-hydro"
                     }
                 }
                 sh """

@@ -1,6 +1,7 @@
 <template>
   <div
     id="resources-section"
+    class="text-content"
   >
     <h2><a /><span class="lowlight">Resources</span></h2>
     <div class="usa-accordion usa-accordion--bordered">
@@ -13,7 +14,7 @@
           </button>
         </h3>
         <div
-          class="usa-accordion__content usa-prose gage-target"
+          class="usa-accordion__content usa-prose target"
         >
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor. Blandit massa enim nec dui nunc mattis enim. Non arcu risus quis varius. Tellus mauris a diam maecenas sed enim ut sem. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Fringilla urna porttitor rhoncus dolor purus non enim. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
         </div>
@@ -27,7 +28,7 @@
           </button>
         </h3>
         <div
-          class="usa-accordion__content usa-prose"
+          class="usa-accordion__content usa-prose target"
         >
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor. Blandit massa enim nec dui nunc mattis enim. Non arcu risus quis varius. Tellus mauris a diam maecenas sed enim ut sem. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Fringilla urna porttitor rhoncus dolor purus non enim. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
         </div>
@@ -41,7 +42,7 @@
           </button>
         </h3>
         <div
-          class="usa-accordion__content usa-prose"
+          class="usa-accordion__content usa-prose target"
         >
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor. Blandit massa enim nec dui nunc mattis enim. Non arcu risus quis varius. Tellus mauris a diam maecenas sed enim ut sem. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Fringilla urna porttitor rhoncus dolor purus non enim. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
         </div>
@@ -52,7 +53,14 @@
 
 <script>
     export default {
-        name: 'Resources'
+        name: 'Resources',
+        //  mounted() {
+        //     // This is a fix for the weird USWDS glitch that causes the Methods section accordion menus to be open on page load
+        //     const targetAccordionDivs = document.querySelectorAll('div.target');
+        //     targetAccordionDivs.forEach((div) => {
+        //         div.setAttribute('hidden', '""');
+        //     });
+        // }
     }
 </script>
 

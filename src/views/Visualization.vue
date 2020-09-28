@@ -80,12 +80,7 @@
       line-height: 1.3em;
     }
 
-  .text-content {
-    min-width: 350px;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 2em 0 2em;     
-  }
+ 
 
   .caption {
     font-style: italic;
@@ -109,6 +104,30 @@
 
   // General Layout  
 
-  
+  .text-content {
+    min-width: 350px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2em 0 2em;     
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .flex-item {
+    flex: 1;
+  }
+
+  @media (max-width: 600px) {
+    .flex-container {
+      flex-direction: column;
+    }
+    .flex-item {
+      flex: none;
+      padding: 0 0 1em 0;
+    }
+  }
 
 </style>

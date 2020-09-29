@@ -32,10 +32,10 @@
   $darkGray: rgb(51,51,51);
   $usgsGreen: rgb(51,120,53);
   $usgsBlue: rgb(0,38,76);
-  $fireRed: rgb(163,54,48);
-  $fireRedlight: rgba(163,54,48,0.8);
-  $fireYellow: rgb(249,178,68);
-  $fireYellowlight: rgba(249,178,68,0.8);
+  $fireRed: rgb(250,109,49);
+  $fireRedlight: rgba(250,109,49,0.5);
+  $fireYellow: rgb(245,169,60);
+  $fireYellowlight: rgba(245,169,60,0.5);
 
 
   //Import Type
@@ -48,7 +48,8 @@
   body {
       margin: 0;
       padding: 0;
-      background-color: white;
+      color: $white;
+      background-color: $darkGray;
       line-height: 1.5;
       font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
       font-weight: 400;
@@ -80,12 +81,7 @@
       line-height: 1.3em;
     }
 
-  .text-content {
-    min-width: 350px;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 2em 0 2em;     
-  }
+ 
 
   .caption {
     font-style: italic;
@@ -109,6 +105,32 @@
 
   // General Layout  
 
-  
+  .text-content {
+    min-width: 350px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2em 0 2em;     
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+  }
+
+  .flex-item {
+    flex: 1;
+    align-self: center;
+  }
+
+  @media (max-width: 600px) {
+    .flex-container {
+      flex-direction: column;
+    }
+    .flex-item {
+      flex: none;
+      padding: 0 0 1em 0;
+    }
+  }
 
 </style>

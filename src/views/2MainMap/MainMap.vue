@@ -535,21 +535,37 @@
 </script>
 
 <style scoped lang="scss">
+
+  // Import Colors
+  $white: rgb(255,255,255);
+  $black: rgb(0,0,0);  
+  $lightGray:rgb(237,237,237);
+  $mediumGray: rgb(100,100,100);
+  $darkGray: rgb(51,51,51);
+  $usgsGreen: rgb(51,120,53);
+  $usgsBlue: rgb(0,38,76);
+  $fireRed: rgb(250,109,49);
+  $fireRedlight: rgba(250,109,49,0.5);
+  $fireYellow: rgb(245,169,60);
+  $fireYellowlight: rgba(245,169,60,0.5);
+
 #basemap  {
 
   fill: none;
-  stroke: #000; 
+  stroke: $mediumGray; 
   stroke-linecap: round; 
   stroke-linejoin: round; 
   stroke-width: 1;
 
 }
 #map-container {
-  width: 100%;
-  height: auto;
-  padding: 100px;
-  margin-top: 400px;
+  padding: 2em 0 2em 0;
+  height: 60vh;
   position: relative;
+
+  svg {
+    width: 100%;
+  }
 }
 #firemap  {
   width: 1000px;
@@ -557,12 +573,12 @@
 }
 .fire {
   stroke: none;
-  fill: orange;
+  fill: $fireYellow;
   stroke-linecap: round; 
   stroke-linejoin: round; 
 }
 #yr2020 {
-  fill: red;
+  fill: $fireRed;
 }
 
 </style>

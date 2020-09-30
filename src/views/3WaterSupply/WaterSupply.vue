@@ -11,7 +11,7 @@
       <div class="flex-item">
         <img 
           id="water-supply-before" 
-          src="@/assets/components/water-supply/Picture1.png" 
+          src="@/assets/components/water-supply/diagrams/beforeFire.png" 
           alt="Diagram showing how water flows before a fire"
         >
         <p class="caption">
@@ -21,7 +21,7 @@
       <div class="flex-item">
         <img 
           id="water-supply-after" 
-          src="@/assets/components/water-supply/Picture2.png" 
+          src="@/assets/components/water-supply/diagrams/afterFire.png" 
           alt="Diagram showing how water flows after a fire"
         >
         <p class="caption">
@@ -47,4 +47,6 @@
     //     width: 100%;
     //     height: auto;
     // }
+
+
 </style>

@@ -4,6 +4,7 @@
     <Intro />
     <MainMap />
     <WaterSupply />
+    <ImageCarousel />
     <Resources />
   </div>
 </template>
@@ -16,6 +17,7 @@
             Header: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "header"*/ "./0VizHeader/Header"),
             Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
             MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
+            ImageCarousel: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "imagecarousel"*/ "./components/ImageCarousel"),
             WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
             Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
@@ -121,6 +123,12 @@
   .flex-item {
     flex: 1;
     align-self: center;
+    text-align: center;
+  }
+
+  .flex-item img {
+    padding: 20px;
+    max-width: 750px;
   }
 
   @media (max-width: 600px) {

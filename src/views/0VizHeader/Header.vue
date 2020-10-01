@@ -63,7 +63,7 @@
         bottom: 0;
         width: 100%;
         height: 200px;
-        fill: $darkGray;
+        fill: $white;
     }
 
     // @media (max-width: 699px) {

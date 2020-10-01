@@ -50,8 +50,8 @@
   body {
       margin: 0;
       padding: 0;
-      color: $white;
-      background-color: $darkGray;
+      color: $black;
+      background-color: $white;
       line-height: 1.5;
       font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
       font-weight: 400;
@@ -63,6 +63,7 @@
     color: white;
     font-size: 6em;
     font-weight: 900;
+    margin: 0;
   }
   h2{
     font-size: 2em;

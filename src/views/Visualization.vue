@@ -129,7 +129,6 @@
 
   .flex-item img {
     padding: 20px;
-    max-width: 750px;
   }
 
   @media (max-width: 600px) {

@@ -548,7 +548,7 @@ import * as d3Base from "d3";
               .style('fill', "rgb(0,0,0,0)")
 
             .transition().duration(0)
-              .delay(function(d,i){ return 500*i; })
+              .delay(function(d,i){ return 800*i; })
               .style("fill", " rgb(250,109,49)")
             //.delay(function(d,i){ return 1000*i; })
               
@@ -557,7 +557,7 @@ import * as d3Base from "d3";
             d3Element
               
             .transition().duration(0)
-              .delay(function(d,i){ return 500+500*i; })
+              .delay(function(d,i){ return 800+800*i; })
               .style("fill", "rgb(245,169,60,0.5)")
             //.delay(function(d,i){ return 1000*i; })
               

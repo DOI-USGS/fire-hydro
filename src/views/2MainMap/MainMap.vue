@@ -543,16 +543,27 @@ import * as d3Base from "d3";
 
       
           // function to change color of each year grouping in stagger
-          function changeElementColor(d3Element){
+          function changeElementColorHilite(d3Element){
             d3Element
               .style('fill', "rgb(0,0,0,0)")
+
             .transition().duration(0)
-              .delay(function(d,i){ return 2000+1000*i; })
-              .style("fill", "rgb(250,109,49)")
+              .delay(function(d,i){ return 500*i; })
+              .style("fill", " rgb(250,109,49)")
             //.delay(function(d,i){ return 1000*i; })
               
           }
-        changeElementColor(this.d3.selectAll(".fire"));
+          function changeElementColorStay(d3Element){
+            d3Element
+              
+            .transition().duration(0)
+              .delay(function(d,i){ return 500+500*i; })
+              .style("fill", "rgb(245,169,60,0.5)")
+            //.delay(function(d,i){ return 1000*i; })
+              
+          }
+        changeElementColorHilite(this.d3.selectAll(".fire"));
+        changeElementColorStay(this.d3.selectAll(".fire"));
    
         
         },

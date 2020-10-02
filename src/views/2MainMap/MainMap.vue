@@ -4,7 +4,9 @@
       class="text-content"
     >
       <div id="main-map-header">
-        <h2><span class="lowlight">Western fires are increasing in size, frequency, and duration (intensity?)</span></h2>
+        <h2>Wildfires pose a growing risk to our Nation’s water supplies</h2>
+        <p>The 2020 wildfire season is stark evidence that wildfires are changing the landscape of America. Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and recent massive wildfires demonstrate that the risk extends throughout our Nation.</p>
+        <p>Wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
       </div>
       <div id="map-container">
         <svg

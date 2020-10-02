@@ -3,20 +3,29 @@
     id="resources-section"
     class="text-content"
   >
-    <h2><a /><span class="lowlight">Resources</span></h2>
+    <h2><a /><span class="lowlight">Guidance for Water Providers</span></h2>
     <div class="usa-accordion usa-accordion--bordered">
       <div>
         <h3 class="usa-accordion__heading">
           <button
             class="usa-accordion__button"
           >
-            Resource 1
+            Impact Factors
           </button>
         </h3>
         <div
           class="usa-accordion__content usa-prose target"
         >
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor. Blandit massa enim nec dui nunc mattis enim. Non arcu risus quis varius. Tellus mauris a diam maecenas sed enim ut sem. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Fringilla urna porttitor rhoncus dolor purus non enim. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
+          <p>Many factors affect the potential for post-wildfire flooding and water-quality issues in a watershed, such as:</p>
+          <ul>
+            <li>Slope steepness</li>
+            <li>Local geology and soil type</li>
+            <li>Proportion of watershed burned</li>
+            <li>Burn severity</li>
+            <li>Timing, amount, and intensity of post-fire precipitation</li>
+            <li>Connectivity of burned areas with stream channels and with each other</li>
+            <li>Historical land use</li>
+          </ul>
         </div>
       </div>
       <div>
@@ -24,13 +33,19 @@
           <button
             class="usa-accordion__button"
           >
-            Resource 2
+            Impacts on Water
           </button>
         </h3>
         <div
           class="usa-accordion__content usa-prose target"
         >
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor. Blandit massa enim nec dui nunc mattis enim. Non arcu risus quis varius. Tellus mauris a diam maecenas sed enim ut sem. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Fringilla urna porttitor rhoncus dolor purus non enim. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
+          <p>Water supplies in watersheds that have experienced a fire face a variety of impacts, such as: </p>
+          <ul>
+            <li>Increased turbidity (sediment) and concentrations of nitrate, phosphorus, dissolved organic carbon, and manganese</li>
+            <li>Sedimentation, eutrophication, and metal mobilization in reservoirs</li>
+            <li>Impaired water-treatment efficiency</li>
+            <li>Stream habitat alteration, fish kills</li>
+          </ul>
         </div>
       </div>
       <div>
@@ -38,13 +53,21 @@
           <button
             class="usa-accordion__button"
           >
-            Resource 3
+            Adaptation Strategies
           </button>
         </h3>
         <div
           class="usa-accordion__content usa-prose target"
         >
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus pellentesque eu tincidunt tortor. Blandit massa enim nec dui nunc mattis enim. Non arcu risus quis varius. Tellus mauris a diam maecenas sed enim ut sem. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Fringilla urna porttitor rhoncus dolor purus non enim. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
+          <p>Potential adaptation strategies for water-treatment facilities include:</p>
+          <ul>
+            <li>Fill off-channel water-supply reservoirs prior to high-intensity rainfall season</li>
+            <li>Close intakes when forecasts suggest high-intensity rain storms</li>
+            <li>Establish alternative water supplies</li>
+            <li>Pre-sedimentation basins</li>
+            <li>Increase sedimentation capacity</li>
+            <li>Real-time monitoring networks</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -103,5 +126,9 @@ $chevronDown: '~@/assets/images/chevron-down.png';
 
 #app h2.usa-accordion__heading {
   margin: 0;
+}
+
+#resources-section {
+  margin-bottom: 100px;
 }
 </style>

@@ -5,6 +5,7 @@
     <MainMap />
     <WaterSupply />
     <ImageCarousel />
+    <Conclusion />
     <Resources />
   </div>
 </template>
@@ -19,6 +20,7 @@
             MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
             ImageCarousel: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "imagecarousel"*/ "./components/ImageCarousel"),
             WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
+            Conclusion: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "conclusion"*/ "./4Conclusion/Conclusion"),
             Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
     }
@@ -50,8 +52,8 @@
   body {
       margin: 0;
       padding: 0;
-      color: $white;
-      background-color: $darkGray;
+      color: $black;
+      background-color: $white;
       line-height: 1.5;
       font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
       font-weight: 400;
@@ -63,6 +65,7 @@
     color: white;
     font-size: 6em;
     font-weight: 900;
+    margin: 0;
   }
   h2{
     font-size: 2em;
@@ -118,6 +121,8 @@
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
+    max-width: 1000px;
+    margin: auto;
   }
 
   .flex-item {
@@ -128,7 +133,6 @@
 
   .flex-item img {
     padding: 20px;
-    max-width: 750px;
   }
 
   @media (max-width: 600px) {

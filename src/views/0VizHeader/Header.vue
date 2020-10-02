@@ -2,7 +2,9 @@
   <div id="header-wrapper">
     <div id="header">
       <h1>{{ title }}</h1>
+      <p id="subheader" class="text-content">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
       <svg
+        id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
@@ -13,7 +15,16 @@
         />
       </svg>
     </div>
+    <div 
+      id="byline-wrapper" 
+      class="text-content"
+    >
+      <p class="byline">
+        U.S. Geological Survey<br>Water Mission Area
+      </p>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -58,12 +69,16 @@
         line-height: 1em;
     }
 
-    svg {
+    #header p {
+      color: white;
+    }
+
+    #crop-shape {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 200px;
-        fill: $darkGray;
+        fill: $white;
     }
 
     // @media (max-width: 699px) {
@@ -76,5 +91,9 @@
         .svg--sm {
             display: none;
         }
+    }
+
+    .byline {
+        font-style: italic;
     }
 </style>

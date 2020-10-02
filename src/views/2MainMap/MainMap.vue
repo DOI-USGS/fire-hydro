@@ -529,16 +529,47 @@ import * as d3Base from "d3";
         name: 'MainMap',
         data() {
           return {
+            publicPath: process.env.BASE_URL, // this is need for the data files in the public folder, this allows the application to find the files when on different deployment roots
             d3: null // this is used so that we can assign d3 plugins to the d3 instance
           }
         },
        mounted() {
-        this.d3 = Object.assign(d3Base, { geoScaleBar, geoScaleBottom, geoScaleTop, geoScaleKilometers, geoScaleMiles }); // this loads d3 plugins with webpack
+        this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
+        this.setPanels();  // begin script when window loads
        },
       methods: {
+        setPanels() {
+          const self = this;
+
+      
+          // function to change color of each year grouping in stagger
+          function changeElementColorHilite(d3Element){
+            d3Element
+              .style('fill', "rgb(0,0,0,0)")
+
+            .transition().duration(0)
+              .delay(function(d,i){ return 800*i; })
+              .style("fill", " rgb(250,109,49)")
+            //.delay(function(d,i){ return 1000*i; })
+              
+          }
+          function changeElementColorStay(d3Element){
+            d3Element
+              
+            .transition().duration(0)
+              .delay(function(d,i){ return 800+800*i; })
+              .style("fill", "rgb(245,169,60,0.5)")
+            //.delay(function(d,i){ return 1000*i; })
+              
+          }
+        changeElementColorHilite(this.d3.selectAll(".fire"));
+        changeElementColorStay(this.d3.selectAll(".fire"));
+   
         
-
-
+        },
+        callback(data)  {
+          let burn_area = this.dataset[0];
+        }
       }
     }
       
@@ -591,12 +622,11 @@ import * as d3Base from "d3";
 }
 .fire {
   stroke: none;
-  fill: $fireYellow;
   stroke-linecap: round; 
   stroke-linejoin: round; 
 }
 #yr2020 {
-  fill: $fireRed;
+
 }
 
 </style>

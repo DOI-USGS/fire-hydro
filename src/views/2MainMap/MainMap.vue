@@ -682,21 +682,22 @@ import * as d3Base from "d3";
             d3Element
               .style('fill', "rgb(0,0,0,0)")
 
-            .transition().duration(0)
-              .delay(function(d,i){ return 800*i; })
-              .style("fill", " rgb(250,109,49)")
-            //.delay(function(d,i){ return 1000*i; })
+            .transition().duration(500)
+              .delay(function(d,i){ return 1000*i; })
+              .style("fill", " rgb(250,109,49)");
+              
               
           }
+          //turn past years same color
           function changeElementColorStay(d3Element){
             d3Element
               
             .transition().duration(0)
-              .delay(function(d,i){ return 800+800*i; })
-              .style("fill", "rgb(245,169,60,0.5)")
+              .delay(function(d,i){ return 1000+1000*i; })
+              .style("fill", "rgb(130,130,130,0.3)")
             //.delay(function(d,i){ return 1000*i; })
               
-          }
+          };
         changeElementColorHilite(this.d3.selectAll(".fire"));
         changeElementColorStay(this.d3.selectAll(".fire"));
    
@@ -737,7 +738,7 @@ import * as d3Base from "d3";
   stroke-width: 1;
 
   #states {
-    stroke-width: .5;
+    stroke-width: .8;
     stroke: $mediumGray; 
   }
 

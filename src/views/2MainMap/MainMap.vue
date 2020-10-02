@@ -542,25 +542,19 @@ import * as d3Base from "d3";
           const self = this;
 
       
-                  
+          // function to change color of each year grouping in stagger
           function changeElementColor(d3Element){
             d3Element
-            .transition().duration(100)
-            .delay(function(d,i){ return 1000*i; })
-              .style("fill", "rgb(245,169,60)")
-            
+              .style('fill', "rgb(0,0,0,0)")
+            .transition().duration(0)
+              .delay(function(d,i){ return 2000+1000*i; })
+              .style("fill", "rgb(250,109,49)")
+            //.delay(function(d,i){ return 1000*i; })
               
           }
         changeElementColor(this.d3.selectAll(".fire"));
-         /*      .attr("delay", func(d,i){return 1000*i})
-              .attr("duration", func(d,i){return 1000*(i+1)}) */
-             /*  .attr("fill", "orange") */
-
-        //make line chart of fire over time
-        // function to process data
+   
         
-
-
         },
         callback(data)  {
           let burn_area = this.dataset[0];

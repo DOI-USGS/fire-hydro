@@ -644,16 +644,14 @@
             <path d="M105.6 318l.5.3-.2.8-.5-.3zm249.6.4l.6.4v1.2l-.5.3v-1.9z" />
           </g>
         </svg>  
-      </div>
-      <div class="text-content">
         <p class="caption">
           Turpis cursus in hac habitasse platea dictumst. Lorem ipsum dolor sit amet.
         </p>
-        <div>
-          <p>Iaculis at erat pellentesque adipiscing. Eget nullam non nisi est sit amet. Porttitor nisi porta lorem mollis. Magnis dis parturient montes nascetur ridiculus. Leo in vitae turpis massa sed elementum tempus egestas. Tortor posuere ac ut consequat semper viverra nam.</p>
-          <p>Suspendisse interdum consectetur libero id. Orci nulla pellentesque dignissim enim sit. Nam venenatis. Egestas congue quisque egestas diam in arcu. Proin libero nunc consequat interdum varius sit amet. Cursus eget nunc scelerisque viverra mauris in.</p>
-        </div>      
-      </div>
+      </div>       
+      <div>
+        <p>Iaculis at erat pellentesque adipiscing. Eget nullam non nisi est sit amet. Porttitor nisi porta lorem mollis. Magnis dis parturient montes nascetur ridiculus. Leo in vitae turpis massa sed elementum tempus egestas. Tortor posuere ac ut consequat semper viverra nam.</p>
+        <p>Suspendisse interdum consectetur libero id. Orci nulla pellentesque dignissim enim sit. Nam venenatis. Egestas congue quisque egestas diam in arcu. Proin libero nunc consequat interdum varius sit amet. Cursus eget nunc scelerisque viverra mauris in.</p>
+      </div>      
     </div>
   </section>
 </template>
@@ -713,11 +711,10 @@ import * as d3Base from "d3";
 }
 #map-container {
   padding: 2em 0 2em 0;
-  height: 70vh;
-  position: relative;
 
   svg {
     width: 100%;
+    fill: $white;
   }
 }
 #firemap  {

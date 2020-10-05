@@ -1,7 +1,7 @@
 <template>
   <div id="header-wrapper">
     <div id="header">
-      <div class="text-content">
+      <div class="text-content" >
         <h1>{{ title }}</h1>
         <p id="subheader">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
       </div>
@@ -56,13 +56,15 @@
     $fireYellow: rgb(245,169,60);
     $fireYellowlight: rgba(245,169,60,0.5);
 
-    #header-wrapper{
-        background-image: url('/src/assets/components/header/fire-map.png');
-    }
     #header {
         position: relative;
         height: 900px;
         background-image: linear-gradient($black, $fireYellow);
+
+         background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     #header h1 {

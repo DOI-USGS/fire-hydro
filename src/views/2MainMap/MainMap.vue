@@ -646,12 +646,124 @@
             <path d="M268.8 77.4l-.7-.5.4 1.4.2 1-.1 1-.8.2.2.8.8.6.2.8-.2.6-.8.7-.5 1-1-.2-.7-1.2-1.3-.5-1 .1-1 .5-.8.7-1.3-.7.7-.7.5-1 .4.1.3-.6-.5-.6h-.8l.5-.9v-1.3l-.5-.8.4-1.9.3-.2 1.6-.4.8-.3.3-.5 1.1-.8h.6l.8-.8 1 .9 1.3.6.4 1-.8-.2v1.2h.4l.1.8-.5.2zm5 27.7l.6-.2.2-.7 1.5-.1.6.3.6-.4h.6l.3-.4v-.6l1.2.1 1-1h1.8l.4-.6 1 .2.2-.6.7-.3.8.2.9-.5.5.3h1.1l.3.7.6.1-.4 1-1.8 2.2h-.4l-1 1.4-.4-.3-1 1.1h-1l-1.1.5-.5-1.5-.7-.3-.9.6-.1-.4-.9-.1-.6.2-.7-.3-.7-.9-1.3 1h-.5l-1-.2zm-96.5 68.5l-.8.5-.1.8h-.7l-.5.7h-.5v-.9l-.7.3h-1.2l-.5-.3-.4.3-.4-.6.1-.6-1.2-.2-.2-1h-.4l-.7-.7-1 .2-.3-.8-1-.7-.3-.5v-.7l-.9-.8 1.8.2.7-.4.3.4.7.4.6-.8.5.6 1-.7-1.4-.6-.5-.5h-.6v-.6h.7l.3-.3.5.7 1 .4h.7l-.8-1.1h-.3v-1l-.7-.8h-.5l-.6-.7.2-1 1 .3.3.6.6-.6.9.7.3 1.3 1.5.5.7.9v.6l1 1v1l1 .2v.3l.8 1.4-.3.5.9 1.6-.5.5zm18.3-8h.8l.6.4h.6l.7.8 1.2-.4 1.3.2-.6.5-1.1-.2-1.2.1-.1.5-2.2-.9-1-.6-.3-.6.2-.4-.8-.7.2-.4.9.6.8 1zm346.9-1.7l-.4-.8-.1-1.3-1.2-2.7-.2-1.3-.3-.7.3-.4 1.9.6.4.4 1 .4.2.6.7 1.4-.5.1.2.8.7 1.1-.8.7-.2-1.1-.7-.3-.4.6.3.5-.8.3-.2 1zM174 162.4l-.7-.2-.4-.7.9-.7.6.5.4-.4.5.4 1.9-.5-.4-.5.4-1-.5-.6.6-.7.7-.2-.1-.7h.5l.7.5.2.9.6 1h.4l.5 1 1.6.5v.9l.3.4v1l.5.5-.3 1-.7.8h-.4l-1 .5h-1.2l-2.8-1.2-1.2.2-1-.6-.5-1.1-.7-.6.6-.4zm34.6 45.6l.2.5-.4.3-.6-.2v-1l.4-.6.6.2-.2.7zm64.5 2.9h-.8l.1-.5.8-.6.3.8zm56.8.3V210l.4-.7v-.6l.7-.5.8.6-.4.7.5.8h.6l-1 2-.6.2-.7-.5-.4-.8zm-185.1-1.9l2 1.3h.7l.2.5.8.2.5.6.4 1 .5.4-.5.4.1.6.9.6.3 1.1.4.4.3 1h-.5l-.7-.3-.2.9-.8-.2-.7-.5h-.8v-1.2h-.8l-.3.6h-.6l-.2.7h-.8l-.3-.9-.6.2-.4-.3h-1v-.4l-.7-1.4.4-.4-.2-.4v-1l-.6-.2.8-1 .2-1h.5l.3-.5 1.3-.8zm416.9-3.1l.8.5-.1 1.4.4 1-.5.2-.3-.8.1-1.5h-.3v-.8zm-260.8 4.3l-1.2.4-1.2-.9-.5-1.2-.4-.5.1-.9h.7v-1.4l-.3-1.3-.6-.8v-1l.7.7h1l.4-.8 1.2-.4.8-.9h1.4v.4l.6.3-.1.6.2 1 .4.4-.4.7.5.6-.6.4-.4.9-1.1-.1-.9.1-.8.7.5.4.2 1.9-.3.6zm-.3-4.7l-.6.6.7.2zM117.2 321.3l1 .2-.5.4.9 1.3-.1.5.3.9 1.6.7.1 1.2.8.3-.4.7-.6-.1-.7.3-.4.6v.7l.7 1.4.6-.1.1.8.4.5-.2 1.2.2.4-.6.9v1l.3.6-.9.2-.1.6-.8.5.6 1.4-.5-.2-1 .2v1l-.4.7-.9-.5-1.4-.2-.4.2-1.4-.4-.3-.4-1-.3-.8.8-1.2.4-.4.5-.8.2v-.9l-.8-.7-.8-.1-.4-1.5-1-.2-.5-.6-.3-.9-.6-.6.3-1.1v-.6l.4-.8 1.6.1.5.4.4-.4-.2-.5 1.6-2.1-.8-1.7 1-1.2 1.1-.7.5.3.7-.3.6.7.3-.6-.7-.2-1.2-1.2-.2-.7.8-.5-.9-.5.2-.7h.7l-1-1-.2-1.1.8-2.2-1.3.3-1-.5-.4.7.2.8h-.5l-.7-.5-.2-.7-1.4-.4-2.1.3-.3-.8-1.5-.3.2-.8-.5-.6v-.5l.8-.2.3-.8v-.7l.6-.2 1 .3 1-.5.7.3.5-.4 1.2-.5.5-.7v-.6l-.4-.8v-.4l.7-.2-.3-.5 1.5-1.5 1.3.4.8.7-.7 1h.8l.2.7v1l-.7.5 1.7 1.5.2.8-.1 1.2.8.1 1.4-.5h.6l.6.5.3.7v.4l1.2.7.8-.4.4.2.6-.3 1.5.6.1.8.5.3v1l1.7 1.4-.3 1-1-.4-.5.2-.9-.7-.2.5h-.7l-1.3-.8-.4.5-1-.3zm0 0l.4-1.1.3-.3.8.3.7-.7-.3-.6-1.3-.1-1.3-.4-.2-.4-1 .1-.5.8.8.7-.5.4.1 1 1.2.5zm-4.8-3l.3.6h.8v-.7l-1.1.2zm58.3 4.5l.2 1-.8.7-.3-.5h-.8l.2-1-.4-.4 1.4-.2v-.2l1-.3.2.4-.7.5zm33.5-8.6l.2.3-.1 1 .8.1-.4 1-.4-.4-.6 1.3-.4.3-1.5-.5v-.5l1.3-1.1.8-.1.3-1.4z" />
             <path d="M105.6 318l.5.3-.2.8-.5-.3zm249.6.4l.6.4v1.2l-.5.3v-1.9z" />
           </g>
-          <image href="@/assets/images/fire_forest.png" xlink:href="@/assets/images/fire_forest.png" width="100%" height="100%" style="opacity: .5"/>
+          <image href="@/assets/images/fire_forest.png" xlink:href="@/assets/images/fire_forest.png" width="100%" height="100%" style="opacity: .1"/>
         </svg>  
-        <p class="caption">
-          Turpis cursus in hac habitasse platea dictumst. Lorem ipsum dolor sit amet.
+             <p class="caption">
+          Area burned by wildfires (sq mi) from 1984 to present
         </p>
-      </div>       
+       <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id = "fire_timeseries" viewBox='0 0 720.00 216.00'>
+        <g id='fire-bars'>
+          <rect x='98.75' y='148.34' width='13' height='14.49'  />
+          <rect x='114.58' y='116.98' width='13' height='45.84'  />
+          <rect x='130.40' y='140.65' width='13' height='22.17'  />
+          <rect x='146.23' y='133.18' width='13' height='29.64'  />
+          <rect x='162.06' y='102.12' width='13' height='60.70'  />
+          <rect x='177.89' y='149.18' width='13' height='13.64'  />
+          <rect x='193.72' y='146.38' width='13' height='16.44'  />
+          <rect x='209.55' y='153.93' width='13' height='8.89'  />
+          <rect x='225.38' y='140.79' width='13' height='22.04'  />
+          <rect x='241.20' y='151.57' width='13' height='11.25'  />
+          <rect x='257.03' y='121.56' width='13' height='41.26'  />
+          <rect x='272.86' y='147.99' width='13' height='14.83'  />
+          <rect x='288.69' y='92.01' width='13' height='70.81'  />
+          <rect x='304.52' y='155.43' width='13' height='7.39'  />
+          <rect x='320.35' y='152.13' width='13' height='10.69'  />
+          <rect x='336.18' y='102.43' width='13' height='60.39'  />
+          <rect x='352.01' y='79.99' width='13' height='82.83'  />
+          <rect x='367.83' y='127.21' width='13' height='35.61'  />
+          <rect x='383.66' y='98.02' width='13' height='64.80'  />
+          <rect x='399.49' y='103.70' width='13' height='59.12'  />
+          <rect x='415.32' y='146.00' width='13' height='16.82'  />
+          <rect x='431.15' y='100.99' width='13' height='61.83'  />
+          <rect x='446.98' y='52.64' width='13' height='110.18'  />
+          <rect x='462.81' y='34.62' width='13' height='128.20'  />
+          <rect x='478.64' y='115.60' width='13' height='47.22'  />
+          <rect x='494.46' y='139.78' width='13' height='23.04'  />
+          <rect x='510.29' y='138.30' width='13' height='24.52'  />
+          <rect x='526.12' y='87.70' width='13' height='75.12'  />
+          <rect x='541.95' y='15.34' width='13' height='147.48'  />
+          <rect x='557.78' y='114.67' width='13' height='48.16'  />
+          <rect x='573.61' y='129.30' width='13' height='33.52'  />
+          <rect x='589.44' y='108.68' width='13' height='54.14'  />
+          <rect x='605.27' y='116.83' width='13' height='46.00'  />
+          <rect x='621.09' y='33.15' width='13' height='129.67'  />
+          <rect x='636.92' y='59.41' width='13' height='103.42'  />
+          <rect x='652.75' y='133.16' width='13' height='29.66'  />
+          <rect x='668.58' y='21.98' width='13' height='140.84'  />
+        </g>
+        <g id="fire-points">
+          <circle cx='105.87' cy='148.34' r='3' />
+          <circle cx='121.70' cy='116.98' r='3' />
+          <circle cx='137.53' cy='140.65' r='3' />
+          <circle cx='153.36' cy='133.18' r='3' />
+          <circle cx='169.18' cy='102.12' r='3' />
+          <circle cx='185.01' cy='149.18' r='3' />
+          <circle cx='200.84' cy='146.38' r='3' />
+          <circle cx='216.67' cy='153.93' r='3' />
+          <circle cx='232.50' cy='140.79' r='3' />
+          <circle cx='248.33' cy='151.57' r='3' />
+          <circle cx='264.16' cy='121.56' r='3' />
+          <circle cx='279.99' cy='147.99' r='3' />
+          <circle cx='295.81' cy='92.01' r='3' />
+          <circle cx='311.64' cy='155.43' r='3' />
+          <circle cx='327.47' cy='152.13' r='3' />
+          <circle cx='343.30' cy='102.43' r='3' />
+          <circle cx='359.13' cy='79.99' r='3' />
+          <circle cx='374.96' cy='127.21' r='3' />
+          <circle cx='390.79' cy='98.02' r='3' />
+          <circle cx='406.61' cy='103.70' r='3' />
+          <circle cx='422.44' cy='146.00' r='3' />
+          <circle cx='438.27' cy='100.99' r='3' />
+          <circle cx='454.10' cy='52.64' r='3' />
+          <circle cx='469.93' cy='34.62' r='3' />
+          <circle cx='485.76' cy='115.60' r='3' />
+          <circle cx='501.59' cy='139.78' r='3' />
+          <circle cx='517.42' cy='138.30' r='3' />
+          <circle cx='533.24' cy='87.70' r='3' />
+          <circle cx='549.07' cy='15.34' r='3' />
+          <circle cx='564.90' cy='114.67' r='3' />
+          <circle cx='580.73' cy='129.30' r='3' />
+          <circle cx='596.56' cy='108.68' r='3' />
+          <circle cx='612.39' cy='116.83' r='3' />
+          <circle cx='628.22' cy='33.15' r='3' />
+          <circle cx='644.05' cy='59.41' r='3' />
+          <circle cx='659.87' cy='133.16' r='3' />
+          <circle cx='675.70' cy='21.98' r='3' />
+        </g>
+        <g id="fire-lines">
+          <polyline id="fire-line" points='105.87,148.34 121.70,116.98 137.53,140.65 153.36,133.18 169.18,102.12 185.01,149.18 200.84,146.38 216.67,153.93 232.50,140.79 248.33,151.57 264.16,121.56 279.99,147.99 295.81,92.01 311.64,155.43 327.47,152.13 343.30,102.43 359.13,79.99 374.96,127.21 390.79,98.02 406.61,103.70 422.44,146.00 438.27,100.99 454.10,52.64 469.93,34.62 485.76,115.60 501.59,139.78 517.42,138.30 533.24,87.70 549.07,15.34 564.90,114.67 580.73,129.30 596.56,108.68 612.39,116.83 628.22,33.15 644.05,59.41 659.87,133.16 675.70,21.98 ' />
+          <polyline id="fire-trend" points='105.87,146.40 113.08,145.51 120.30,144.62 127.51,143.72 134.72,142.83 141.93,141.94 149.15,141.05 156.36,140.15 163.57,139.26 170.79,138.37 178.00,137.47 185.21,136.58 192.43,135.69 199.64,134.79 206.85,133.90 214.07,133.01 221.28,132.11 228.49,131.22 235.70,130.33 242.92,129.44 250.13,128.54 257.34,127.65 264.56,126.76 271.77,125.86 278.98,124.97 286.20,124.08 293.41,123.18 300.62,122.29 307.84,121.40 315.05,120.50 322.26,119.61 329.47,118.72 336.69,117.83 343.90,116.93 351.11,116.04 358.33,115.15 365.54,114.25 372.75,113.36 379.97,112.47 387.18,111.57 394.39,110.68 401.61,109.79 408.82,108.89 416.03,108.00 423.24,107.11 430.46,106.22 437.67,105.32 444.88,104.43 452.10,103.54 459.31,102.64 466.52,101.75 473.74,100.86 480.95,99.96 488.16,99.07 495.38,98.18 502.59,97.29 509.80,96.39 517.02,95.50 524.23,94.61 531.44,93.71 538.65,92.82 545.87,91.93 553.08,91.03 560.29,90.14 567.51,89.25 574.72,88.35 581.93,87.46 589.15,86.57 596.36,85.68 603.57,84.78 610.79,83.89 618.00,83.00 625.21,82.10 632.42,81.21 639.64,80.32 646.85,79.42 654.06,78.53 661.28,77.64 668.49,76.74 675.70,75.85 ' />
+        </g>
+  
+        <polyline id="axis-y" points='69.54,170.20 69.54,7.97 ' />
+          <g id="axis-text-y">
+          <text x='55.25' y='167.40' >0</text>
+          <text x='33.89' y='128.76'>3000</text>
+          <text x='33.89' y='90.11'>6000</text>
+          <text x='33.89' y='51.46'>9000</text>
+          <text x='26.78' y='12.82' >12000</text>
+        </g>
+        <g class="axis-ticks">
+          <polyline points='65.56,162.82 69.54,162.82 ' />
+          <polyline points='65.56,124.17 69.54,124.17 ' />
+          <polyline points='65.56,85.53 69.54,85.53 ' />
+          <polyline points='65.56,46.88 69.54,46.88 ' />
+          <polyline points='65.56,8.23 69.54,8.23 ' />
+          <polyline points='69.54,170.20 712.03,170.20 ' />
+          <polyline points='200.84,174.18 200.84,170.20 ' />
+          <polyline points='359.13,174.18 359.13,170.20 ' />
+          <polyline points='517.42,174.18 517.42,170.20 ' />
+          <polyline points='675.70,174.18 675.70,170.20 ' />
+        </g>
+        <g id="axis-text-x">
+          <text x='186.60' y='186.53'>1990</text>
+          <text x='344.89' y='186.53'>2000</text>
+          <text x='503.18' y='186.53'>2010</text>
+          <text x='661.47' y='186.53'>2020</text>
+        </g>
+        <text id="axis-label-y" transform='translate(19,150) rotate(-90)' style='font-size: 16px;'>Sq mi</text>
+       </svg>        
+        </div>       
       <div>
         <p>Iaculis at erat pellentesque adipiscing. Eget nullam non nisi est sit amet. Porttitor nisi porta lorem mollis. Magnis dis parturient montes nascetur ridiculus. Leo in vitae turpis massa sed elementum tempus egestas. Tortor posuere ac ut consequat semper viverra nam.</p>
         <p>Suspendisse interdum consectetur libero id. Orci nulla pellentesque dignissim enim sit. Nam venenatis. Egestas congue quisque egestas diam in arcu. Proin libero nunc consequat interdum varius sit amet. Cursus eget nunc scelerisque viverra mauris in.</p>
@@ -672,10 +784,10 @@ import * as d3Base from "d3";
         },
        mounted() {
         this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
-        this.setPanels();  // begin script when window loads
+        this.makeFireBurn();  // begin script when window loads
        },
       methods: {
-        setPanels() {
+        makeFireBurn() {
           const self = this;
 
       
@@ -696,17 +808,63 @@ import * as d3Base from "d3";
               
             .transition().duration(0)
               .delay(function(d,i){ return 1000+1000*i; })
-              .style("fill", "rgb(130,130,130,0.3)")
+              .style("fill", "rgba(245,169,60,0.5)")
               
           };
         changeElementColorHilite(this.d3.selectAll(".fire"));
         changeElementColorStay(this.d3.selectAll(".fire"));
-   
+
+        let promises = [self.d3.csv("data/burn_mi2.csv")];
+        Promise.all(promises).then(self.callback);
+            },
         
-        },
         callback(data)  {
-          let burn_area = this.dataset[0];
-        }
+          let burn_area = data[0];
+
+
+
+        },
+        //not doing this right
+        makeLineChart(burn_area) {
+          var height = 200
+          var width = 720
+          var svgChart = this.d3.select("#line_chart")
+            .append("svg")
+            .attr("viewbox", [0, 0, width, height]).join(' ')
+            .attr("class", "fire_lineChart")
+
+          var xScale = this.d3.scaleBand()
+            .range([0,width])
+            .padding(0.4);
+
+          var yScale = this.d3.scaleLinear()
+            .range([height,0]);
+
+ 
+          this.d3.csv("data/burn_mi2.csv", function(error, data) {
+            if (error) {
+                throw error;
+            }
+
+            x.domain(data.map(function(d) { return d.year; }))
+            y.domain([0, this.d3.max(data, function(d) { return d.burn_mi2 })]).nice()
+
+            g.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              .call(this.d3.axisBottom(xScale));
+
+            g.append("g")
+              .call(this.d3.axisLeft(yScale).tickFormat(function(d){
+                return d;
+              }).ticks(10))
+              .append("text")
+              .attr("y", 6)
+              .attr("dy", "0.7e,")
+              .attr("text-anchor", "end")
+              .attr("stroke", "black")
+              .text("value");
+          });
+                  }
       }
     }
       
@@ -746,10 +904,12 @@ import * as d3Base from "d3";
 }
 #map-container {
   padding: 2em 0 2em 0;
+  margin-left: 1vw;
+  margin-right: 1vw;
 
   svg {
-    width: 100%;
-    fill: $white;
+    fill: none;
+    width: 110%;
   }
 }
 #firemap  {
@@ -761,8 +921,48 @@ import * as d3Base from "d3";
   stroke-linecap: round; 
   stroke-linejoin: round; 
 }
-#yr2020 {
+#fire_timeseries  {
+  padding: 2vw;
+  margin-left: -5vw;
+  rect, line, circle, path, polyline, polygon  {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+  }
+  rect  {
+    fill: $fireYellowlight;
+    stroke: none;
+  }
+  circle  {
+    stroke: none;
+  }
+  #fire-line {
+    stroke: none;
+    stroke-width: 2.5px;
+
+  }
+  #fire-trend {
+    stroke: black;
+    stroke-width: 2.5px;
+
+  }
+  text  {
+    fill: $black;
+    line-height: 1.5;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+  }
+  .axis-ticks {
+
+  }
+  #axis-label-y {
+    fill: none;
+  }
 
 }
-
 </style>

@@ -6,9 +6,11 @@
       <div id="main-map-header">
         <h2>Wildfires pose a growing risk to our Nation’s water supplies</h2>
         <p>The 2020 wildfire season is stark evidence that wildfires are changing the landscape of America. Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and recent massive wildfires demonstrate that the risk extends throughout our Nation.</p>
-        <p>Wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
-      </div>
+         </div>
       <div id="map-container">
+             <p class="caption">
+          Area burned by wildfires (sq mi) from 1984 to present
+        </p>
         <svg
           id="firemap"
           xmlns="http://www.w3.org/2000/svg"
@@ -565,9 +567,7 @@
           </g>
           <image href="@/assets/images/fire_forest.png" xlink:href="@/assets/images/fire_forest.png" width="100%" height="100%" style="opacity: .15"/>
         </svg>  
-             <p class="caption">
-          Area burned by wildfires (sq mi) from 1984 to present
-        </p>
+        
     <!--    <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id = "fire_timeseries" viewBox='0 0 720.00 216.00'>
         <g class='fire-bars'>
           <rect id = "bar_1984" x='98.75' y='148.34' height='14.49' />
@@ -715,9 +715,8 @@
        </svg> 
         </div>       
       <div>
-        <p>Iaculis at erat pellentesque adipiscing. Eget nullam non nisi est sit amet. Porttitor nisi porta lorem mollis. Magnis dis parturient montes nascetur ridiculus. Leo in vitae turpis massa sed elementum tempus egestas. Tortor posuere ac ut consequat semper viverra nam.</p>
-        <p>Suspendisse interdum consectetur libero id. Orci nulla pellentesque dignissim enim sit. Nam venenatis. Egestas congue quisque egestas diam in arcu. Proin libero nunc consequat interdum varius sit amet. Cursus eget nunc scelerisque viverra mauris in.</p>
-      </div>      
+         <p>Wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
+    </div>      
     </div>
   </section>
 </template>
@@ -794,7 +793,7 @@ import * as d3Base from "d3";
               .style("fill", "rgba(245,169,60,0.5)")
 
               textElement
-              .transition().duration(200)
+              .transition().duration(250)
                 .delay(function(d,i){ return yearDuration+yearDuration*i; })
                 .style("fill", "rgba(0,0,0,0)")
 
@@ -929,7 +928,7 @@ import * as d3Base from "d3";
   stroke-linejoin: round; 
 }
 #fire_timeseries, #fire_timeseries_2  {
-  padding: 5vw;
+  padding: 3em;
 
   rect, line, path, polygon, #axis-x, #axis-y, .axis-ticks  {
       fill: none;
@@ -979,5 +978,7 @@ import * as d3Base from "d3";
     fill: $fireRed;
     font-weight: 500;
   }
-
+#fire_timeseries_2  {
+  margin-top: -4em;
+}
 </style>

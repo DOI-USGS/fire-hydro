@@ -1,9 +1,11 @@
 <template>
   <div id="header-wrapper">
     <div id="header">
-      <h1>{{ title }}</h1>
-      <p id="subheader" class="text-content">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
-      <svg
+      <div class="text-content">
+        <h1>{{ title }}</h1>
+        <p id="subheader">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
+      </div>
+     <svg
         id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
@@ -29,7 +31,7 @@
 
 <script>
     export default {
-        name: 'Visualization',
+        name: 'Header',
         props: {
             title: {
                 type: String,
@@ -59,12 +61,12 @@
     }
     #header {
         position: relative;
-        height: 800px;
+        height: 900px;
         background-image: linear-gradient($black, $fireYellow);
     }
 
     #header h1 {
-        padding: 100px 15%;
+        padding: 200px 0 50px 0;
         text-align: left;
         line-height: 1em;
     }
@@ -95,5 +97,6 @@
 
     .byline {
         font-style: italic;
+        padding: 1em 0 0 0;
     }
 </style>

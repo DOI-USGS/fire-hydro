@@ -31,6 +31,7 @@
     "vue-browser-detect-plugin": "^0.1.13",
     "vue-carousel": "^0.18.0",
     "vue-mapbox": "^0.4.1",
+    "vue-parallaxy": "^1.1.1",
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"
   },

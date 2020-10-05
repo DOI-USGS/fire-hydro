@@ -687,19 +687,17 @@ import * as d3Base from "d3";
               
           }
           //turn past years same color
-          function changeElementColorStay(d3Element){
-            d3Element
-              
-            .transition().duration(0)
+          function changeElementColorStay(mapElement, chartElement){
+            mapElement
+            .transition().duration(300)
               .delay(function(d,i){ return 1000+1000*i; })
               .style("fill", "rgba(245,169,60,0.5)")
 
             chartElement
-              .style('fill', "rgb(0,0,0,0)")
-            .transition().duration(500)
-              .delay(function(d,i){ return 1000*i; })
-              .style("fill", "rgba(245,169,60,0.5)");
-              
+            .transition().duration(300)
+              .delay(function(d,i){ return 1000+1000*i; })
+              .style("fill", "rgba(245,169,60,0.5)")
+
           };
         changeElementColorHilite(this.d3.selectAll(".fire"), this.d3.selectAll(".fire-bars").selectAll("rect"));
         changeElementColorStay(this.d3.selectAll(".fire"), this.d3.selectAll(".fire-bars").selectAll("rect"));

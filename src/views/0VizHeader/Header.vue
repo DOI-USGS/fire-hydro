@@ -1,6 +1,6 @@
 <template>
   <div id="header-wrapper">
-    <div id="header" :style="image">
+    <div id="header" >
       <div class="text-content" >
         <h1>{{ title }}</h1>
         <p id="subheader">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
@@ -37,7 +37,22 @@
                 type: String,
                 default: process.env.VUE_APP_TITLE
             }
+        },
+        data() {
+          return {
+            publicPath: process.env.BASE_URL, // this is need for the data files in the public folder, this allows the application to find the files when on different deployment roots
+            d3: null // this is used so that we can assign d3 plugins to the d3 instance
+          }
+        },
+        mounted() {
+        this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
+        this.makeFireBurn();  // begin script when window loads
+       },
+      methods: {
+        makeFireBurn() {
+          const self = this;
         }
+      }
     };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="header-wrapper">
-    <div id="header">
+    <div id="header" :style="image">
       <div class="text-content" >
         <h1>{{ title }}</h1>
         <p id="subheader">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
@@ -38,7 +38,7 @@
                 default: process.env.VUE_APP_TITLE
             }
         }
-    }
+    };
 </script>
 
 <style lang="scss">
@@ -59,9 +59,9 @@
     #header {
         position: relative;
         height: 900px;
-        background-image: linear-gradient($black, $fireYellow);
-
-         background-attachment: fixed;
+        background-image: url(../../assets/images/fieldphotos/scar.png);
+        /* background-image: linear-gradient($black, $fireYellow); */
+        background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

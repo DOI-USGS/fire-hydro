@@ -5,12 +5,9 @@
     :autoplay-hover-pause="true"
     :per-page="3"
   >
-    <slide class="slide">
+    <!-- <slide class="slide">
       <div class="slider-image-container">
         <picture>
-          <!-- <source srcset="@/assets/intro/images/imageSlider/slider_01.webp"
-                      media="(max-width: 992px)"
-                      type = "image/webp"  > -->
           <source
             srcset="@/assets/images/fieldphotos/EmersonGulch.png" 
             media="(max-width: 992px)"
@@ -22,14 +19,11 @@
           >
         </picture>
       </div>
-    </slide>
+    </slide> -->
 
     <slide class="slide">
       <div class="slider-image-container">
         <picture>
-          <!-- <source srcset="@/assets/intro/images/imageSlider/slider_01.webp"
-                      media="(max-width: 992px)"
-                      type = "image/webp"  > -->
           <source
             srcset="@/assets/images/fieldphotos/runoff.png" 
             media="(max-width: 992px)"
@@ -46,9 +40,6 @@
     <slide class="slide">
       <div class="slider-image-container">
         <picture>
-          <!-- <source srcset="@/assets/intro/images/imageSlider/slider_01.webp"
-                      media="(max-width: 992px)"
-                      type = "image/webp"  > -->
           <source
             srcset="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila.jpg" 
             media="(max-width: 992px)"
@@ -65,9 +56,6 @@
     <slide class="slide">
       <div class="slider-image-container">
         <picture>
-          <!-- <source srcset="@/assets/intro/images/imageSlider/slider_01.webp"
-                      media="(max-width: 992px)"
-                      type = "image/webp"  > -->
           <source
             srcset="@/assets/images/fieldphotos/runoff2.jpg" 
             media="(max-width: 992px)"
@@ -84,9 +72,6 @@
     <slide class="slide">
       <div class="slider-image-container">
         <picture>
-          <!-- <source srcset="@/assets/intro/images/imageSlider/slider_01.webp"
-                      media="(max-width: 992px)"
-                      type = "image/webp"  > -->
           <source
             srcset="@/assets/images/fieldphotos/SoilSampleSite2.jpg" 
             media="(max-width: 992px)"
@@ -128,7 +113,7 @@
     margin: auto;
     max-width: 400px;
     img {
-      width: 100%;
+      // width: 100%;
     }
   }
 </style>

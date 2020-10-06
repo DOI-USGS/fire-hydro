@@ -4,7 +4,6 @@
     <Intro />
     <MainMap />
     <WaterSupply />
-    <ImageCarousel />
     <Conclusion />
     <Resources />
   </div>
@@ -18,7 +17,6 @@
             Header: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "header"*/ "./0VizHeader/Header"),
             Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
             MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
-            ImageCarousel: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "imagecarousel"*/ "./components/ImageCarousel"),
             WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
             Conclusion: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "conclusion"*/ "./4Conclusion/Conclusion"),
             Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
@@ -84,8 +82,9 @@
     }
   }
   .lowlight {
-      background: linear-gradient(180deg,rgba(255,255,255,0) 70%, $fireYellowlight 30%);
+      background: linear-gradient(180deg,rgba(255,255,255,0) 60%, $fireYellowlight 40%);
       line-height: 1.3em;
+      padding: 0 5px;
     }
 
  
@@ -123,7 +122,7 @@
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
-    max-width: 1000px;
+    max-width: 100%;
     margin: auto;
   }
 
@@ -144,6 +143,7 @@
     .flex-item {
       flex: none;
       padding: 0 0 1em 0;
+      height: 100%;
     }
   }
 

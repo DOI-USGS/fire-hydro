@@ -5,7 +5,7 @@
   >
     <h2><a /><span class="lowlight">Guidance for Water Providers</span></h2>
     <div class="usa-accordion usa-accordion--bordered">
-      <div>
+      <div class="accordion">
         <h3 class="usa-accordion__heading">
           <button
             class="usa-accordion__button"
@@ -28,7 +28,7 @@
           </ul>
         </div>
       </div>
-      <div>
+      <div class="accordion">
         <h3 class="usa-accordion__heading">
           <button
             class="usa-accordion__button"
@@ -48,7 +48,7 @@
           </ul>
         </div>
       </div>
-      <div>
+      <div class="accordion">
         <h3 class="usa-accordion__heading">
           <button
             class="usa-accordion__button"
@@ -112,18 +112,21 @@ $chevronDown: '~@/assets/images/chevron-down.png';
     outline: none;
   }
   .usa-accordion__button{
-    background-image: url($chevronDown);
+    // background-image: url($chevronDown);
     background-size: 15px 10px;
     background-color: $fireYellow;
     color: $darkGray;
   }
   .usa-accordion__button[aria-expanded=false]{
-    background-image: url($chevronLeft);
+    // background-image: url($chevronLeft);
     background-size: 10px 15px;
     background-color: $darkGray;
     color: $fireYellow;
   }
 
+.accordion {
+  margin: 2em 0;
+}
 #app h2.usa-accordion__heading {
   margin: 0;
 }

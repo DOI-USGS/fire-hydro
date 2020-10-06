@@ -77,6 +77,12 @@ import * as d3Base from "d3";
             .attr("class", "#time_burn")
             .attr("viewBox", [0, 0, w, h]);
 
+          const g = timeline.append("g");
+
+          
+          
+
+
           
 
 

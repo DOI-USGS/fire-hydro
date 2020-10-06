@@ -7,6 +7,9 @@ import App from './App.vue';
 import uswds from 'uswds';
 import browserDetect from 'vue-browser-detect-plugin';
 import VueCarousel from 'vue-carousel';
+import LightGallery from 'vue-light-gallery';
+import VueSilentbox from 'vue-silentbox';
+import VueImg from 'v-img';
 
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -36,6 +39,9 @@ Vue.config.productionTip = false;
 Vue.use(uswds);
 Vue.use(browserDetect);
 Vue.use(VueCarousel);
+Vue.use(VueSilentbox);
+Vue.use(LightGallery);
+Vue.use(VueImg);
 
 const app = new Vue({
   router,

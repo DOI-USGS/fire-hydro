@@ -1,26 +1,10 @@
 <template>
   <carousel
-    id="image-slider"
+    id="image-carousel-fourmile"
     :autoplay="true"
     :autoplay-hover-pause="true"
     :per-page="3"
   >
-    <!-- <slide class="slide">
-      <div class="slider-image-container">
-        <picture>
-          <source
-            srcset="@/assets/images/fieldphotos/EmersonGulch.png" 
-            media="(max-width: 992px)"
-            type="image/jpeg"
-          >
-          <img
-            src="@/assets/images/fieldphotos/EmersonGulch.png" 
-            alt="A steep hilside burned by wildfire"
-          >
-        </picture>
-      </div>
-    </slide> -->
-
     <slide class="slide">
       <div class="slider-image-container">
         <picture>
@@ -89,7 +73,7 @@
 
 <script>
   export default {
-      name: 'ImageCarousel'
+      name: 'ImageCarouselFourmile'
   }
 
 </script>

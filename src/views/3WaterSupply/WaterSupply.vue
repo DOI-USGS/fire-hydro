@@ -4,12 +4,12 @@
       class="text-content"
     >
       <div id="water-supply-header">
-        <h2>How wildfires change watersheds</h2>
+        <h2>How wildfires <span class="lowlight">change watersheds</span></h2>
         <p>Forests, to a hydrologist’s eye, are both a sponge and a filter.  Rainfall drains easily into forest soils, where it can be soaked up and slowly released over time into stream.  This ability to absorb and hold on to water helps reduce and delay risks of flooding.  It also helps recharge groundwater aquifers.</p>
         <p>As the water moves through soil and rock, it is filtered.  Water flowing from forested watersheds often need only minimal treatment before drinking.  These “ecosystem pre-treatments” are provided for free by the forests, and when they’re changed, water managers have to take up the slack.</p>
       </div>
     </div>
-    <div class="flex-container">
+    <div id="diagrams" class="flex-container">
       <div class="flex-item">
         <img 
           id="water-supply-before" 

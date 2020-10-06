@@ -4,7 +4,7 @@
       class="text-content"
     >
       <div id="main-map-header">
-        <h2>Wildfires pose a growing risk to our Nation’s water supplies</h2>
+        <h2>Wildfires pose a <span class="lowlight">growing risk</span> to our Nation’s water supplies</h2>
         <p>The 2020 wildfire season is stark evidence that wildfires are changing the landscape of America. Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and recent massive wildfires demonstrate that the risk extends throughout our Nation.</p>
       </div>
       <div id="map-container">

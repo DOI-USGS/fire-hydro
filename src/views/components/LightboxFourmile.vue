@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <!-- <div v-for="image in images" v-bind:key="image.id">
+  <div>
+    <!-- <div v-for="image in images" v-bind:key="image.id">
             <img 
                 v-img:group1 
                 :src="image.src" 
@@ -9,24 +9,27 @@
             />
             <div class="caption">{{ image.caption }}</div>
         </div> -->
-        <div id="lightbox-fourmile" class="flex-container">
-            <img
-                v-img:group-1
-                src="@/assets/images/NASAEO/boulder_ali_2011158_swir_lrg.jpg" 
-                alt="NASA Aerial photography of the Fourmile fire's smoke plume"
-            >
-            <img 
-                v-img:group-1
-                src="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai-01.jpg" 
-                alt="NASA Aerial photography of the Fourmile burn scar"
-            >
-            <img
-                v-img:group-1
-                src="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg.jpg" 
-                alt="NASA false-color Aerial photography of the Fourmile burn scar"
-            >
-        </div>       
-    </div>
+    <div
+      id="lightbox-fourmile"
+      class="flex-container"
+    >
+      <img
+        v-img:group-1
+        src="@/assets/images/NASAEO/boulder_ali_2011158_swir_lrg.jpg" 
+        alt="NASA Aerial photography of the Fourmile fire's smoke plume"
+      >
+      <img 
+        v-img:group-1
+        src="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai-01.jpg" 
+        alt="NASA Aerial photography of the Fourmile burn scar"
+      >
+      <img
+        v-img:group-1
+        src="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg.jpg" 
+        alt="NASA false-color Aerial photography of the Fourmile burn scar"
+      >
+    </div>       
+  </div>
 </template>
 
 <script>    

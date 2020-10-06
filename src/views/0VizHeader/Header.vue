@@ -1,7 +1,7 @@
 <template>
   <div id="header-wrapper">
-    <div id="header" >
-      <div class="text-content" >
+    <div id="header">
+      <div class="text-content">
         <h1>{{ title }}</h1>
         <p id="subheader">
           After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.

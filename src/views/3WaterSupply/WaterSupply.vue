@@ -9,7 +9,10 @@
         <p>As the water moves through soil and rock, it is filtered.  Water flowing from forested watersheds often need only minimal treatment before drinking.  These “ecosystem pre-treatments” are provided for free by the forests, and when they’re changed, water managers have to take up the slack.</p>
       </div>
     </div>
-    <div id="diagrams" class="flex-container">
+    <div
+      id="diagrams"
+      class="flex-container"
+    >
       <div class="flex-item">
         <img 
           id="water-supply-before" 

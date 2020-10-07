@@ -93,6 +93,19 @@
     padding: 0 2em 0 2em;
   }
 
+  .button-header {
+    padding: 10px 0 0 0;
+    margin: 0;
+  }
+
+  .button-subheader {
+    font-style: italic;
+    color: white;
+    font-size: .8em;
+  }
+  a button{ 
+    margin: 20px;
+  }
 
   // Medium screens and up
   @media screen and (min-width: 601px){
@@ -120,7 +133,7 @@
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
-    max-width: 100%;
+    max-width: 75%;
     margin: auto;
   }
 
@@ -145,4 +158,42 @@
     }
   }
 
+
+
+
+ // Link Styling
+  /* unvisited link */
+  a{
+    text-decoration-color: $fireYellow;
+  }
+
+  a:link {
+    color: $fireRed;
+    text-decoration-color: $fireYellow;
+  }
+
+  /* visited link */
+  a:visited {
+    color: black;
+    text-decoration-color: $fireYellow;
+  }
+
+  /* mouse over link */
+  a:hover {
+    cursor: pointer;
+    text-decoration-color: $fireYellow;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-style: wavy;
+  }
+
+  /* selected link */
+  a:active {
+    font-style: bold;
+    color: black;
+    text-decoration-color: $fireYellow;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    text-decoration-style: wavy;
+  }
 </style>

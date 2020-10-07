@@ -4,6 +4,7 @@
     class="text-content"
   >
     <h2><a /><span class="lowlight">Guidance for Water Providers</span></h2>
+    <p>The rapid transmission of sediment, ash, and debris to surface water can lead to impaired surface-water quality, loss of reservoir storage, and high costs to water providers and customers.  But not every watershed faces the same issues.</p>
     <div class="usa-accordion usa-accordion--bordered">
       <div class="accordion">
         <h3 class="usa-accordion__heading">

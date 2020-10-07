@@ -202,7 +202,7 @@ import * as d3Base from "d3";
           this.d3.select("#charty")
             .transition()
               .delay(1000)
-              .duration(4000)
+              .duration(3000)
               .attr("d", makeArea(data))
 
           //animate line drawing across top
@@ -215,9 +215,9 @@ import * as d3Base from "d3";
             .attr("stroke-linejoin", "miter")
             .attr("stroke-miterlimit", "30")
             .transition()
-              .delay(4000)
-              .duration(3000)
-              .attr("stroke","rgb(245,169,60)")
+              .delay(3000)
+              .duration(2000)
+              .attr("stroke","white")
               .attr("stroke-linejoin", "round")
               .attr("stroke-dashoffset","0px")
           //draw x-axis

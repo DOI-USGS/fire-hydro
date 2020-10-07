@@ -108,7 +108,6 @@
         </picture>
       </div>
     </slide>
-
   </carousel>
 </template>
 

@@ -1,23 +1,27 @@
 <template>
   <div id="header-wrapper">
-    <div id="header">
-      <div class="text-content">
+    <div id="header" >
+      <div class="text-content" >
         <h1>{{ title }}</h1>
-        <p id="subheader">
-          After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.
-        </p>
+        <p id="subheader">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
       </div>
-      <svg
+      <div id="time_line">
+        </div>
+     <svg
         id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
-        <polygon
-          class="fire-rate-crop"
-          points="97.100 50.000, 94.200 0.000, 94.200 0.000, 94.200 1.900, 94.000 3.000, 93.900 6.100, 93.900 7.800, 93.800 9.500, 93.100 29.000, 93.100 29.000, 92.100 54.600, 92.100 54.600, 91.800 61.100, 91.800 61.400, 91.700 63.400, 91.700 63.600, 91.500 67.200, 91.500 67.500, 91.400 68.000, 91.400 68.700, 91.400 68.700, 91.400 69.200, 91.400 69.200, 91.300 69.600, 91.300 69.600, 91.300 69.900, 91.300 69.900, 91.300 70.100, 91.300 70.100, 91.300 71.000, 91.300 71.000, 88.000 64.300, 85.300 7.800, 81.900 14.900, 78.900 73.400, 76.100 45.600, 73.200 52.700, 70.000 9.000, 66.700 1.500, 63.800 15.300, 60.600 21.400, 57.500 67.500, 54.500 32.900, 51.600 72.700, 48.400 29.700, 45.600 49.300, 42.500 98.100, 39.500 80.500, 36.600 44.400, 33.300 90.900, 30.300 67.300, 26.600 90.900, 23.600 89.500, 21.300 79.200, 18.000 60.300, 14.800 91.700, 12.000 56.400, 8.900 84.700, 5.800 82.200, 2.400 80.000, 0.000 100.000, 100.000 100.000, 100.000 0.000"
-        />
+        <path id="path1" />
       </svg>
+      <svg id="line-axes"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none">
+        <path id="axis-x" />
+        <path id="axis-y" />
+        </svg>
     </div>
     <div 
       id="byline-wrapper" 
@@ -28,9 +32,11 @@
       </p>
     </div>
   </div>
+
 </template>
 
 <script>
+import * as d3Base from "d3";
     export default {
         name: 'Header',
         props: {
@@ -42,16 +48,190 @@
         data() {
           return {
             publicPath: process.env.BASE_URL, // this is need for the data files in the public folder, this allows the application to find the files when on different deployment roots
-            d3: null // this is used so that we can assign d3 plugins to the d3 instance
+            d3: null, // this is used so that we can assign d3 plugins to the d3 instance
           }
         },
         mounted() {
-        this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
-        this.makeFireBurn();  // begin script when window loads
-       },
+          this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
+          this.makeChartMorph(); // begin script when window loads
+        },
       methods: {
-        makeFireBurn() {
+        makeChartMorph() {
           const self = this;
+          const w = 100;
+          const h = 150;
+
+          const timeline = this.d3.select("#time_line")
+            .append("svg")
+            .attr("class", "#time_burn")
+            .attr("viewBox", [0, 0, w, h])
+            .append("g")
+              .attr("id", "drawHere");
+
+          // create data
+          //this would be better if read in directly from csv
+          var data = [{x: 0, y: 94.93}, 
+                      {x: 2.78, y: 72}, 
+                      {x: 5.56, y: 89}, 
+                      {x: 8.33, y: 84}, 
+                      {x: 11.11, y: 61}, 
+                      {x: 13.88, y: 95}, 
+                      {x: 16.67, y: 93}, 
+                      {x: 19.44, y: 98}, 
+                      {x: 22.22, y: 89}, 
+                      {x: 25.00, y: 97}, 
+                      {x: 27.78, y: 75}, 
+                      {x: 30.56, y: 94}, 
+                      {x: 33.33, y: 54}, 
+                      {x: 36.11, y: 100}, 
+                      {x: 38.89, y: 97}, 
+                      {x: 41.67, y: 62}, 
+                      {x: 44.44, y: 46}, 
+                      {x: 47.22, y: 79}, 
+                      {x: 50.00, y: 59}, 
+                      {x: 52.78, y: 63}, 
+                      {x: 55.55, y: 93}, 
+                      {x: 58.33, y: 61}, 
+                      {x: 61.11, y: 26}, 
+                      {x: 63.89, y: 14}, 
+                      {x: 66.67, y: 72}, 
+                      {x: 69.44, y: 89}, 
+                      {x: 72.22, y: 88}, 
+                      {x: 75.00, y: 52}, 
+                      {x: 77.78, y: 0}, 
+                      {x: 80.56, y: 71}, 
+                      {x: 83.33, y: 82}, 
+                      {x: 86.11, y: 66}, 
+                      {x: 88.88, y: 72}, 
+                      {x: 91.67, y: 12}, 
+                      {x: 94.44, y: 31}, 
+                      {x: 97.22, y: 84}, 
+                      {x: 100.0, y: 5}];
+          var dataBox = [{x: 0, y: 150}, 
+                      {x: 2.78, y: 150}, 
+                      {x: 5.56, y: 150}, 
+                      {x: 8.33, y: 150}, 
+                      {x: 11.11, y: 150}, 
+                      {x: 13.88, y: 150}, 
+                      {x: 16.67, y: 150}, 
+                      {x: 19.44, y: 150}, 
+                      {x: 22.22, y: 150}, 
+                      {x: 25.00, y: 150}, 
+                      {x: 27.78, y: 150}, 
+                      {x: 30.56, y: 150}, 
+                      {x: 33.33, y: 150}, 
+                      {x: 36.11, y: 150},
+                      {x: 38.89, y: 150}, 
+                      {x: 41.67, y: 150}, 
+                      {x: 44.44, y: 150}, 
+                      {x: 47.22, y: 150}, 
+                      {x: 50.00, y: 150}, 
+                      {x: 52.78, y: 150}, 
+                      {x: 55.55, y: 150}, 
+                      {x: 58.33, y: 150}, 
+                      {x: 61.11, y: 150}, 
+                      {x: 63.89, y: 150}, 
+                      {x: 66.67, y: 150}, 
+                      {x: 69.44, y: 150}, 
+                      {x: 72.22, y: 150}, 
+                      {x: 75.00, y: 150}, 
+                      {x: 77.78, y: 150}, 
+                      {x: 80.56, y: 150}, 
+                      {x: 83.33, y: 150}, 
+                      {x: 86.11, y: 150}, 
+                      {x: 88.88, y: 150}, 
+                      {x: 91.67, y: 150}, 
+                      {x: 94.44, y: 150}, 
+                      {x: 97.22, y: 150}, 
+                      {x: 100.0, y: 150}];
+
+          //this is the same as the area top line
+          var dataLine = [[0, 94.93], 
+                      [2.78, 72], 
+                      [5.56, 89], 
+                      [8.33, 84], 
+                      [11.11, 61], 
+                      [13.88, 95], 
+                      [16.67, 93], 
+                      [19.44, 98], 
+                      [22.22, 89], 
+                      [25.00, 97], 
+                      [27.78, 75], 
+                      [30.56, 94], 
+                      [33.33, 54], 
+                      [36.11, 100], 
+                      [38.89, 97], 
+                      [41.67, 62], 
+                      [44.44, 46], 
+                      [47.22, 79], 
+                      [50.00, 59], 
+                      [52.78, 63], 
+                      [55.55, 93], 
+                      [58.33, 61], 
+                      [61.11, 26], 
+                      [63.89, 14], 
+                      [66.67, 72], 
+                      [69.44, 89], 
+                      [72.22, 88], 
+                      [75.00, 52], 
+                      [77.78, 0], 
+                      [80.56, 71], 
+                      [83.33, 82], 
+                      [86.11, 66], 
+                      [88.88, 72], 
+                      [91.67, 12], 
+                      [94.44, 31], 
+                      [97.22, 84], 
+                      [100.0, 5]];
+          //lines
+          var line = this.d3.line();
+
+          //areas
+          var makeArea = this.d3.area()
+              .x(function(d) { return d.x })      // Position of both line breaks on the X axis
+              .y1(function(d) { return d.y })     // Y position of top line breaks
+              .y0(100);                            // Y position of bottom line breaks (200 = bottom of svg area)
+
+          // Add the initial path for area
+          this.d3.select("#crop-shape")
+            .append('path')
+              .attr("id", "charty")
+              .attr('d', makeArea(dataBox))
+              .style('fill', 'rgb(245,169,60)');
+          //morph path to burn area over time shape
+          this.d3.select("#charty")
+            .transition()
+              .delay(1000)
+              .duration(3000)
+              .attr("d", makeArea(data))
+
+          //animate line drawing across top
+          this.d3.select("#path1")
+            .attr('d', line(dataLine))
+            .attr("stroke", "none")
+            .attr("fill", "none")
+            .attr("stroke-dasharray","1000px")
+            .attr("stroke-dashoffset","1000px")
+            .attr("stroke-linejoin", "miter")
+            .attr("stroke-miterlimit", "30")
+            .transition()
+              .delay(3000)
+              .duration(2000)
+              .attr("stroke","white")
+              .attr("stroke-linejoin", "round")
+              .attr("stroke-dashoffset","0px")
+          //draw x-axis
+          this.d3.select("#axis-x")
+          .attr('d', line([[0,45], [100,45]]))
+          .attr("stroke","none")
+          .attr("stroke-dasharray","100px")
+          .attr("stroke-dashoffset","100px")
+          .transition()
+            .delay(2000)
+            .duration(3000)
+            .attr("stroke-dashoffset","0px")
+            .attr("stroke", "black")
+            .attr("stroke-width", ".5px");
         }
       }
     };
@@ -93,12 +273,16 @@
       color: white;
     }
 
-    #crop-shape {
+    #byline-wrapper {
+      margin-top: 100px;
+    }
+
+    #crop-shape, #time_line {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 200px;
-        fill: $white;
+ 
     }
 
     // @media (max-width: 699px) {

@@ -15,7 +15,7 @@
           <img
             v-img:group-1
             src="@/assets/images/NASAEO/boulder_ali_2011158_swir_lrg.jpg" 
-            alt="NASA Aerial photography of the Fourmile fire's smoke plume"
+            alt="NASA false-color Aerial photography of the Fourmile burn scar"
           >
         </picture>
       </div>
@@ -25,12 +25,12 @@
       <div class="slider-image-container">
         <picture>
           <source
-            srcset="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai-01.jpg"
+            srcset="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai.jpg"
             type="image/jpeg"
           >
           <img
             v-img:group-1
-            src="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai-01.jpg" 
+            src="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai.jpg" 
             alt="NASA Aerial photography of the Fourmile burn scar"
           >
         </picture>
@@ -41,13 +41,13 @@
       <div class="slider-image-container">
         <picture>
           <source
-            srcset="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg.jpg" 
+            srcset="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg_ai.jpg" 
             type="image/jpeg"
           >
           <img
             v-img:group-1
-            src="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg.jpg" 
-            alt="NASA false-color Aerial photography of the Fourmile burn scar"
+            src="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg_ai.jpg" 
+            alt="NASA Aerial photography of the Fourmile fire's smoke plume"
           >
         </picture>
       </div>

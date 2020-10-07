@@ -17,7 +17,7 @@
     <ImageCarouselField />
     <div class="text-content">
       <p>Studies of the Fourmile Canyon Fire’s impact on the watershed over the last ten years have advanced scientific understanding of post-wildfire water quality problems. Their studies showed that layers of ash from the fire prevented water from heavy summer thunderstorms from absorbing into the ground, and instead flowed played a large role in impairing of drinking water (Murphy et al., 2015). Murphy, working with other WMA scientists, documented the recovery of the watershed for 5 years after the fire to deliver actionable guidance to water providers for post-wildfire water availability (Murphy et al., 2018).</p>
-      <a href="#resources-section"><button class="usa-accordion__button"><h3>Read the Guidance</h3></button></a>
+      <a href="#resources-section"><button class="usa-accordion__button"><h2>Read the Guidance</h2><h3>Tips for Water Managers</h3></button></a>
     </div>
   </section>
 </template>

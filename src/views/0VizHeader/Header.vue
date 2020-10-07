@@ -13,6 +13,7 @@
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
+
       </svg>
     </div>
     <div 
@@ -41,19 +42,12 @@ import * as d3Base from "d3";
           return {
             publicPath: process.env.BASE_URL, // this is need for the data files in the public folder, this allows the application to find the files when on different deployment roots
             d3: null, // this is used so that we can assign d3 plugins to the d3 instance
-            gdp: [
-              {country: "USA", value: 20.5 },
-              {country: "China", value: 13.4 },
-              {country: "Germany", value: 4.0 },
-              {country: "Japan", value: 4.9 },
-              {country: "France", value: 2.8 }
-            ]
           }
         },
         mounted() {
           this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
-          this.makeChartMorph();  // begin script when window loads
-          this.makeChartDraw();
+          this.makeChartDraw();  // begin script when window loads
+          this.makeChartMorph();
         },
       methods: {
         makeChartMorph() {
@@ -165,7 +159,6 @@ import * as d3Base from "d3";
               .delay(2000)
               .duration(5000)
               .attr("d", makeArea(data))
-              .attr("stroke", "pink")
 
           //animate line drawing across top
 
@@ -210,18 +203,7 @@ import * as d3Base from "d3";
           };
           //transLine(this.d3.select('#path1'));
 
-          var line = this.d3.line();
-          var poly1 = [[0, 100], [10, 100], [20, 100], [30, 100], [40, 100], [50, 100], [60, 100], [70, 100], [80, 100], [90, 100], [100, 100]];
-          var poly2 = [[0, 100], [0, 30], [20, 10], [30, 40], [40, 20], [50, 60], [60, 90], [70, 30], [80, 60], [90, 50], [100, 100]];
-
-          function transPoly(path_id){
-            path_id
-            .transition()
-            .duration(1000)
-            .attr('points', line(poly2));
-          }
-         // transPoly(this.d3.select('#poly_test'));
-        }
+         }
       }
     };
 </script>

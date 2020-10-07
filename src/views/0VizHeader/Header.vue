@@ -213,7 +213,7 @@ import * as d3Base from "d3";
             .attr("stroke-dasharray","1000px")
             .attr("stroke-dashoffset","1000px")
             .attr("stroke-linejoin", "miter")
-            .attr("stroke-miterlimit", "30")
+            .attr("stroke-miterlimit", "10")
             .transition()
               .delay(3000)
               .duration(2000)
@@ -222,7 +222,7 @@ import * as d3Base from "d3";
               .attr("stroke-dashoffset","0px")
           //draw x-axis
           this.d3.select("#axis-x")
-          .attr('d', line([[0,45], [100,45]]))
+          .attr('d', line([[0,100], [100,100]]))
           .attr("stroke","none")
           .attr("stroke-dasharray","100px")
           .attr("stroke-dashoffset","100px")
@@ -231,7 +231,7 @@ import * as d3Base from "d3";
             .duration(3000)
             .attr("stroke-dashoffset","0px")
             .attr("stroke", "black")
-            .attr("stroke-width", ".5px");
+            .attr("stroke-width", "2px");
         }
       }
     };
@@ -277,7 +277,7 @@ import * as d3Base from "d3";
       margin-top: 100px;
     }
 
-    #crop-shape, #time_line {
+    #crop-shape, #time_line, #line-axes {
         position: absolute;
         bottom: 0;
         width: 100%;

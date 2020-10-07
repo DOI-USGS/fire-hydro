@@ -24,7 +24,8 @@
 >
           <path id="path1" style="stroke: green; stroke-width: 2ps; fill: none;"  />
            <path id="path2" style="stroke: green; stroke-width: 2ps; fill: none;"  />
-           <polygon id="poly_test" fill="yellow" stroke="blue" stroke-width="2" points="0,100 0,50 10,50 20,50 30,50 40,50 60,50 70,50 80,50 90,50 100,50 100,100"></polygon>
+          <!--  <polygon id="poly_test" points="0,100 0,50 10,50 20,50 30,50 40,50 60,50 70,50 80,50 90,50 100,50 100,100"></polygon> -->
+           <!-- <polygon id="poly_test2"  points="0,100 0,50 10,80 20,90 30,70 40,30 60,60 70,20 80,40 90,30 100,50 100,100"></polygon> -->
       </svg>
     </div>
     <div 
@@ -69,26 +70,50 @@ import * as d3Base from "d3";
         },
       methods: {
         makeChartMorph() {
+          const self = this;
           const w = 100;
           const h = 100;
 
           const timeline = this.d3.select("#time_line")
             .append("svg")
             .attr("class", "#time_burn")
-            .attr("viewBox", [0, 0, w, h]);
+            .attr("viewBox", [0, 0, w, h])
+            .append("g")
+              .attr("id", "drawHere");
 
-          const g = timeline.append("g");
-
+          const xScale = this.d3.scaleLinear()
+            .domain([0, 100])
+            .range([0, w]) 
           
-          
+          const yScale = this.d3.scaleLinear()
+            .domain([0, 100])
+            .range([h, 0]) 
 
+          // create data
+          //this ened to be replaced with read in data
+          var data = [{x: 0, y: 20}, {x: 25, y: 50}, {x: 50, y: 100}, {x: 75, y: 20}, {x: 100, y: 30}];
+          var data1 = [[0, 95], [10, 95], [20, 95], [30, 95], [40, 95], [50, 95], [60, 95], [70, 95], [80, 95], [90, 95], [100, 95]];
 
-          
+          var line = this.d3.line();
 
+          var makeArea = this.d3.area()
+              .x(function(d) { return d.x })      // Position of both line breaks on the X axis
+              .y1(function(d) { return d.y })     // Y position of top line breaks
+              .y0(100);                            // Y position of bottom line breaks (200 = bottom of svg area)
 
+          // Add the initial path for area
+          this.d3.select("#crop-shape")
+            .append('path')
+              .attr('d', makeArea(data))
+              .style('stroke', 'yellow')
+              .style("stroke-width", "3px")
+              .style('fill', 'none');
 
 
         },
+
+
+        // this does drawing line animation
         makeChartDraw() {
           const self = this;
 
@@ -98,7 +123,7 @@ import * as d3Base from "d3";
           function drawLine(svgElement, svgBack){
             svgElement
             .attr("stroke","none")
-            .attr("fill", "none")
+            .attr("fill", "white")
             .attr("stroke-width","1px")
             .attr('stroke-dasharray','1300px')
             .attr('stroke-dashoffset', '-1300px')
@@ -119,6 +144,8 @@ import * as d3Base from "d3";
               .attr("opacity", "1")
 
           }
+
+          //this transition works between two lines of same number of points but color fill does not move with
           drawLine(trend, trendback);
 
           var line = this.d3.line();
@@ -128,9 +155,11 @@ import * as d3Base from "d3";
           function transLine(path_id){
             path_id
             .attr('d', line(data1))
+            .attr("fill", "white")
             .transition()
             .duration(1000)
-            .attr('d', line(data2));
+            .attr('d', line(data2))
+            .attr("fill", "white");
           };
           transLine(this.d3.select('#path1'));
 
@@ -144,7 +173,7 @@ import * as d3Base from "d3";
             .duration(1000)
             .attr('points', line(poly2));
           }
-          transPoly(this.d3.select('#poly_test'));
+         // transPoly(this.d3.select('#poly_test'));
         }
       }
     };

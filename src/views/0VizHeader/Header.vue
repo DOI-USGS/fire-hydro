@@ -13,9 +13,15 @@
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
-      <path id="path1" />
-
+        <path id="path1" />
       </svg>
+      <svg id="line-axes"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none">
+        <path id="axis-x" />
+        <path id="axis-y" />
+        </svg>
     </div>
     <div 
       id="byline-wrapper" 
@@ -61,8 +67,6 @@ import * as d3Base from "d3";
             .attr("viewBox", [0, 0, w, h])
             .append("g")
               .attr("id", "drawHere");
-
-          
 
           // create data
           //this would be better if read in directly from csv
@@ -141,7 +145,7 @@ import * as d3Base from "d3";
                       {x: 97.22, y: 150}, 
                       {x: 100.0, y: 150}];
 
-          
+          //this is the same as the area top line
           var dataLine = [[0, 94.93], 
                       [2.78, 72], 
                       [5.56, 89], 
@@ -193,7 +197,7 @@ import * as d3Base from "d3";
             .append('path')
               .attr("id", "charty")
               .attr('d', makeArea(dataBox))
-              .style('fill', 'white');
+              .style('fill', 'rgb(245,169,60)');
           //morph path to burn area over time shape
           this.d3.select("#charty")
             .transition()
@@ -206,15 +210,28 @@ import * as d3Base from "d3";
             .attr('d', line(dataLine))
             .attr("stroke", "none")
             .attr("fill", "none")
-            .attr("stroke-dasharray","1300px")
-            .attr("stroke-dashoffset","1300px")
+            .attr("stroke-dasharray","1000px")
+            .attr("stroke-dashoffset","1000px")
+            .attr("stroke-linejoin", "miter")
+            .attr("stroke-miterlimit", "30")
             .transition()
-              .delay(5000)
+              .delay(4000)
               .duration(3000)
-              .attr("stroke","rgb(250,109,49)")
-              .attr("stroke-miter")
+              .attr("stroke","rgb(245,169,60)")
+              .attr("stroke-linejoin", "round")
               .attr("stroke-dashoffset","0px")
-            //.attr("stroke", "rgb(245,169,60)")
+          //draw x-axis
+          this.d3.select("#axis-x")
+          .attr('d', line([[0,45], [100,45]]))
+          .attr("stroke","none")
+          .attr("stroke-dasharray","100px")
+          .attr("stroke-dashoffset","100px")
+          .transition()
+            .delay(2000)
+            .duration(3000)
+            .attr("stroke-dashoffset","0px")
+            .attr("stroke", "black")
+            .attr("stroke-width", ".5px");
         }
       }
     };
@@ -254,6 +271,10 @@ import * as d3Base from "d3";
 
     #header p {
       color: white;
+    }
+
+    #byline-wrapper {
+      margin-top: 100px;
     }
 
     #crop-shape, #time_line {

@@ -61,8 +61,8 @@
   }
   h1{
     color: white;
-    font-size: 6em;
-    font-weight: 900;
+    font-size: 9em;
+    font-weight: 500;
     margin: 0;
   }
   h2{

@@ -13,6 +13,7 @@
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
+      <path id="path1" />
 
       </svg>
     </div>
@@ -46,14 +47,13 @@ import * as d3Base from "d3";
         },
         mounted() {
           this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
-          this.makeChartDraw();  // begin script when window loads
-          this.makeChartMorph();
+          this.makeChartMorph(); // begin script when window loads
         },
       methods: {
         makeChartMorph() {
           const self = this;
           const w = 100;
-          const h = 100;
+          const h = 150;
 
           const timeline = this.d3.select("#time_line")
             .append("svg")
@@ -141,6 +141,47 @@ import * as d3Base from "d3";
                       {x: 97.22, y: 150}, 
                       {x: 100.0, y: 150}];
 
+          
+          var dataLine = [[0, 94.93], 
+                      [2.78, 72], 
+                      [5.56, 89], 
+                      [8.33, 84], 
+                      [11.11, 61], 
+                      [13.88, 95], 
+                      [16.67, 93], 
+                      [19.44, 98], 
+                      [22.22, 89], 
+                      [25.00, 97], 
+                      [27.78, 75], 
+                      [30.56, 94], 
+                      [33.33, 54], 
+                      [36.11, 100], 
+                      [38.89, 97], 
+                      [41.67, 62], 
+                      [44.44, 46], 
+                      [47.22, 79], 
+                      [50.00, 59], 
+                      [52.78, 63], 
+                      [55.55, 93], 
+                      [58.33, 61], 
+                      [61.11, 26], 
+                      [63.89, 14], 
+                      [66.67, 72], 
+                      [69.44, 89], 
+                      [72.22, 88], 
+                      [75.00, 52], 
+                      [77.78, 0], 
+                      [80.56, 71], 
+                      [83.33, 82], 
+                      [86.11, 66], 
+                      [88.88, 72], 
+                      [91.67, 12], 
+                      [94.44, 31], 
+                      [97.22, 84], 
+                      [100.0, 5]];
+          //lines
+          var line = this.d3.line();
+
           //areas
           var makeArea = this.d3.area()
               .x(function(d) { return d.x })      // Position of both line breaks on the X axis
@@ -153,57 +194,28 @@ import * as d3Base from "d3";
               .attr("id", "charty")
               .attr('d', makeArea(dataBox))
               .style('fill', 'white');
-          //draw area for burn area over time shape
+          //morph path to burn area over time shape
           this.d3.select("#charty")
             .transition()
-              .delay(2000)
-              .duration(5000)
+              .delay(1000)
+              .duration(4000)
               .attr("d", makeArea(data))
 
           //animate line drawing across top
-
-        },
-
-
-        // this does drawing line animation
-        makeChartDraw() {
-          const self = this;
-
-          var trend = this.d3.select("#charty");
-
-          function drawLine(svgElement){
-            svgElement
-            .attr("stroke","none")
-            .attr("stroke-width","1px")
-            .attr('stroke-dasharray','1300px')
-            .attr('stroke-dashoffset', '-1300px')
+          this.d3.select("#path1")
+            .attr('d', line(dataLine))
+            .attr("stroke", "none")
+            .attr("fill", "none")
+            .attr("stroke-dasharray","1300px")
+            .attr("stroke-dashoffset","1300px")
             .transition()
-              .duration(5000)
-              .delay(1000)
-              .attr("stroke", "rgb(250,109,49)")
-              .attr('stroke-dashoffset','0px');
-
-          }
-
-          //this transition works between two lines of same number of points but color fill does not move with
-          drawLine(trend);
-
-          var line = this.d3.line();
-          var data1 = [[0, 100], [10, 100], [20, 100], [30, 100], [40, 100], [50, 100], [60, 100], [70, 100], [80, 100], [90, 100], [100, 100]];
-          var data2 = [[0, 0], [10, 30], [20, 10], [30, 40], [40, 20], [50, 60], [60, 90], [70, 30], [80, 60], [90, 50], [100, 80]];
-
-          function transLine(path_id){
-            path_id
-            .attr('d', line(data1))
-            .attr("fill", "white")
-            .transition()
-            .duration(1000)
-            .attr('d', line(data2))
-            .attr("fill", "white");
-          };
-          //transLine(this.d3.select('#path1'));
-
-         }
+              .delay(5000)
+              .duration(3000)
+              .attr("stroke","rgb(250,109,49)")
+              .attr("stroke-miter")
+              .attr("stroke-dashoffset","0px")
+            //.attr("stroke", "rgb(245,169,60)")
+        }
       }
     };
 </script>

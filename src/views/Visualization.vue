@@ -43,7 +43,6 @@
   //Import Type
   @import url("https://use.typekit.net/jja8kth.css");
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-  @import url("https://fonts.googleapis.com/css2?family=Alike&display=swap");
 
 
 
@@ -65,7 +64,6 @@
     font-size: 9em;
     font-weight: 500;
     margin: 0;
-    font-family: 'Alike', serif;
   }
   h2{
     font-size: 2em;

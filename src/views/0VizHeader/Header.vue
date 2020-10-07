@@ -3,7 +3,7 @@
     <div id="header" >
       <div class="text-content" >
         <h1>{{ title }}</h1>
-        <p id="subheader">After wildfires, burned landscapes respond to rain as though they are covered in plastic wrap. USGS hydrologists are studying what that means for the Western US’s water supply.</p>
+        <p id="subheader">Post wildfire, burned landscapes respond to rain as though they are covered in plastic wrap   . USGS hydrologists are studying what that means for water supply in the Western United States.</p>
       </div>
       <div id="time_line">
         </div>

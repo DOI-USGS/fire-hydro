@@ -5,7 +5,7 @@
     >
       <div id="main-map-header">
         <h2>Wildfires pose a <span class="lowlight">growing risk</span> to our Nation’s water supplies</h2>
-        <p>The 2020 wildfire season is stark evidence that wildfires are changing the landscape of America. Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and recent massive wildfires demonstrate that the risk extends throughout our Nation.</p>
+        <p>The 2020 wildfire season is stark evidence that wildfires are changing the landscape of America . Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and recent massive wildfires demonstrate that the risk extends throughout our Nation. So far in 2020, over 7,000,000 acres (~28,000 km2) of the western USA have been burned by wildfires, costing nearly $2 billion to suppress.</p>
       </div>
       <div id="map-container">
         <p class="caption">
@@ -954,7 +954,7 @@
         </svg> 
       </div>       
       <div>
-        <p>Wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
+        <p>However, the costs don’t stop when the flames go out; wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
       </div>      
     </div>
   </section>

@@ -16,7 +16,7 @@
       <div class="flex-item">
         <img 
           id="water-supply-before" 
-          src="@/assets/components/water-supply/diagrams/beforeFire.png" 
+          src="@/assets/components/water-supply/diagrams/beforeFire.jpg" 
           alt="Diagram showing how water flows before a fire"
         >
         <p class="caption">
@@ -26,7 +26,7 @@
       <div class="flex-item">
         <img 
           id="water-supply-after" 
-          src="@/assets/components/water-supply/diagrams/afterFire.png" 
+          src="@/assets/components/water-supply/diagrams/afterFire.jpg" 
           alt="Diagram showing how water flows after a fire"
         >
         <p class="caption">

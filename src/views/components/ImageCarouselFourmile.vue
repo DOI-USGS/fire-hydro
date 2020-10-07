@@ -1,6 +1,6 @@
 <template>
   <carousel
-    id="image-carousel-fourmile"
+    id="image-slider"
     :autoplay="true"
     :autoplay-hover-pause="true"
     :per-page="3"
@@ -9,13 +9,13 @@
       <div class="slider-image-container">
         <picture>
           <source
-            srcset="@/assets/images/fieldphotos/runoff.png" 
-            media="(max-width: 992px)"
+            srcset="@/assets/images/NASAEO/boulder_ali_2011158_swir_lrg.jpg"
             type="image/jpeg"
           >
           <img
-            src="@/assets/images/fieldphotos/runoff.png" 
-            alt="A steep hilside burned by wildfire"
+            v-img:group-1
+            src="@/assets/images/NASAEO/boulder_ali_2011158_swir_lrg.jpg" 
+            alt="NASA Aerial photography of the Fourmile fire's smoke plume"
           >
         </picture>
       </div>
@@ -25,13 +25,13 @@
       <div class="slider-image-container">
         <picture>
           <source
-            srcset="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila.jpg" 
-            media="(max-width: 992px)"
+            srcset="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai-01.jpg"
             type="image/jpeg"
           >
           <img
-            src="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila.jpg" 
-            alt="Sheila, Brian, and Deb in the field"
+            v-img:group-1
+            src="@/assets/images/NASAEO/boulder_ali_2011158_lrg_ai-01.jpg" 
+            alt="NASA Aerial photography of the Fourmile burn scar"
           >
         </picture>
       </div>
@@ -41,29 +41,13 @@
       <div class="slider-image-container">
         <picture>
           <source
-            srcset="@/assets/images/fieldphotos/runoff2.jpg" 
-            media="(max-width: 992px)"
+            srcset="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg.jpg" 
             type="image/jpeg"
           >
           <img
-            src="@/assets/images/fieldphotos/runoff2.jpg" 
-            alt="A steep hilside burned by wildfire"
-          >
-        </picture>
-      </div>
-    </slide>
-
-    <slide class="slide">
-      <div class="slider-image-container">
-        <picture>
-          <source
-            srcset="@/assets/images/fieldphotos/SoilSampleSite2.jpg" 
-            media="(max-width: 992px)"
-            type="image/jpeg"
-          >
-          <img
-            src="@/assets/images/fieldphotos/SoilSampleSite2.jpg" 
-            alt="A steep hilside burned by wildfire"
+            v-img:group-1
+            src="@/assets/images/NASAEO/fourmile_tmo_2010249_lrg.jpg" 
+            alt="NASA false-color Aerial photography of the Fourmile burn scar"
           >
         </picture>
       </div>
@@ -72,8 +56,14 @@
 </template>
 
 <script>
+  import { Carousel, Slide } from 'vue-carousel';
+
   export default {
-      name: 'ImageCarouselFourmile'
+      name: 'ImageCarouselFourmile',
+      components: {
+        Carousel,
+        Slide
+      }
   }
 
 </script>

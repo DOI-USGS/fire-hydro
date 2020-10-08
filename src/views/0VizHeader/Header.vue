@@ -10,11 +10,14 @@
      <svg
         id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 100"
+        viewBox="0 0 100 150"
         preserveAspectRatio="none"
       >
         <path id="path1" />
+        <rect id="white-block" width="100" height="50" x="0" y="100" style="fill:white;" />
       </svg>
+      <div id="axes">
+        </div>
       <svg id="line-axes"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
@@ -58,15 +61,6 @@ import * as d3Base from "d3";
       methods: {
         makeChartMorph() {
           const self = this;
-          const w = 100;
-          const h = 150;
-
-          const timeline = this.d3.select("#time_line")
-            .append("svg")
-            .attr("class", "#time_burn")
-            .attr("viewBox", [0, 0, w, h])
-            .append("g")
-              .attr("id", "drawHere");
 
           // create data
           //this would be better if read in directly from csv
@@ -197,8 +191,9 @@ import * as d3Base from "d3";
             .append('path')
               .attr("id", "charty")
               .attr('d', makeArea(dataBox))
-              .style('fill', 'rgb(245,169,60)')
-              .style("opacity", ".5");
+              .style('fill', 'white')
+              .style("opacity", "1");
+              
           //morph path to burn area over time shape
           this.d3.select("#charty")
             .transition()
@@ -207,7 +202,7 @@ import * as d3Base from "d3";
               .attr("d", makeArea(data))
 
           //animate line drawing across top
-          /* this.d3.select("#path1")
+          this.d3.select("#path1")
             .attr('d', line(dataLine))
             .attr("stroke", "none")
             .attr("fill", "none")
@@ -217,24 +212,39 @@ import * as d3Base from "d3";
             .attr("stroke-miterlimit", "10")
             .transition()
               .delay(3000)
-              .duration(2000)
-              .attr("stroke","white")
-              .attr("stroke-linejoin", "round")
+              .duration(3000)
+              .attr("stroke","rgb(245,169,60)")
+              .attr("stroke-linejoin", "miter")
               .attr("stroke-dashoffset","0px")
-              .attr("stroke-width","1px") */
+              .attr("stroke-miterlimit", "10")
+              .attr("stroke-width","1px")
+
+          //add x axis
+          var svg = this.d3.select("#axes")
+            .append("svg")
+              .attr("width", 100)
+
+          var x = this.d3.scaleLinear()
+            .domain([1984, 2020])
+            .range([0, 100])
+
+          svg .append('g')
+          .attr("transform","translate(0,100)")
+          .call(this.d3.axisBottom(x));
+
 
           //draw x-axis
-          /* this.d3.select("#axis-x")
-          .attr('d', line([[0,100], [100,100]]))
+          this.d3.select("#axis-x")
+          .attr('d', line([[5,100], [95,100]]))
           .attr("stroke","none")
           .attr("stroke-dasharray","100px")
           .attr("stroke-dashoffset","100px")
           .transition()
-            .delay(2000)
+            .delay(3000)
             .duration(3000)
             .attr("stroke-dashoffset","0px")
             .attr("stroke", "black")
-            .attr("stroke-width", "2px"); */
+            .attr("stroke-width", "2px");
         }
       }
     };
@@ -284,7 +294,7 @@ import * as d3Base from "d3";
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 200px;
+        height: 250px;
  
     }
 

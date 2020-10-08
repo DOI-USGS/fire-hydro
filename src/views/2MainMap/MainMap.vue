@@ -1040,77 +1040,9 @@ import * as d3Base from "d3";
         changeElementColorHilite(this.d3.selectAll(".fire"), this.d3.selectAll(".fire-bars").selectAll("rect"), this.d3.selectAll(".fire-points").selectAll("circle"), this.d3.selectAll(".text-year"));
         changeElementColorStay(this.d3.selectAll(".fire"), this.d3.selectAll(".fire-bars").selectAll("rect"), this.d3.selectAll(".fire-points").selectAll("circle"), this.d3.selectAll(".text-year"));
 
-           //animate line length
-        var totalLength = path.node().getTotalLength();
-
-        let trend = this.d3.select(".fire-trend").this.d3.svg.line()
-
-        //not working
-        function drawTrend(trend){
-          trend
-          .attr("stroke-dasharray", totalLength + " " + totalLength)
-          .attr("stroke-dashoffset", totalLength)
-          .attr("stroke", "black")
-          .transition()
-            .delay(3000)
-            .duration(3000)
-            .ease("linear")
-            .attr("stroke-dashoffset", 0);
-        };
-        drawTrend(trend);
-
-   
-
-        let promises = [self.d3.csv("data/burn_mi2.csv")];
-        Promise.all(promises).then(self.callback);
-            },
-        
-        callback(data)  {
-          let burn_area = data[0];
-        },
-
-        //not doing this right
-        makeLineChart(burn_area) {
-          var height = 200
-          var width = 720
-          var svgChart = this.d3.select("#line_chart")
-            .append("svg")
-            .attr("viewbox", [0, 0, width, height]).join(' ')
-            .attr("class", "fire_lineChart")
-
-          var xScale = this.d3.scaleBand()
-            .range([0,width])
-            .padding(0.4);
-
-          var yScale = this.d3.scaleLinear()
-            .range([height,0]);
-
- 
-          this.d3.csv("data/burn_mi2.csv", function(error, data) {
-            if (error) {
-                throw error;
-            }
-
-            x.domain(data.map(function(d) { return d.year; }))
-            y.domain([0, this.d3.max(data, function(d) { return d.burn_mi2 })]).nice()
-
-            g.append("g")
-              .attr("transform", "translate(0," + height + ")")
-              .call(this.d3.axisBottom(xScale));
-
-            g.append("g")
-              .call(this.d3.axisLeft(yScale).tickFormat(function(d){
-                return d;
-              }).ticks(10))
-              .append("text")
-              .attr("y", 6)
-              .attr("dy", "0.7e,")
-              .attr("text-anchor", "end")
-              .attr("stroke", "black")
-              .text("value");
-          });
-                  }
+      
       }
+    }
     }
       
 </script>

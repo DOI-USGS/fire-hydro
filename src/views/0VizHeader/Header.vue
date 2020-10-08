@@ -197,7 +197,8 @@ import * as d3Base from "d3";
             .append('path')
               .attr("id", "charty")
               .attr('d', makeArea(dataBox))
-              .style('fill', 'rgb(245,169,60)');
+              .style('fill', 'rgb(245,169,60)')
+              .style("opacity", ".5");
           //morph path to burn area over time shape
           this.d3.select("#charty")
             .transition()
@@ -206,7 +207,7 @@ import * as d3Base from "d3";
               .attr("d", makeArea(data))
 
           //animate line drawing across top
-          this.d3.select("#path1")
+          /* this.d3.select("#path1")
             .attr('d', line(dataLine))
             .attr("stroke", "none")
             .attr("fill", "none")
@@ -220,8 +221,10 @@ import * as d3Base from "d3";
               .attr("stroke","white")
               .attr("stroke-linejoin", "round")
               .attr("stroke-dashoffset","0px")
+              .attr("stroke-width","1px") */
+
           //draw x-axis
-          this.d3.select("#axis-x")
+          /* this.d3.select("#axis-x")
           .attr('d', line([[0,100], [100,100]]))
           .attr("stroke","none")
           .attr("stroke-dasharray","100px")
@@ -231,7 +234,7 @@ import * as d3Base from "d3";
             .duration(3000)
             .attr("stroke-dashoffset","0px")
             .attr("stroke", "black")
-            .attr("stroke-width", "2px");
+            .attr("stroke-width", "2px"); */
         }
       }
     };

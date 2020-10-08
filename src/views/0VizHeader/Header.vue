@@ -1,30 +1,66 @@
 <template>
   <div id="header-wrapper">
-    <div id="header" >
-      <div class="text-content" >
+    <div id="header">
+      <div class="text-content">
         <h1>{{ title }}</h1>
-        <p id="subheader">Post wildfire, burned landscapes respond to rain as though they are covered in plastic wrap   . USGS hydrologists are studying what that means for water supply in the Western United States.</p>
+        <p id="subheader">
+          Post wildfire, burned landscapes respond to rain as though they are covered in plastic wrap   . USGS hydrologists are studying what that means for water supply in the Western United States.
+        </p>
       </div>
-      <div id="time_line">
-        </div>
-     <svg
+      <div id="time_line" />
+      <svg
         id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 150"
         preserveAspectRatio="none"
       >
         <path id="path1" />
-        <rect id="white-block" width="100" height="50" x="0" y="100" style="fill:white;" />
+        <g id="axes" />
+
+        <rect
+          id="white-block"
+          width="100"
+          height="50"
+          x="0"
+          y="100"
+          style="fill:white;"
+        />
       </svg>
-      <div id="axes">
-        </div>
-      <svg id="line-axes"
+   
+      <svg
+        id="line-axes"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
-        preserveAspectRatio="none">
+        preserveAspectRatio="none"
+      >
         <path id="axis-x" />
         <path id="axis-y" />
-        </svg>
+      </svg>
+    </div> 
+    <div>
+      <svg
+        id="Layer_1"
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1549.76 24.92"
+      >
+        <line
+          class="cls-1"
+          x1="50.45"
+          y1="10.53"
+          x2="1491.45"
+          y2="10.53"
+        />
+        <text
+          class="cls-2"
+          transform="translate(1504 17.14)"
+        >2020</text>
+        <text
+          class="cls-2"
+          transform="translate(0 17.14)"
+        >1984</text>
+        <path d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z" />
+      </svg>
     </div>
     <div 
       id="byline-wrapper" 
@@ -35,7 +71,6 @@
       </p>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -219,20 +254,17 @@ import * as d3Base from "d3";
               .attr("stroke-miterlimit", "10")
               .attr("stroke-width","1px")
 
-          //add x axis
+/*           //add x axis
           var svg = this.d3.select("#axes")
-            .append("svg")
-              .attr("width", 100)
 
           var x = this.d3.scaleLinear()
             .domain([1984, 2020])
             .range([0, 100])
 
           svg .append('g')
-          .attr("transform","translate(0,100)")
+          .attr("transform","translate(0,130)")
           .call(this.d3.axisBottom(x));
-
-
+ */
           //draw x-axis
           this.d3.select("#axis-x")
           .attr('d', line([[5,100], [95,100]]))
@@ -245,6 +277,14 @@ import * as d3Base from "d3";
             .attr("stroke-dashoffset","0px")
             .attr("stroke", "black")
             .attr("stroke-width", "2px");
+/* 
+          this.d3.select("#line-axes").append("g")
+          .append("text")
+            .attr("x", "95")
+            .attr("y", "90")
+            .attr("font-size", "20px")
+            .text("2020") */
+
         }
       }
     };

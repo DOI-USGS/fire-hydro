@@ -26,40 +26,33 @@
           style="fill:white;"
         />
       </svg>
-   
-      <svg
-        id="line-axes"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <path id="axis-x" />
-        <path id="axis-y" />
-      </svg>
+
     </div> 
     <div>
       <svg
-        id="Layer_1"
-        data-name="Layer 1"
+        id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1549.76 24.92"
+        viewBox="0 0 1549.76 50"
       >
-        <line
-          class="cls-1"
-          x1="50.45"
-          y1="10.53"
-          x2="1491.45"
-          y2="10.53"
+        <line id="axis-line"
+          x1="80.45"
+          y1="13"
+          x2="1460"
+          y2="13"
+          style="stroke-width: 3px; stroke:black;"
         />
-        <text
-          class="cls-2"
-          transform="translate(1504 17.14)"
+        <text class="axis-dates"
+          transform="translate(1470 22)" style="font-size: 30px"
         >2020</text>
-        <text
-          class="cls-2"
-          transform="translate(0 17.14)"
+        <text class="axis-dates"
+          transform="translate(0 22)" style="font-size: 30px"
         >1984</text>
-        <path d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z" />
+        <path class="axis-arrow" transform="translate(-26 0)" d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z" />
+      <rect class="timeline-title-box" x="450" y="-5"  height="36" />
+      <text class="timeline-title"
+          x="470" y="24" style="font-size: 26px"
+        >Area burned by wildfires in the western USA</text>
+      
       </svg>
     </div>
     <div 
@@ -254,36 +247,48 @@ import * as d3Base from "d3";
               .attr("stroke-miterlimit", "10")
               .attr("stroke-width","1px")
 
-/*           //add x axis
-          var svg = this.d3.select("#axes")
-
-          var x = this.d3.scaleLinear()
-            .domain([1984, 2020])
-            .range([0, 100])
-
-          svg .append('g')
-          .attr("transform","translate(0,130)")
-          .call(this.d3.axisBottom(x));
- */
           //draw x-axis
-          this.d3.select("#axis-x")
-          .attr('d', line([[5,100], [95,100]]))
+          this.d3.select("#axis-line")
           .attr("stroke","none")
-          .attr("stroke-dasharray","100px")
-          .attr("stroke-dashoffset","100px")
+          .attr("stroke-dasharray","1500px")
+          .attr("stroke-dashoffset","1500px")
           .transition()
             .delay(3000)
             .duration(3000)
             .attr("stroke-dashoffset","0px")
             .attr("stroke", "black")
-            .attr("stroke-width", "2px");
-/* 
-          this.d3.select("#line-axes").append("g")
-          .append("text")
-            .attr("x", "95")
-            .attr("y", "90")
-            .attr("font-size", "20px")
-            .text("2020") */
+            .attr("stroke-width", "3px");
+
+          this.d3.selectAll(".axis-dates")
+          .attr("fill","none")
+          .transition()
+            .delay(5000)
+            .duration(1000)
+            .attr("fill", "black");
+
+          this.d3.select(".axis-arrow")
+          .attr("fill","none")
+          .transition()
+            .delay(5000)
+            .duration(1000)
+            .attr("fill", "black");
+
+          this.d3.select(".timeline-title")
+          .attr("fill","none")
+          .transition()
+            .delay(5000)
+            .duration(1000)
+            .attr("fill", "black");
+
+          this.d3.select(".timeline-title-box")
+          .attr("fill","none")
+          .attr("width", "0")
+          .transition()
+            .delay(3000)
+            .duration(2000)
+            .attr("width", "560")
+            .attr("fill", "rgb(245,169,60)");
+
 
         }
       }
@@ -353,5 +358,13 @@ import * as d3Base from "d3";
     .byline {
         font-style: italic;
         padding: 1em 0 0 0;
+    }
+    #axes-svg {
+      margin-top: 0px;
+      z-index: 1;
+    }
+
+    #crop-shape {
+      z-index: 0;
     }
 </style>

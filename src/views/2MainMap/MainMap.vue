@@ -1097,9 +1097,9 @@
           </g>
           <text
             id="axis-label-y"
-            transform="translate(19,150) rotate(-90)"
-            style="font-size: 16px;"
-          >Sq mi</text>
+            transform="translate(15,160) rotate(-90)"
+            style="font-size: 16px;stroke: black;"
+          >Area burned (sq mi)</text>
         </svg> 
       </div>       
       <div>

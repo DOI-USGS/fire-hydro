@@ -164,6 +164,7 @@
  // Link Styling
   /* unvisited link */
   a{
+    color: $fireRed;
     text-decoration-color: $fireYellow;
   }
 
@@ -174,7 +175,7 @@
 
   /* visited link */
   a:visited {
-    color: black;
+    color: $fireRedlight;
     text-decoration-color: $fireYellow;
   }
 

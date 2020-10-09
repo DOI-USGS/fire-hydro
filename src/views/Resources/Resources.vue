@@ -4,7 +4,7 @@
     class="text-content"
   >
     <h2><a /><span class="lowlight">Guidance for Water Providers</span></h2>
-    <p>The rapid transmission of sediment, ash, and debris to surface water can lead to impaired surface-water quality, loss of reservoir storage, and high costs to water providers and customers.  But not every watershed faces the same issues.</p>
+    <p>The rapid transmission of sediment, ash, and debris to surface water can lead to impaired surface-water quality, loss of reservoir storage, and high costs to water providers and customers.  But not every watershed faces the same issues.  The guidance below was developed by research hydrologists like Murphy and Ebel to provide actionable guidance for water managers dealing with wildfires within their watersheds.</p>
     <div class="usa-accordion usa-accordion--bordered">
       <div class="accordion">
         <h3 class="usa-accordion__heading">
@@ -72,6 +72,39 @@
         </div>
       </div>
     </div>
+    <h2><span class="lowlight">Further Research</span></h2>
+    <ul>
+      <li class="research">
+        Murphy, S.F., McCleskey, R.B., Martin, D.A., Holloway, J.M., and Writer, J.W., 2020, <a href="https://doi.org/10.1016/j.scitotenv.2020.140635">Wildfire-driven changes in hydrology mobilize arsenic and metals from legacy mine waste</a>: Science of the Total Environment v. 743, 140635
+      </li>
+      <li class="research">
+        Hermes, A.L., Ebel, B.A., Murphy, S.F., Hinckley, E-L. S, 2021, <a href="https://doi.org/10.1016/j.scitotenv.2020.142179">Fates and fingerprints of sulfur and carbon following wildfire in economically important croplands of California, U.S.</a>: Science of the Total Environment, 750, 142179
+      </li>
+      <li class="research">
+        Penn, C.A., Clow, D.W., Sexstone, G.A., and Murphy, S.F., 2020, <a href="https://doi.org/10.1111/1752-1688.12863">Changes in climate and land cover affect seasonal streamflow forecasts in the Rio Grande Headwaters</a>: Journal of the American Water Resources Association, 1-21.
+      </li>
+      <li class="research">
+        Murphy, S.F., McCleskey, R.B., Martin, D.A., Writer, J.H., and Ebel, B.A., 2018, <a href="https://doi.org/10.1029/2017JG004349">Fire, flood, and drought—Extreme climate events alter flow paths and stream chemistry</a>, Journal of Geophysical Research: Biogeosciences, 123, p. 2513-2526
+      </li>
+      <li class="research">
+        Murphy, S.F., Writer, J.H., McCleskey, R.B., and Martin, D.A., 2015, <a href="https://doi.org/10.1088/1748-9326/10/8/084007">The role of precipitation type, intensity, and spatial distribution in source water quality after wildfire</a>: Environmental Research Letters, v. 10, no. 8, 084007: 1-13
+      </li>
+      <li class="research">
+        Writer, J.H. and Murphy, S.F., 2012, <a href="https://pubs.usgs.gov/fs/2012/3095/FS12-3095.pdf">Wildfire effects on source-water quality—Lessons from Fourmile Canyon Fire, Colorado, and implications for drinking-water treatment</a>: USGS Fact Sheet 2012–3095, 4 p.
+      </li>
+    </ul>
+    <h2><span class="lowlight">USGS Data Releases</span></h2>
+    <ul>
+      <li class="research">
+        Murphy, S.F., McCleskey, R.B., D.A., Holloway, J.M., Writer, J.W., Martin, D.A., and Stricker, C.A., 2020, <a href="https://doi.org/10.5066/P941BIYS">Chemistry of water, stream sediment, wildfire ash, soil, dust, and mine waste for Fourmile Creek Watershed, Colorado, 2010-2019</a>: U.S. Geological Survey Data Release (IP-118730, 6/22/20).
+      </li>
+      <li class="research">
+        Murphy, S. F., McCleskey, R. B., and Writer, J. H., 2018, <a href="https://doi.org/10.5066/F7Z60N8T">Water chemistry data for Fourmile Creek Watershed, 2010-2015.</a> U.S. Geological Survey database
+      </li>
+      <li class="research">
+        McCleskey, R.B., Writer, J.H., and Murphy, S.F., 2012, <a href="https://pubs.usgs.gov/of/2012/1104/OF12-1104.pdf">Water chemistry of surface waters affected by the Fourmile Canyon wildfire, Colorado, 2010–2011</a>: USGS Open-File Report 2012–1104, 11 p.
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -134,5 +167,28 @@ $chevronDown: '~@/assets/images/chevron-down.png';
 
 #resources-section {
   margin-bottom: 100px;
+}
+
+// ul li:before {
+//   content: "🔥";
+//   font-size: 10pt;
+// }
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  // content: "🔥";
+  content: "■";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: $fireRed; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1.5em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.research {
+  margin: 20px 0;
 }
 </style>

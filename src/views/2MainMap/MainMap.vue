@@ -1305,12 +1305,19 @@ import * as d3Base from "d3";
             .style("fill", " rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .raise();
+
+          this.d3.selectAll(".label" + data.year)
+            .style("fill", "rgb(250,109,49)")
+            .style("opacity", 1)
         },
         highlight_year(data){
           this.d3.selectAll(".year" + data.year)
             .style("fill", " rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .raise();
+          this.d3.selectAll(".label" + data.year)
+            .style("fill", "rgb(250,109,49)")
+            .style("opacity", 1)
         },
         dehighlight_year_bar(data, tooltip){
           // hide tooltip
@@ -1324,6 +1331,8 @@ import * as d3Base from "d3";
             .style("fill", "rgba(245,169,60,0.6)")
             .style("stroke", "rgba(235,156,42,0.6)")
             .lower()
+          this.d3.selectAll(".label" + data.year)
+            .style("opacity", 0)
         },
         dehighlight_year(data){
           this.d3.selectAll(".bar.year" + data.year)
@@ -1333,6 +1342,8 @@ import * as d3Base from "d3";
             .style("fill", "rgba(245,169,60,0.6)")
             .style("stroke", "rgba(235,156,42,0.6)")
             .lower()
+          this.d3.selectAll(".label" + data.year)
+            .style("opacity", 0)
         }
       }
     }

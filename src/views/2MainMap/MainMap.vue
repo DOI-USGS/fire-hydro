@@ -100,43 +100,43 @@
 
           <g id="basemap">
     
-            <text class="text-year">1984</text>
-            <text class="text-year">1985</text>
-            <text class="text-year">1986</text>
-            <text class="text-year">1987</text>
-            <text class="text-year">1988</text>
-            <text class="text-year">1989</text>
-            <text class="text-year">1990</text>
-            <text class="text-year">1991</text>
-            <text class="text-year">1992</text>
-            <text class="text-year">1993</text>
-            <text class="text-year">1994</text>
-            <text class="text-year">1995</text>
-            <text class="text-year">1996</text>
-            <text class="text-year">1997</text>
-            <text class="text-year">1998</text>
-            <text class="text-year">1999</text>
-            <text class="text-year">2000</text>
-            <text class="text-year">2001</text>
-            <text class="text-year">2002</text>
-            <text class="text-year">2003</text>
-            <text class="text-year">2004</text>
-            <text class="text-year">2005</text>
-            <text class="text-year">2006</text>
-            <text class="text-year">2007</text>
-            <text class="text-year">2008</text>
-            <text class="text-year">2009</text>
-            <text class="text-year">2010</text>
-            <text class="text-year">2011</text>
-            <text class="text-year">2012</text>
-            <text class="text-year">2013</text>
-            <text class="text-year">2014</text>
-            <text class="text-year">2015</text>
-            <text class="text-year">2016</text>
-            <text class="text-year">2017</text>
-            <text class="text-year">2018</text>
-            <text class="text-year">2019</text>
-            <text class="text-year">2020</text>
+            <text class="text-year label1984">1984</text>
+            <text class="text-year label1985">1985</text>
+            <text class="text-year label1986">1986</text>
+            <text class="text-year label1987">1987</text>
+            <text class="text-year label1988">1988</text>
+            <text class="text-year label1989">1989</text>
+            <text class="text-year label1990">1990</text>
+            <text class="text-year label1991">1991</text>
+            <text class="text-year label1992">1992</text>
+            <text class="text-year label1993">1993</text>
+            <text class="text-year label1994">1994</text>
+            <text class="text-year label1995">1995</text>
+            <text class="text-year label1996">1996</text>
+            <text class="text-year label1997">1997</text>
+            <text class="text-year label1998">1998</text>
+            <text class="text-year label1999">1999</text>
+            <text class="text-year label2000">2000</text>
+            <text class="text-year label2001">2001</text>
+            <text class="text-year label2002">2002</text>
+            <text class="text-year label2003">2003</text>
+            <text class="text-year label2004">2004</text>
+            <text class="text-year label2005">2005</text>
+            <text class="text-year label2006">2006</text>
+            <text class="text-year label2007">2007</text>
+            <text class="text-year label2008">2008</text>
+            <text class="text-year label2009">2009</text>
+            <text class="text-year label2010">2010</text>
+            <text class="text-year label2011">2011</text>
+            <text class="text-year label2012">2012</text>
+            <text class="text-year label2013">2013</text>
+            <text class="text-year label2014">2014</text>
+            <text class="text-year label2015">2015</text>
+            <text class="text-year label2016">2016</text>
+            <text class="text-year label2017">2017</text>
+            <text class="text-year label2018">2018</text>
+            <text class="text-year label2019">2019</text>
+            <text class="text-year label2020">2020</text>
 
             <g id="states">
               <path d="M188.75,42l.5.1.3.3h.3l.2.3.4.5.3.5v.4l.3.5h-.3l-.3-.3-1.4-1.5-.4-.6.1-.2Z" />
@@ -1018,6 +1018,7 @@
         <text id="axis-label-y" transform='translate(19,150) rotate(-90)' style='font-size: 16px;'>Sq mi</text>
        </svg> -->        
         <svg
+          class = "fire-timeseries-2"
           id="fire_timeseries_2"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1167,23 +1168,47 @@ import * as d3Base from "d3";
           var yearDuration = 500
           var yearStart = 1984
 
-          var fire_chart = this.d3.select("fire_timeseries_2");
+          // add tooltip to chart svg
+          // find root svg element
+          var svg_fire_chart = document.querySelector('.fire-timeseries-2')
+          // create a SVGPoint for future math
+          var pt_fire_chart = svg_fire_chart.createSVGPoint();
+          // function to get point in global SVG space
+          function cursorPoint_fire_chart(evt) {
+            pt_fire_chart.x = evt.clientX; pt_fire_chart.y = evt.clientY;
+            return pt_fire_chart.matrixTransform(svg_fire_chart.getScreenCTM().inverse());
+          }
+          // create local variable to store point coordinates
+          var loc_fire_chart
+          // resent coordinates when mouse moves over chart svg
+          svg_fire_chart.addEventListener('mousemove', function(evt){
+            loc_fire_chart = cursorPoint_fire_chart(evt);
+          }, false);
 
+          // add tooltip as text element appended to chart svg, without coordinates
+          let svgChart = this.d3.select('#fire_timeseries_2')
+          var tooltip = svgChart.append("text")
+            .attr("class", "tooltip")
+
+          // append data and click and mouseover functionality to bar chart rectangles
           var bars = this.d3.selectAll(".fire-bars").selectAll("rect")
             .data(csv_burn)
             .on("click", function(d){
               self.highlight_year(d)
             })
             .on("mouseover", function(d) {
-              self.highlight_year(d)
+              self.highlight_year_bar(d, tooltip)
+            })
+            .on("mousemove", function(d){
+              let mouse_x = loc_fire_chart.x
+              let mouse_y = loc_fire_chart.y
+              self.mousemove_bar(d, tooltip, mouse_x, mouse_y)
             })
             .on("mouseout", function(d) {
-              self.dehighlight_year(d)
+              self.dehighlight_year_bar(d, tooltip)
             })
-            
 
-          var fire_map = document.querySelector('.firemap')
-
+          // append data and click and mouseover functionality to fire perimeters
           var fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
             .data(csv_burn)
             .on("click", function(d){
@@ -1216,7 +1241,6 @@ import * as d3Base from "d3";
 
             textElement
             .style('fill', "rgb(0,0,0,0)")
-            .style('stroke', "rgb(0,0,0,0)")
             .attr("font-size", "40px")
             .attr('x', 550)
             .attr('y', 50)
@@ -1250,11 +1274,46 @@ import * as d3Base from "d3";
           changeElementColorStay(this.d3.selectAll(".fire"), this.d3.selectAll(".fire-bars").selectAll("rect"), this.d3.selectAll(".text-year"));
 
         },
+        mousemove_bar(data, tooltip, mouse_x, mouse_y) {
+          var data_year = data.year
+          var sqmi = data.burn_mi2
+
+          // bind mouse coordinates and year to tooltip
+          tooltip
+            .attr("y", mouse_y)
+            .attr("x", mouse_x)
+            .attr("text-align", "left")
+            .text(data_year)
+            .raise()
+        },
+        highlight_year_bar(data, tooltip){
+          // make tooltip visible
+          tooltip
+            .style("opacity", 1);
+
+          this.d3.selectAll(".year" + data.year)
+            .style("fill", " rgb(250,109,49)")
+            .style("stroke", "rgb(235,98,40)")
+            .raise();
+        },
         highlight_year(data){
           this.d3.selectAll(".year" + data.year)
             .style("fill", " rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .raise();
+        },
+        dehighlight_year_bar(data, tooltip){
+          // hide tooltip
+          tooltip
+            .style("opacity", 0)
+
+          this.d3.selectAll(".bar.year" + data.year)
+            .style("fill", "rgba(245,169,60,0.8)")
+            .style("stroke", "rgba(235,156,42,0.8)")
+          this.d3.selectAll(".fire.year" + data.year)
+            .style("fill", "rgba(245,169,60,0.6)")
+            .style("stroke", "rgba(235,156,42,0.6)")
+            .lower()
         },
         dehighlight_year(data){
           this.d3.selectAll(".bar.year" + data.year)
@@ -1264,7 +1323,6 @@ import * as d3Base from "d3";
             .style("fill", "rgba(245,169,60,0.6)")
             .style("stroke", "rgba(235,156,42,0.6)")
             .lower()
-
         }
       }
     }
@@ -1387,7 +1445,14 @@ import * as d3Base from "d3";
   #axis-label-y {
     fill: #4f4f4f;
   }
-
+  .tooltip {
+    display: inline-block;
+    fill: #000000;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    font-weight: bold;
+    line-height: 1em;
+  }
 }
   #text-year  {
     font-size: 36px;
@@ -1404,4 +1469,5 @@ import * as d3Base from "d3";
   stroke-width: 0.3px;
   opacity:  0.6;
 }
+
 </style>

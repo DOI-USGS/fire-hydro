@@ -1164,8 +1164,6 @@ import * as d3Base from "d3";
         makeFireBurn(csv_burn) {
           const self = this;
 
-          console.log(csv_burn)
-
           var yearDuration = 500
           var yearStart = 1984
 
@@ -1173,17 +1171,24 @@ import * as d3Base from "d3";
 
           var bars = this.d3.selectAll(".fire-bars").selectAll("rect")
             .data(csv_burn)
+            .on("click", function(d){
+              self.highlight_year(d)
+            })
             .on("mouseover", function(d) {
               self.highlight_year(d)
             })
             .on("mouseout", function(d) {
               self.dehighlight_year(d)
             })
+            
 
           var fire_map = document.querySelector('.firemap')
 
           var fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
             .data(csv_burn)
+            .on("click", function(d){
+              self.highlight_year(d)
+            })
             .on("mouseover", function(d) {
               self.highlight_year(d)
             })
@@ -1324,6 +1329,9 @@ import * as d3Base from "d3";
   stroke-linecap: round; 
   stroke-linejoin: round; 
 }
+.selected {
+  fill: #000000
+;}
 #fire_timeseries, #fire_timeseries_2  {
   padding: 3em;
 

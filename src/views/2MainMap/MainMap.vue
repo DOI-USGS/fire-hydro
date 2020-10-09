@@ -501,14 +501,7 @@
           <path d="M105.59,318l.47.25-.16.81-.51-.26Zm249.64.42.58.35V320l-.53.28,0-1.83Z"/>
         </g>
       </g>
-      <image
-        href="@/assets/images/fire_forest.png"
-        xlink:href="@/assets/images/fire_forest.png"
-        width="100%"
-        height="100%"
-        style="opacity: .15"
-        clip-path="url(#usa_clip)"
-      />
+
         </svg>  
         
         <!--    <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id = "fire_timeseries" viewBox='0 0 720.00 216.00'>
@@ -969,7 +962,7 @@ import * as d3Base from "d3";
               .style("fill", "rgba(245,169,60,0.5)")
 
               textElement
-              .transition().duration(300)
+              .transition().duration(250)
                 .delay(function(d,i){ return yearDuration+yearDuration*i; })
                 .style("fill", "rgba(0,0,0,0)")
 
@@ -1092,8 +1085,9 @@ import * as d3Base from "d3";
 }
 
 .IMP  {
-  fill: none;
-  stroke: none;
-  opacity: .5;
+  fill: #d1d9e8;
+  stroke: #c5c9d9;
+  stroke-width: 0.3px;
+  opacity:  1;
 }
 </style>

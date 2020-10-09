@@ -3,25 +3,8 @@
     id="image-slider"
     :autoplay="true"
     :autoplay-hover-pause="true"
-    :per-page="3"
+    :per-page="4"
   >
-    <slide class="slide">
-      <div class="slider-image-container">
-        <picture>
-          <source
-            srcset="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila.jpg"
-            media="(max-width: 992px)"
-            type="image/jpeg"
-          >
-          <img
-            v-img:group-2
-            src="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila.jpg" 
-            alt="USGS Hydrologists Sheila Murphy, Deb, and Brian Ebel"
-          >
-        </picture>
-      </div>
-    </slide>
-
     <slide class="slide">
       <div class="slider-image-container">
         <picture>
@@ -43,13 +26,13 @@
       <div class="slider-image-container">
         <picture>
           <source
-            srcset="@/assets/images/fieldphotos/Brian_sampling.png" 
+            srcset="@/assets/images/fieldphotos/Brian_sampling_ai.jpg" 
             media="(max-width: 992px)"
             type="image/jpeg"
           >
           <img
             v-img:group-2
-            src="@/assets/images/fieldphotos/Brian_sampling.png" 
+            src="@/assets/images/fieldphotos/Brian_sampling_ai.jpg" 
             alt="USGS Hydrologist Brian Ebel sampling soil"
           >
         </picture>
@@ -75,6 +58,23 @@
       </div>
     </slide>
 
+    <slide class="slide">
+      <div class="slider-image-container">
+        <picture>
+          <source
+            srcset="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila_ai.jpg"
+            media="(max-width: 992px)"
+            type="image/jpeg"
+          >
+          <img
+            v-img:group-2
+            src="@/assets/images/fieldphotos/ColdSprings_BrianDebSheila_ai.jpg" 
+            alt="USGS Hydrologists Sheila Murphy, Deb, and Brian Ebel"
+          >
+        </picture>
+      </div>
+    </slide>
+    
     <slide class="slide">
       <div class="slider-image-container">
         <picture>

@@ -26,7 +26,6 @@
           style="fill:white;"
         />
       </svg>
-
     </div> 
     <div>
       <svg
@@ -34,23 +33,38 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1549.76 50"
       >
-        <line id="axis-line"
+        <line
+          id="axis-line"
           x1="80.45"
           y1="13"
           x2="1460"
           y2="13"
           style="stroke-width: 3px; stroke:black;"
         />
-        <text class="axis-dates"
-          transform="translate(1470 22)" style="font-size: 30px"
+        <text
+          class="axis-dates"
+          transform="translate(1490 18)"
         >2020</text>
-        <text class="axis-dates"
-          transform="translate(0 22)" style="font-size: 30px"
+        <text
+          class="axis-dates"
+          transform="translate(20 18)"
         >1984</text>
-        <path class="axis-arrow" transform="translate(-26 0)" d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z" />
-      <rect class="timeline-title-box" x="450" y="-5"  height="36" />
-      <text class="timeline-title"
-          x="470" y="24" style="font-size: 26px"
+        <path
+          class="axis-arrow"
+          transform="translate(-26 0)"
+          d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z"
+        />
+        <rect
+          class="timeline-title-box"
+          x="450"
+          y="-5"
+          height="40"
+        />
+        <text
+          class="timeline-title"
+          x="510"
+          y="24"
+          style="font-size: 1.4em;"
         >Area burned by wildfires in the western USA</text>
       
       </svg>
@@ -256,8 +270,8 @@ import * as d3Base from "d3";
             .delay(3000)
             .duration(3000)
             .attr("stroke-dashoffset","0px")
-            .attr("stroke", "black")
-            .attr("stroke-width", "3px");
+            .attr("stroke", "rgb(237,237,237)")
+            .attr("stroke-width", "1px");
 
           this.d3.selectAll(".axis-dates")
           .attr("fill","none")
@@ -271,7 +285,7 @@ import * as d3Base from "d3";
           .transition()
             .delay(5000)
             .duration(1000)
-            .attr("fill", "black");
+            .attr("fill", "rgb(51,51,51)");
 
           this.d3.select(".timeline-title")
           .attr("fill","none")
@@ -286,7 +300,7 @@ import * as d3Base from "d3";
           .transition()
             .delay(3000)
             .duration(2000)
-            .attr("width", "560")
+            .attr("width", "550")
             .attr("fill", "rgb(245,169,60)");
 
 
@@ -299,6 +313,7 @@ import * as d3Base from "d3";
 
     // Import Colors
     $white: rgb(255,255,255);
+    $none: rgba(255,255,255,0);
     $black: rgb(0,0,0);  
     $lightGray:rgb(237,237,237);
     $mediumGray: rgb(100,100,100);
@@ -313,18 +328,24 @@ import * as d3Base from "d3";
     #header {
         position: relative;
         height: 900px;
-        background-image: url(../../assets/images/fieldphotos/scar.png);
+        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar.png);
         /* background-image: linear-gradient($black, $fireYellow); */
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-    }
-
-    #header h1 {
-        padding: 200px 0 50px 0;
-        text-align: left;
-        line-height: 1em;
+      @media screen and (max-width: 1000px) {
+          height: 950px;
+      }
+      @media screen and (max-width: 800px) {
+          height: 800px;
+      }
+      @media screen and (max-width: 600px) {
+          height: 700px;
+      }
+      @media screen and (max-width: 400px) {
+          height: 650px;
+      }
     }
 
     #header p {
@@ -341,6 +362,14 @@ import * as d3Base from "d3";
         width: 100%;
         height: 250px;
  
+    }
+
+    .axis-dates {
+      font-size: 1.2em;
+    }
+
+    .axis-line {
+      fill: rgb(51,51,51);
     }
 
     // @media (max-width: 699px) {

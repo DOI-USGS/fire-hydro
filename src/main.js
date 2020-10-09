@@ -26,7 +26,6 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-
 // social icons
 library.add(faTwitterSquare);
 library.add(faFacebookSquare);

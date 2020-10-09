@@ -759,6 +759,230 @@
           <rect id = "bar_2019" x='652.75' y='133.16' height='29.66' />
           <rect id = "bar_2020" x='668.58' y='21.98' height='140.84' />
         </g>
+        <g class="fire-points">
+          <circle
+            id="point_1984"
+            cx="105.87"
+            cy="148.34"
+            r="3"
+          />
+          <circle
+            id="point_1985"
+            cx="121.70"
+            cy="116.98"
+            r="3"
+          />
+          <circle
+            id="point_1986"
+            cx="137.53"
+            cy="140.65"
+            r="3"
+          />
+          <circle
+            id="point_1987"
+            cx="153.36"
+            cy="133.18"
+            r="3"
+          />
+          <circle
+            id="point_1988"
+            cx="169.18"
+            cy="102.12"
+            r="3"
+          />
+          <circle
+            id="point_1989"
+            cx="185.01"
+            cy="149.18"
+            r="3"
+          />
+          <circle
+            id="point_1990"
+            cx="200.84"
+            cy="146.38"
+            r="3"
+          />
+          <circle
+            id="point_1991"
+            cx="216.67"
+            cy="153.93"
+            r="3"
+          />
+          <circle
+            id="point_1992"
+            cx="232.50"
+            cy="140.79"
+            r="3"
+          />
+          <circle
+            id="point_1993"
+            cx="248.33"
+            cy="151.57"
+            r="3"
+          />
+          <circle
+            id="point_1994"
+            cx="264.16"
+            cy="121.56"
+            r="3"
+          />
+          <circle
+            id="point_1995"
+            cx="279.99"
+            cy="147.99"
+            r="3"
+          />
+          <circle
+            id="point_1996"
+            cx="295.81"
+            cy="92.01"
+            r="3"
+          />
+          <circle
+            id="point_1997"
+            cx="311.64"
+            cy="155.43"
+            r="3"
+          />
+          <circle
+            id="point_1998"
+            cx="327.47"
+            cy="152.13"
+            r="3"
+          />
+          <circle
+            id="point_1999"
+            cx="343.30"
+            cy="102.43"
+            r="3"
+          />
+          <circle
+            id="point_2000"
+            cx="359.13"
+            cy="79.99"
+            r="3"
+          />
+          <circle
+            id="point_2001"
+            cx="374.96"
+            cy="127.21"
+            r="3"
+          />
+          <circle
+            id="point_2002"
+            cx="390.79"
+            cy="98.02"
+            r="3"
+          />
+          <circle
+            id="point_2003"
+            cx="406.61"
+            cy="103.70"
+            r="3"
+          />
+          <circle
+            id="point_2004"
+            cx="422.44"
+            cy="146.00"
+            r="3"
+          />
+          <circle
+            id="point_2005"
+            cx="438.27"
+            cy="100.99"
+            r="3"
+          />
+          <circle
+            id="point_2006"
+            cx="454.10"
+            cy="52.64"
+            r="3"
+          />
+          <circle
+            id="point_2007"
+            cx="469.93"
+            cy="34.62"
+            r="3"
+          />
+          <circle
+            id="point_2008"
+            cx="485.76"
+            cy="115.60"
+            r="3"
+          />
+          <circle
+            id="point_2009"
+            cx="501.59"
+            cy="139.78"
+            r="3"
+          />
+          <circle
+            id="point_2010"
+            cx="517.42"
+            cy="138.30"
+            r="3"
+          />
+          <circle
+            id="point_2011"
+            cx="533.24"
+            cy="87.70"
+            r="3"
+          />
+          <circle
+            id="point_2012"
+            cx="549.07"
+            cy="15.34"
+            r="3"
+          />
+          <circle
+            id="point_2013"
+            cx="564.90"
+            cy="114.67"
+            r="3"
+          />
+          <circle
+            id="point_2014"
+            cx="580.73"
+            cy="129.30"
+            r="3"
+          />
+          <circle
+            id="point_2015"
+            cx="596.56"
+            cy="108.68"
+            r="3"
+          />
+          <circle
+            id="point_2016"
+            cx="612.39"
+            cy="116.83"
+            r="3"
+          />
+          <circle
+            id="point_2017"
+            cx="628.22"
+            cy="33.15"
+            r="3"
+          />
+          <circle
+            id="point_2018"
+            cx="644.05"
+            cy="59.41"
+            r="3"
+          />
+          <circle
+            id="point_2019"
+            cx="659.87"
+            cy="133.16"
+            r="3"
+          />
+          <circle
+            id="point_2020"
+            cx="675.70"
+            cy="21.98"
+            r="3"
+          />
+        </g>
         <g id="fire-lines">
           <polyline id="fire-line" points='105.87,148.34 121.70,116.98 137.53,140.65 153.36,133.18 169.18,102.12 185.01,149.18 200.84,146.38 216.67,153.93 232.50,140.79 248.33,151.57 264.16,121.56 279.99,147.99 295.81,92.01 311.64,155.43 327.47,152.13 343.30,102.43 359.13,79.99 374.96,127.21 390.79,98.02 406.61,103.70 422.44,146.00 438.27,100.99 454.10,52.64 469.93,34.62 485.76,115.60 501.59,139.78 517.42,138.30 533.24,87.70 549.07,15.34 564.90,114.67 580.73,129.30 596.56,108.68 612.39,116.83 628.22,33.15 644.05,59.41 659.87,133.16 675.70,21.98 ' />
           <polyline id="fire-trend" points='105.87,146.40 113.08,145.51 120.30,144.62 127.51,143.72 134.72,142.83 141.93,141.94 149.15,141.05 156.36,140.15 163.57,139.26 170.79,138.37 178.00,137.47 185.21,136.58 192.43,135.69 199.64,134.79 206.85,133.90 214.07,133.01 221.28,132.11 228.49,131.22 235.70,130.33 242.92,129.44 250.13,128.54 257.34,127.65 264.56,126.76 271.77,125.86 278.98,124.97 286.20,124.08 293.41,123.18 300.62,122.29 307.84,121.40 315.05,120.50 322.26,119.61 329.47,118.72 336.69,117.83 343.90,116.93 351.11,116.04 358.33,115.15 365.54,114.25 372.75,113.36 379.97,112.47 387.18,111.57 394.39,110.68 401.61,109.79 408.82,108.89 416.03,108.00 423.24,107.11 430.46,106.22 437.67,105.32 444.88,104.43 452.10,103.54 459.31,102.64 466.52,101.75 473.74,100.86 480.95,99.96 488.16,99.07 495.38,98.18 502.59,97.29 509.80,96.39 517.02,95.50 524.23,94.61 531.44,93.71 538.65,92.82 545.87,91.93 553.08,91.03 560.29,90.14 567.51,89.25 574.72,88.35 581.93,87.46 589.15,86.57 596.36,85.68 603.57,84.78 610.79,83.89 618.00,83.00 625.21,82.10 632.42,81.21 639.64,80.32 646.85,79.42 654.06,78.53 661.28,77.64 668.49,76.74 675.70,75.85 ' />
@@ -797,230 +1021,44 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           viewBox="0 0 720.00 216.00"
         >
-      
-          <g class="fire-points">
-            <circle
-              id="point_1984"
-              cx="105.87"
-              cy="148.34"
-              r="3"
-            />
-            <circle
-              id="point_1985"
-              cx="121.70"
-              cy="116.98"
-              r="3"
-            />
-            <circle
-              id="point_1986"
-              cx="137.53"
-              cy="140.65"
-              r="3"
-            />
-            <circle
-              id="point_1987"
-              cx="153.36"
-              cy="133.18"
-              r="3"
-            />
-            <circle
-              id="point_1988"
-              cx="169.18"
-              cy="102.12"
-              r="3"
-            />
-            <circle
-              id="point_1989"
-              cx="185.01"
-              cy="149.18"
-              r="3"
-            />
-            <circle
-              id="point_1990"
-              cx="200.84"
-              cy="146.38"
-              r="3"
-            />
-            <circle
-              id="point_1991"
-              cx="216.67"
-              cy="153.93"
-              r="3"
-            />
-            <circle
-              id="point_1992"
-              cx="232.50"
-              cy="140.79"
-              r="3"
-            />
-            <circle
-              id="point_1993"
-              cx="248.33"
-              cy="151.57"
-              r="3"
-            />
-            <circle
-              id="point_1994"
-              cx="264.16"
-              cy="121.56"
-              r="3"
-            />
-            <circle
-              id="point_1995"
-              cx="279.99"
-              cy="147.99"
-              r="3"
-            />
-            <circle
-              id="point_1996"
-              cx="295.81"
-              cy="92.01"
-              r="3"
-            />
-            <circle
-              id="point_1997"
-              cx="311.64"
-              cy="155.43"
-              r="3"
-            />
-            <circle
-              id="point_1998"
-              cx="327.47"
-              cy="152.13"
-              r="3"
-            />
-            <circle
-              id="point_1999"
-              cx="343.30"
-              cy="102.43"
-              r="3"
-            />
-            <circle
-              id="point_2000"
-              cx="359.13"
-              cy="79.99"
-              r="3"
-            />
-            <circle
-              id="point_2001"
-              cx="374.96"
-              cy="127.21"
-              r="3"
-            />
-            <circle
-              id="point_2002"
-              cx="390.79"
-              cy="98.02"
-              r="3"
-            />
-            <circle
-              id="point_2003"
-              cx="406.61"
-              cy="103.70"
-              r="3"
-            />
-            <circle
-              id="point_2004"
-              cx="422.44"
-              cy="146.00"
-              r="3"
-            />
-            <circle
-              id="point_2005"
-              cx="438.27"
-              cy="100.99"
-              r="3"
-            />
-            <circle
-              id="point_2006"
-              cx="454.10"
-              cy="52.64"
-              r="3"
-            />
-            <circle
-              id="point_2007"
-              cx="469.93"
-              cy="34.62"
-              r="3"
-            />
-            <circle
-              id="point_2008"
-              cx="485.76"
-              cy="115.60"
-              r="3"
-            />
-            <circle
-              id="point_2009"
-              cx="501.59"
-              cy="139.78"
-              r="3"
-            />
-            <circle
-              id="point_2010"
-              cx="517.42"
-              cy="138.30"
-              r="3"
-            />
-            <circle
-              id="point_2011"
-              cx="533.24"
-              cy="87.70"
-              r="3"
-            />
-            <circle
-              id="point_2012"
-              cx="549.07"
-              cy="15.34"
-              r="3"
-            />
-            <circle
-              id="point_2013"
-              cx="564.90"
-              cy="114.67"
-              r="3"
-            />
-            <circle
-              id="point_2014"
-              cx="580.73"
-              cy="129.30"
-              r="3"
-            />
-            <circle
-              id="point_2015"
-              cx="596.56"
-              cy="108.68"
-              r="3"
-            />
-            <circle
-              id="point_2016"
-              cx="612.39"
-              cy="116.83"
-              r="3"
-            />
-            <circle
-              id="point_2017"
-              cx="628.22"
-              cy="33.15"
-              r="3"
-            />
-            <circle
-              id="point_2018"
-              cx="644.05"
-              cy="59.41"
-              r="3"
-            />
-            <circle
-              id="point_2019"
-              cx="659.87"
-              cy="133.16"
-              r="3"
-            />
-            <circle
-              id="point_2020"
-              cx="675.70"
-              cy="21.98"
-              r="3"
-            />
+          <g class='fire-bars'>
+            <rect id = "bar_1984" x='98.75' y='148.34' height='14.49' />
+            <rect id = "bar_1985" x='114.58' y='116.98' height='45.84' />
+            <rect id = "bar_1986" x='130.40' y='140.65' height='22.17' />
+            <rect id = "bar_1987" x='146.23' y='133.18' height='29.64' />
+            <rect id = "bar_1988" x='162.06' y='102.12' height='60.70' />
+            <rect id = "bar_1989" x='177.89' y='149.18' height='13.64' />
+            <rect id = "bar_1990" x='193.72' y='146.38' height='16.44' />
+            <rect id = "bar_1991" x='209.55' y='153.93' height='8.89' />
+            <rect id = "bar_1992" x='225.38' y='140.79' height='22.04' />
+            <rect id = "bar_1993" x='241.20' y='151.57' height='11.25' />
+            <rect id = "bar_1994" x='257.03' y='121.56' height='41.26' />
+            <rect id = "bar_1995" x='272.86' y='147.99' height='14.83' />
+            <rect id = "bar_1996" x='288.69' y='92.01' height='70.81' />
+            <rect id = "bar_1997" x='304.52' y='155.43' height='7.39' />
+            <rect id = "bar_1998" x='320.35' y='152.13' height='10.69' />
+            <rect id = "bar_1999" x='336.18' y='102.43' height='60.39' />
+            <rect id = "bar_2000" x='352.01' y='79.99' height='82.83' />
+            <rect id = "bar_2001" x='367.83' y='127.21' height='35.61' />
+            <rect id = "bar_2002" x='383.66' y='98.02' height='64.80' />
+            <rect id = "bar_2003" x='399.49' y='103.70' height='59.12' />
+            <rect id = "bar_2004" x='415.32' y='146.00' height='16.82' />
+            <rect id = "bar_2005" x='431.15' y='100.99' height='61.83' />
+            <rect id = "bar_2006" x='446.98' y='52.64' height='110.18' />
+            <rect id = "bar_2007" x='462.81' y='34.62' height='128.20' />
+            <rect id = "bar_2008" x='478.64' y='115.60' height='47.22' />
+            <rect id = "bar_2009" x='494.46' y='139.78' height='23.04' />
+            <rect id = "bar_2010" x='510.29' y='138.30' height='24.52' />
+            <rect id = "bar_2011" x='526.12' y='87.70' height='75.12' />
+            <rect id = "bar_2012" x='541.95' y='15.34' height='147.48' />
+            <rect id = "bar_2013" x='557.78' y='114.67' height='48.16' />
+            <rect id = "bar_2014" x='573.61' y='129.30' height='33.52' />
+            <rect id = "bar_2015" x='589.44' y='108.68' height='54.14' />
+            <rect id = "bar_2016" x='605.27' y='116.83' height='46.00' />
+            <rect id = "bar_2017" x='621.09' y='33.15' height='129.67' />
+            <rect id = "bar_2018" x='636.92' y='59.41' height='103.42' />
+            <rect id = "bar_2019" x='652.75' y='133.16' height='29.66' />
+            <rect id = "bar_2020" x='668.58' y='21.98' height='140.84' />
           </g>
           <g id="fire-lines">
             <polyline
@@ -1041,26 +1079,26 @@
             points="69.54,170.20 69.54,7.97 "
           />
           <g id="axis-text-y">
-            <text
+            <text id="axis-text"
               x="55.25"
               y="167.40"
             >0</text>
-            <text
+            <text id="axis-text"
               x="33.89"
               y="128.76"
             >3000</text>
-            <text
+            <text id="axis-text"
               x="33.89"
               y="90.11"
             >6000</text>
-            <text
+            <text id="axis-text"
               x="33.89"
               y="51.46"
             >9000</text>
-            <text
+            <text id="axis-text"
               x="26.78"
               y="12.82"
-            >12000</text>
+            >12,000</text>
           </g>
           <g class="axis-ticks">
             <polyline points="65.56,162.82 69.54,162.82 " />
@@ -1074,19 +1112,19 @@
             <polyline points="675.70,174.18 675.70,170.20 " />
           </g>
           <g id="axis-text-x">
-            <text
+            <text id="axis-text"
               x="186.60"
               y="186.53"
             >1990</text>
-            <text
+            <text id="axis-text"
               x="344.89"
               y="186.53"
             >2000</text>
-            <text
+            <text id="axis-text"
               x="503.18"
               y="186.53"
             >2010</text>
-            <text
+            <text id="axis-text"
               x="661.47"
               y="186.53"
             >2020</text>
@@ -1094,7 +1132,7 @@
           <text
             id="axis-label-y"
             transform="translate(15,160) rotate(-90)"
-            style="font-size: 16px;stroke: black;"
+            style="font-size: 16px;"
           >Area burned (sq mi)</text>
         </svg> 
       </div>       
@@ -1132,16 +1170,19 @@ import * as d3Base from "d3";
           function changeElementColorHilite(mapElement, barChartElement, scatterChartElement, textElement){
             mapElement
               .style('fill', "rgb(0,0,0,0)")
+              .style('stroke',"rgb(0,0,0,0)")
             .transition().duration(500)
               .delay(function(d,i){ return yearDuration*i; })
-              .style("fill", " rgb(250,109,49)");
+              .style("fill", " rgb(250,109,49)")
+              .style("stroke", "rgb(235,98,40)");
 
             barChartElement
               .style('fill', "rgb(0,0,0,0)")
+              .style('stroke',"rgb(0,0,0,0)")
             .transition().duration(500)
               .delay(function(d,i){ return yearDuration*i; })
               .style("fill", "rgb(250,109,49)")
-              .style("stroke", "rgb(224,83,22)");
+              .style("stroke", "rgb(235,98,40)");
 
             scatterChartElement
             .style('fill', "rgb(0,0,0,0)")
@@ -1165,13 +1206,14 @@ import * as d3Base from "d3";
             mapElement
             .transition().duration(300)
               .delay(function(d,i){ return yearDuration+yearDuration*i; })
-              .style("fill", "rgba(245,169,60,0.5)")
-              .style("stroke", "rgba(235,156,42,0.5)")
+              .style("fill", "rgba(245,169,60,0.6)")
+              .style("stroke", "rgba(235,156,42,0.6)")
 
             barChartElement
             .transition().duration(300)
               .delay(function(d,i){ return yearDuration+yearDuration*i; })
-              .style("fill", "rgba(245,169,60,0.5)")
+              .style("fill", "rgba(245,169,60,0.8)")
+              .style("stroke", "rgba(235,156,42,0.8)")
 
             scatterChartElement
             .transition().duration(300)
@@ -1213,7 +1255,7 @@ import * as d3Base from "d3";
   position: relative;
 }
 .legend-text {
-  stroke: black;
+  fill: #4f4f4f;
   font-size:  12px;
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: lighter;
@@ -1227,9 +1269,9 @@ import * as d3Base from "d3";
   stroke-width: 1;
 
   #states {
-    stroke-width: 1.5;
+    stroke-width: 1.75;
     stroke: #fcfcfc; 
-    fill: #ebebeb;
+    fill: #f0f0f0;
   }
 
 }
@@ -1255,9 +1297,16 @@ import * as d3Base from "d3";
 #fire_timeseries, #fire_timeseries_2  {
   padding: 3em;
 
-  rect, line, path, polygon, #axis-x, #axis-y, .axis-ticks  {
+  rect, line, path, polygon, .axis-ticks  {
       fill: none;
-      stroke: #000000;
+      stroke: #e0e0e0;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+  }
+  rect, line, path, polygon, #axis-x, #axis-y  {
+      fill: none;
+      stroke: #e0e0e0;
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
@@ -1281,6 +1330,7 @@ import * as d3Base from "d3";
     stroke-width: 2px;
 
   }
+
   text  {
     fill: $black;
     line-height: 1.5;
@@ -1293,8 +1343,11 @@ import * as d3Base from "d3";
   .axis-ticks {
 
   }
+  #axis-text {
+    fill: #4f4f4f;
+  }
   #axis-label-y {
-    fill: none;
+    fill: #4f4f4f;
   }
 
 }

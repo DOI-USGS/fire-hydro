@@ -61,9 +61,27 @@
   }
   h1{
     color: white;
-    font-size: 9em;
-    font-weight: 500;
+    font-size: 6em;
     margin: 0;
+    padding: 200px 0 50px 0;
+    text-align: left;
+    line-height: 1em;
+    @media screen and (max-width: 1000px) {
+        font-size: 5em;
+        padding: 180px 0 50px 0;
+    }
+    @media screen and (max-width: 800px) {
+        font-size: 5.5em;
+        padding: 170px 0 50px 0;
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 4em;
+        padding: 160px 0 50px 0;
+    }
+    @media screen and (max-width: 400px) {
+        font-size: 3em;
+        padding: 140px 0 50px 0;
+    }
   }
   h2{
     font-size: 2em;

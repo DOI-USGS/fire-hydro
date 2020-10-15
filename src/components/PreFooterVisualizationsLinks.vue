@@ -11,7 +11,7 @@
             <img
               src="@/assets/components/PreFooterVisualizationsLinks/images/DRB_400w.jpg"
               alt=""
-              loading = "lazy"
+              loading="lazy"
             >
           </figure>
         </a>
@@ -23,7 +23,7 @@
             <img
               src="@/assets/components/PreFooterVisualizationsLinks/images/Gages.png"
               alt=""
-              loading = "lazy"
+              loading="lazy"
             >
           </figure>
         </a>

@@ -15,7 +15,7 @@
     >
       <div class="flex-item">
         <picture>
-        <source
+          <source
             srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
             type="image/webp"
             media="(max-width: 1200px)"
@@ -25,15 +25,16 @@
             type="image/jpeg"
             media="(max-width: 1200px)"
           >
-        <img 
-          id="water-supply-before" 
-          src="@/assets/components/water-supply/diagrams/beforeFire.jpg" 
-          alt="Diagram showing how water flows before a fire"
-          loading = "lazy"
-        >
+          <img 
+            id="water-supply-before"
+            v-img:group-3 
+            src="@/assets/components/water-supply/diagrams/beforeFire.jpg" 
+            alt="Diagram showing how water flows before a fire"
+            loading="lazy"
+          >
         </picture>
         <p class="caption">
-          Watershed before fire
+          A forested watershed's ability to absorb and filter precipitation is key to providing enough clean water to residents reliant on this water source.
         </p>
       </div>
       <div class="flex-item">
@@ -48,15 +49,16 @@
             type="image/jpeg"
             media="(max-width: 1200px)"
           >
-        <img 
-          id="water-supply-after" 
-          src="@/assets/components/water-supply/diagrams/afterFire.jpg" 
-          alt="Diagram showing how water flows after a fire"
-          loading = "lazy"
-        >
+          <img 
+            id="water-supply-after"
+            v-img:group-3 
+            src="@/assets/components/water-supply/diagrams/afterFire.jpg" 
+            alt="Diagram showing how water flows after a fire"
+            loading="lazy"
+          >
         </picture>
         <p class="caption">
-          Watershed after fire
+          But after a fire, the ground cover, soil properties, and water flow patterns are all different.
         </p>
       </div>
     </div>

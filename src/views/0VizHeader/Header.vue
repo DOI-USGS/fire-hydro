@@ -328,7 +328,7 @@ import * as d3Base from "d3";
     #header {
         position: relative;
         height: 900px;
-        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar.png);
+        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_3000w.jpg);
         /* background-image: linear-gradient($black, $fireYellow); */
         background-attachment: fixed;
         background-position: center;

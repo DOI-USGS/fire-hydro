@@ -14,21 +14,47 @@
       class="flex-container"
     >
       <div class="flex-item">
+        <picture>
+        <source
+            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
+            type="image/webp"
+            media="(max-width: 1200px)"
+          >
+          <source
+            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
+            type="image/jpeg"
+            media="(max-width: 1200px)"
+          >
         <img 
           id="water-supply-before" 
           src="@/assets/components/water-supply/diagrams/beforeFire.jpg" 
           alt="Diagram showing how water flows before a fire"
+          loading = "lazy"
         >
+        </picture>
         <p class="caption">
           Watershed before fire
         </p>
       </div>
       <div class="flex-item">
+        <picture>
+          <source
+            srcset="@/assets/components/water-supply/diagrams/afterFire_1200w.webp 1200w"
+            type="image/webp"
+            media="(max-width: 1200px)"
+          >
+          <source
+            srcset="@/assets/components/water-supply/diagrams/afterFire_1200w.jpg 1200w"
+            type="image/jpeg"
+            media="(max-width: 1200px)"
+          >
         <img 
           id="water-supply-after" 
           src="@/assets/components/water-supply/diagrams/afterFire.jpg" 
           alt="Diagram showing how water flows after a fire"
+          loading = "lazy"
         >
+        </picture>
         <p class="caption">
           Watershed after fire
         </p>

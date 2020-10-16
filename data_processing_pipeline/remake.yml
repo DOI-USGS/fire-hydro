@@ -1,0 +1,13 @@
+include:
+  - 1_fetch.yml
+  - 2_process.yml
+ 
+  
+targets:
+  all:
+    depends:
+      - 1_fetch_fire
+      - 2_process_fire
+      
+      
+      

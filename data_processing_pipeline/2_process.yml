@@ -6,6 +6,8 @@ packages:
   - stringr
   - rmapshaper
   - units
+  - reshape2
+  - scales
 
 
 sources:
@@ -20,7 +22,8 @@ targets:
       - 2_process/out/fire_past_crop.rds
       - 2_process/out/fire_past_year.shp
       - usa_map
-      -  2_process/out/fire_timeseries.csv
+      - states_map
+      - 2_process/out/fire_timeseries.csv
   
   
   2_process/out/fire_past_crop.rds:
@@ -39,5 +42,5 @@ targets:
     command: fire_by_year(target_name, layer_in = '2_process/out/fire_past_incident.rds')
     
   2_process/out/fire_timeseries.csv:
-    command: measure_fires(target_name, I('2_process/out/fire_present_incident.rds'), I('2_process/out/fire_past_incident.rds'))
+    command: measure_fires(target_name, states_map, I('2_process/out/fire_present_incident.rds'), I('2_process/out/fire_past_incident.rds'))
 

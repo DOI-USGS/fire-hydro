@@ -53,7 +53,7 @@ fire_by_year <- function(target_name, layer_in) {
   st_write(fire_year, target_name, driver = 'ESRI Shapefile', delete_layer = TRUE)
   
 }
-measure_fires <- function(target_name, ...){
+measure_fires <- function(target_name, states_map, ...){
   
   se<- function() sd(x)/sqrt(length(x))
   
@@ -78,16 +78,16 @@ measure_fires <- function(target_name, ...){
     st_drop_geometry() %>%
     group_by(YEAR) %>%
     summarize(area_km2 = sum(km2, na.rm=TRUE),
-              area_acres = sum(acres, na.rm=TRUE),
-              mean_km2 = mean(km2, na.rm=TRUE),
-              mean_acres = mean(acres, na.rm=TRUE))
+              area_acres = sum(acres, na.rm=TRUE))
   
   ## frequency
   fire_freq <- fire_all %>%
     st_drop_geometry() %>%
     filter(acres >= 1000) %>%
     group_by(YEAR) %>%
-    summarize(freq_1000 = length(unique(Incident)))
+    summarize(freq_1000 = length(unique(Incident)),
+              mean_km2 = mean(km2, na.rm=TRUE),
+              mean_acres = mean(acres, na.rm=TRUE))
   
   ## biggest fire each year
   fire_top <- fire_all %>%
@@ -97,9 +97,25 @@ measure_fires <- function(target_name, ...){
     filter(!is.na(Incident)) %>%
     summarize(acres_max = first(acres), acres_event = first(Incident))
   
+  ## biggest fires by state
+  fire_state <- fire_all %>%
+    st_intersection(states_map)%>%
+    st_drop_geometry() %>%
+    group_by(YEAR, ID)%>%
+    arrange(desc(acres), .by_group = TRUE) %>%
+    filter(!is.na(Incident)) %>%
+    summarize(acres_max = first(acres), name = first(Incident))%>%
+    melt(id.vars=c('YEAR','ID')) %>%
+    dcast(YEAR ~ ID + variable)
+  
+  # combine
   fire_yr <- fire_yr %>%
     left_join(fire_freq) %>%
-    left_join(fire_top)
+    left_join(fire_top) %>%
+    left_join(fire_state) %>%
+    mutate(area_acres_scaled = rescale(area_acres, to=c(0,100), from=c(0, max(area_acres))),
+           years_scaled = rescale(as.numeric(YEAR), to=c(0,100)))
+    
 
   write.csv(fire_yr, '2_process/out/fire_timeseries.csv', row.names=FALSE)
   

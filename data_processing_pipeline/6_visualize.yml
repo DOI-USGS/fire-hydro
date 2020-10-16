@@ -1,0 +1,24 @@
+target_default: 6_visualize_fire
+
+packages:
+  - dplyr
+  - sf
+  - xml2
+  
+sources:
+- 6_visualize/src/build_svg_map.R
+- 6_visualize/src/svg_utils.R
+
+targets:
+  6_visualize_fire:
+  depends:
+
+##### Create SVGs for maps #####
+
+svg_height_map:
+  command: c(1000)
+svg_width_map:
+  command: c(1000)
+
+6_visualize/out/fires.svg:
+  command: build_svg_map(target_name, svg_height_map, svg_width_map)

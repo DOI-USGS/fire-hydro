@@ -1,0 +1,46 @@
+target_default: 2_process_fire
+
+packages:
+  - dplyr
+  - sf
+  - stringr
+  - rmapshaper
+  - units
+  - reshape2
+  - scales
+
+
+sources:
+  - 2_process/src/clean_layers.R
+
+targets:
+  2_process_fire:
+    depends:
+      - 1_fetch/out/fire_perimeter_present.rds
+      - 1_fetch/out/Interagency_Fire_Perimeter_History_All_Years_Read_Only-shp
+      - 2_process/out/fire_present_year.shp
+      - 2_process/out/fire_past_crop.rds
+      - 2_process/out/fire_past_year.shp
+      - usa_map
+      - states_map
+      - 2_process/out/fire_timeseries.csv
+  
+  
+  2_process/out/fire_past_crop.rds:
+    command: crop_past_fires(target_name, layer_in = '1_fetch/out/Interagency_Fire_Perimeter_History_All_Years_Read_Only-shp', usa_map)
+  
+  2_process/out/fire_present_incident.rds:
+    command: fire_by_incident(target_name, layer_in = '1_fetch/out/fire_perimeter_present.rds', usa_map)
+    
+  2_process/out/fire_present_year.shp:
+    command: fire_by_year(target_name, layer_in = '2_process/out/fire_present_incident.rds')
+
+  2_process/out/fire_past_incident.rds:
+    command: fire_by_incident(target_name, layer_in = '2_process/out/fire_past_crop.rds', usa_map)
+    
+  2_process/out/fire_past_year.shp:
+    command: fire_by_year(target_name, layer_in = '2_process/out/fire_past_incident.rds')
+    
+  2_process/out/fire_timeseries.csv:
+    command: measure_fires(target_name, states_map, I('2_process/out/fire_present_incident.rds'), I('2_process/out/fire_past_incident.rds'))
+

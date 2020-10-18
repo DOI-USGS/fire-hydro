@@ -53,6 +53,22 @@ fire_by_year <- function(target_name, layer_in) {
   st_write(fire_year, target_name, driver = 'ESRI Shapefile', delete_layer = TRUE)
   
 }
+
+get_imp_50 <- function(target_name, f2f2_in, usa_map){
+  
+  imp50 <- readRDS(f2f2_in)%>%
+    filter(IMP_R >= 50)%>%
+    st_union() %>%
+    st_buffer(0)%>%
+    ms_simplify() %>%
+    st_buffer(0)%>%
+    st_intersection(usa_map) %>%
+    st_buffer(0)
+  
+  saveRDS(imp50, target_name)
+  
+}
+
 measure_fires <- function(target_name, states_map, ...){
   
   se<- function() sd(x)/sqrt(length(x))
@@ -64,6 +80,8 @@ measure_fires <- function(target_name, states_map, ...){
     mutate(Incident = word(Incident, 1,2), YEAR=as.character(YEAR)) 
   
   fire_all <- fire_all %>%
+    st_intersection(states_map) %>%
+    st_buffer(0) %>%
     group_by(YEAR, Incident) %>%
     summarize() %>%
     st_buffer(0) %>% 

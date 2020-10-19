@@ -1,0 +1,31 @@
+target_default: 1_fetch_fire
+
+packages:
+  - dplyr
+  - sf
+  - httr
+  - jsonlite
+  - geojsonio
+  - stringr
+
+sources:
+  - 1_fetch/src/fetch_fire_data.R
+
+targets:
+  1_fetch_fire:
+    depends:
+      - 1_fetch/out/cb_2018_us_state_5m/cb_2018_us_state_5m.shp
+      - 1_fetch/out/fire_perimeter_present.rds
+      - 1_fetch/out/Interagency_Fire_Perimeter_History_All_Years_Read_Only-shp
+    
+  states_map:
+    command: map_shapes(I('1_fetch/out/cb_2018_us_state_5m/cb_2018_us_state_5m.shp'))
+    
+  usa_map:
+    command: st_union(states_map)
+  
+  1_fetch/out/fire_perimeter_present.rds:
+    command: fetch_fire_perimeter(target_name, query = I('https://opendata.arcgis.com/datasets/5da472c6d27b4b67970acc7b5044c862_0.geojson'), usa_map)
+  
+
+

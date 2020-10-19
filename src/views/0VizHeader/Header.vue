@@ -20,10 +20,10 @@
         <rect
           id="white-block"
           width="100"
-          height="50"
+          height="90"
           x="0"
           y="100"
-          style="fill:white;"
+          style="fill:white; stroke: white;"
         />
       </svg>
     </div> 
@@ -35,23 +35,23 @@
       >
         <line
           id="axis-line"
-          x1="80.45"
+          x1="50"
           y1="13"
-          x2="1460"
+          x2="1490"
           y2="13"
           style="stroke-width: 3px; stroke:black;"
         />
         <text
           class="axis-dates"
-          transform="translate(1490 18)"
+          transform="translate(1510 18)"
         >2020</text>
         <text
           class="axis-dates"
-          transform="translate(20 18)"
+          transform="translate(10 18)"
         >1984</text>
         <path
           class="axis-arrow"
-          transform="translate(-26 0)"
+          transform="translate(0 0)"
           d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z"
         />
         <rect
@@ -65,7 +65,7 @@
           x="510"
           y="24"
           style="font-size: 1.4em;"
-        >Area burned by wildfires in the western USA</text>
+        >Area burned by wildfires in the western U.S.</text>
       
       </svg>
     </div>
@@ -101,6 +101,14 @@ import * as d3Base from "d3";
           this.makeChartMorph(); // begin script when window loads
         },
       methods: {
+        setPanels() {
+          let promises = [this.d3.csv(self.publicPath + "data/fire_timeseries.csv")]
+          Promise.all(promises).then(self.callback);
+        },
+        callback(data) {          
+          let csv_burn = data[0];
+
+        },
         makeChartMorph() {
           const self = this;
 

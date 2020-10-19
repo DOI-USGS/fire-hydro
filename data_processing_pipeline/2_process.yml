@@ -18,22 +18,34 @@ targets:
     depends:
       - 1_fetch/out/fire_perimeter_present.rds
       - 1_fetch/out/Interagency_Fire_Perimeter_History_All_Years_Read_Only-shp
+      - 1_fetch/out/f2f2.rds
       - 2_process/out/fire_present_year.shp
       - 2_process/out/fire_past_crop.rds
+      - 2_process/out/fire_2019_incident.rds
       - 2_process/out/fire_past_year.shp
       - usa_map
       - states_map
+      - 2_process/out/f2f2_imp50.rds
       - 2_process/out/fire_timeseries.csv
   
   
   2_process/out/fire_past_crop.rds:
     command: crop_past_fires(target_name, layer_in = '1_fetch/out/Interagency_Fire_Perimeter_History_All_Years_Read_Only-shp', usa_map)
+    
+  2_process/out/fire_2019_crop.rds:
+    command: crop_past_fires(target_name, layer_in = '1_fetch/out/Historic_GeoMAC_Perimeters_2019-shp', usa_map)
   
   2_process/out/fire_present_incident.rds:
     command: fire_by_incident(target_name, layer_in = '1_fetch/out/fire_perimeter_present.rds', usa_map)
     
   2_process/out/fire_present_year.shp:
     command: fire_by_year(target_name, layer_in = '2_process/out/fire_present_incident.rds')
+    
+  2_process/out/fire_2019_incident.rds:
+    command: fire_by_incident(target_name, layer_in = '2_process/out/fire_2019_crop.rds', usa_map)
+    
+  2_process/out/fire_2019_year.rds:
+    command: fire_by_year(target_name, layer_in = '2_process/out/fire_2019_crop.rds')
 
   2_process/out/fire_past_incident.rds:
     command: fire_by_incident(target_name, layer_in = '2_process/out/fire_past_crop.rds', usa_map)
@@ -41,6 +53,12 @@ targets:
   2_process/out/fire_past_year.shp:
     command: fire_by_year(target_name, layer_in = '2_process/out/fire_past_incident.rds')
     
+  2_process/out/f2f2_imp50.rds:
+    command: get_imp_50(target_name, f2f2_in = '1_fetch/out/f2f2.rds', usa_map)
+    
   2_process/out/fire_timeseries.csv:
-    command: measure_fires(target_name, states_map, I('2_process/out/fire_present_incident.rds'), I('2_process/out/fire_past_incident.rds'))
+    command: measure_fires(target_name, states_map, I('2_process/out/fire_present_incident.rds'), I('2_process/out/fire_2019_incident.rds'), I('2_process/out/fire_past_incident.rds'))
+    depends:
+      - 2_process/out/fire_present_year.shp
+      - 2_process/out/fire_past_year.shp
 

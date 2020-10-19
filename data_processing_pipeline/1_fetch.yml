@@ -17,6 +17,8 @@ targets:
       - 1_fetch/out/cb_2018_us_state_5m/cb_2018_us_state_5m.shp
       - 1_fetch/out/fire_perimeter_present.rds
       - 1_fetch/out/Interagency_Fire_Perimeter_History_All_Years_Read_Only-shp
+      - 1_fetch/out/Historic_GeoMAC_Perimeters_2019-shp
+      - 1_fetch/out/f2f2.rds
     
   states_map:
     command: map_shapes(I('1_fetch/out/cb_2018_us_state_5m/cb_2018_us_state_5m.shp'))
@@ -26,6 +28,10 @@ targets:
   
   1_fetch/out/fire_perimeter_present.rds:
     command: fetch_fire_perimeter(target_name, query = I('https://opendata.arcgis.com/datasets/5da472c6d27b4b67970acc7b5044c862_0.geojson'), usa_map)
-  
+    
+  1_fetch/out/f2f2.rds:
+    command: crop_f2f2(target_name, url = I('https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn/download'), usa_map)
+
+
 
 

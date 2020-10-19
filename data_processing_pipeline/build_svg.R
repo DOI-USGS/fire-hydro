@@ -30,6 +30,11 @@ plot(st_union(states_west))
 states_west_crop <- states_west %>%
   st_crop(st_bbox(states_west))
 
+plot_base<-ggplot(states_west)+
+  geom_sf(fill=NA, color="black")
+plot_base
+
+
 past<-readRDS('1_fetch/out/fire_perimeter_past.rds')
 glimpse(past)
 

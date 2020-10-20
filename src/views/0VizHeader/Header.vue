@@ -7,6 +7,19 @@
           Post wildfire, burned landscapes respond to rain as though they are covered in plastic wrap   . USGS hydrologists are studying what that means for water supply in the Western United States.
         </p>
       </div>
+      <div id="annotate-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303.96 154.98">
+          <g  transform="translate(120 80)" >
+              <rect id="box-2020" width="150" height="60" style="fill: rgb(245,169,60)"/>
+              <text id="text-2020" transform="translate(7.55 19.61)" style="font-size: 1.2em; font-weight: 200" >Over 8 million acres <tspan x="0" y="15">have burned in 2020, <tspan x="0" y="30">the most on record</tspan></tspan></text>
+              <g id="arrow-2020" transform="translate(155 35)">
+                 <path d="M23.54,37.23A60.65,60.65,0,0,0,3.09.45C1.37-1-1.15,1.47.58,3A57.73,57.73,0,0,1,20.13,38.17a1.79,1.79,0,0,0,2.18,1.24,1.81,1.81,0,0,0,1.23-2.18Z" style="fill: rgb(245,169,60)"/>
+                <path d="M25.51,37.91,26.86,21.7a2,2,0,0,0-4,0L21.47,37.91a2,2,0,0,0,4,0Z" style="fill: rgb(245,169,60)"/>
+                <path d="M21.66,35.31c-4.93-.6-9.89-1-14.82-1.63a2,2,0,0,0-2,2,2.07,2.07,0,0,0,2,2c4.93.6,9.89,1,14.82,1.63a2,2,0,0,0,2-2,2.07,2.07,0,0,0-2-2Z" style="fill: rgb(245,169,60)"/>
+                </g>
+          </g>
+        </svg>
+      </div>
       <div id="time_line" />
       <svg
         id="crop-shape"
@@ -27,45 +40,24 @@
         />
       </svg>
     </div> 
-    <div>
+    <div id="time-title">
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1549.76 50"
+        viewBox="0 0 600 50"
       >
-        <line
-          id="axis-line"
-          x1="50"
-          y1="13"
-          x2="1490"
-          y2="13"
-          style="stroke-width: 3px; stroke:black;"
-        />
-        <text
-          class="axis-dates"
-          transform="translate(1510 18)"
-        >2020</text>
-        <text
-          class="axis-dates"
-          transform="translate(10 18)"
-        >1984</text>
-        <path
-          class="axis-arrow"
-          transform="translate(0 0)"
-          d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z"
-        />
         <rect
           class="timeline-title-box"
-          x="450"
+          x="0"
           y="-5"
           height="40"
         />
         <text
           class="timeline-title"
-          x="510"
+          x="7"
           y="24"
-          style="font-size: 1.4em;"
-        >Area burned by wildfires in the western U.S.</text>
+          style="font-size: 1.6em; font-weight: 600"
+        >Area burned by wildfires in the western U.S. from 1984 to 2020</text>
       
       </svg>
     </div>
@@ -114,43 +106,43 @@ import * as d3Base from "d3";
 
           // create data
           //this would be better if read in directly from csv
-          var data = [{x: 0, y: 94.93}, 
-                      {x: 2.78, y: 72}, 
-                      {x: 5.56, y: 89}, 
-                      {x: 8.33, y: 84}, 
-                      {x: 11.11, y: 61}, 
-                      {x: 13.88, y: 95}, 
-                      {x: 16.67, y: 93}, 
-                      {x: 19.44, y: 98}, 
-                      {x: 22.22, y: 89}, 
-                      {x: 25.00, y: 97}, 
-                      {x: 27.78, y: 75}, 
-                      {x: 30.56, y: 94}, 
-                      {x: 33.33, y: 54}, 
-                      {x: 36.11, y: 100}, 
-                      {x: 38.89, y: 97}, 
-                      {x: 41.67, y: 62}, 
-                      {x: 44.44, y: 46}, 
-                      {x: 47.22, y: 79}, 
-                      {x: 50.00, y: 59}, 
-                      {x: 52.78, y: 63}, 
-                      {x: 55.55, y: 93}, 
-                      {x: 58.33, y: 61}, 
-                      {x: 61.11, y: 26}, 
-                      {x: 63.89, y: 14}, 
-                      {x: 66.67, y: 72}, 
-                      {x: 69.44, y: 89}, 
-                      {x: 72.22, y: 88}, 
-                      {x: 75.00, y: 52}, 
-                      {x: 77.78, y: 0}, 
-                      {x: 80.56, y: 71}, 
-                      {x: 83.33, y: 82}, 
-                      {x: 86.11, y: 66}, 
-                      {x: 88.88, y: 72}, 
-                      {x: 91.67, y: 12}, 
-                      {x: 94.44, y: 31}, 
-                      {x: 97.22, y: 84}, 
-                      {x: 100.0, y: 5}];
+          var data = [{x: 0, y: 89}, 
+                      {x: 2.78, y: 70}, 
+                      {x: 5.56, y: 84}, 
+                      {x: 8.33, y: 80}, 
+                      {x: 11.11, y: 57}, 
+                      {x: 13.88, y: 91}, 
+                      {x: 16.67, y: 89}, 
+                      {x: 19.44, y: 94}, 
+                      {x: 22.22, y: 85}, 
+                      {x: 25.00, y: 92}, 
+                      {x: 27.78, y: 72}, 
+                      {x: 30.56, y: 89}, 
+                      {x: 33.33, y: 53}, 
+                      {x: 36.11, y: 95}, 
+                      {x: 38.89, y: 92}, 
+                      {x: 41.67, y: 61}, 
+                      {x: 44.44, y: 43}, 
+                      {x: 47.22, y: 75}, 
+                      {x: 50.00, y: 57}, 
+                      {x: 52.78, y: 62}, 
+                      {x: 55.55, y: 88}, 
+                      {x: 58.33, y: 58}, 
+                      {x: 61.11, y: 24}, 
+                      {x: 63.89, y: 10}, 
+                      {x: 66.67, y: 67}, 
+                      {x: 69.44, y: 83}, 
+                      {x: 72.22, y: 83}, 
+                      {x: 75.00, y: 48}, 
+                      {x: 77.78, y: 6}, 
+                      {x: 80.56, y: 67}, 
+                      {x: 83.33, y: 70}, 
+                      {x: 86.11, y: 56}, 
+                      {x: 88.88, y: 70}, 
+                      {x: 91.67, y: 13}, 
+                      {x: 94.44, y: 34}, 
+                      {x: 97.22, y: 82}, 
+                      {x: 100.0, y: 0}];
           var dataBox = [{x: 0, y: 150}, 
                       {x: 2.78, y: 150}, 
                       {x: 5.56, y: 150}, 
@@ -190,43 +182,43 @@ import * as d3Base from "d3";
                       {x: 100.0, y: 150}];
 
           //this is the same as the area top line
-          var dataLine = [[0, 94.93], 
-                      [2.78, 72], 
-                      [5.56, 89], 
-                      [8.33, 84], 
-                      [11.11, 61], 
-                      [13.88, 95], 
-                      [16.67, 93], 
-                      [19.44, 98], 
-                      [22.22, 89], 
-                      [25.00, 97], 
-                      [27.78, 75], 
-                      [30.56, 94], 
-                      [33.33, 54], 
-                      [36.11, 100], 
-                      [38.89, 97], 
-                      [41.67, 62], 
-                      [44.44, 46], 
-                      [47.22, 79], 
-                      [50.00, 59], 
-                      [52.78, 63], 
-                      [55.55, 93], 
-                      [58.33, 61], 
-                      [61.11, 26], 
-                      [63.89, 14], 
-                      [66.67, 72], 
-                      [69.44, 89], 
-                      [72.22, 88], 
-                      [75.00, 52], 
-                      [77.78, 0], 
-                      [80.56, 71], 
-                      [83.33, 82], 
-                      [86.11, 66], 
-                      [88.88, 72], 
-                      [91.67, 12], 
-                      [94.44, 31], 
-                      [97.22, 84], 
-                      [100.0, 5]];
+          var dataLine = [[0, 89], 
+                      [2.78, 70], 
+                      [5.56, 84], 
+                      [8.33, 80], 
+                      [11.11, 57], 
+                      [13.88, 91], 
+                      [16.67, 89], 
+                      [19.44, 94], 
+                      [22.22, 85], 
+                      [25.00, 92], 
+                      [27.78, 72], 
+                      [30.56, 89], 
+                      [33.33, 53], 
+                      [36.11, 95], 
+                      [38.89, 92], 
+                      [41.67, 61], 
+                      [44.44, 43], 
+                      [47.22, 75], 
+                      [50.00, 57], 
+                      [52.78, 62], 
+                      [55.55, 88], 
+                      [58.33, 58], 
+                      [61.11, 24], 
+                      [63.89, 10], 
+                      [66.67, 67], 
+                      [69.44, 83], 
+                      [72.22, 83], 
+                      [75.00, 48], 
+                      [77.78, 6], 
+                      [80.56, 66], 
+                      [83.33, 70], 
+                      [86.11, 56], 
+                      [88.88, 70], 
+                      [91.67, 13], 
+                      [94.44, 34], 
+                      [97.22, 82], 
+                      [100.0, 0]];
           //lines
           var line = this.d3.line();
 
@@ -262,45 +254,30 @@ import * as d3Base from "d3";
             .attr("stroke-miterlimit", "10")
             .transition()
               .delay(3000)
-              .duration(3000)
+              .duration(2000)
               .attr("stroke","rgb(245,169,60)")
               .attr("stroke-linejoin", "miter")
               .attr("stroke-dashoffset","0px")
               .attr("stroke-miterlimit", "10")
-              .attr("stroke-width","1px")
+              .attr("stroke-width","1px");
 
-          //draw x-axis
-          this.d3.select("#axis-line")
-          .attr("stroke","none")
-          .attr("stroke-dasharray","1500px")
-          .attr("stroke-dashoffset","1500px")
-          .transition()
-            .delay(3000)
-            .duration(3000)
-            .attr("stroke-dashoffset","0px")
-            .attr("stroke", "rgb(237,237,237)")
-            .attr("stroke-width", "1px");
-
-          this.d3.selectAll(".axis-dates")
-          .attr("fill","none")
-          .transition()
-            .delay(5000)
-            .duration(1000)
-            .attr("fill", "black");
-
-          this.d3.select(".axis-arrow")
-          .attr("fill","none")
-          .transition()
-            .delay(5000)
-            .duration(1000)
-            .attr("fill", "rgb(51,51,51)");
-
+          function makeElementAppear(timeElement,delay, time_dur){
+            timeElement
+            .style("opacity", "0")
+            .transition()
+            .delay(delay)
+            .duration(time_dur)
+              .style("opacity", "1")
+          }
+          makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
+          makeElementAppear(this.d3.select(".timeline-title"), 5000, 1000);
+/* 
           this.d3.select(".timeline-title")
           .attr("fill","none")
           .transition()
             .delay(5000)
             .duration(1000)
-            .attr("fill", "black");
+            .attr("fill", "black"); */
 
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
@@ -308,7 +285,7 @@ import * as d3Base from "d3";
           .transition()
             .delay(3000)
             .duration(2000)
-            .attr("width", "550")
+            .attr("width", "600")
             .attr("fill", "rgb(245,169,60)");
 
 
@@ -337,7 +314,6 @@ import * as d3Base from "d3";
         position: relative;
         height: 900px;
         background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_3000w.jpg);
-        /* background-image: linear-gradient($black, $fireYellow); */
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -372,19 +348,6 @@ import * as d3Base from "d3";
  
     }
 
-    .axis-dates {
-      font-size: 1.2em;
-    }
-
-    .axis-line {
-      fill: rgb(51,51,51);
-    }
-
-    // @media (max-width: 699px) {
-    //   .svg--lg {
-    //     display: none;
-    //   }
-    // }
 
     @media (min-width: 700px) {
         .svg--sm {
@@ -404,4 +367,36 @@ import * as d3Base from "d3";
     #crop-shape {
       z-index: 0;
     }
+
+    #time-title {
+      width: 600px;
+      float: left;
+
+      @media screen and (max-width: 600px) {
+          width: 100vw;
+
+      }
+
+    }
+#annotate-container{
+  width: 350px;
+  float: right;
+  @media screen and (max-width: 1000px) {
+          margin-top: 100px;
+
+      }
+      @media screen and (max-width: 800px) {
+          margin-top: -25px;
+          width:300px;
+      }
+      @media screen and (max-width: 600px) {
+          margin-top: -70px;
+          width:250px;
+      }
+      @media screen and (max-width: 400px) {
+          margin-top: -50px;
+          width:200px;
+      }
+}
+
 </style>

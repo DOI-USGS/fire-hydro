@@ -267,7 +267,7 @@
             <text class="text-year label2018">2018</text>
             <text class="text-year label2019">2019</text>
             <text class="text-year label2020">2020</text>
-            <text class="tooltip"></text>
+            <text class="tooltip" />
 
             <g id="states">
               <path d="M188.75,42l.5.1.3.3h.3l.2.3.4.5.3.5v.4l.3.5h-.3l-.3-.3-1.4-1.5-.4-.6.1-.2Z" />

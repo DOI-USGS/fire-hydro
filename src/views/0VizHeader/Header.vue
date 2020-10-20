@@ -8,15 +8,45 @@
         </p>
       </div>
       <div id="annotate-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303.96 154.98">
-          <g  transform="translate(120 80)" >
-              <rect id="box-2020" width="150" height="60" style="fill: rgb(245,169,60)"/>
-              <text id="text-2020" transform="translate(7.55 19.61)" style="font-size: 1.2em; font-weight: 200" >Over 8 million acres <tspan x="0" y="15">have burned in 2020, <tspan x="0" y="30">the most on record</tspan></tspan></text>
-              <g id="arrow-2020" transform="translate(155 35)">
-                 <path d="M23.54,37.23A60.65,60.65,0,0,0,3.09.45C1.37-1-1.15,1.47.58,3A57.73,57.73,0,0,1,20.13,38.17a1.79,1.79,0,0,0,2.18,1.24,1.81,1.81,0,0,0,1.23-2.18Z" style="fill: rgb(245,169,60)"/>
-                <path d="M25.51,37.91,26.86,21.7a2,2,0,0,0-4,0L21.47,37.91a2,2,0,0,0,4,0Z" style="fill: rgb(245,169,60)"/>
-                <path d="M21.66,35.31c-4.93-.6-9.89-1-14.82-1.63a2,2,0,0,0-2,2,2.07,2.07,0,0,0,2,2c4.93.6,9.89,1,14.82,1.63a2,2,0,0,0,2-2,2.07,2.07,0,0,0-2-2Z" style="fill: rgb(245,169,60)"/>
-                </g>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 303.96 154.98"
+        >
+          <g transform="translate(120 80)">
+            <rect
+              id="box-2020"
+              width="150"
+              height="60"
+              style="fill: rgb(245,169,60)"
+            />
+            <text
+              id="text-2020"
+              transform="translate(7.55 19.61)"
+              style="font-size: 1.2em; font-weight: 200"
+            >Over 8 million acres <tspan
+              x="0"
+              y="15"
+            >have burned in 2020, <tspan
+              x="0"
+              y="30"
+            >the most on record</tspan></tspan></text>
+            <g
+              id="arrow-2020"
+              transform="translate(155 35)"
+            >
+              <path
+                d="M23.54,37.23A60.65,60.65,0,0,0,3.09.45C1.37-1-1.15,1.47.58,3A57.73,57.73,0,0,1,20.13,38.17a1.79,1.79,0,0,0,2.18,1.24,1.81,1.81,0,0,0,1.23-2.18Z"
+                style="fill: rgb(245,169,60)"
+              />
+              <path
+                d="M25.51,37.91,26.86,21.7a2,2,0,0,0-4,0L21.47,37.91a2,2,0,0,0,4,0Z"
+                style="fill: rgb(245,169,60)"
+              />
+              <path
+                d="M21.66,35.31c-4.93-.6-9.89-1-14.82-1.63a2,2,0,0,0-2,2,2.07,2.07,0,0,0,2,2c4.93.6,9.89,1,14.82,1.63a2,2,0,0,0,2-2,2.07,2.07,0,0,0-2-2Z"
+                style="fill: rgb(245,169,60)"
+              />
+            </g>
           </g>
         </svg>
       </div>

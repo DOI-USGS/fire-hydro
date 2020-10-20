@@ -272,40 +272,7 @@ import * as d3Base from "d3";
               .x(function(d) { return d.x })      // Position of both line breaks on the X axis
               .y1(function(d) { return d.y })     // Y position of top line breaks
               .y0(100);                            // Y position of bottom line breaks (200 = bottom of svg area)
-
-          // Add the initial path for area using negative space
-          this.d3.select("#crop-shape")
-            .append('path')
-              .attr("id", "charty")
-              .attr('d', makeArea(dataBox))
-              .style('fill', 'white')
-              .style("opacity", "1");
-              
-          //morph path to include burn area over time shape
-          this.d3.select("#charty")
-            .transition()
-              .delay(1000)
-              .duration(3000)
-              .attr("d", makeArea(data_burn))
-
-          //animate line drawing across top
-          this.d3.select("#path1")
-            .attr('d', line(dataLine_burn))
-            .attr("stroke", "none")
-            .attr("fill", "none")
-            .attr("stroke-dasharray","1000px")
-            .attr("stroke-dashoffset","1000px")
-            .attr("stroke-linejoin", "miter")
-            .attr("stroke-miterlimit", "10")
-            .transition()
-              .delay(3000)
-              .duration(2000)
-              .attr("stroke","rgb(245,169,60)")
-              .attr("stroke-linejoin", "miter")
-              .attr("stroke-dashoffset","0px")
-              .attr("stroke-miterlimit", "10")
-              .attr("stroke-width","1px");
-
+          
           function makeElementAppear(timeElement,delay, time_dur){
             timeElement
             .style("opacity", "0")
@@ -317,6 +284,7 @@ import * as d3Base from "d3";
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
           makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
 
+
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
           .attr("width", "0")
@@ -325,30 +293,89 @@ import * as d3Base from "d3";
             .duration(2000)
             .attr("width", "350")
             .attr("fill", "rgb(245,169,60)");
-          
-          var allGroup = ["Total area burned by wildfires","Largest wildfires","Average wildfire area"]
-          
-          this.d3.select('#dataDrop')
-            .selectAll('myOptions')
-              .data(allGroup)
+
+          var dataStart = data_mean;
+          var dataGroup = [
+            [1, 'data_burn', "Total area burned by wildfires"],
+            [2, 'data_mean', "Largest wildfires"],
+            [3, 'dataBox', "Average wildfire area"]];
+
+          //drop down menu to change data
+          var dropdown = this.d3.select("#dataDrop")
+
+          var options = dropdown.selectAll('option')
+            .data(dataGroup)
             .enter()
+            .append('option')
+            .attr('value', (d) => d[1])
+            .text((d) => d[2]);
+
+          options.property("selected", function(d) {
+            return(d[1] === dataStart)
+          });
+
+          dropdown.on("change", function(d) {console.log(d)});
+
+          // Add the initial path for area using negative space
+          this.d3.select("#crop-shape")
+            .append('path')
+              .attr("id", "charty")
+              .attr('d', makeArea(dataBox))
+              .style('fill', 'white')
+              .style("opacity", "1");
+              
+          //morph path to include burn area over time shape
+          var firstDraw = this.d3.select("#charty")
+            .transition()
+              .delay(1000)
+              .duration(3000)
+              .attr("d", makeArea(dataStart))
+          
+          dropdown.on("change", )
+
+          //animate line drawing across top
+          this.d3.select("#path1")
+            .attr('d', line(dataLine_burn))
+            .attr("stroke", "none")
+            .attr("fill", "none")
+            .attr("stroke-dasharray","1000px")
+            .attr("stroke-dashoffset","1000px")
+            .transition()
+              .delay(3000)
+              .duration(2000)
+              .attr("stroke","rgb(245,169,60)")
+              .attr("stroke-linejoin", "miter")
+              .attr("stroke-dashoffset","0px")
+              .attr("stroke-miterlimit", "10")
+              .attr("stroke-width","1px");
+
+          /* dropdown
+            .selectAll('myOptions')
+              .data(dataGroup)
+              .enter()
               .append('option')
-              .text(function (d) { return d; }) // text showed in the menu
-              .attr("value", function (d) { return d; }) ;
+              .text((d) => d[2]) // text in the menu
+              .attr("value", (d) => d[1]); // value returned */
 
-          this.d3.select('#dataDrop')
-          .attr("opacity" ,0)
-          .transition()
-            .delay(4000)
-            .duraction(1000)
-            .attr("opacity", 1)
+          makeElementAppear(dropdown, 4000, 1000);
 
-
-         /*  var updateLine = function(data) {
+          //function to morph to mean
+          function updateChart(myData){
             this.d3.select("#charty")
             .transition()
-              .attr("d", makeArea());
-          }; */
+              .duration(3000)
+              .attr("d", makeArea(myData))
+          };
+
+          /* //run function when selected
+          dropdown.on("change", function(d) {
+             // recover the option that has been chosen
+              var selectedOption = this.d3.select(data).property("value")
+              console.log(selectedOption)
+
+              // run the updateChart function with this selected option
+              updateChart(selectedOption)
+            }); */
         }
       }
     };

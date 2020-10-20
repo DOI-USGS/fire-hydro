@@ -868,7 +868,8 @@ import * as d3Base from "d3";
             y: null,
             loc_fire_chart: null,
             loc_fire_map: null,
-            isPlaying: null
+            isPlaying: null,
+            tooltip: null,
           }
         },
        mounted() {
@@ -898,6 +899,9 @@ import * as d3Base from "d3";
         callback(data) {          
           let csv_burn = data[0];
 
+          // add tooltip to map
+          this.addTooltip();
+
           // create bar chart
           this.createBarChart(csv_burn);
          
@@ -912,6 +916,16 @@ import * as d3Base from "d3";
           this.animateChart_Map();
 
         },
+        addTooltip() {
+          const self = this;
+
+          // add tooltip as text element appended to basemap svg, without coordinates
+          let svgMap = this.d3.select('#baseemap') /* #firemap */
+          self.tooltip = svgMap.append("text")
+            .attr("class", "tooltip")
+            .attr('x', 550)
+            .attr('y', 100)
+        },
         createBarChart(csv_burn) {
           const self = this;
   
@@ -920,31 +934,31 @@ import * as d3Base from "d3";
             .append("svg")
             .attr("viewBox", [0, 0, (this.chart_width +  this.chart_margin.right + this.chart_margin.left), 
                   (this.chart_height + this.chart_margin.top + this.chart_margin.bottom)].join(' '))
-            .attr("id", "fire_timeseries_2")
+            //.attr("id", "fire_timeseries_2")
             .attr("class", "fire-timeseries-2");
           let g = chart.append("g")
             .attr("class", "transformedBarChart")
             .attr("transform", "translate(" + this.chart_margin.left + "," + this.chart_margin.top + ")");
 
-          // add tooltip to chart svg
-          // find root svg element
-          var svg_fire_chart = document.querySelector('.fire-timeseries-2')
-          // create a SVGPoint for future math
-          var pt_fire_chart = svg_fire_chart.createSVGPoint();
-          // function to get point in global SVG space
-          function cursorPoint_fire_chart(evt) {
-             pt_fire_chart.x = evt.clientX; pt_fire_chart.y = evt.clientY;
-             return pt_fire_chart.matrixTransform(svg_fire_chart.getScreenCTM().inverse());
-          }
+          // // add tooltip to chart svg
+          // // find root svg element
+          // var svg_fire_chart = document.querySelector('.fire-timeseries-2')
+          // // create a SVGPoint for future math
+          // var pt_fire_chart = svg_fire_chart.createSVGPoint();
+          // // function to get point in global SVG space
+          // function cursorPoint_fire_chart(evt) {
+          //    pt_fire_chart.x = evt.clientX; pt_fire_chart.y = evt.clientY;
+          //    return pt_fire_chart.matrixTransform(svg_fire_chart.getScreenCTM().inverse());
+          // }
           // reset coordinates when mouse moves over chart svg
-          svg_fire_chart.addEventListener('mousemove', function(evt){
-             self.loc_fire_chart = cursorPoint_fire_chart(evt);
-          }, false);
+          // svg_fire_chart.addEventListener('mousemove', function(evt){
+          //    self.loc_fire_chart = cursorPoint_fire_chart(evt);
+          // }, false);
 
-          // add tooltip as text element appended to chart svg, without coordinates
-          let svgChart = this.d3.select('#fire_timeseries_2')
-          var tooltip = svgChart.append("text")
-            .attr("class", "tooltip")
+          // // add tooltip as text element appended to chart svg, without coordinates
+          // let svgChart = this.d3.select('#fire_timeseries_2')
+          // var tooltip = svgChart.append("text")
+          //   .attr("class", "tooltip")
 
           // build x scale for bars
           var x = this.d3.scaleBand()
@@ -1011,20 +1025,20 @@ import * as d3Base from "d3";
               return x(d.YEAR)
             })
             .on("click", function(d){
-              self.highlight_year(d, tooltip)
+              self.highlight_year(d)
             })
             .style("fill", "rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .on("mouseover", function(d) {
-              self.highlight_year(d, tooltip)
+              self.highlight_year(d)
             })
             .on("mousemove", function(d){
-              let mouse_x = self.loc_fire_chart.x
-              let mouse_y = self.loc_fire_chart.y
-              self.mousemove(d, tooltip, mouse_x, mouse_y)
+              //let mouse_x = self.loc_fire_chart.x
+              //let mouse_y = self.loc_fire_chart.y
+              self.mousemove(d)  /* , mouse_x, mouse_y */
             })
             .on("mouseout", function(d) {
-              self.dehighlight_year(d, tooltip)
+              self.dehighlight_year(d)
             })
 
           // add play button
@@ -1073,8 +1087,7 @@ import * as d3Base from "d3";
           const self = this;
 
           self.isPlaying = false;
-          console.log("reset")
-          console.log(self.isPlaying)
+
           let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
             .style("fill", '#fa6d31')
 
@@ -1082,60 +1095,64 @@ import * as d3Base from "d3";
         makeFireInteractive(csv_burn) {
           const self = this;
           
-          // add tooltip to map svg
-          // find root svg element
-          var svg_fire_map = document.querySelector('.firemap')
-          // create a SVGPoint for future math
-          var pt_fire_map = svg_fire_map.createSVGPoint();
-          // function to get point in global SVG space
-          function cursorPoint_fire_map(evt) {
-             pt_fire_map.x = evt.clientX; pt_fire_map.y = evt.clientY;
-             return pt_fire_map.matrixTransform(svg_fire_map.getScreenCTM().inverse());
-          }
-          // reset coordinates when mouse moves over chart svg
-          svg_fire_map.addEventListener('mousemove', function(evt){
-             self.loc_fire_map = cursorPoint_fire_map(evt);
-          }, false);
+          // // add tooltip to map svg
+          // // find root svg element
+          // var svg_fire_map = document.querySelector('.firemap')
+          // // create a SVGPoint for future math
+          // // var pt_fire_map = svg_fire_map.createSVGPoint();
+          // // function to get point in global SVG space
+          // function cursorPoint_fire_map(evt) {
+          //    pt_fire_map.x = evt.clientX; pt_fire_map.y = evt.clientY;
+          //    return pt_fire_map.matrixTransform(svg_fire_map.getScreenCTM().inverse());
+          // }
+          // // reset coordinates when mouse moves over chart svg
+          // svg_fire_map.addEventListener('mousemove', function(evt){
+          //    self.loc_fire_map = cursorPoint_fire_map(evt);
+          // }, false);
 
-          // add tooltip as text element appended to chart svg, without coordinates
-          let svgMap = this.d3.select('#firemap')
-          var tooltip = svgMap.append("text")
-            .attr("class", "tooltip")
+          // // add tooltip as text element appended to basemap svg, without coordinates
+          // let svgMap = this.d3.select('#firemap')
+          // var tooltip = svgMap.append("text")
+          //   .attr("class", "tooltip")
 
           // append data to fire perimeters
           var fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
             .data(csv_burn)
             .on("click", function(d){
-              self.highlight_year(d, tooltip)
+              self.highlight_year(d)
             })
             .on("mouseover", function(d) {
-              self.highlight_year(d, tooltip)
+              self.highlight_year(d)
             })
             .on("mousemove", function(d){
-              let mouse_x = self.loc_fire_map.x
-              let mouse_y = self.loc_fire_map.y
-              self.mousemove(d, tooltip, mouse_x, mouse_y)
+              //let mouse_x = self.loc_fire_map.x
+              //let mouse_y = self.loc_fire_map.y
+              self.mousemove(d) /* , mouse_x, mouse_y */
             })
             .on("mouseout", function(d) {
-              self.dehighlight_year(d, tooltip)
+              self.dehighlight_year(d)
             })
 
         },
-        mousemove(data, tooltip, mouse_x, mouse_y) {
+        mousemove(data) {
+          const self = this;
+
           let data_year = data.YEAR
           let acres_burned = this.d3.format(',')(Math.round(data.area_acres/1000000*10)/10) + ' million acres' /* data.area_acres*10)/10 */
 
           // bind mouse coordinates and year to tooltip
-          tooltip
-            .attr("y", mouse_y - 10)
-            .attr("x", mouse_x + 10)
+          self.tooltip
+            //.attr("y", mouse_y - 10)
+            //.attr("x", mouse_x + 10)
             .attr("text-align", "left")
             .text(acres_burned)
             .raise()
         },
-        highlight_year(data, tooltip){
+        highlight_year(data){
+          const self = this;
+
           // make tooltip visible
-          tooltip
+          self.tooltip
             .style("opacity", 1);
 
           this.d3.selectAll(".fire.year" + data.YEAR)
@@ -1152,9 +1169,11 @@ import * as d3Base from "d3";
             .style("opacity", 1)
             .raise()
         },
-        dehighlight_year(data, tooltip){
+        dehighlight_year(data){
+          const self = this;
+
           // hide tooltip
-          tooltip
+          self.tooltip
             .style("opacity", 0)
 
           this.d3.selectAll(".bar.year" + data.YEAR)
@@ -1173,8 +1192,6 @@ import * as d3Base from "d3";
 
           // set indicator for play button
           self.isPlaying = true
-          console.log("playing")
-          console.log(self.isPlaying)
 
           // dim play button rectanlge
           let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
@@ -1336,78 +1353,23 @@ import * as d3Base from "d3";
   stroke-linecap: round; 
   stroke-linejoin: round; 
 }
-#fire_timeseries_2  {
-  padding: 3em;
-
-  rect, line, path, polygon, {
-      fill: none;
-      stroke: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-miterlimit: 10.00;
-  }
-  .axis-ticks, .chartAxis, #axis-x, #axis-y  {
-      fill: none;
-      stroke: #e0e0e0;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-miterlimit: 10.00;
-  }
-  rect  {
-    stroke: none;
-    width: 13px;
-  }
-  circle  {
-    r: 5;
-    stroke-width: 2px;
-
-  }
-  #fire-line {
-    stroke: none;
-    stroke-width: 2.5px;
-
-  }
-  #fire-trend {
-
-    stroke-width: 2px;
-
-  }
-  text  {
-    fill: $black;
-    line-height: 1.5;
-    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-    font-weight: 200;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 12px;
-  }
-  .axis-ticks {
-
-  }
-  #axis-text {
-    fill: #4f4f4f;
-  }
-  #axis-label-y {
-    fill: #4f4f4f;
-  }
-  .tooltip {
-    display: inline-block;
+.tick {
+  stroke: #cc2323;
+  fill: #cc2323;
+  color: #cc2323;
+}
+.tooltip {
     fill: #000000;
     font-family: sans-serif;
     font-size: 0.7em;
     font-weight: bold;
     line-height: 1em;
-  }
 }
 #text-year  {
     font-size: 36px;
     fill: $fireRed;
     font-weight: 500;
   }
-#fire_timeseries_2  {
-  margin-top: -4em;
-}
-
 .IMP  {
   fill: #97c4cf;
   stroke: #82b1bd;

@@ -27,3 +27,6 @@ yarn-error.log*
 data_processing_pipeline/.remake
 data_processing_pipeline/*/out/
 data_processing_pipeline/*/tmp/
+data_processing_pipeline/build_svg.R
+data_processing_pipeline/fetch_layers.R
+data_processing_pipeline/.RData

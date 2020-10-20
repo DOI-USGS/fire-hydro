@@ -2,8 +2,14 @@
 crop_past_fires <- function(target_name, layer_in, usa_map){
   proj<-'+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs'
   
-  fire_in <- st_read(layer_in) %>% st_transform(proj) %>%st_buffer(0)
+  fire_in <- st_read(layer_in) %>% st_transform(proj) %>% st_buffer(0)
   bbox_crop <- usa_map %>% st_transform(proj) %>% st_bbox()
+  
+  if (layer_in == '1_fetch/out/Historic_GeoMAC_Perimeters_2019-shp'){
+    fire_in <- fire_in %>% mutate(FIRE_YEAR = 2019, INCIDENT = incidentna)
+  } else {
+    fire_in <- fire_in
+  }
   
   fire_all <- fire_in %>% 
     filter(FIRE_YEAR >= 1984 & FIRE_YEAR <=2020) %>% 
@@ -35,7 +41,9 @@ fire_by_incident <- function(target_name, layer_in, usa_map) {
   fire_in <- readRDS(layer_in) %>%
     st_transform(proj)
   
-  fire_years <- do.call(rbind, lapply(unique(fire_in$YEAR), function(x)fire_yr_agg(x, fire_in)))
+  fire_years <- do.call(rbind, lapply(unique(fire_in$YEAR), function(x)fire_yr_agg(x, fire_in)))%>%
+    st_intersection(states_map) %>%
+    st_buffer(0) 
   
   saveRDS(fire_years, target_name)
   #st_write(fire_incident, paste0(i,target_name), driver = 'ESRI Shapefile', delete_layer = TRUE)
@@ -53,6 +61,22 @@ fire_by_year <- function(target_name, layer_in) {
   st_write(fire_year, target_name, driver = 'ESRI Shapefile', delete_layer = TRUE)
   
 }
+
+get_imp_50 <- function(target_name, f2f2_in, usa_map){
+  
+  imp50 <- readRDS(f2f2_in)%>%
+    filter(IMP_R >= 50)%>%
+    st_union() %>%
+    st_buffer(0)%>%
+    ms_simplify() %>%
+    st_buffer(0)%>%
+    st_intersection(usa_map) %>%
+    st_buffer(0)
+  
+  saveRDS(imp50, target_name)
+  
+}
+
 measure_fires <- function(target_name, states_map, ...){
   
   se<- function() sd(x)/sqrt(length(x))
@@ -64,6 +88,8 @@ measure_fires <- function(target_name, states_map, ...){
     mutate(Incident = word(Incident, 1,2), YEAR=as.character(YEAR)) 
   
   fire_all <- fire_all %>%
+    st_intersection(states_map) %>%
+    st_buffer(0) %>%
     group_by(YEAR, Incident) %>%
     summarize() %>%
     st_buffer(0) %>% 
@@ -89,6 +115,13 @@ measure_fires <- function(target_name, states_map, ...){
               mean_km2 = mean(km2, na.rm=TRUE),
               mean_acres = mean(acres, na.rm=TRUE))
   
+  ## frequency
+  fire_mega <- fire_all %>%
+    st_drop_geometry() %>%
+    filter(acres >= 100000) %>%
+    group_by(YEAR) %>%
+    summarize(freq_mega = length(unique(Incident)))
+  
   ## biggest fire each year
   fire_top <- fire_all %>%
     st_drop_geometry() %>%
@@ -111,10 +144,14 @@ measure_fires <- function(target_name, states_map, ...){
   # combine
   fire_yr <- fire_yr %>%
     left_join(fire_freq) %>%
+    left_join(fire_mega) %>%
     left_join(fire_top) %>%
     left_join(fire_state) %>%
     mutate(area_acres_scaled = rescale(area_acres, to=c(0,100), from=c(0, max(area_acres))),
-           years_scaled = rescale(as.numeric(YEAR), to=c(0,100)))
+           years_scaled = rescale(as.numeric(YEAR), to=c(0,100)),
+           max_scaled = 100-rescale(as.numeric(acres_max), to=c(0,100)),
+           mean_scaled = 100-rescale(as.numeric(mean_acres), to=c(0,100)),
+           mega_scaled = 100-rescale(as.numeric(freq_mega), to=c(0,100)))
     
 
   write.csv(fire_yr, '2_process/out/fire_timeseries.csv', row.names=FALSE)

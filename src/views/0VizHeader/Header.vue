@@ -11,7 +11,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303.96 154.98">
           <g  transform="translate(120 80)" >
               <rect id="box-2020" width="150" height="60" style="fill: rgb(245,169,60)"/>
-              <text transform="translate(7.55 19.61)" style="font-size: 1.2em; font-weight: 200" >Over 8 million acres <tspan x="0" y="15">have burned in 2020, <tspan x="0" y="30">the most on record</tspan></tspan></text>
+              <text id="text-2020" transform="translate(7.55 19.61)" style="font-size: 1.2em; font-weight: 200" >Over 8 million acres <tspan x="0" y="15">have burned in 2020, <tspan x="0" y="30">the most on record</tspan></tspan></text>
               <g id="arrow-2020" transform="translate(155 35)">
                  <path d="M23.54,37.23A60.65,60.65,0,0,0,3.09.45C1.37-1-1.15,1.47.58,3A57.73,57.73,0,0,1,20.13,38.17a1.79,1.79,0,0,0,2.18,1.24,1.81,1.81,0,0,0,1.23-2.18Z" style="fill: rgb(245,169,60)"/>
                 <path d="M25.51,37.91,26.86,21.7a2,2,0,0,0-4,0L21.47,37.91a2,2,0,0,0,4,0Z" style="fill: rgb(245,169,60)"/>
@@ -46,28 +46,6 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 600 50"
       >
-  
-<!--         <line
-          id="axis-line"
-          x1="50"
-          y1="13"
-          x2="1490"
-          y2="13"
-          style="stroke-width: 3px; stroke:black;"
-        />
-        <text
-          class="axis-dates"
-          transform="translate(1510 18)"
-        >2020</text>
-        <text
-          class="axis-dates"
-          transform="translate(10 18)"
-        >1984</text>
-        <path
-          class="axis-arrow"
-          transform="translate(0 0)"
-          d="M1478.85,3.58l4.92,4.13,2.38,2,1.2,1c.26.22,1,.66,1.11,1s-.85,1.47-1.14,1.87l-1.84,2.52-3.91,5.35a1.5,1.5,0,1,0,2.59,1.52l4.37-6c.72-1,1.47-2,2.17-3a3.58,3.58,0,0,0,.71-3,4.93,4.93,0,0,0-1.79-2.27c-.94-.8-1.89-1.59-2.84-2.38L1481,1.46c-1.47-1.23-3.6.88-2.12,2.12Z"
-        /> -->
         <rect
           class="timeline-title-box"
           x="0"
@@ -276,7 +254,7 @@ import * as d3Base from "d3";
             .attr("stroke-miterlimit", "10")
             .transition()
               .delay(3000)
-              .duration(3000)
+              .duration(2000)
               .attr("stroke","rgb(245,169,60)")
               .attr("stroke-linejoin", "miter")
               .attr("stroke-dashoffset","0px")
@@ -308,6 +286,17 @@ import * as d3Base from "d3";
             .delay(5000)
             .duration(1000)
             .attr("fill", "rgb(51,51,51)"); */
+
+            //turn past years same color
+          function makeElementAppear(timeElement){
+            timeElement
+            .style("opacity", "0")
+            .transition()
+            .delay(4500)
+            .duration(800)
+              .style("opacity", "1")
+          }
+          makeElementAppear(this.d3.select("#annotate-container"));
 
           this.d3.select(".timeline-title")
           .attr("fill","none")
@@ -436,10 +425,16 @@ import * as d3Base from "d3";
 
       }
       @media screen and (max-width: 800px) {
-          margin-top: -45px;
+          margin-top: -25px;
+          width:300px;
       }
       @media screen and (max-width: 600px) {
-          margin-top: -110px;
+          margin-top: -70px;
+          width:250px;
+      }
+      @media screen and (max-width: 400px) {
+          margin-top: -50px;
+          width:200px;
       }
 }
 

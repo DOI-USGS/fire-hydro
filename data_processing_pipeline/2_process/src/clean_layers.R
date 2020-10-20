@@ -115,6 +115,13 @@ measure_fires <- function(target_name, states_map, ...){
               mean_km2 = mean(km2, na.rm=TRUE),
               mean_acres = mean(acres, na.rm=TRUE))
   
+  ## frequency
+  fire_mega <- fire_all %>%
+    st_drop_geometry() %>%
+    filter(acres >= 100000) %>%
+    group_by(YEAR) %>%
+    summarize(freq_mega = length(unique(Incident)))
+  
   ## biggest fire each year
   fire_top <- fire_all %>%
     st_drop_geometry() %>%
@@ -137,10 +144,14 @@ measure_fires <- function(target_name, states_map, ...){
   # combine
   fire_yr <- fire_yr %>%
     left_join(fire_freq) %>%
+    left_join(fire_mega) %>%
     left_join(fire_top) %>%
     left_join(fire_state) %>%
     mutate(area_acres_scaled = rescale(area_acres, to=c(0,100), from=c(0, max(area_acres))),
-           years_scaled = rescale(as.numeric(YEAR), to=c(0,100)))
+           years_scaled = rescale(as.numeric(YEAR), to=c(0,100)),
+           max_scaled = 100-rescale(as.numeric(acres_max), to=c(0,100)),
+           mean_scaled = 100-rescale(as.numeric(mean_acres), to=c(0,100)),
+           mega_scaled = 100-rescale(as.numeric(freq_mega), to=c(0,100)))
     
 
   write.csv(fire_yr, '2_process/out/fire_timeseries.csv', row.names=FALSE)

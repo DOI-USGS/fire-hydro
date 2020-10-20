@@ -841,348 +841,6 @@
           </g>
           
         </svg>      
-        <!-- <svg
-          id="fire_timeseries_2"
-          class="fire-timeseries-2"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 720.00 216.00"
-        >
-          <g class="fire-bars">
-            <rect
-              id="bar_1984"
-              class="bar year1984"
-              x="98.75"
-              y="148.34"
-              height="14.49"
-            />
-            <rect
-              id="bar_1985"
-              class="bar year1985"
-              x="114.58"
-              y="116.98"
-              height="45.84"
-            />
-            <rect
-              id="bar_1986"
-              class="bar year1986"
-              x="130.40"
-              y="140.65"
-              height="22.17"
-            />
-            <rect
-              id="bar_1987"
-              class="bar year1987"
-              x="146.23"
-              y="133.18"
-              height="29.64"
-            />
-            <rect
-              id="bar_1988"
-              class="bar year1988"
-              x="162.06"
-              y="102.12"
-              height="60.70"
-            />
-            <rect
-              id="bar_1989"
-              class="bar year1989"
-              x="177.89"
-              y="149.18"
-              height="13.64"
-            />
-            <rect
-              id="bar_1990"
-              class="bar year1990"
-              x="193.72"
-              y="146.38"
-              height="16.44"
-            />
-            <rect
-              id="bar_1991"
-              class="bar year1991"
-              x="209.55"
-              y="153.93"
-              height="8.89"
-            />
-            <rect
-              id="bar_1992"
-              class="bar year1992"
-              x="225.38"
-              y="140.79"
-              height="22.04"
-            />
-            <rect
-              id="bar_1993"
-              class="bar year1993"
-              x="241.20"
-              y="151.57"
-              height="11.25"
-            />
-            <rect
-              id="bar_1994"
-              class="bar year1994"
-              x="257.03"
-              y="121.56"
-              height="41.26"
-            />
-            <rect
-              id="bar_1995"
-              class="bar year1995"
-              x="272.86"
-              y="147.99"
-              height="14.83"
-            />
-            <rect
-              id="bar_1996"
-              class="bar year1996"
-              x="288.69"
-              y="92.01"
-              height="70.81"
-            />
-            <rect
-              id="bar_1997"
-              class="bar year1997"
-              x="304.52"
-              y="155.43"
-              height="7.39"
-            />
-            <rect
-              id="bar_1998"
-              class="bar year1998"
-              x="320.35"
-              y="152.13"
-              height="10.69"
-            />
-            <rect
-              id="bar_1999"
-              class="bar year1999"
-              x="336.18"
-              y="102.43"
-              height="60.39"
-            />
-            <rect
-              id="bar_2000"
-              class="bar year2000"
-              x="352.01"
-              y="79.99"
-              height="82.83"
-            />
-            <rect
-              id="bar_2001"
-              class="bar year2001"
-              x="367.83"
-              y="127.21"
-              height="35.61"
-            />
-            <rect
-              id="bar_2002"
-              class="bar year2002"
-              x="383.66"
-              y="98.02"
-              height="64.80"
-            />
-            <rect
-              id="bar_2003"
-              class="bar year2003"
-              x="399.49"
-              y="103.70"
-              height="59.12"
-            />
-            <rect
-              id="bar_2004"
-              class="bar year2004"
-              x="415.32"
-              y="146.00"
-              height="16.82"
-            />
-            <rect
-              id="bar_2005"
-              class="bar year2005"
-              x="431.15"
-              y="100.99"
-              height="61.83"
-            />
-            <rect
-              id="bar_2006"
-              class="bar year2006"
-              x="446.98"
-              y="52.64"
-              height="110.18"
-            />
-            <rect
-              id="bar_2007"
-              class="bar year2007"
-              x="462.81"
-              y="34.62"
-              height="128.20"
-            />
-            <rect
-              id="bar_2008"
-              class="bar year2008"
-              x="478.64"
-              y="115.60"
-              height="47.22"
-            />
-            <rect
-              id="bar_2009"
-              class="bar year2009"
-              x="494.46"
-              y="139.78"
-              height="23.04"
-            />
-            <rect
-              id="bar_2010"
-              class="bar year2010"
-              x="510.29"
-              y="138.30"
-              height="24.52"
-            />
-            <rect
-              id="bar_2011"
-              class="bar year2011"
-              x="526.12"
-              y="87.70"
-              height="75.12"
-            />
-            <rect
-              id="bar_2012"
-              class="bar year2012"
-              x="541.95"
-              y="15.34"
-              height="147.48"
-            />
-            <rect
-              id="bar_2013"
-              class="bar year2013"
-              x="557.78"
-              y="114.67"
-              height="48.16"
-            />
-            <rect
-              id="bar_2014"
-              class="bar year2014"
-              x="573.61"
-              y="129.30"
-              height="33.52"
-            />
-            <rect
-              id="bar_2015"
-              class="bar year2015"
-              x="589.44"
-              y="108.68"
-              height="54.14"
-            />
-            <rect
-              id="bar_2016"
-              class="bar year2016"
-              x="605.27"
-              y="116.83"
-              height="46.00"
-            />
-            <rect
-              id="bar_2017"
-              class="bar year2017"
-              x="621.09"
-              y="33.15"
-              height="129.67"
-            />
-            <rect
-              id="bar_2018"
-              class="bar year2018"
-              x="636.92"
-              y="59.41"
-              height="103.42"
-            />
-            <rect
-              id="bar_2019"
-              class="bar year2019"
-              x="652.75"
-              y="133.16"
-              height="29.66"
-            />
-            <rect
-              id="bar_2020"
-              class="bar year2020"
-              x="668.58"
-              y="21.98"
-              height="140.84"
-            />
-          </g>
-          <polyline
-            id="axis-x"
-            points="69.54,170.20 712.03,170.20 "
-          />
-          <polyline
-            id="axis-y"
-            points="69.54,170.20 69.54,7.97 "
-          />
-          <g id="axis-text-y">
-            <text
-              id="axis-text"
-              x="55.25"
-              y="167.40"
-            >0</text>
-            <text
-              id="axis-text"
-              x="33.89"
-              y="128.76"
-            >3000</text>
-            <text
-              id="axis-text"
-              x="33.89"
-              y="90.11"
-            >6000</text>
-            <text
-              id="axis-text"
-              x="33.89"
-              y="51.46"
-            >9000</text>
-            <text
-              id="axis-text"
-              x="26.78"
-              y="12.82"
-            >12,000</text>
-          </g>
-          <g class="axis-ticks">
-            <polyline points="65.56,162.82 69.54,162.82 " />
-            <polyline points="65.56,124.17 69.54,124.17 " />
-            <polyline points="65.56,85.53 69.54,85.53 " />
-            <polyline points="65.56,46.88 69.54,46.88 " />
-            <polyline points="65.56,8.23 69.54,8.23 " />
-            <polyline points="200.84,174.18 200.84,170.20 " />
-            <polyline points="359.13,174.18 359.13,170.20 " />
-            <polyline points="517.42,174.18 517.42,170.20 " />
-            <polyline points="675.70,174.18 675.70,170.20 " />
-          </g>
-          <g id="axis-text-x">
-            <text
-              id="axis-text"
-              x="186.60"
-              y="186.53"
-            >1990</text>
-            <text
-              id="axis-text"
-              x="344.89"
-              y="186.53"
-            >2000</text>
-            <text
-              id="axis-text"
-              x="503.18"
-              y="186.53"
-            >2010</text>
-            <text
-              id="axis-text"
-              x="661.47"
-              y="186.53"
-            >2020</text>
-          </g>
-          <text
-            id="axis-label-y"
-            transform="translate(15,160) rotate(-90)"
-            style="font-size: 16px;"
-          >Area burned (sq mi)</text>
-        </svg>  -->
       </div>       
       <div>
         <p>However, the costs don’t stop when the flames go out; wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
@@ -1209,7 +867,8 @@ import * as d3Base from "d3";
             yearStart: null,
             y: null,
             loc_fire_chart: null,
-            loc_fire_map: null
+            loc_fire_map: null,
+            isPlaying: null
           }
         },
        mounted() {
@@ -1233,14 +892,11 @@ import * as d3Base from "d3";
         setPanels() {
           const self = this;
 
-          let promises = [this.d3.csv(self.publicPath + "data/burn_mi2.csv")]
+          let promises = [this.d3.csv(self.publicPath + "data/fire_timeseries.csv")]
           Promise.all(promises).then(self.callback);
         },
         callback(data) {          
           let csv_burn = data[0];
-
-          // add play button
-          this.playButton();
 
           // create bar chart
           this.createBarChart(csv_burn);
@@ -1248,11 +904,12 @@ import * as d3Base from "d3";
           // append data and click and mouseover functionality to fire perimeters
           this.makeFireInteractive(csv_burn);
 
-          // animate bar chart and map
-          this.animateChart_Map()
+          // add play button
+          //this.createPlayButton();
 
-        },
-        playButton(){
+          // SHOULD BE TRIGGERED BY INTERSECTION OBSERVER
+          // animate bar chart and map
+          this.animateChart_Map();
 
         },
         createBarChart(csv_burn) {
@@ -1294,14 +951,14 @@ import * as d3Base from "d3";
               // set range of possible output values
               .range([0, this.chart_width])
               // define range of input values
-              .domain(csv_burn.map(function(d) { return d.year; }))
+              .domain(csv_burn.map(function(d) { return d.YEAR; }))
               // add padding between bars
               .padding(0.1);
 
-          // build array of all values of the burn_acres
+          // build array of all values of the area_acres
           var domainArrayY = [];
             for (var i=0; i<csv_burn.length; i++){
-              var val = parseFloat(csv_burn[i]['burn_acres']);
+              var val = parseFloat(csv_burn[i]['area_acres']);
               domainArrayY.push(val);
             };
 
@@ -1347,16 +1004,16 @@ import * as d3Base from "d3";
             .append("rect")
             // assign a class to each element for styling
             .attr("class", function(d) {
-              return "fire-bars bar year" + d.year
+              return "fire-bars bar year" + d.YEAR
             })
             .attr("width", x.bandwidth())
             .attr("x", function(d) {
-              return x(d.year)
+              return x(d.YEAR)
             })
             .on("click", function(d){
               self.highlight_year(d, tooltip)
             })
-            .style("fill", " rgb(250,109,49)")
+            .style("fill", "rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .on("mouseover", function(d) {
               self.highlight_year(d, tooltip)
@@ -1369,6 +1026,57 @@ import * as d3Base from "d3";
             .on("mouseout", function(d) {
               self.dehighlight_year(d, tooltip)
             })
+
+          // add play button
+          self.createPlayButton(chart)
+
+        },
+        createPlayButton(chart) {
+          const self = this;
+
+          let button = chart.append("g")
+            .attr("transform", "translate(" + 0 + "," + 0 + ")")
+            .attr("class", "play_button")
+
+          button
+            .append("rect")
+              .attr("width", 50)
+              .attr("height", 50)
+              .attr("rx", 4)
+              .style("fill", '#fa6d31');
+
+          button
+            .append("path")
+              .attr("d", "M15 10 L15 40 L35 25 Z")
+              .style("fill", "#ffffff");
+
+          button
+            .append("title")
+              .text("replay animation")
+
+          button
+            .on("mousedown", function() {
+              self.pressButton(self.isPlaying)
+            });
+          
+        },
+        pressButton(playing) {
+          const self = this;
+
+          if (playing == true) {
+            console.log("already playing")
+          } else {
+            self.animateChart_Map()
+          }
+        },
+        resetPlayButton() {
+          const self = this;
+
+          self.isPlaying = false;
+          console.log("reset")
+          console.log(self.isPlaying)
+          let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
+            .style("fill", '#fa6d31')
 
         },
         makeFireInteractive(csv_burn) {
@@ -1414,8 +1122,8 @@ import * as d3Base from "d3";
 
         },
         mousemove(data, tooltip, mouse_x, mouse_y) {
-          let data_year = data.year
-          let acres_burned = this.d3.format(',')(Math.round(data.burn_acres_mil*10)/10) + ' million acres'
+          let data_year = data.YEAR
+          let acres_burned = this.d3.format(',')(Math.round(data.area_acres/1000000*10)/10) + ' million acres' /* data.area_acres*10)/10 */
 
           // bind mouse coordinates and year to tooltip
           tooltip
@@ -1430,16 +1138,16 @@ import * as d3Base from "d3";
           tooltip
             .style("opacity", 1);
 
-          this.d3.selectAll(".fire.year" + data.year)
+          this.d3.selectAll(".fire.year" + data.YEAR)
             .style("fill", " rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .raise();
 
-          this.d3.selectAll(".bar.year" + data.year)
+          this.d3.selectAll(".bar.year" + data.YEAR)
             .style("fill", " rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)");
 
-          this.d3.selectAll(".label" + data.year)
+          this.d3.selectAll(".label" + data.YEAR)
             .style("fill", "rgb(250,109,49)")
             .style("opacity", 1)
             .raise()
@@ -1449,19 +1157,41 @@ import * as d3Base from "d3";
           tooltip
             .style("opacity", 0)
 
-          this.d3.selectAll(".bar.year" + data.year)
+          this.d3.selectAll(".bar.year" + data.YEAR)
             .style("fill", "rgba(245,169,60,0.8)")
             .style("stroke", "rgba(235,156,42,0.8)")
-          this.d3.selectAll(".fire.year" + data.year)
+          this.d3.selectAll(".fire.year" + data.YEAR)
             .style("fill", "rgba(245,169,60,0.6)")
             .style("stroke", "rgba(235,156,42,0.6)")
             .lower()
-          this.d3.selectAll(".label" + data.year)
+          this.d3.selectAll(".label" + data.YEAR)
             .style("fill", "#ffffff")
             .lower()
         },
         animateChart_Map() {
           const self = this; 
+
+          // set indicator for play button
+          self.isPlaying = true
+          console.log("playing")
+          console.log(self.isPlaying)
+
+          // dim play button rectanlge
+          let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
+          button_rect
+            .style("fill", "#d6d6d6")
+
+          // set parameters for animation transitions
+          let appearDuration = 500
+          let colorDuration = 100
+          let animationInterval = 800
+          let num_years = 37
+          
+          // once animation has completed, reset color of play button
+          button_rect
+            .transition()
+            .delay(animationInterval*num_years)
+            .on("end", self.resetPlayButton);
 
           // select bar chart bars
           let bars = this.d3.selectAll("g").selectAll(".fire-bars")
@@ -1471,10 +1201,6 @@ import * as d3Base from "d3";
             .attr("y", this.chart_height)
             .attr("height", 0)
 
-          let appearDuration = 500
-          let colorDuration = 100
-          let animationInterval = 800
-
           // have bars appear and change color after appearance
           bars
             .transition()
@@ -1483,10 +1209,10 @@ import * as d3Base from "d3";
               return i*animationInterval
             })
             .attr("height", function(d){
-              return self.chart_height - self.y(d.burn_acres)
+              return self.chart_height - self.y(d.area_acres)
             })
             .attr("y", function(d){
-              return self.y(d.burn_acres)
+              return self.y(d.area_acres)
             })
             .style("fill", "rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
@@ -1496,7 +1222,7 @@ import * as d3Base from "d3";
                 return 200
               })
             .style("fill", "rgba(245,169,60,0.8)")
-            .style("stroke", "rgba(235,156,42,0.8)")
+            .style("stroke", "rgba(235,156,42,0.8)") 
             
           // select fire perimeters
           let fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
@@ -1515,9 +1241,9 @@ import * as d3Base from "d3";
             .style("fill", " rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .transition()
-            .duration(colorDuration)
+            .duration(colorDuration) 
             .delay(function(d, i){
-                return 200
+                return 300
               })
             .style("fill", "rgba(245,169,60,0.8)")
             .style("stroke", "rgba(235,156,42,0.8)")
@@ -1545,57 +1271,6 @@ import * as d3Base from "d3";
               return animationInterval - colorDuration
             })
             .style("fill", "rgba(0,0,0,0)")
-
-        },
-        // function to change color of each year grouping in stagger
-        changeElementColorHilite(mapElement, barChartElement, textElement){
-          const self = this;
-
-          mapElement
-            .style('fill', "rgb(0,0,0,0)")
-            .style('stroke',"rgb(0,0,0,0)")
-          .transition().duration(500)
-            .delay(function(d,i){ return self.yearDuration*i; })
-            .style("fill", " rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)");
-
-          barChartElement
-            .style('fill', "rgb(0,0,0,0)")
-            .style('stroke',"rgb(0,0,0,0)")
-          .transition().duration(500)
-            .delay(function(d,i){ return self.yearDuration*i; })
-            .style("fill", "rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)");
-
-          textElement
-          .style('fill', "rgb(0,0,0,0)")
-          .attr("font-size", "40px")
-          .attr('x', 550)
-          .attr('y', 50)
-          .transition()
-            .delay(function(d,i){ return self.yearDuration*i; })
-            .style("fill", "rgb(250,109,49)");
-        },
-        //turn past years same color
-        changeElementColorStay(mapElement, barChartElement, textElement){
-          const self = this;
-
-          mapElement
-          .transition().duration(300)
-            .delay(function(d,i){ return self.yearDuration+self.yearDuration*i; })
-            .style("fill", "rgba(245,169,60,0.6)")
-            .style("stroke", "rgba(235,156,42,0.6)")
-
-          barChartElement
-          .transition().duration(300)
-            .delay(function(d,i){ return self.yearDuration+self.yearDuration*i; })
-            .style("fill", "rgba(245,169,60,0.8)")
-            .style("stroke", "rgba(235,156,42,0.8)")
-
-            textElement
-            .transition().duration(250)
-              .delay(function(d,i){ return self.yearDuration+self.yearDuration*i; })
-              .style("fill", "rgba(0,0,0,0)")        
 
         }
       }

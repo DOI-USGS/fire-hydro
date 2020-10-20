@@ -21,10 +21,11 @@
         </svg>
       </div>
       <div id="time_line" />
+      
       <svg
         id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 150"
+        viewBox="0 0 100 120"
         preserveAspectRatio="none"
       >
         <path id="path1" />
@@ -33,7 +34,7 @@
         <rect
           id="white-block"
           width="100"
-          height="90"
+          height="120"
           x="0"
           y="100"
           style="fill:white; stroke: white;"
@@ -41,10 +42,12 @@
       </svg>
     </div> 
     <div id="time-title">
+      
+      <select id="dataDrop"></select>
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 600 50"
+        viewBox="0 0 350 50"
       >
         <rect
           class="timeline-title-box"
@@ -56,8 +59,8 @@
           class="timeline-title"
           x="7"
           y="24"
-          style="font-size: 1.6em; font-weight: 600"
-        >Area burned by wildfires in the western U.S. from 1984 to 2020</text>
+          style="font-size: 1.4em; font-weight: 600"
+        >in the western U.S. from 1984 to 2020</text>
       
       </svg>
     </div>
@@ -104,9 +107,9 @@ import * as d3Base from "d3";
         makeChartMorph() {
           const self = this;
 
-          // create data
-          //this would be better if read in directly from csv
-          var data = [{x: 0, y: 89}, 
+          // create data - this would be better if read in directly from csv
+          //data for area chart - area burned
+          var data_burn = [{x: 0, y: 89}, 
                       {x: 2.78, y: 70}, 
                       {x: 5.56, y: 84}, 
                       {x: 8.33, y: 80}, 
@@ -143,6 +146,46 @@ import * as d3Base from "d3";
                       {x: 94.44, y: 34}, 
                       {x: 97.22, y: 82}, 
                       {x: 100.0, y: 0}];
+
+          var data_mean = [{x: 0, y: 99}, 
+                      {x: 2.78, y: 90}, 
+                      {x: 5.56, y: 97}, 
+                      {x: 8.33, y: 90}, 
+                      {x: 11.11, y: 61}, 
+                      {x: 13.88, y: 100}, 
+                      {x: 16.67, y: 89}, 
+                      {x: 19.44, y: 99}, 
+                      {x: 22.22, y: 90}, 
+                      {x: 25.00, y: 77}, 
+                      {x: 27.78, y: 91}, 
+                      {x: 30.56, y: 91}, 
+                      {x: 33.33, y: 77}, 
+                      {x: 36.11, y: 88}, 
+                      {x: 38.89, y: 97}, 
+                      {x: 41.67, y: 80}, 
+                      {x: 44.44, y: 83}, 
+                      {x: 47.22, y: 93}, 
+                      {x: 50.00, y: 63}, 
+                      {x: 52.78, y: 80}, 
+                      {x: 55.55, y: 89}, 
+                      {x: 58.33, y: 83}, 
+                      {x: 61.11, y: 80}, 
+                      {x: 63.89, y: 71}, 
+                      {x: 66.67, y: 83}, 
+                      {x: 69.44, y: 87}, 
+                      {x: 72.22, y: 94}, 
+                      {x: 75.00, y: 79}, 
+                      {x: 77.78, y: 70}, 
+                      {x: 80.56, y: 79}, 
+                      {x: 83.33, y: 80}, 
+                      {x: 86.11, y: 70}, 
+                      {x: 88.88, y: 83}, 
+                      {x: 91.67, y: 69}, 
+                      {x: 94.44, y: 61}, 
+                      {x: 97.22, y: 88}, 
+                      {x: 100.0, y: 0}];
+
+          // empty box for spacing
           var dataBox = [{x: 0, y: 150}, 
                       {x: 2.78, y: 150}, 
                       {x: 5.56, y: 150}, 
@@ -181,8 +224,8 @@ import * as d3Base from "d3";
                       {x: 97.22, y: 150}, 
                       {x: 100.0, y: 150}];
 
-          //this is the same as the area top line
-          var dataLine = [[0, 89], 
+          //this is the same as the area top line but just a line
+          var dataLine_burn = [[0, 89], 
                       [2.78, 70], 
                       [5.56, 84], 
                       [8.33, 80], 
@@ -219,16 +262,18 @@ import * as d3Base from "d3";
                       [94.44, 34], 
                       [97.22, 82], 
                       [100.0, 0]];
-          //lines
+          
+          
+          // draw a line
           var line = this.d3.line();
 
-          //areas
+          //make area chart
           var makeArea = this.d3.area()
               .x(function(d) { return d.x })      // Position of both line breaks on the X axis
               .y1(function(d) { return d.y })     // Y position of top line breaks
               .y0(100);                            // Y position of bottom line breaks (200 = bottom of svg area)
 
-          // Add the initial path for area
+          // Add the initial path for area using negative space
           this.d3.select("#crop-shape")
             .append('path')
               .attr("id", "charty")
@@ -236,16 +281,16 @@ import * as d3Base from "d3";
               .style('fill', 'white')
               .style("opacity", "1");
               
-          //morph path to burn area over time shape
+          //morph path to include burn area over time shape
           this.d3.select("#charty")
             .transition()
               .delay(1000)
               .duration(3000)
-              .attr("d", makeArea(data))
+              .attr("d", makeArea(data_burn))
 
           //animate line drawing across top
           this.d3.select("#path1")
-            .attr('d', line(dataLine))
+            .attr('d', line(dataLine_burn))
             .attr("stroke", "none")
             .attr("fill", "none")
             .attr("stroke-dasharray","1000px")
@@ -270,14 +315,7 @@ import * as d3Base from "d3";
               .style("opacity", "1")
           }
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
-          makeElementAppear(this.d3.select(".timeline-title"), 5000, 1000);
-/* 
-          this.d3.select(".timeline-title")
-          .attr("fill","none")
-          .transition()
-            .delay(5000)
-            .duration(1000)
-            .attr("fill", "black"); */
+          makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
 
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
@@ -285,10 +323,32 @@ import * as d3Base from "d3";
           .transition()
             .delay(3000)
             .duration(2000)
-            .attr("width", "600")
+            .attr("width", "350")
             .attr("fill", "rgb(245,169,60)");
+          
+          var allGroup = ["Total area burned by wildfires","Largest wildfires","Average wildfire area"]
+          
+          this.d3.select('#dataDrop')
+            .selectAll('myOptions')
+              .data(allGroup)
+            .enter()
+              .append('option')
+              .text(function (d) { return d; }) // text showed in the menu
+              .attr("value", function (d) { return d; }) ;
+
+          this.d3.select('#dataDrop')
+          .attr("opacity" ,0)
+          .transition()
+            .delay(4000)
+            .duraction(1000)
+            .attr("opacity", 1)
 
 
+         /*  var updateLine = function(data) {
+            this.d3.select("#charty")
+            .transition()
+              .attr("d", makeArea());
+          }; */
         }
       }
     };
@@ -332,6 +392,28 @@ import * as d3Base from "d3";
       }
     }
 
+#time-title {
+  #dataDrop {
+    margin-top: 0px;
+    color: black;
+    z-index:1;
+    display: block;
+    width: 280px;;
+    font-weight: 600;
+  }
+
+  #axes-svg{
+    display: block;
+    z-index:0;
+  }
+
+}
+
+select{
+  font-size: 1.4em;
+  border:0;
+  padding: .2em;
+}
     #header p {
       color: white;
     }
@@ -345,7 +427,6 @@ import * as d3Base from "d3";
         bottom: 0;
         width: 100%;
         height: 250px;
- 
     }
 
 
@@ -369,14 +450,15 @@ import * as d3Base from "d3";
     }
 
     #time-title {
-      width: 600px;
+      width: 350px;
       float: left;
-
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 350px) {
           width: 100vw;
-
       }
-
+    }
+    #dataDrop {
+      width: 280px;
+      float: left;
     }
 #annotate-container{
   width: 350px;

@@ -261,49 +261,23 @@ import * as d3Base from "d3";
               .attr("stroke-miterlimit", "10")
               .attr("stroke-width","1px");
 
-          /* //draw x-axis
-          this.d3.select("#axis-line")
-          .attr("stroke","none")
-          .attr("stroke-dasharray","1500px")
-          .attr("stroke-dashoffset","1500px")
-          .transition()
-            .delay(3000)
-            .duration(3000)
-            .attr("stroke-dashoffset","0px")
-            .attr("stroke", "rgb(237,237,237)")
-            .attr("stroke-width", "1px");
-
-          this.d3.selectAll(".axis-dates")
-          .attr("fill","none")
-          .transition()
-            .delay(5000)
-            .duration(1000)
-            .attr("fill", "black");
-
-          this.d3.select(".axis-arrow")
-          .attr("fill","none")
-          .transition()
-            .delay(5000)
-            .duration(1000)
-            .attr("fill", "rgb(51,51,51)"); */
-
-            //turn past years same color
-          function makeElementAppear(timeElement){
+          function makeElementAppear(timeElement,delay, time_dur){
             timeElement
             .style("opacity", "0")
             .transition()
-            .delay(4500)
-            .duration(800)
+            .delay(delay)
+            .duration(time_dur)
               .style("opacity", "1")
           }
-          makeElementAppear(this.d3.select("#annotate-container"));
-
+          makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
+          makeElementAppear(this.d3.select(".timeline-title"), 5000, 1000);
+/* 
           this.d3.select(".timeline-title")
           .attr("fill","none")
           .transition()
             .delay(5000)
             .duration(1000)
-            .attr("fill", "black");
+            .attr("fill", "black"); */
 
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
@@ -374,19 +348,6 @@ import * as d3Base from "d3";
  
     }
 
-    .axis-dates {
-      font-size: 1.2em;
-    }
-
-    .axis-line {
-      fill: rgb(51,51,51);
-    }
-
-    // @media (max-width: 699px) {
-    //   .svg--lg {
-    //     display: none;
-    //   }
-    // }
 
     @media (min-width: 700px) {
         .svg--sm {

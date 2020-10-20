@@ -267,6 +267,7 @@
             <text class="text-year label2018">2018</text>
             <text class="text-year label2019">2019</text>
             <text class="text-year label2020">2020</text>
+            <text class="tooltip"></text>
 
             <g id="states">
               <path d="M188.75,42l.5.1.3.3h.3l.2.3.4.5.3.5v.4l.3.5h-.3l-.3-.3-1.4-1.5-.4-.6.1-.2Z" />
@@ -857,17 +858,15 @@ import * as d3Base from "d3";
           return {
             // set public path
             publicPath: process.env.BASE_URL, // this is need for the data files in the public folder, this allows the application to find the files when on different deployment roots
+            
             // assign d3 plugins to the d3 instance
             d3: null, // this is used so that we can assign d3 plugins to the d3 instance
+            
             // define global variables instantiated in next section
-            chart_margin: {top: 5, right: 5, bottom: 15, left: 120},
+            chart_margin: {top: 5, right: 5, bottom: 40, left: 120},
             chart_width: null,
             chart_height: null,
-            yearDuration: null,
-            yearStart: null,
             y: null,
-            loc_fire_chart: null,
-            loc_fire_map: null,
             isPlaying: null,
             tooltip: null,
           }
@@ -879,11 +878,9 @@ import * as d3Base from "d3";
         // instantiate global variables
         this.chart_height = 216.00 - this.chart_margin.top - this.chart_margin.bottom;
         this.chart_width = 720.00 - this.chart_margin.right - this.chart_margin.left;
-        this.yearDuration = 500;
-        this.yearStart = 1984;
         this.y = this.d3.scaleLinear()
-              // set range of possible output values
-              .range([this.chart_height, 0])
+          // set range of possible output values
+          .range([this.chart_height, 0])
 
         // begin script when window loads
         this.setPanels();
@@ -919,12 +916,13 @@ import * as d3Base from "d3";
         addTooltip() {
           const self = this;
 
-          // add tooltip as text element appended to basemap svg, without coordinates
-          let svgMap = this.d3.select('#baseemap') /* #firemap */
-          self.tooltip = svgMap.append("text")
+          // set text element appended to basemap svg, without coordinates, to be global tooltip
+          self.tooltip = this.d3.selectAll(".tooltip")
             .attr("class", "tooltip")
-            .attr('x', 550)
-            .attr('y', 100)
+            .attr('text-anchor', 'end')
+            .attr('text-align', 'right')
+            .attr('x', 636)
+            .attr('y', 75)
         },
         createBarChart(csv_burn) {
           const self = this;
@@ -934,31 +932,10 @@ import * as d3Base from "d3";
             .append("svg")
             .attr("viewBox", [0, 0, (this.chart_width +  this.chart_margin.right + this.chart_margin.left), 
                   (this.chart_height + this.chart_margin.top + this.chart_margin.bottom)].join(' '))
-            //.attr("id", "fire_timeseries_2")
             .attr("class", "fire-timeseries-2");
           let g = chart.append("g")
             .attr("class", "transformedBarChart")
             .attr("transform", "translate(" + this.chart_margin.left + "," + this.chart_margin.top + ")");
-
-          // // add tooltip to chart svg
-          // // find root svg element
-          // var svg_fire_chart = document.querySelector('.fire-timeseries-2')
-          // // create a SVGPoint for future math
-          // var pt_fire_chart = svg_fire_chart.createSVGPoint();
-          // // function to get point in global SVG space
-          // function cursorPoint_fire_chart(evt) {
-          //    pt_fire_chart.x = evt.clientX; pt_fire_chart.y = evt.clientY;
-          //    return pt_fire_chart.matrixTransform(svg_fire_chart.getScreenCTM().inverse());
-          // }
-          // reset coordinates when mouse moves over chart svg
-          // svg_fire_chart.addEventListener('mousemove', function(evt){
-          //    self.loc_fire_chart = cursorPoint_fire_chart(evt);
-          // }, false);
-
-          // // add tooltip as text element appended to chart svg, without coordinates
-          // let svgChart = this.d3.select('#fire_timeseries_2')
-          // var tooltip = svgChart.append("text")
-          //   .attr("class", "tooltip")
 
           // build x scale for bars
           var x = this.d3.scaleBand()
@@ -980,13 +957,8 @@ import * as d3Base from "d3";
           let dataMax;
           dataMax = Math.round(Math.max(...domainArrayY));
 
-          // build y scale for bars
-         // var y = this.d3.scaleLinear()
-         this.y.domain([0, dataMax]);
-              // set range of possible output values
-              //.range([this.chart_height, 0])
-              // define range of input values
-              //.domain([0, dataMax]);
+          // build y scale for bars using global y variable
+          this.y.domain([0, dataMax]);
 
           // define yAxis generator
           var yAxis = this.d3.axisLeft()
@@ -999,16 +971,40 @@ import * as d3Base from "d3";
             .call(this.d3.axisBottom(x).tickValues(['1990', '2000', '2010', '2020' ]).tickSize(3))
             .select(".domain").remove()
 
+          // make all x-axis ticks white
+          chart.selectAll(".tick line").attr("stroke", "#ffffff")
+
           // place the y axis and format tick labels
           g.append("g")
             .attr("class", "chartAxis left")
-          // offset axis slightly to align closer to last bar
+            // offset axis slightly to align closer to last bar
             .attr("transform", "translate(" + 0 + "," + 0 + ")")
-          // give ticks k number format 
+            // give ticks k number format 
             .call(this.d3.axisLeft(self.y).ticks(10, "s").tickSize(- this.chart_width))
             .select(".domain").remove()
 
-          // generate bars for bar chart
+          // set the size and styling of the y axis tick mark lines
+          chart.selectAll(".tick line").attr("stroke-width", 1).attr("stroke-dasharray", ("1, 3"))
+
+          // place the x axis title
+          chart.select(".chartAxis.bottom")
+            .append('text')
+            .attr('transform', 'translate(' + self.chart_width/2 + ', ' + 30 + ')')
+            .attr("text-anchor", "middle")
+            .attr("class", "chartAxisText bottom")
+            .text("Year")
+
+          // place and rotate the y axis label
+          chart.select(".chartAxis.left")
+            .append('text')
+            .attr("y", -30)
+            .attr("x", -self.chart_height/2)
+            .attr("text-anchor", "middle")
+            .attr("class", "chartAxisText left")
+            .text("Acres burned")
+            .attr("transform", "rotate(-90)")
+
+          // generate bars for bar chart and add mousover functionality
           var bars = g.selectAll(".fire-bars") // make an empty selection
             // bind data to elements
             .data(csv_burn)
@@ -1030,15 +1026,13 @@ import * as d3Base from "d3";
             .style("fill", "rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
             .on("mouseover", function(d) {
-              self.highlight_year(d)
+              self.highlight_year(d, self.isPlaying)
             })
             .on("mousemove", function(d){
-              //let mouse_x = self.loc_fire_chart.x
-              //let mouse_y = self.loc_fire_chart.y
-              self.mousemove(d)  /* , mouse_x, mouse_y */
+              self.mousemove(d)
             })
             .on("mouseout", function(d) {
-              self.dehighlight_year(d)
+              self.dehighlight_year(d, self.isPlaying)
             })
 
           // add play button
@@ -1048,26 +1042,32 @@ import * as d3Base from "d3";
         createPlayButton(chart) {
           const self = this;
 
+          // append button svg to chart
           let button = chart.append("g")
             .attr("transform", "translate(" + 0 + "," + 0 + ")")
             .attr("class", "play_button")
 
+          // add background rectangle with rounded edges
           button
             .append("rect")
               .attr("width", 50)
               .attr("height", 50)
               .attr("rx", 4)
-              .style("fill", '#fa6d31');
+              .style("fill", 'rgb(250,109,49)');
 
+          // add arrow
           button
             .append("path")
               .attr("d", "M15 10 L15 40 L35 25 Z")
               .style("fill", "#ffffff");
 
+          // append hover title
           button
             .append("title")
               .text("replay animation")
 
+          // append click event to trigger animation
+          // IF animation is not already playing
           button
             .on("mousedown", function() {
               self.pressButton(self.isPlaying)
@@ -1077,44 +1077,25 @@ import * as d3Base from "d3";
         pressButton(playing) {
           const self = this;
 
-          if (playing == true) {
-            console.log("already playing")
-          } else {
+          // trigger animation if animation is not already playing
+          if (playing == false) {
             self.animateChart_Map()
           }
         },
         resetPlayButton() {
           const self = this;
 
+          // reset global playing variable to false now that animation is complete
           self.isPlaying = false;
 
+          // undim button
           let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
-            .style("fill", '#fa6d31')
+            .style("fill", 'rgb(250,109,49)')
 
         },
         makeFireInteractive(csv_burn) {
           const self = this;
           
-          // // add tooltip to map svg
-          // // find root svg element
-          // var svg_fire_map = document.querySelector('.firemap')
-          // // create a SVGPoint for future math
-          // // var pt_fire_map = svg_fire_map.createSVGPoint();
-          // // function to get point in global SVG space
-          // function cursorPoint_fire_map(evt) {
-          //    pt_fire_map.x = evt.clientX; pt_fire_map.y = evt.clientY;
-          //    return pt_fire_map.matrixTransform(svg_fire_map.getScreenCTM().inverse());
-          // }
-          // // reset coordinates when mouse moves over chart svg
-          // svg_fire_map.addEventListener('mousemove', function(evt){
-          //    self.loc_fire_map = cursorPoint_fire_map(evt);
-          // }, false);
-
-          // // add tooltip as text element appended to basemap svg, without coordinates
-          // let svgMap = this.d3.select('#firemap')
-          // var tooltip = svgMap.append("text")
-          //   .attr("class", "tooltip")
-
           // append data to fire perimeters
           var fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
             .data(csv_burn)
@@ -1122,70 +1103,75 @@ import * as d3Base from "d3";
               self.highlight_year(d)
             })
             .on("mouseover", function(d) {
-              self.highlight_year(d)
+              self.highlight_year(d, self.isPlaying)
             })
             .on("mousemove", function(d){
-              //let mouse_x = self.loc_fire_map.x
-              //let mouse_y = self.loc_fire_map.y
-              self.mousemove(d) /* , mouse_x, mouse_y */
+              self.mousemove(d)
             })
             .on("mouseout", function(d) {
-              self.dehighlight_year(d)
+              self.dehighlight_year(d, self.isPlaying)
             })
 
         },
         mousemove(data) {
           const self = this;
 
-          let data_year = data.YEAR
           let acres_burned = this.d3.format(',')(Math.round(data.area_acres/1000000*10)/10) + ' million acres' /* data.area_acres*10)/10 */
 
-          // bind mouse coordinates and year to tooltip
+          // bind mouse coordinates and acreage to tooltip
           self.tooltip
-            //.attr("y", mouse_y - 10)
-            //.attr("x", mouse_x + 10)
-            .attr("text-align", "left")
             .text(acres_burned)
-            .raise()
         },
-        highlight_year(data){
+        highlight_year(data, playing){
           const self = this;
 
-          // make tooltip visible
-          self.tooltip
-            .style("opacity", 1);
+          // trigger mouseover actions if animation is not already playing
+          if (playing == false) {
+            // make tooltip visible
+            self.tooltip
+              .style("opacity", 1);
 
-          this.d3.selectAll(".fire.year" + data.YEAR)
-            .style("fill", " rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)")
-            .raise();
+            // select all fire perimeters in that year
+            this.d3.selectAll(".fire.year" + data.YEAR)
+              .style("fill", " rgb(250,109,49)")
+              .style("stroke", "rgb(235,98,40)")
+              .raise();
 
-          this.d3.selectAll(".bar.year" + data.YEAR)
-            .style("fill", " rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)");
+            // select the bar chart bar for that year
+            this.d3.selectAll(".bar.year" + data.YEAR)
+              .style("fill", " rgb(250,109,49)")
+              .style("stroke", "rgb(235,98,40)");
 
-          this.d3.selectAll(".label" + data.YEAR)
-            .style("fill", "rgb(250,109,49)")
-            .style("opacity", 1)
-            .raise()
+            // show the text element for that year
+            this.d3.selectAll(".label" + data.YEAR)
+              .style("fill", "rgb(250,109,49)")
+              .style("opacity", 1)
+              .raise()
+          }
         },
-        dehighlight_year(data){
+        dehighlight_year(data, playing){
           const self = this;
 
-          // hide tooltip
-          self.tooltip
-            .style("opacity", 0)
+          // trigger mouseout actions if animation is not already playing
+          if (playing == false) {
+            // hide tooltip
+            self.tooltip
+              .style("opacity", 0)
 
-          this.d3.selectAll(".bar.year" + data.YEAR)
-            .style("fill", "rgba(245,169,60,0.8)")
-            .style("stroke", "rgba(235,156,42,0.8)")
-          this.d3.selectAll(".fire.year" + data.YEAR)
-            .style("fill", "rgba(245,169,60,0.6)")
-            .style("stroke", "rgba(235,156,42,0.6)")
-            .lower()
-          this.d3.selectAll(".label" + data.YEAR)
-            .style("fill", "#ffffff")
-            .lower()
+            // revert color of bars and fire perimeter
+            this.d3.selectAll(".bar.year" + data.YEAR)
+              .style("fill", "rgba(245,169,60,0.8)")
+              .style("stroke", "rgba(235,156,42,0.8)")
+            this.d3.selectAll(".fire.year" + data.YEAR)
+              .style("fill", "rgba(245,169,60,0.6)")
+              .style("stroke", "rgba(235,156,42,0.6)")
+              .lower()
+            
+            // hide year label
+            this.d3.selectAll(".label" + data.YEAR)
+              .style("fill", "#ffffff")
+              .lower()
+          }
         },
         animateChart_Map() {
           const self = this; 
@@ -1199,17 +1185,11 @@ import * as d3Base from "d3";
             .style("fill", "#d6d6d6")
 
           // set parameters for animation transitions
-          let appearDuration = 500
-          let colorDuration = 100
           let animationInterval = 800
+          let colorDuration = 200
+          let appearDuration = animationInterval - colorDuration
           let num_years = 37
           
-          // once animation has completed, reset color of play button
-          button_rect
-            .transition()
-            .delay(animationInterval*num_years)
-            .on("end", self.resetPlayButton);
-
           // select bar chart bars
           let bars = this.d3.selectAll("g").selectAll(".fire-bars")
           
@@ -1235,9 +1215,6 @@ import * as d3Base from "d3";
             .style("stroke", "rgb(235,98,40)")
             .transition()
             .duration(colorDuration)
-            .delay(function(d, i){
-                return 200
-              })
             .style("fill", "rgba(245,169,60,0.8)")
             .style("stroke", "rgba(235,156,42,0.8)") 
             
@@ -1252,6 +1229,7 @@ import * as d3Base from "d3";
           // have fires appear and change color after appearance
           fires
             .transition()
+            .duration(0)
             .delay(function(d, i){
               return i * animationInterval
             })
@@ -1260,7 +1238,7 @@ import * as d3Base from "d3";
             .transition()
             .duration(colorDuration) 
             .delay(function(d, i){
-                return 300
+                return animationInterval - colorDuration
               })
             .style("fill", "rgba(245,169,60,0.8)")
             .style("stroke", "rgba(235,156,42,0.8)")
@@ -1288,6 +1266,12 @@ import * as d3Base from "d3";
               return animationInterval - colorDuration
             })
             .style("fill", "rgba(0,0,0,0)")
+
+          // once animation has completed, reset color of play button
+          button_rect
+            .transition()
+            .delay(animationInterval*num_years)
+            .on("end", self.resetPlayButton);
 
         }
       }
@@ -1353,15 +1337,11 @@ import * as d3Base from "d3";
   stroke-linecap: round; 
   stroke-linejoin: round; 
 }
-.tick {
-  stroke: #cc2323;
-  fill: #cc2323;
-  color: #cc2323;
-}
 .tooltip {
-    fill: #000000;
+    fill: $fireRed;
     font-family: sans-serif;
-    font-size: 0.7em;
+    font-size: 20px;
+    text-align: right;
     font-weight: bold;
     line-height: 1em;
 }
@@ -1369,7 +1349,7 @@ import * as d3Base from "d3";
     font-size: 36px;
     fill: $fireRed;
     font-weight: 500;
-  }
+}
 .IMP  {
   fill: #97c4cf;
   stroke: #82b1bd;
@@ -1377,4 +1357,17 @@ import * as d3Base from "d3";
   opacity:  0.6;
 }
 
+</style>
+<style lang="scss">
+.chartAxisText {
+  fill: #4f4f4f; /* #4f4f4f */
+  font-size: 15px;
+  font-weight: bold;
+}
+.tick text{
+  fill: #4f4f4f;
+}
+.tick {
+  fill: #4f4f4f;
+}
 </style>

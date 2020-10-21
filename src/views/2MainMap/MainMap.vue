@@ -5,7 +5,7 @@
     >
       <div id="main-map-header">
         <h2>Wildfires pose a <span class="lowlight">growing risk</span> to our Nation’s water supplies</h2>
-        <p>The 2020 wildfire season is stark evidence that wildfires are changing the landscape of America . Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and recent massive wildfires demonstrate that the risk extends throughout our Nation. So far in 2020, over 7,000,000 acres (~28,000 km2) of the western USA have been burned by wildfires, costing nearly $2 billion to suppress.</p>
+        <p>Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and this trend is predicted to continue. The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Nearly $2 billion has been spent to suppress these fires, and thousands of people have evacuated their homes.</p>
       </div>
       <div id="map-container">
         <svg
@@ -1504,9 +1504,10 @@
             style="font-size: 16px;"
           >Area burned (sq mi)</text>
         </svg> 
+        <p class="caption">Data from _____.</p>
       </div>       
       <div>
-        <p>However, the costs don’t stop when the flames go out; wildfires can have enormous costs to human lives, property, and infrastructure – as well as our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
+        <p>However, financial and societal costs don’t stop when the flames go out. Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
       </div>      
     </div>
   </section>

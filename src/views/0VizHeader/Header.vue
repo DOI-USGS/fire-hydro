@@ -4,7 +4,7 @@
       <div class="text-content">
         <h1>{{ title }}</h1>
         <p id="subheader">
-          Post wildfire, burned landscapes respond to rain as though they are covered in plastic wrap   . USGS hydrologists are studying what that means for water supply in the Western United States.
+          Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the USGS is working to measure and predict post-fire water quality and quantity. 
         </p>
       </div>
       <div id="annotate-container">

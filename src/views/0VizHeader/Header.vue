@@ -10,9 +10,9 @@
       <div id="annotate-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 303.96 154.98"
+          viewBox="0 0 350 450"
         >
-          <g transform="translate(120 80)">
+          <g transform="translate(160 320)">
             <rect
               id="box-2020"
               width="150"
@@ -623,23 +623,23 @@ select{
       float: left;
     }
 #annotate-container{
-  width: 350px;
+  width: 380px;
   float: right;
   @media screen and (max-width: 1000px) {
-          margin-top: 0px;
+          margin-top: 40px;
 
       }
       @media screen and (max-width: 800px) {
-          margin-top: -25px;
+          margin-top: 120px;
           width:300px;
       }
       @media screen and (max-width: 600px) {
-          margin-top: -70px;
-          width:250px;
+          margin-top: 180px;
+          width:270px;
       }
       @media screen and (max-width: 400px) {
-          margin-top: -50px;
-          width:200px;
+          margin-top: 0px;
+          width:250px;
       }
 }
 

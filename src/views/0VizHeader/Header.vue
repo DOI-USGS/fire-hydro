@@ -9,7 +9,7 @@
       </div>
       <div id="annotate-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303.96 154.98">
-          <g  transform="translate(120 80)" >
+          <g  transform="translate(120 80)" id="burn_2020" >
               <rect id="box-2020" width="150" height="60" style="fill: rgb(245,169,60)"/>
               <text id="text-2020" transform="translate(7.55 19.61)" style="font-size: 1.2em; font-weight: 200" >Over 8 million acres <tspan x="0" y="15">have burned in 2020, <tspan x="0" y="30">the most on record</tspan></tspan></text>
               <g id="arrow-2020" transform="translate(155 35)">
@@ -94,6 +94,7 @@ import * as d3Base from "d3";
         mounted() {
           this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
           this.makeChartMorph(); // begin script when window loads
+          this.update();
         },
       methods: {
         setPanels() {
@@ -185,6 +186,44 @@ import * as d3Base from "d3";
                       {x: 97.22, y: 88}, 
                       {x: 100.0, y: 0}];
 
+          var dataLine_mean = [[0, 99], 
+                      [2.78, 90], 
+                      [5.56, 97], 
+                      [8.33, 90], 
+                      [11.11, 61], 
+                      [13.88, 100], 
+                      [16.67, 89], 
+                      [19.44, 99], 
+                      [22.22, 90], 
+                      [25.00, 77], 
+                      [27.78, 91], 
+                      [30.56, 91], 
+                      [33.33, 77], 
+                      [36.11, 88], 
+                      [38.89, 97], 
+                      [41.67, 80], 
+                      [44.44, 83], 
+                      [47.22, 93], 
+                      [50.00, 63], 
+                      [52.78, 80], 
+                      [55.55, 89], 
+                      [58.33, 83], 
+                      [61.11, 80], 
+                      [63.89, 71], 
+                      [66.67, 83], 
+                      [69.44, 87], 
+                      [72.22, 94], 
+                      [75.00, 79], 
+                      [77.78, 70], 
+                      [80.56, 79], 
+                      [83.33, 80], 
+                      [86.11, 70], 
+                      [88.88, 83], 
+                      [91.67, 69], 
+                      [94.44, 61], 
+                      [97.22, 88], 
+                      [100.0, 0]];
+
           // empty box for spacing
           var dataBox = [{x: 0, y: 150}, 
                       {x: 2.78, y: 150}, 
@@ -263,7 +302,6 @@ import * as d3Base from "d3";
                       [97.22, 82], 
                       [100.0, 0]];
           
-          
           // draw a line
           var line = this.d3.line();
 
@@ -284,7 +322,6 @@ import * as d3Base from "d3";
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
           makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
 
-
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
           .attr("width", "0")
@@ -294,7 +331,7 @@ import * as d3Base from "d3";
             .attr("width", "350")
             .attr("fill", "rgb(245,169,60)");
 
-          var dataStart = data_mean;
+          var dataStart = data_burn;
           var dataGroup = [
             [1, 'data_burn', "Total area burned by wildfires"],
             [2, 'data_mean', "Largest wildfires"],
@@ -325,19 +362,25 @@ import * as d3Base from "d3";
               .style("opacity", "1");
               
           //morph path to include burn area over time shape
-          var firstDraw = this.d3.select("#charty")
+          this.d3.select("#charty")
             .transition()
               .delay(1000)
               .duration(3000)
               .attr("d", makeArea(dataStart))
+            .transition()
+              .delay(5000)
+              .duration(2000)
+              .attr("d", makeArea(data_mean))
           
-          dropdown.on("change", )
 
           //animate line drawing across top
-          this.d3.select("#path1")
+          function drawLine(top_line,text_annotate) {
+             top_line
             .attr('d', line(dataLine_burn))
             .attr("stroke", "none")
             .attr("fill", "none")
+            .attr("stroke-miterlimit", "10")
+            .attr("stroke-width","1px")
             .attr("stroke-dasharray","1000px")
             .attr("stroke-dashoffset","1000px")
             .transition()
@@ -346,37 +389,26 @@ import * as d3Base from "d3";
               .attr("stroke","rgb(245,169,60)")
               .attr("stroke-linejoin", "miter")
               .attr("stroke-dashoffset","0px")
-              .attr("stroke-miterlimit", "10")
-              .attr("stroke-width","1px");
+            .transition()
+              .attr('d', line(dataLine_mean))
+              .delay(4000)
+              .duration(2000)
+              .attr("stroke","rgb(245,169,60)");
 
-          /* dropdown
-            .selectAll('myOptions')
-              .data(dataGroup)
-              .enter()
-              .append('option')
-              .text((d) => d[2]) // text in the menu
-              .attr("value", (d) => d[1]); // value returned */
+              text_annotate
+              .transition()
+                .delay(9000)
+                .duration(1000)
+                .attr("opacity", 0)
+
+          };
+         drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"));
 
           makeElementAppear(dropdown, 4000, 1000);
 
-          //function to morph to mean
-          function updateChart(myData){
-            this.d3.select("#charty")
-            .transition()
-              .duration(3000)
-              .attr("d", makeArea(myData))
-          };
 
-          /* //run function when selected
-          dropdown.on("change", function(d) {
-             // recover the option that has been chosen
-              var selectedOption = this.d3.select(data).property("value")
-              console.log(selectedOption)
-
-              // run the updateChart function with this selected option
-              updateChart(selectedOption)
-            }); */
         }
+        
       }
     };
 </script>

@@ -12,10 +12,7 @@
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 303.96 154.98"
         >
-          <g
-            id="burn_2020"
-            transform="translate(120 80)"
-          >
+          <g transform="translate(120 80)">
             <rect
               id="box-2020"
               width="150"

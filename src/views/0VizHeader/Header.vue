@@ -43,7 +43,7 @@
     </div> 
     <div id="time-title">
       
-      <select id="dataDrop"></select>
+      <!-- <select id="dataDrop"></select> -->
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
@@ -53,12 +53,24 @@
           class="timeline-title-box"
           x="0"
           y="-5"
-          height="40"
+          height="60"
         />
+        <text
+          class="text-swap"
+          x="7"
+          y="24"
+          style="font-size: 1.4em; font-weight: 600"
+        >Area burned by wildfires</text>
+        <text
+          class="text-swap-mean"
+          x="7"
+          y="24"
+          style="font-size: 1.4em; font-weight: 600"
+        >Average wildfire size</text>
         <text
           class="timeline-title"
           x="7"
-          y="24"
+          y="44"
           style="font-size: 1.4em; font-weight: 600"
         >in the western U.S. from 1984 to 2020</text>
       
@@ -223,6 +235,43 @@ import * as d3Base from "d3";
                       [94.44, 61], 
                       [97.22, 88], 
                       [100.0, 0]];
+           var dataLine_max = [[0, 98], 
+                      [2.78, 89], 
+                      [5.56, 94], 
+                      [8.33, 94], 
+                      [11.11, 53], 
+                      [13.88, 99], 
+                      [16.67, 93], 
+                      [19.44, 87], 
+                      [22.22, 86], 
+                      [25.00, 97], 
+                      [27.78, 84], 
+                      [30.56, 97], 
+                      [33.33, 79], 
+                      [36.11, 100], 
+                      [38.89, 98], 
+                      [41.67, 78], 
+                      [44.44, 78], 
+                      [47.22, 93], 
+                      [50.00, 92], 
+                      [52.78, 87], 
+                      [55.55, 97], 
+                      [58.33, 86], 
+                      [61.11, 73], 
+                      [63.89, 44], 
+                      [66.67, 85], 
+                      [69.44, 91], 
+                      [72.22, 71], 
+                      [75.00, 79], 
+                      [77.78, 46], 
+                      [80.56, 85], 
+                      [83.33, 73], 
+                      [86.11, 84], 
+                      [88.88, 83], 
+                      [91.67, 63], 
+                      [94.44, 78], 
+                      [97.22, 90], 
+                      [100.0, 0]];
 
           // empty box for spacing
           var dataBox = [{x: 0, y: 150}, 
@@ -319,8 +368,17 @@ import * as d3Base from "d3";
             .duration(time_dur)
               .style("opacity", "1")
           }
+          function makeElementDisppear(timeElement,delay, time_dur){
+            timeElement
+            .style("opacity", "1")
+            .transition()
+            .delay(delay)
+            .duration(time_dur)
+              .style("opacity", "0")
+          }
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
           makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
+          makeElementAppear(this.d3.select(".text-swap"), 4000, 1000);
 
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
@@ -338,7 +396,7 @@ import * as d3Base from "d3";
             [3, 'dataBox', "Average wildfire area"]];
 
           //drop down menu to change data
-          var dropdown = this.d3.select("#dataDrop")
+         /*  var dropdown = this.d3.select("#dataDrop")
 
           var options = dropdown.selectAll('option')
             .data(dataGroup)
@@ -351,7 +409,7 @@ import * as d3Base from "d3";
             return(d[1] === dataStart)
           });
 
-          dropdown.on("change", function(d) {console.log(d)});
+          dropdown.on("change", function(d) {console.log(d)}); */
 
           // Add the initial path for area using negative space
           this.d3.select("#crop-shape")
@@ -366,15 +424,17 @@ import * as d3Base from "d3";
             .transition()
               .delay(1000)
               .duration(3000)
-              .attr("d", makeArea(dataStart))
-            .transition()
+              .attr("d", makeArea(dataStart));
+            /* .transition()
               .delay(5000)
               .duration(2000)
-              .attr("d", makeArea(data_mean))
-          
+              .attr("d", makeArea(data_mean)) */
+
+          this.d3.select(".text-swap-mean")
+          .attr("fill","none");
 
           //animate line drawing across top
-          function drawLine(top_line,text_annotate) {
+          function drawLine(top_line,text_annotate, title_text_burn, title_text_mean) {
              top_line
             .attr('d', line(dataLine_burn))
             .attr("stroke", "none")
@@ -388,21 +448,35 @@ import * as d3Base from "d3";
               .duration(2000)
               .attr("stroke","rgb(245,169,60)")
               .attr("stroke-linejoin", "miter")
-              .attr("stroke-dashoffset","0px")
-            .transition()
+              .attr("stroke-dashoffset","0px");
+            /* .transition()
               .attr('d', line(dataLine_mean))
               .delay(4000)
               .duration(2000)
               .attr("stroke","rgb(245,169,60)");
-
-              text_annotate
+ */
+      /*         text_annotate
               .transition()
                 .delay(9000)
                 .duration(1000)
                 .attr("opacity", 0)
 
+              title_text_burn
+              .transition()
+                .delay(9000)
+                .duration(500)
+                .attr("opacity", 0)
+
+              title_text_mean
+              .attr("opacity", 0)
+              .transition()
+                .delay(9500)
+                .duration(1000)
+                .attr("fill","black")
+                .attr("opacity", 1); */
+
           };
-         drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"));
+         drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"), this.d3.select(".text-swap"), this.d3.select(".text-swap-mean"));
 
           makeElementAppear(dropdown, 4000, 1000);
 

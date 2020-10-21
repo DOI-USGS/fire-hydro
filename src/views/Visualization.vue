@@ -109,7 +109,7 @@
 
   .caption {
     font-style: italic;
-    font-size: .8em;
+    font-size: .9em;
     padding: 0 4em 0 4em;
     margin: auto;
     text-align: left;

@@ -4,7 +4,7 @@
       <div class="text-content">
         <h1>{{ title }}</h1>
         <p id="subheader">
-          Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. <br><br>In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the USGS is working to measure and predict post-fire water quality and quantity. 
+          Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. <br><br>In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the U.S. Geological Survey is working to measure and predict post-fire water quality and quantity. 
         </p>
       </div>
       <div id="annotate-container">
@@ -110,7 +110,7 @@
       class="text-content"
     >
       <p class="byline">
-        U.S. Geological Survey<br>Water Mission Area
+        U.S. Geological Survey<br>Water Resources Mission Area
       </p>
     </div>
   </div>

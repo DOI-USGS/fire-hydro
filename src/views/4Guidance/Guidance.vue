@@ -109,7 +109,6 @@
         <li>Real-time monitoring networks</li>
       </ul>
     </div>
-    
   </section>
 </template>
 

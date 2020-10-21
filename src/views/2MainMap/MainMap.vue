@@ -1504,8 +1504,12 @@
             style="font-size: 16px;"
           >Area burned (sq mi)</text>
         </svg> 
-        <h3 class="caption bold-caption"><span class="lowlight">Click or hover</span> over a bar or fire perimeter to view data for that year.</h3>
-        <p class="caption"><a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">Wildfire perimeter data</a> from National Interagency Fire Center, 1984-2020. <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">Forested watershed data</a> from US Department of Agriculture's Forest to Faucets.</p>
+        <h3 class="caption bold-caption">
+          <span class="lowlight">Click or hover</span> over a bar or fire perimeter to view data for that year.
+        </h3>
+        <p class="caption">
+          <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">Wildfire perimeter data</a> from National Interagency Fire Center, 1984-2020. <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">Forested watershed data</a> from US Department of Agriculture's Forest to Faucets.
+        </p>
       </div>       
       <div>
         <p>However, financial and societal costs don’t stop when the flames go out. Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>

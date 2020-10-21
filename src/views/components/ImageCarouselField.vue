@@ -5,7 +5,7 @@
     :autoplay-hover-pause="true"
     :per-page="4"
   >
-      <slide class="slide">
+    <slide class="slide">
       <div class="slider-image-container">
         <picture>
           <!-- <source

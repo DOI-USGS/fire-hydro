@@ -5,6 +5,7 @@
     <MainMap />
     <WaterSupply />
     <Guidance />
+    <NGWOS />
     <Resources />
   </div>
 </template>
@@ -19,6 +20,7 @@
             MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
             WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
             Guidance: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
+            NGWOS: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "ngwos"*/ "./5NGWOS/NGWOS"),
             Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
     }
@@ -182,7 +184,7 @@
 
 
   // List Item Styling
-  ul {
+  ul .styled-li {
     list-style: none; /* Remove default bullets */
   }
 
@@ -190,7 +192,7 @@
     margin: 10px 0;
   }
 
-  ul li::before {
+  .styled-li li::before {
     // content: "🔥";
     content: "■";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
     color: $fireRed; /* Change the color */

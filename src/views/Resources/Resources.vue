@@ -4,7 +4,8 @@
     class="text-content"
   >
     <h2><span class="lowlight">Further Research</span></h2>
-    <ul>
+    <p>For more information about USGS work on wildfires and water supplies, visit the <a href="https://www.usgs.gov/special-topic/fire">Wildland Fire Science</a>, the <a href="https://ca.water.usgs.gov/wildfires/wildfires-water-quality.html">California Water Science Center,</a> or any of the USGS peer-reviewed research on wildfires, some of which is listed below.</p>
+    <ul class="styled-li">
       <li class="research-li">
         Hermes, A.L., Ebel, B.A., Murphy, S.F., Hinckley, E-L. S, 2021, <a href="https://doi.org/10.1016/j.scitotenv.2020.142179">Fates and fingerprints of sulfur and carbon following wildfire in economically important croplands of California, U.S.</a>: Science of the Total Environment, 750, 142179
       </li>
@@ -40,7 +41,7 @@
       </li>
     </ul>
     <h2><span class="lowlight">USGS Data Releases</span></h2>
-    <ul>
+    <ul class="styled-li">
       <li class="research-li">
         Murphy, S.F., McCleskey, R.B., D.A., Holloway, J.M., Writer, J.W., Martin, D.A., and Stricker, C.A., 2020, <a href="https://doi.org/10.5066/P941BIYS">Chemistry of water, stream sediment, wildfire ash, soil, dust, and mine waste for Fourmile Creek Watershed, Colorado, 2010-2019</a>: U.S. Geological Survey Data Release (IP-118730, 6/22/20).
       </li>
@@ -68,8 +69,6 @@
 </script>
 
 <style lang="scss" scoped>
-$chevronLeft: '~@/assets/images/chevron-left.png';
-$chevronDown: '~@/assets/images/chevron-down.png';
 
 // Import Colors
   $white: rgb(255,255,255);
@@ -85,9 +84,12 @@ $chevronDown: '~@/assets/images/chevron-down.png';
   $fireYellowlight: rgba(245,169,60,0.5);
 
 
-#resources-section {
-  margin-bottom: 100px;
-}
+// #resources-section {
+//   margin-bottom: 100px;
+// }
+
+ 
+ 
 
 .research-li {
   margin: 20px 0;

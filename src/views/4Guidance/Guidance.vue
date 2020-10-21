@@ -3,7 +3,7 @@
     <div class="text-content">
       <h2>Guidance for <span class="lowlight">Water Providers</span></h2>
       <p>The rapid conveyance of sediment, ash, and debris to surface water can lead to impaired surface-water quality, loss of reservoir storage, and high costs to water providers and customers. Water supplies in watersheds that have experienced wildfire may face a variety of impacts, such as:</p>
-      <ul>
+      <ul class="styled-li">
         <li>Increased turbidity (sediment) and concentrations of nitrate, phosphorus, dissolved organic carbon, and manganese,</li>
         <li>Sedimentation, eutrophication, and metal mobilization in reservoirs,</li>
         <li>Impaired water-treatment efficiency,</li>
@@ -89,7 +89,7 @@
     </div>
     <div class="text-content">
       <p>Not every watershed faces the same impacts to water supplies. Many factors affect the potential for post-wildfire flooding and water-quality issues in a watershed, such as: </p>
-      <ul>
+      <ul class="styled-li">
         <li>Slope steepness</li>
         <li>Local geology and soil type</li>
         <li>Proportion of watershed burned</li>
@@ -100,7 +100,7 @@
       </ul>
       <h3>Adaptation Strategies</h3>
       <p>Water managers do have tools available to mitigate and adapt to the impacts of wildfires within a watershed. Potential adaptation strategies for water-treatment facilities include:</p>
-      <ul>
+      <ul class="styled-li">
         <li>Fill off-channel water-supply reservoirs prior to high-intensity rainfall season</li>
         <li>Close intakes when forecasts suggest high-intensity rain storms</li>
         <li>Establish alternative water supplies</li>

@@ -1,7 +1,7 @@
 <template>
   <div id="visualization">
     <Header />
-    <Intro />
+    <!-- <Intro /> -->
     <MainMap />
     <WaterSupply />
     <Conclusion />
@@ -15,7 +15,7 @@
         name: 'Visualization',
         components: {
             Header: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "header"*/ "./0VizHeader/Header"),
-            Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
+            // Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
             MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
             WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
             Conclusion: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "conclusion"*/ "./4Conclusion/Conclusion"),

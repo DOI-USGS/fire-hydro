@@ -4,7 +4,7 @@
       <div class="text-content">
         <h1>{{ title }}</h1>
         <p id="subheader">
-          Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the USGS is working to measure and predict post-fire water quality and quantity. 
+          Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. <br><br>In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the USGS is working to measure and predict post-fire water quality and quantity. 
         </p>
       </div>
       <div id="annotate-container">
@@ -22,7 +22,7 @@
             <text
               id="text-2020"
               transform="translate(7.55 19.61)"
-              style="font-size: 1.2em; font-weight: 200"
+              style="font-size: 1em; font-weight: 200"
             >Over 8 million acres <tspan
               x="0"
               y="15"
@@ -88,19 +88,19 @@
           class="text-swap"
           x="7"
           y="24"
-          style="font-size: 1.4em; font-weight: 600"
+          style="font-size: 1.3em; font-weight: 600"
         >Area burned by wildfires</text>
         <text
           class="text-swap-mean"
           x="7"
           y="24"
-          style="font-size: 1.4em; font-weight: 600"
+          style="font-size: 1.3em; font-weight: 600"
         >Average wildfire size</text>
         <text
           class="timeline-title"
           x="7"
           y="44"
-          style="font-size: 1.4em; font-weight: 600"
+          style="font-size: 1.3em; font-weight: 600"
         >in the western U.S. from 1984 to 2020</text>
       
       </svg>
@@ -534,23 +534,23 @@ import * as d3Base from "d3";
 
     #header {
         position: relative;
-        height: 900px;
+        height: 1200px;
         background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_3000w.jpg);
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
       @media screen and (max-width: 1000px) {
-          height: 950px;
+          height: 1200px;
       }
       @media screen and (max-width: 800px) {
-          height: 800px;
+          height: 1100;
       }
       @media screen and (max-width: 600px) {
-          height: 700px;
+          height: 1200px;
       }
       @media screen and (max-width: 400px) {
-          height: 650px;
+          height: 1000px;
       }
     }
 

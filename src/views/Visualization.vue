@@ -4,7 +4,7 @@
     <!-- <Intro /> -->
     <MainMap />
     <WaterSupply />
-    <Conclusion />
+    <Guidance />
     <Resources />
   </div>
 </template>
@@ -18,7 +18,7 @@
             // Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
             MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
             WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
-            Conclusion: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "conclusion"*/ "./4Conclusion/Conclusion"),
+            Guidance: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
             Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
     }
@@ -108,7 +108,10 @@
   .caption {
     font-style: italic;
     font-size: .8em;
-    padding: 0 2em 0 2em;
+    padding: 0 4em 0 4em;
+    margin: auto;
+    text-align: left;
+    max-width: 700px;
   }
 
   .button-header {
@@ -151,7 +154,7 @@
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
-    max-width: 75%;
+    max-width: 100%;
     margin: auto;
   }
 
@@ -159,6 +162,7 @@
     flex: 1;
     align-self: center;
     text-align: center;
+    max-width: 90%;
   }
 
   .flex-item img {
@@ -177,6 +181,24 @@
   }
 
 
+  // List Item Styling
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+
+  li {
+    margin: 10px 0;
+  }
+
+  ul li::before {
+    // content: "🔥";
+    content: "■";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: $fireRed; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1.5em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+  }
 
 
  // Link Styling

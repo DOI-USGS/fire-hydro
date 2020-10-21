@@ -7,10 +7,9 @@
           Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. <br><br>In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the USGS is working to measure and predict post-fire water quality and quantity. 
         </p>
       </div>
-      <div id="spacer">
-        </div>
       <div id="annotate-container">
         <svg
+        id="annotate-svg"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 150"
         >
@@ -620,41 +619,9 @@ select{
           width: 100vw;
       }
     }
-    #dataDrop {
-      width: 280px;
-      float: left;
-    }
-    #spacer {
-      height: 210px;
-       @media screen and (max-width: 1000px) {
-          height: 270px;
-      }
-      @media screen and (max-width: 800px) {
-         height: 180px;
-      }
-      @media screen and (max-width: 650px) {
-          height: 80px;
-      }
-      @media screen and (max-width: 600px) {
-          height: 350px;
-      }
-      @media screen and (max-width: 540px) {
-          height: 300px;
-      }
-      @media screen and (max-width: 492px) {
-          height: 0px;
-          margin-top: 220px;
-      }
-      @media screen and (max-width: 400px) {
-          height: 0px;
-          margin-top: 90px;
-      }
-      @media screen and (max-width: 350px) {
-          height: 0px;
-          margin-top: 50px;
-      }
-
-
+    #annotate-svg {
+      position: absolute;
+      bottom: 200px;
     }
 #annotate-container{
   width: 200px;

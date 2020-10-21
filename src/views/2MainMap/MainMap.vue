@@ -984,7 +984,7 @@ import * as d3Base from "d3";
             .select(".domain").remove()
 
           // set the size and styling of the y axis tick mark lines
-          chart.selectAll(".tick line").attr("stroke-width", 1).attr("stroke-dasharray", ("1, 3"))
+          chart.selectAll(".tick line").attr("stroke-width", 1).attr("stroke-dasharray", ("1, 15")).attr("opacity","0.5")
 
           // place the x axis title
           chart.select(".chartAxis.bottom")

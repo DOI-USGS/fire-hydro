@@ -55,7 +55,7 @@
           >
         </picture>
         <p class="caption">
-          Sediment from the Zaca Fire runoff has filled in much of the reservoir and reduced its water holding capacity Credit: Doc Searls, CC
+          Sediment carried by overland flow after the Zaca Fire has filled in and reduced the water holding capacity of reservoirs that provide water to Santa Barbara, CA Credit: Doc Searls, CC
         </p>
       </div>
     </div>

@@ -10,7 +10,7 @@
         <li>Stream habitat alteration, or</li>
         <li>Fish kills</li>
       </ul>
-      <p>After the Buffalo Creek Fire in 1996 and the <a href="https://pubs.usgs.gov/sir/2012/5267/pdf/sir2012-5267.pdf">Hayman Fire</a> in 2002, substantial sediment loads were delivered to a downstream reservoir that provides water to millions of people in and near Denver, Colorado. Over <a href="https://pubs.usgs.gov/wri/2001/4122/report.pdf">$26 million</a> was then spent on dredging the sediment to restore water storage capacity of the reservoir. After the Zaca fire in 2007, water treatment costs for the City of Santa Barbara, California, <a href="https://www.waterboards.ca.gov/drinking_water/programs/districts/docs/mendocino/05_jdensmore_post_fire_impacts_wq_treatment.pdf">increased by a factor of 60,</a> from $33,000 to $2.1 million per year.</p>
+      <p>After the <a href="https://www.usgs.gov/media/images/burned-watersheds-buffalo-creek-alluvial-fan">Buffalo Creek Fire</a> in 1996 and the <a href="https://pubs.usgs.gov/sir/2012/5267/pdf/sir2012-5267.pdf">Hayman Fire</a> in 2002, substantial sediment loads were delivered to a downstream reservoir that provides water to millions of people in and near Denver, Colorado. Over <a href="https://pubs.usgs.gov/wri/2001/4122/report.pdf">$26 million</a> was then spent on dredging the sediment to restore water storage capacity of the reservoir. After the <a href="https://earthobservatory.nasa.gov/images/event/18845/zaca-wildfire-southern-california">Zaca Fire</a> in 2007, water treatment costs for the City of Santa Barbara, California, <a href="https://www.waterboards.ca.gov/drinking_water/programs/districts/docs/mendocino/05_jdensmore_post_fire_impacts_wq_treatment.pdf">increased by a factor of 60,</a> from $33,000 to $2.1 million per year.</p>
     </div>
     
     <div
@@ -37,7 +37,7 @@
           >
         </picture>
         <p class="caption">
-          As a consequence of the Buffalo Creek wildfire, a 100-year rainstorm in July 1996 caused erosion upstream and deposition of this alluvial fan at the mouth of a tributary to Buffalo Creek. Credit: R.H. Meade, USGS
+          A rainstorm in July 1996 caused erosion inside the Buffalo Creek wildfire burn scar, which deposited this alluvial fan at the mouth of a tributary to Buffalo Creek. Credit: R.H. Meade, USGS
         </p>
       </div>
       <div class="flex-item">
@@ -60,7 +60,7 @@
           >
         </picture>
         <p class="caption">
-          Sediment from the Zaca Fire runoff has filled in much of the reservoir and reduced its water holding capacity Credit: Doc Searls, CC
+          Sediment carried by overland flow after the Zaca Fire has filled in and reduced the water holding capacity of reservoirs that provide water to Santa Barbara, CA Credit: Doc Searls, CC
         </p>
       </div>
       <div class="flex-item">
@@ -83,7 +83,7 @@
           >
         </picture>
         <p class="caption">
-          Wildfire debris carrying high levels of manganese filled the Strontia Springs reservoir outside of Denver, CO. Credit: John Moody, USGS
+          Wildfire debris carrying high levels of manganese filled the Strontia Springs reservoir outside of Denver, CO after the Fourmile Canyon Fire in 2010. Credit: John Moody, USGS
         </p>
       </div>
     </div>

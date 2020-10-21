@@ -1319,18 +1319,22 @@ import * as d3Base from "d3";
 
 }
 #map-container {
-  padding: 2em 0 2em 0;
-  margin-left: 1vw;
-  margin-right: 1vw;
-
-  svg {
+  padding: 4em 0 4em 0;
+  svg { 
     fill: none;
-    width: 110%;
+    width: 100%;
+  }
+  @media screen and (min-width: 800px) {
+    width: 80%;
+    margin: auto;
   }
 }
+
+
 #firemap  {
   width: 1000px;
   height: auto;
+  padding: 0 4em 0 4em;
 }
 .fire {
   stroke-width: 0.5px;

@@ -4,7 +4,7 @@
     class="text-content"
   >
     <h2><span class="lowlight">Further Research</span></h2>
-    <p>For more information about USGS work on wildfires and water supplies, visit the <a href="https://www.usgs.gov/special-topic/fire">Wildland Fire Science</a>, the <a href="https://ca.water.usgs.gov/wildfires/wildfires-water-quality.html">California Water Science Center,</a> or any of the USGS peer-reviewed research on wildfires, some of which is listed below.</p>
+    <p>For more information about USGS work on wildfires and water supplies, visit <a href="https://www.usgs.gov/special-topic/fire">Wildland Fire Science</a>, the <a href="https://ca.water.usgs.gov/wildfires/wildfires-water-quality.html">California Water Science Center,</a> or any of the USGS peer-reviewed research on wildfires, some of which is listed below.</p>
     <ul class="styled-li">
       <li class="research-li">
         Hermes, A.L., Ebel, B.A., Murphy, S.F., Hinckley, E-L. S, 2021, <a href="https://doi.org/10.1016/j.scitotenv.2020.142179">Fates and fingerprints of sulfur and carbon following wildfire in economically important croplands of California, U.S.</a>: Science of the Total Environment, 750, 142179

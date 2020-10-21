@@ -51,10 +51,11 @@
         </svg>
       </div>
       <div id="time_line" />
+      
       <svg
         id="crop-shape"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 150"
+        viewBox="0 0 100 120"
         preserveAspectRatio="none"
       >
         <path id="path1" />
@@ -63,7 +64,7 @@
         <rect
           id="white-block"
           width="100"
-          height="90"
+          height="120"
           x="0"
           y="100"
           style="fill:white; stroke: white;"
@@ -71,23 +72,37 @@
       </svg>
     </div> 
     <div id="time-title">
+      
+      <!-- <select id="dataDrop"></select> -->
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 600 50"
+        viewBox="0 0 350 50"
       >
         <rect
           class="timeline-title-box"
           x="0"
           y="-5"
-          height="40"
+          height="60"
         />
+        <text
+          class="text-swap"
+          x="7"
+          y="24"
+          style="font-size: 1.4em; font-weight: 600"
+        >Area burned by wildfires</text>
+        <text
+          class="text-swap-mean"
+          x="7"
+          y="24"
+          style="font-size: 1.4em; font-weight: 600"
+        >Average wildfire size</text>
         <text
           class="timeline-title"
           x="7"
-          y="24"
-          style="font-size: 1.6em; font-weight: 600"
-        >Area burned by wildfires in the western U.S. from 1984 to 2020</text>
+          y="44"
+          style="font-size: 1.4em; font-weight: 600"
+        >in the western U.S. from 1984 to 2020</text>
       
       </svg>
     </div>
@@ -121,6 +136,7 @@ import * as d3Base from "d3";
         mounted() {
           this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
           this.makeChartMorph(); // begin script when window loads
+          this.update();
         },
       methods: {
         setPanels() {
@@ -134,9 +150,9 @@ import * as d3Base from "d3";
         makeChartMorph() {
           const self = this;
 
-          // create data
-          //this would be better if read in directly from csv
-          var data = [{x: 0, y: 89}, 
+          // create data - this would be better if read in directly from csv
+          //data for area chart - area burned
+          var data_burn = [{x: 0, y: 89}, 
                       {x: 2.78, y: 70}, 
                       {x: 5.56, y: 84}, 
                       {x: 8.33, y: 80}, 
@@ -173,6 +189,121 @@ import * as d3Base from "d3";
                       {x: 94.44, y: 34}, 
                       {x: 97.22, y: 82}, 
                       {x: 100.0, y: 0}];
+
+          var data_mean = [{x: 0, y: 99}, 
+                      {x: 2.78, y: 90}, 
+                      {x: 5.56, y: 97}, 
+                      {x: 8.33, y: 90}, 
+                      {x: 11.11, y: 61}, 
+                      {x: 13.88, y: 100}, 
+                      {x: 16.67, y: 89}, 
+                      {x: 19.44, y: 99}, 
+                      {x: 22.22, y: 90}, 
+                      {x: 25.00, y: 77}, 
+                      {x: 27.78, y: 91}, 
+                      {x: 30.56, y: 91}, 
+                      {x: 33.33, y: 77}, 
+                      {x: 36.11, y: 88}, 
+                      {x: 38.89, y: 97}, 
+                      {x: 41.67, y: 80}, 
+                      {x: 44.44, y: 83}, 
+                      {x: 47.22, y: 93}, 
+                      {x: 50.00, y: 63}, 
+                      {x: 52.78, y: 80}, 
+                      {x: 55.55, y: 89}, 
+                      {x: 58.33, y: 83}, 
+                      {x: 61.11, y: 80}, 
+                      {x: 63.89, y: 71}, 
+                      {x: 66.67, y: 83}, 
+                      {x: 69.44, y: 87}, 
+                      {x: 72.22, y: 94}, 
+                      {x: 75.00, y: 79}, 
+                      {x: 77.78, y: 70}, 
+                      {x: 80.56, y: 79}, 
+                      {x: 83.33, y: 80}, 
+                      {x: 86.11, y: 70}, 
+                      {x: 88.88, y: 83}, 
+                      {x: 91.67, y: 69}, 
+                      {x: 94.44, y: 61}, 
+                      {x: 97.22, y: 88}, 
+                      {x: 100.0, y: 0}];
+
+          var dataLine_mean = [[0, 99], 
+                      [2.78, 90], 
+                      [5.56, 97], 
+                      [8.33, 90], 
+                      [11.11, 61], 
+                      [13.88, 100], 
+                      [16.67, 89], 
+                      [19.44, 99], 
+                      [22.22, 90], 
+                      [25.00, 77], 
+                      [27.78, 91], 
+                      [30.56, 91], 
+                      [33.33, 77], 
+                      [36.11, 88], 
+                      [38.89, 97], 
+                      [41.67, 80], 
+                      [44.44, 83], 
+                      [47.22, 93], 
+                      [50.00, 63], 
+                      [52.78, 80], 
+                      [55.55, 89], 
+                      [58.33, 83], 
+                      [61.11, 80], 
+                      [63.89, 71], 
+                      [66.67, 83], 
+                      [69.44, 87], 
+                      [72.22, 94], 
+                      [75.00, 79], 
+                      [77.78, 70], 
+                      [80.56, 79], 
+                      [83.33, 80], 
+                      [86.11, 70], 
+                      [88.88, 83], 
+                      [91.67, 69], 
+                      [94.44, 61], 
+                      [97.22, 88], 
+                      [100.0, 0]];
+           var dataLine_max = [[0, 98], 
+                      [2.78, 89], 
+                      [5.56, 94], 
+                      [8.33, 94], 
+                      [11.11, 53], 
+                      [13.88, 99], 
+                      [16.67, 93], 
+                      [19.44, 87], 
+                      [22.22, 86], 
+                      [25.00, 97], 
+                      [27.78, 84], 
+                      [30.56, 97], 
+                      [33.33, 79], 
+                      [36.11, 100], 
+                      [38.89, 98], 
+                      [41.67, 78], 
+                      [44.44, 78], 
+                      [47.22, 93], 
+                      [50.00, 92], 
+                      [52.78, 87], 
+                      [55.55, 97], 
+                      [58.33, 86], 
+                      [61.11, 73], 
+                      [63.89, 44], 
+                      [66.67, 85], 
+                      [69.44, 91], 
+                      [72.22, 71], 
+                      [75.00, 79], 
+                      [77.78, 46], 
+                      [80.56, 85], 
+                      [83.33, 73], 
+                      [86.11, 84], 
+                      [88.88, 83], 
+                      [91.67, 63], 
+                      [94.44, 78], 
+                      [97.22, 90], 
+                      [100.0, 0]];
+
+          // empty box for spacing
           var dataBox = [{x: 0, y: 150}, 
                       {x: 2.78, y: 150}, 
                       {x: 5.56, y: 150}, 
@@ -211,8 +342,8 @@ import * as d3Base from "d3";
                       {x: 97.22, y: 150}, 
                       {x: 100.0, y: 150}];
 
-          //this is the same as the area top line
-          var dataLine = [[0, 89], 
+          //this is the same as the area top line but just a line
+          var dataLine_burn = [[0, 89], 
                       [2.78, 70], 
                       [5.56, 84], 
                       [8.33, 80], 
@@ -249,48 +380,16 @@ import * as d3Base from "d3";
                       [94.44, 34], 
                       [97.22, 82], 
                       [100.0, 0]];
-          //lines
+          
+          // draw a line
           var line = this.d3.line();
 
-          //areas
+          //make area chart
           var makeArea = this.d3.area()
               .x(function(d) { return d.x })      // Position of both line breaks on the X axis
               .y1(function(d) { return d.y })     // Y position of top line breaks
               .y0(100);                            // Y position of bottom line breaks (200 = bottom of svg area)
-
-          // Add the initial path for area
-          this.d3.select("#crop-shape")
-            .append('path')
-              .attr("id", "charty")
-              .attr('d', makeArea(dataBox))
-              .style('fill', 'white')
-              .style("opacity", "1");
-              
-          //morph path to burn area over time shape
-          this.d3.select("#charty")
-            .transition()
-              .delay(1000)
-              .duration(3000)
-              .attr("d", makeArea(data))
-
-          //animate line drawing across top
-          this.d3.select("#path1")
-            .attr('d', line(dataLine))
-            .attr("stroke", "none")
-            .attr("fill", "none")
-            .attr("stroke-dasharray","1000px")
-            .attr("stroke-dashoffset","1000px")
-            .attr("stroke-linejoin", "miter")
-            .attr("stroke-miterlimit", "10")
-            .transition()
-              .delay(3000)
-              .duration(2000)
-              .attr("stroke","rgb(245,169,60)")
-              .attr("stroke-linejoin", "miter")
-              .attr("stroke-dashoffset","0px")
-              .attr("stroke-miterlimit", "10")
-              .attr("stroke-width","1px");
-
+          
           function makeElementAppear(timeElement,delay, time_dur){
             timeElement
             .style("opacity", "0")
@@ -299,15 +398,17 @@ import * as d3Base from "d3";
             .duration(time_dur)
               .style("opacity", "1")
           }
+          function makeElementDisppear(timeElement,delay, time_dur){
+            timeElement
+            .style("opacity", "1")
+            .transition()
+            .delay(delay)
+            .duration(time_dur)
+              .style("opacity", "0")
+          }
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
-          makeElementAppear(this.d3.select(".timeline-title"), 5000, 1000);
-/* 
-          this.d3.select(".timeline-title")
-          .attr("fill","none")
-          .transition()
-            .delay(5000)
-            .duration(1000)
-            .attr("fill", "black"); */
+          makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
+          makeElementAppear(this.d3.select(".text-swap"), 4000, 1000);
 
           this.d3.select(".timeline-title-box")
           .attr("fill","none")
@@ -315,11 +416,103 @@ import * as d3Base from "d3";
           .transition()
             .delay(3000)
             .duration(2000)
-            .attr("width", "600")
+            .attr("width", "350")
             .attr("fill", "rgb(245,169,60)");
+
+          var dataStart = data_burn;
+          var dataGroup = [
+            [1, 'data_burn', "Total area burned by wildfires"],
+            [2, 'data_mean', "Largest wildfires"],
+            [3, 'dataBox', "Average wildfire area"]];
+
+          //drop down menu to change data
+         /*  var dropdown = this.d3.select("#dataDrop")
+
+          var options = dropdown.selectAll('option')
+            .data(dataGroup)
+            .enter()
+            .append('option')
+            .attr('value', (d) => d[1])
+            .text((d) => d[2]);
+
+          options.property("selected", function(d) {
+            return(d[1] === dataStart)
+          });
+
+          dropdown.on("change", function(d) {console.log(d)}); */
+
+          // Add the initial path for area using negative space
+          this.d3.select("#crop-shape")
+            .append('path')
+              .attr("id", "charty")
+              .attr('d', makeArea(dataBox))
+              .style('fill', 'white')
+              .style("opacity", "1");
+              
+          //morph path to include burn area over time shape
+          this.d3.select("#charty")
+            .transition()
+              .delay(1000)
+              .duration(3000)
+              .attr("d", makeArea(dataStart));
+            /* .transition()
+              .delay(5000)
+              .duration(2000)
+              .attr("d", makeArea(data_mean)) */
+
+          this.d3.select(".text-swap-mean")
+          .attr("fill","none");
+
+          //animate line drawing across top
+          function drawLine(top_line,text_annotate, title_text_burn, title_text_mean) {
+             top_line
+            .attr('d', line(dataLine_burn))
+            .attr("stroke", "none")
+            .attr("fill", "none")
+            .attr("stroke-miterlimit", "10")
+            .attr("stroke-width","1px")
+            .attr("stroke-dasharray","1000px")
+            .attr("stroke-dashoffset","1000px")
+            .transition()
+              .delay(3000)
+              .duration(2000)
+              .attr("stroke","rgb(245,169,60)")
+              .attr("stroke-linejoin", "miter")
+              .attr("stroke-dashoffset","0px");
+            /* .transition()
+              .attr('d', line(dataLine_mean))
+              .delay(4000)
+              .duration(2000)
+              .attr("stroke","rgb(245,169,60)");
+ */
+      /*         text_annotate
+              .transition()
+                .delay(9000)
+                .duration(1000)
+                .attr("opacity", 0)
+
+              title_text_burn
+              .transition()
+                .delay(9000)
+                .duration(500)
+                .attr("opacity", 0)
+
+              title_text_mean
+              .attr("opacity", 0)
+              .transition()
+                .delay(9500)
+                .duration(1000)
+                .attr("fill","black")
+                .attr("opacity", 1); */
+
+          };
+         drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"), this.d3.select(".text-swap"), this.d3.select(".text-swap-mean"));
+
+          makeElementAppear(dropdown, 4000, 1000);
 
 
         }
+        
       }
     };
 </script>
@@ -362,6 +555,28 @@ import * as d3Base from "d3";
       }
     }
 
+#time-title {
+  #dataDrop {
+    margin-top: 0px;
+    color: black;
+    z-index:1;
+    display: block;
+    width: 280px;;
+    font-weight: 600;
+  }
+
+  #axes-svg{
+    display: block;
+    z-index:0;
+  }
+
+}
+
+select{
+  font-size: 1.4em;
+  border:0;
+  padding: .2em;
+}
     #header p {
       color: white;
     }
@@ -375,7 +590,6 @@ import * as d3Base from "d3";
         bottom: 0;
         width: 100%;
         height: 250px;
- 
     }
 
 
@@ -399,14 +613,15 @@ import * as d3Base from "d3";
     }
 
     #time-title {
-      width: 600px;
+      width: 350px;
       float: left;
-
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 350px) {
           width: 100vw;
-
       }
-
+    }
+    #dataDrop {
+      width: 280px;
+      float: left;
     }
 #annotate-container{
   width: 350px;

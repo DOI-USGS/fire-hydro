@@ -9,13 +9,14 @@
       </div>
       <div id="annotate-container">
         <svg
+        id="annotate-svg"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 303.96 154.98"
+          viewBox="0 0 200 150"
         >
-          <g transform="translate(120 80)">
+          <g transform="translate(10 0)">
             <rect
               id="box-2020"
-              width="150"
+              width="160"
               height="60"
               style="fill: rgb(245,169,60)"
             />
@@ -76,7 +77,7 @@
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 350 50"
+        viewBox="0 0 450 50"
       >
         <rect
           class="timeline-title-box"
@@ -415,7 +416,7 @@ import * as d3Base from "d3";
           .transition()
             .delay(3000)
             .duration(2000)
-            .attr("width", "350")
+            .attr("width", "450")
             .attr("fill", "rgb(245,169,60)");
 
           var dataStart = data_burn;
@@ -544,7 +545,7 @@ import * as d3Base from "d3";
           height: 1200px;
       }
       @media screen and (max-width: 800px) {
-          height: 1100;
+          height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
@@ -618,28 +619,24 @@ select{
           width: 100vw;
       }
     }
-    #dataDrop {
-      width: 280px;
-      float: left;
+    #annotate-svg {
+      position: absolute;
+      bottom: 200px;
     }
 #annotate-container{
-  width: 350px;
+  width: 200px;
   float: right;
   @media screen and (max-width: 1000px) {
-          margin-top: 100px;
-
+          margin-top: 0px;
       }
       @media screen and (max-width: 800px) {
-          margin-top: -25px;
-          width:300px;
+          width:180px;
       }
       @media screen and (max-width: 600px) {
-          margin-top: -70px;
-          width:250px;
+          width:170px;
       }
       @media screen and (max-width: 400px) {
-          margin-top: -50px;
-          width:200px;
+          width:150px;
       }
 }
 

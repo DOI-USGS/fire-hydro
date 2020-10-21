@@ -116,6 +116,10 @@
     max-width: 700px;
   }
 
+  .bold-caption {
+    margin-bottom: 1em;
+  }
+
   .button-header {
     padding: 10px 0 0 0;
     margin: 0;

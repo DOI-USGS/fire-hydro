@@ -84,9 +84,9 @@
   $fireYellowlight: rgba(245,169,60,0.5);
 
 
-// #resources-section {
-//   margin-bottom: 100px;
-// }
+#resources-section {
+  margin-bottom: 100px;
+}
 
  
  

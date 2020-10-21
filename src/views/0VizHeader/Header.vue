@@ -7,15 +7,17 @@
           Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. <br><br>In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the USGS is working to measure and predict post-fire water quality and quantity. 
         </p>
       </div>
+      <div id="spacer">
+        </div>
       <div id="annotate-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 350 450"
+          viewBox="0 0 200 150"
         >
-          <g transform="translate(160 320)">
+          <g transform="translate(10 0)">
             <rect
               id="box-2020"
-              width="150"
+              width="160"
               height="60"
               style="fill: rgb(245,169,60)"
             />
@@ -544,7 +546,7 @@ import * as d3Base from "d3";
           height: 1200px;
       }
       @media screen and (max-width: 800px) {
-          height: 1100;
+          height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
@@ -622,24 +624,52 @@ select{
       width: 280px;
       float: left;
     }
-#annotate-container{
-  width: 380px;
-  float: right;
-  @media screen and (max-width: 1000px) {
-          margin-top: 40px;
-
+    #spacer {
+      height: 210px;
+       @media screen and (max-width: 1000px) {
+          height: 270px;
       }
       @media screen and (max-width: 800px) {
-          margin-top: 120px;
-          width:300px;
+         height: 180px;
+      }
+      @media screen and (max-width: 650px) {
+          height: 80px;
       }
       @media screen and (max-width: 600px) {
-          margin-top: 180px;
-          width:270px;
+          height: 350px;
+      }
+      @media screen and (max-width: 540px) {
+          height: 300px;
+      }
+      @media screen and (max-width: 492px) {
+          height: 0px;
+          margin-top: 220px;
       }
       @media screen and (max-width: 400px) {
+          height: 0px;
+          margin-top: 90px;
+      }
+      @media screen and (max-width: 350px) {
+          height: 0px;
+          margin-top: 50px;
+      }
+
+
+    }
+#annotate-container{
+  width: 200px;
+  float: right;
+  @media screen and (max-width: 1000px) {
           margin-top: 0px;
-          width:250px;
+      }
+      @media screen and (max-width: 800px) {
+          width:180px;
+      }
+      @media screen and (max-width: 600px) {
+          width:170px;
+      }
+      @media screen and (max-width: 400px) {
+          width:150px;
       }
 }
 

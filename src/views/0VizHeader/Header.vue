@@ -76,7 +76,7 @@
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 350 50"
+        viewBox="0 0 450 50"
       >
         <rect
           class="timeline-title-box"
@@ -415,7 +415,7 @@ import * as d3Base from "d3";
           .transition()
             .delay(3000)
             .duration(2000)
-            .attr("width", "350")
+            .attr("width", "450")
             .attr("fill", "rgb(245,169,60)");
 
           var dataStart = data_burn;
@@ -626,7 +626,7 @@ select{
   width: 350px;
   float: right;
   @media screen and (max-width: 1000px) {
-          margin-top: 100px;
+          margin-top: 0px;
 
       }
       @media screen and (max-width: 800px) {

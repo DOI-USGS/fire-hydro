@@ -841,9 +841,13 @@
             </g>
           </g>
           
-        </svg>      
-      </div>       
-      <div>
+        </svg>     
+      </div>    
+      <div id="caption-container">
+        <p class="bold-caption caption"><span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year. <span class="lowlight">Click the play button</span> to replay the animation.</p>
+        <p class="caption">Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020. Forested watershed data from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">U.S. Department of Agriculture's Forest to Faucets.</a></p>
+      </div>    
+      <div class="text-content">
         <p>However, financial and societal costs don’t stop when the flames go out. Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
       </div>      
     </div>
@@ -1362,7 +1366,7 @@ import * as d3Base from "d3";
 
 }
 #map-container {
-  padding: 4em 0 4em 0;
+  padding: 4em 0 0 0;
   svg { 
     fill: none;
     width: 100%;
@@ -1373,6 +1377,9 @@ import * as d3Base from "d3";
   }
 }
 
+#caption-container{
+  padding: 0 0 4em 0;
+}
 
 #firemap  {
   width: 1000px;

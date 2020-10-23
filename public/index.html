@@ -14,19 +14,19 @@
     <%= process.env.VUE_APP_TIER !== '' ? '<meta name="robots" content="noindex,nofollow">' : '' %><!-- an empty string in this case means the 'prod' version of the application   -->
       <!-- Primary Meta Tags -->
       <title><%= VUE_APP_TIER %><%= VUE_APP_TITLE %></title>
-      <meta name="title" content="FILL THIS OUT">
-      <meta name="description" content="FILL THIS OUT">
+      <meta name="title" content="<%= VUE_APP_TITLE %>">
+      <meta name="description" content="Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the U.S. Geological Survey is working to measure and predict post-fire water quality and quantity.">
       <!-- Open Graph / Facebook -->
       <meta property="og:type" content="website">
-      <meta property="og:url" content="FILL THIS OUT">
-      <meta property="og:title" content="FILL THIS OUT">
-      <meta property="og:description" content="FILL THIS OUT">
+      <meta property="og:url" content="https://labs.waterdata.usgs.gov/visualizations/gages-through-the-ages/fire-hydro">
+      <meta property="og:title" content="<%= VUE_APP_TITLE %>">
+      <meta property="og:description" content="Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the U.S. Geological Survey is working to measure and predict post-fire water quality and quantity.">
       <meta property="og:image" content="FILL THIS OUT">
       <!-- Twitter -->
       <meta property="twitter:card" content="summary_large_image">
-      <meta property="twitter:url" content="FILL THIS OUT">
-      <meta property="twitter:title" content="FILL THIS OUT">
-      <meta property="twitter:description" content="FILL THIS OUT">
+      <meta property="twitter:url" content="https://labs.waterdata.usgs.gov/visualizations/gages-through-the-ages/fire-hydro">
+      <meta property="twitter:title" content="<%= VUE_APP_TITLE %>">
+      <meta property="twitter:description" content="Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the U.S. Geological Survey is working to measure and predict post-fire water quality and quantity.">
       <meta property="twitter:image" content="FILL THIS OUT">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <script type='application/ld+json'>
@@ -69,8 +69,8 @@
         },
         {
           "@type": "Person",
-          "name": "Jordan Read",
-          "email": "jread@usgs.gov",
+          "name": "Brian Ebel",
+          "email": "bebel@usgs.gov",
           "affiliation": {
             "@type": "Organization",
             "legalName": "U.S. Geological Survey"
@@ -78,8 +78,8 @@
         },
         {
           "@type": "Person",
-          "name": "Brian Ebel",
-          "email": "bebel@usgs.gov",
+          "name": "Deborah Martin",
+          "email": "damartin@usgs.gov",
           "affiliation": {
             "@type": "Organization",
             "legalName": "U.S. Geological Survey"

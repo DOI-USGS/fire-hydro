@@ -841,9 +841,13 @@
             </g>
           </g>
           
-        </svg>      
-      </div>       
-      <div>
+        </svg>     
+      </div>    
+      <div id="caption-container">
+        <p class="bold-caption caption"><span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year. <span class="lowlight">Click the play button</span> to replay the animation.</p>
+        <p class="caption">Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020. Forested watershed data from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">U.S. Department of Agriculture's Forest to Faucets.</a></p>
+      </div>    
+      <div class="text-content">
         <p>However, financial and societal costs don’t stop when the flames go out. Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
       </div>      
     </div>
@@ -869,6 +873,7 @@ import * as d3Base from "d3";
             y: null,
             isPlaying: null,
             tooltip: null,
+            yearList: []
           }
         },
        mounted() {
@@ -896,6 +901,9 @@ import * as d3Base from "d3";
         callback(data) {          
           let csv_burn = data[0];
 
+          // populate list of years
+          this.makeYearList(csv_burn);
+
           // add tooltip to map
           this.addTooltip();
 
@@ -912,6 +920,14 @@ import * as d3Base from "d3";
           // animate bar chart and map
           this.animateChart_Map();
 
+        },
+        makeYearList(csv_burn){
+          const self = this;
+
+          for (var i=0; i<csv_burn.length; i++){
+            var val = csv_burn[i]['YEAR'];
+            self.yearList.push(val);
+          };
         },
         addTooltip() {
           const self = this;
@@ -1021,7 +1037,7 @@ import * as d3Base from "d3";
               return x(d.YEAR)
             })
             .on("click", function(d){
-              self.highlight_year(d)
+              self.highlight_year(d, self.isPlaying)
             })
             .style("fill", "rgb(250,109,49)")
             .style("stroke", "rgb(235,98,40)")
@@ -1029,7 +1045,7 @@ import * as d3Base from "d3";
               self.highlight_year(d, self.isPlaying)
             })
             .on("mousemove", function(d){
-              self.mousemove(d)
+              self.mousemove(d, self.isPlaying)
             })
             .on("mouseout", function(d) {
               self.dehighlight_year(d, self.isPlaying)
@@ -1097,30 +1113,33 @@ import * as d3Base from "d3";
           const self = this;
           
           // append data to fire perimeters
-          var fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
+          var fires = this.d3.selectAll(".firemap").selectAll(".fire") /*.selectAll(".fire_perimeters").selectAll("g")*/
             .data(csv_burn)
             .on("click", function(d){
-              self.highlight_year(d)
+              self.highlight_year(d, self.isPlaying)
             })
             .on("mouseover", function(d) {
               self.highlight_year(d, self.isPlaying)
             })
             .on("mousemove", function(d){
-              self.mousemove(d)
+              self.mousemove(d, self.isPlaying)
             })
             .on("mouseout", function(d) {
               self.dehighlight_year(d, self.isPlaying)
             })
 
         },
-        mousemove(data) {
+        mousemove(data, playing) {
           const self = this;
+          
+          // trigger mouseover actions if animation is not already playing
+          if (playing == false) {
+            let acres_burned = this.d3.format(',')(Math.round(data.area_acres/1000000*10)/10) + ' million acres' /* data.area_acres*10)/10 */
 
-          let acres_burned = this.d3.format(',')(Math.round(data.area_acres/1000000*10)/10) + ' million acres' /* data.area_acres*10)/10 */
-
-          // bind mouse coordinates and acreage to tooltip
-          self.tooltip
-            .text(acres_burned)
+            // bind mouse coordinates and acreage to tooltip
+            self.tooltip
+              .text(acres_burned)
+          }
         },
         highlight_year(data, playing){
           const self = this;
@@ -1158,19 +1177,47 @@ import * as d3Base from "d3";
             self.tooltip
               .style("opacity", 0)
 
-            // revert color of bars and fire perimeter
+            // raise previous years of fires and associated text in order
+            for (var i=0; i<self.yearList.length; i++){
+              let current_year = parseFloat(data.YEAR)
+              let selected_year = parseFloat(self.yearList[i])
+              let fire_selected_year = this.d3.selectAll(".fire.year" + selected_year)
+              let text_selected_year = this.d3.selectAll(".label" + selected_year)
+              if (current_year > selected_year) {
+                fire_selected_year.raise();
+                text_selected_year.raise();
+              }
+            };      
+
+            // revert color of bars
             this.d3.selectAll(".bar.year" + data.YEAR)
               .style("fill", "rgba(245,169,60,0.8)")
               .style("stroke", "rgba(235,156,42,0.8)")
+
+            // revert color of fire perimeter and raise to correct position
             this.d3.selectAll(".fire.year" + data.YEAR)
               .style("fill", "rgba(245,169,60,0.6)")
               .style("stroke", "rgba(235,156,42,0.6)")
-              .lower()
-            
-            // hide year label
+              .raise()
+
+            // hide year label and raise to correct position
             this.d3.selectAll(".label" + data.YEAR)
               .style("fill", "#ffffff")
-              .lower()
+              .raise()
+
+            // raise subsequent years of fires and associated text in order
+            for (var i=0; i<self.yearList.length; i++){
+              let current_year = parseFloat(data.YEAR)
+              let selected_year = parseFloat(self.yearList[i])
+              let fire_selected_year = this.d3.selectAll(".fire.year" + selected_year)
+              let text_selected_year = this.d3.selectAll(".label" + selected_year)
+              if (current_year < selected_year) {
+                fire_selected_year.raise();
+                text_selected_year.raise();
+              }
+            };            
+
+
           }
         },
         animateChart_Map() {
@@ -1192,7 +1239,7 @@ import * as d3Base from "d3";
           
           // select bar chart bars
           let bars = this.d3.selectAll("g").selectAll(".fire-bars")
-          
+         
           // reset bars to height of 0 and y of chart_height
           bars
             .attr("y", this.chart_height)
@@ -1219,7 +1266,7 @@ import * as d3Base from "d3";
             .style("stroke", "rgba(235,156,42,0.8)") 
             
           // select fire perimeters
-          let fires = this.d3.selectAll(".firemap").selectAll(".fire_perimeters").selectAll("g")
+          let fires = this.d3.selectAll(".firemap").selectAll(".fire") /*.selectAll(".fire_perimeters").selectAll("g")*/
 
           // reset fires to fill and stroke of none
           fires
@@ -1319,7 +1366,7 @@ import * as d3Base from "d3";
 
 }
 #map-container {
-  padding: 4em 0 4em 0;
+  padding: 4em 0 0 0;
   svg { 
     fill: none;
     width: 100%;
@@ -1330,6 +1377,9 @@ import * as d3Base from "d3";
   }
 }
 
+#caption-container{
+  padding: 0 0 4em 0;
+}
 
 #firemap  {
   width: 1000px;

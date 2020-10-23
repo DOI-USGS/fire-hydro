@@ -12,6 +12,7 @@
           id="annotate-svg"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 150"
+          width="200px" height="150px"
         >
           <g transform="translate(10 0)">
             <rect
@@ -91,12 +92,12 @@
           y="24"
           style="font-size: 1.3em; font-weight: 600"
         >Area burned by wildfires</text>
-        <text
+        <!-- <text
           class="text-swap-mean"
           x="7"
           y="24"
           style="font-size: 1.3em; font-weight: 600"
-        >Average wildfire size</text>
+        >Average wildfire size</text> -->
         <text
           class="timeline-title"
           x="7"

@@ -7,7 +7,7 @@
         <li>Increased turbidity (sediment) and concentrations of nitrate, phosphorus, dissolved organic carbon, and manganese,</li>
         <li>Sedimentation, eutrophication, and metal mobilization in reservoirs,</li>
         <li>Impaired water-treatment efficiency,</li>
-        <li>Stream habitat alteration, or</li>
+        <li>Stream habitat alteration, and/or</li>
         <li>Fish kills</li>
       </ul>
       <p>After the <a href="https://www.usgs.gov/media/images/burned-watersheds-buffalo-creek-alluvial-fan">Buffalo Creek Fire</a> in 1996 and the <a href="https://pubs.usgs.gov/sir/2012/5267/pdf/sir2012-5267.pdf">Hayman Fire</a> in 2002, substantial sediment loads were delivered to a downstream reservoir that provides water to millions of people in and near Denver, Colorado. Over <a href="https://pubs.usgs.gov/wri/2001/4122/report.pdf">$26 million</a> was then spent on dredging the sediment to restore water storage capacity of the reservoir. After the <a href="https://earthobservatory.nasa.gov/images/event/18845/zaca-wildfire-southern-california">Zaca Fire</a> in 2007, water treatment costs for the City of Santa Barbara, California, <a href="https://www.waterboards.ca.gov/drinking_water/programs/districts/docs/mendocino/05_jdensmore_post_fire_impacts_wq_treatment.pdf">increased by a factor of 60,</a> from $33,000 to $2.1 million per year.</p>
@@ -102,11 +102,11 @@
       <p>Water managers do have tools available to mitigate and adapt to the impacts of wildfires within a watershed. Potential adaptation strategies for water-treatment facilities include:</p>
       <ul class="styled-li">
         <li>Fill off-channel water-supply reservoirs prior to high-intensity rainfall season</li>
-        <li>Close intakes when forecasts suggest high-intensity rain storms</li>
+        <li>Close intakes when forecasts predict high-intensity rain storms</li>
         <li>Establish alternative water supplies</li>
-        <li>Pre-sedimentation basins</li>
+        <li>Plan and install pre-sedimentation basins</li>
         <li>Increase sedimentation capacity</li>
-        <li>Real-time monitoring networks</li>
+        <li>Install real-time monitoring networks</li>
       </ul>
     </div>
   </section>

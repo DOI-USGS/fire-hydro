@@ -5,7 +5,7 @@
     <MainMap />
     <WaterSupply />
     <Guidance />
-    <NGWOS />
+    <USGS />
     <Resources />
   </div>
 </template>
@@ -20,7 +20,7 @@
             MainMap: () => import(/*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
             WaterSupply: () => import(/*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
             Guidance: () => import( /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
-            NGWOS: () => import(/*webpackChunkName: "ngwos"*/ "./5NGWOS/NGWOS"),
+            USGS: () => import(/*webpackChunkName: "USGS"*/ "./5USGS/USGS"),
             Resources: () => import(/*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
     }
@@ -108,9 +108,9 @@
  
 
   .caption {
-    font-style: italic;
-    font-size: .9em;
-    padding: 0 4em 0 4em;
+    // font-style: italic;
+    font-size: .8em;
+    padding: 1em 4em 0 4em; 
     margin: auto;
     text-align: left;
     max-width: 700px;
@@ -118,6 +118,7 @@
 
   .bold-caption {
     margin-bottom: 1em;
+    font-style: bold;
   }
 
   .button-header {
@@ -190,6 +191,7 @@
   // List Item Styling
   ul .styled-li {
     list-style: none; /* Remove default bullets */
+    list-style-type: none;
   }
 
   li {

@@ -5,7 +5,7 @@
     >
       <div id="main-map-header">
         <h2>Wildfires pose a <span class="lowlight">growing risk</span> to our Nation’s water supplies</h2>
-        <p>Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and this trend is predicted to continue. The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Nearly $2 billion has been spent to suppress these fires, and thousands of people have evacuated their homes.</p>
+        <p>Wildfire size, fire severity, and length of fire season have increased substantially in the western U.S. over the past few decades, and this trend is predicted to continue. The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8.5 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Over <a href="https://gacc.nifc.gov/sacc/predictive/intelligence/NationalLargeIncidentYTDReport.pdf">$3.2 billion</a> has been spent to suppress fires nationally this year, <a href="https://www.nifc.gov/fireInfo/fireInfo_documents/SuppCosts.pdf">more than any other year,</a> and thousands of people have evacuated their homes.</p>
       </div>
       <div id="map-container">
         <svg
@@ -843,14 +843,17 @@
           
         </svg>     
       </div>    
-      <div id="caption-container">
-        <p class="bold-caption caption"><span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year. <span class="lowlight">Click the play button</span> to replay the animation.</p>
-        <p class="caption">Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020. Important water supply watersheds, based on amount of surface water supply generated and withdrawn (IMP_R >= 50) from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">U.S. Department of Agriculture's Forest to Faucets.</a></p>
-      </div>    
-      <div class="text-content">
-        <p>However, financial and societal costs don’t stop when the flames go out. Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas, yet these forests are susceptible to disturbance by wildfire, which increases risk of flood hazards, erosion, and impaired water quality.</p>
-      </div>      
+      <div id="caption-container flex-container">
+        <p class="bold-caption caption flex-item"><span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year.</p>
+        <p class="bold-caption caption flex-item"><span class="lowlight">Click the play button</span> to replay the animation.</p>
+        <p class="caption">Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020.</p>
+        <p class="caption">Important water supply watersheds, based on amount of surface water supply generated and withdrawn (IMP_R >= 50), from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">U.S. Department of Agriculture's Forest to Faucets.</a></p>
+      </div>       
     </div>
+    <div class="text-content">
+      <p>However, financial and societal costs don’t stop when the flames go out.  Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas. These forests have evolved with fire as an ecological driver, where small seasonal fires are important for nutrient cycling, fuel reduction, and other ecological interactions. But decades of fire suppression has left the forested watersheds susceptible to hotter and bigger fires which increase the risk of flood hazards, erosion, and impaired water quality.</p>
+      
+    </div>   
   </section>
 </template>
 
@@ -1017,7 +1020,7 @@ import * as d3Base from "d3";
             .attr("x", -self.chart_height/2)
             .attr("text-anchor", "middle")
             .attr("class", "chartAxisText left")
-            .text("Acres burned")
+            .text("Acres burned in the West")
             .attr("transform", "rotate(-90)")
 
           // generate bars for bar chart and add mousover functionality
@@ -1367,6 +1370,8 @@ import * as d3Base from "d3";
 }
 #map-container {
   padding: 4em 0 0 0;
+  width: 100%;
+  margin: auto;
   svg { 
     fill: none;
     width: 100%;
@@ -1382,9 +1387,13 @@ import * as d3Base from "d3";
 }
 
 #firemap  {
-  width: 1000px;
+  width: 80%;
   height: auto;
-  padding: 0 4em 0 4em;
+  @media screen and (min-width: 600px) {
+    width: 1000px;
+    margin: auto;
+    padding: 0 4em 0 4em;
+  }
 }
 .fire {
   stroke-width: 0.5px;

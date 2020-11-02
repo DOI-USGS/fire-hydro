@@ -17,11 +17,11 @@
         components: {
             Header: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "header"*/ "./0VizHeader/Header"),
             // Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
-            MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
-            WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
-            Guidance: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
-            NGWOS: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "ngwos"*/ "./5NGWOS/NGWOS"),
-            Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
+            MainMap: () => import(/*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
+            WaterSupply: () => import(/*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
+            Guidance: () => import( /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
+            NGWOS: () => import(/*webpackChunkName: "ngwos"*/ "./5NGWOS/NGWOS"),
+            Resources: () => import(/*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
     }
 </script>

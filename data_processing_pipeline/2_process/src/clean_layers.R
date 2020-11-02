@@ -42,7 +42,7 @@ fire_by_incident <- function(target_name, layer_in, usa_map) {
     st_transform(proj)
   
   fire_years <- do.call(rbind, lapply(unique(fire_in$YEAR), function(x)fire_yr_agg(x, fire_in)))%>%
-    st_intersection(states_map) %>%
+    st_intersection(usa_map) %>%
     st_buffer(0) 
   
   saveRDS(fire_years, target_name)

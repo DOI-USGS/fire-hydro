@@ -14,6 +14,7 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           viewBox="0 0 596.56 58.31"
         >
+        <g id="map-legend-group">
           <text
             transform="translate(190 13.21)"
             class="legend-text"
@@ -211,6 +212,8 @@
             style="fill: #97c4cf; stroke: #82b1bd;"
           />
 
+        </g>
+          
         </svg>
 
         <svg
@@ -1347,11 +1350,18 @@ import * as d3Base from "d3";
 #main-map-section   {
   position: relative;
 }
+
+#map-legend-group {
+  @media screen and (max-width: 600px) {
+    transform: translate(-140px) scale(1.6)
+  }
+}
 .legend-text {
   fill: #4f4f4f;
   font-size:  12px;
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: lighter;
+
 }
 #basemap  {
 

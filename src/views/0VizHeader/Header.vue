@@ -12,7 +12,8 @@
           id="annotate-svg"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 150"
-          width="200px" height="150px"
+          width="200px"
+          height="150px"
         >
           <g transform="translate(10 0)">
             <rect

@@ -5,7 +5,7 @@
     >
       <div id="water-supply-header">
         <h2>How wildfires <span class="lowlight">change watersheds</span></h2>
-        <p>Forests, to a hydrologist’s eye, act as both a sponge and a filter. When rain falls on a forest, trees and other plants use the water to grow and reproduce. Leaves and branches, as well as leaf litter on the forest floor, intercept water before it reaches the ground and protect the soil from erosion. When water reaches the soil, it is soaked up like a sponge thanks to substantial amounts of decomposing organic matter in the soil. The water is slowly released to streams, which helps recharge groundwater aquifers and reduces reduce risks of rapid flooding. As the water moves through soil and rock, sediment and other chemicals are filtered out. Water flowing from forested watersheds often needs only minimal treatment before drinking.</p>
+        <p>Forests, to a hydrologist’s eye, act as both a sponge and a filter. When rain falls on a forest, trees and other plants use the water to grow and reproduce. Leaves and branches, as well as leaf litter on the forest floor, intercept water before it reaches the ground and protect the soil from erosion. When water reaches the soil, it is soaked up like a sponge thanks to substantial amounts of organic matter in the soil. The water is slowly released to streams, which helps recharge groundwater aquifers and reduces reduce risks of rapid flooding. As the water moves through soil and rock, sediment and other chemicals are filtered out. Water flowing from forested watersheds often needs only minimal treatment before drinking.</p>
       </div>
     </div>
     <div

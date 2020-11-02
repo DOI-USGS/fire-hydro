@@ -82,16 +82,16 @@
       >
         <rect
           class="timeline-title-box"
-          x="0"
+          x="20"
           y="-5"
           height="60"
         />
         <text
           class="text-swap"
-          x="7"
+          x="30"
           y="24"
           style="font-size: 1.3em; font-weight: 600"
-        >Area burned by wildfires</text>
+        >Area burned by wildfires in the Western U.S.</text>
         <!-- <text
           class="text-swap-mean"
           x="7"
@@ -100,10 +100,10 @@
         >Average wildfire size</text> -->
         <text
           class="timeline-title"
-          x="7"
+          x="30"
           y="44"
-          style="font-size: 1.3em; font-weight: 600"
-        >in the western U.S. from 1984 to 2020</text>
+          style="font-size: 1em; font-weight: 200"
+        >1984 to 2020</text>
       
       </svg>
     </div>
@@ -446,9 +446,9 @@ import * as d3Base from "d3";
           this.d3.select("#crop-shape")
             .append('path')
               .attr("id", "charty")
-              .attr('d', makeArea(dataBox))
-              .style('fill', 'white')
-              .style("opacity", "1");
+              .attr('d', makeArea(dataBox));
+              // .style('fill', 'white')
+              // .style("opacity", "1");
               
           //morph path to include burn area over time shape
           this.d3.select("#charty")
@@ -571,6 +571,15 @@ import * as d3Base from "d3";
     z-index:0;
   }
 
+}
+
+#charty {
+  fill: white;
+  opacity: 1;
+}
+
+#path1 {
+  stroke-linejoin: miter;
 }
 
 select{

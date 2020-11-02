@@ -31,13 +31,13 @@
           > -->
           <img
             v-img:group-4
-            src="@/assets/images/examples/AlvFan.jpg" 
+            src="@/assets/images/examples/Buffalo-Creek-Fan.jpg" 
             alt="An alluvial fan caused by sediment erosion during a post-wildfire rainstorm near Denver, Colorado."
             loading="lazy"
           >
         </picture>
         <p class="caption">
-          A rainstorm in July 1996 caused erosion inside the Buffalo Creek wildfire burn scar, which deposited this alluvial fan at the mouth of a tributary to Buffalo Creek. Credit: R.H. Meade, USGS
+          A rainstorm in July 1996 caused erosion inside the Buffalo Creek wildfire burn scar, which deposited this alluvial fan at the mouth of a tributary to Buffalo Creek.<br>Credit: R.H. Meade, USGS
         </p>
       </div>
       <div class="flex-item">
@@ -54,36 +54,13 @@
           > -->
           <img
             v-img:group-4
-            src="@/assets/images/fieldphotos/GibraltarReservoir.jpg" 
+            src="@/assets/images/examples/Gibraltar-Reservoir.jpg" 
             alt="Sediment from the Zaca Fire runoff has filled in much of the reservoir and reduced its water holding capacity."
             loading="lazy"
           >
         </picture>
         <p class="caption">
-          Sediment carried by overland flow after the Zaca Fire has filled in and reduced the water holding capacity of reservoirs that provide water to Santa Barbara, CA Credit: Doc Searls, CC
-        </p>
-      </div>
-      <div class="flex-item">
-        <picture>
-          <!-- <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
-            type="image/jpeg"
-            media="(max-width: 1200px)"
-          > -->
-          <img
-            v-img:group-4
-            src="@/assets/images/fieldphotos/DebrisStrontiaSprings.jpg" 
-            alt="Wildfire debris carrying high levels of manganese filled the Strontia Springs reservoir outside of Denver, CO."
-            loading="lazy"
-          >
-        </picture>
-        <p class="caption">
-          Wildfire debris carrying high levels of manganese filled the Strontia Springs reservoir outside of Denver, CO after the Fourmile Canyon Fire in 2010. Credit: John Moody, USGS
+          Sediment carried by overland flow after the Zaca Fire has filled in and reduced the water holding capacity of reservoirs that provide water to Santa Barbara, CA.<br>Credit: Doc Searls, CC
         </p>
       </div>
     </div>
@@ -107,7 +84,7 @@
         <li class="styled-li">Plan and install pre-sedimentation basins</li>
         <li class="styled-li">Increase sedimentation capacity</li>
         <li class="styled-li">Install real-time monitoring networks</li>
-        <li class="styled-li">Work with land and fire management to prioritize fuels treatments to lessen the chance of large, severe fires in the water supply watershed</li>
+        <!-- <li class="styled-li">Work with land and fire management to prioritize fuels treatments to lessen the chance of large, severe fires in the water supply watershed</li> -->
       </ul>
     </div>
   </section>

@@ -865,7 +865,7 @@
       </div>       
     </div>
     <div class="text-content">
-      <p>However, financial and societal costs don’t stop when the flames go out.  Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas. These forests have evolved with fire as an ecological driver, where small seasonal fires are important for nutrient cycling, fuel reduction, and other ecological interactions. But decades of fire suppression has left the forested watersheds susceptible to hotter and bigger fires which increase the risk of flood hazards, erosion, and impaired water quality.</p>
+      <p>However, financial and societal costs don’t stop when the flames go out.  Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas. Wildfires are natural in many ecosystems, but have increased in size, severity, and frequency.  These hotter, bigger fires increase the risk of flood hazards, erosion, and impaired water quality.</p>
     </div>   
   </section>
 </template>
@@ -1390,15 +1390,15 @@ import * as d3Base from "d3";
 }
 #map-container {
   padding: 4em 0 0 0;
-  width: 100%;
+  width: 90%;
   margin: auto;
-  svg { 
-    fill: none;
-    width: 100%;
-  }
   @media screen and (min-width: 800px) {
     width: 80%;
     margin: auto;
+  }
+  svg { 
+    fill: none;
+    width: 100%;
   }
 }
 
@@ -1444,7 +1444,7 @@ import * as d3Base from "d3";
 <style lang="scss">
 .chartAxisText {
   fill: #4f4f4f; /* #4f4f4f */
-  font-size: 18px;
+  font-size: 1em;
   font-weight: bold;
 }
 .tick text{

@@ -5,7 +5,7 @@
     <MainMap />
     <WaterSupply />
     <Guidance />
-    <NGWOS />
+    <USGS />
     <Resources />
   </div>
 </template>
@@ -17,11 +17,11 @@
         components: {
             Header: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "header"*/ "./0VizHeader/Header"),
             // Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
-            MainMap: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
-            WaterSupply: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
-            Guidance: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
-            NGWOS: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "ngwos"*/ "./5NGWOS/NGWOS"),
-            Resources: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "resources"*/ "./Resources/Resources")
+            MainMap: () => import(/*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
+            WaterSupply: () => import(/*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
+            Guidance: () => import( /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
+            USGS: () => import(/*webpackChunkName: "USGS"*/ "./5USGS/USGS"),
+            Resources: () => import(/*webpackChunkName: "resources"*/ "./Resources/Resources")
         }
     }
 </script>
@@ -108,9 +108,9 @@
  
 
   .caption {
-    font-style: italic;
-    font-size: .9em;
-    padding: 0 4em 0 4em;
+    // font-style: italic;
+    font-size: .8em;
+    padding: 1em 4em 0 4em; 
     margin: auto;
     text-align: left;
     max-width: 700px;
@@ -118,6 +118,7 @@
 
   .bold-caption {
     margin-bottom: 1em;
+    font-style: bold;
   }
 
   .button-header {
@@ -132,6 +133,23 @@
   }
   a button{ 
     margin: 20px;
+  }
+
+  .chart-title-container {
+    background-color: $fireYellow;
+    padding: .5em 1em;
+    min-width: 350px;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    p{
+      padding: 0;
+      margin: 0;
+    }
+    .chart-title{
+      font-size: 1.1em;
+      font-weight: bold;
+    }
   }
 
   // Medium screens and up
@@ -190,6 +208,7 @@
   // List Item Styling
   ul .styled-li {
     list-style: none; /* Remove default bullets */
+    list-style-type: none;
   }
 
   li {

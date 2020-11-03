@@ -4,7 +4,7 @@
     class="text-content"
   >
     <h2><span class="lowlight">Further Research</span></h2>
-    <p>This webpage was based on the papers listed below. For more information about USGS work on wildfires and water supplies, visit <a href="https://www.usgs.gov/mission-areas/water-resources/science/water-quality-after-wildfire?qt-science_center_objects=0#qt-science_center_objects">USGS Wildland Fire Science, USGS Water Resources Mission Area,</a>, the California Water Science Center, or <a href="https://pubs.er.usgs.gov/publication/ofr20191002">additional USGS peer-reviewed research on wildfires</a>.</p>
+    <p>This webpage was based on the papers listed below. For more information about USGS work on wildfires and water supplies, visit <a href="https://www.usgs.gov/special-topic/fire">USGS Wildland Fire Science,</a> <a href="https://www.usgs.gov/mission-areas/water-resources/science/water-quality-after-wildfire?qt-science_center_objects=0#qt-science_center_objects">USGS Water Resources Mission Area,</a>, the <a href="https://www.usgs.gov/centers/ca-water">California Water Science Center,</a> or <a href="https://pubs.er.usgs.gov/publication/ofr20191002">additional USGS peer-reviewed research on wildfires</a>.</p>
     <ul class="styled-li">
       <li class="research-li">
         Ebel, B. A. 2020. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022169420302250?via%3Dihub">Temporal evolution of measured and simulated infiltration following wildfire in the Colorado Front Range, USA: Shifting thresholds of runoff generation and hydrologic hazards.</a> Journal of Hydrology, 585, 124765.
@@ -68,6 +68,7 @@
 
 .research-li {
   margin: 20px 0;
-}
+  list-style: none; /* Remove default bullets */
+  list-style-type: none;}
 
 </style>

@@ -14,13 +14,9 @@
     >
       <div class="flex-item">
         <picture>
+
           <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 800w, @/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
+            srcset="@/assets/components/water-supply/diagrams/beforeFire_400w.jpg 400w, @/assets/components/water-supply/diagrams/beforeFire_800w.jpg 800w, @/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
             type="image/jpeg"
             media="(max-width: 1200px)"
           >
@@ -38,13 +34,9 @@
       </div>
       <div class="flex-item">
         <picture>
+          
           <source
-            srcset="@/assets/components/water-supply/diagrams/afterFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/afterFire_1200w.jpg 800w, @/assets/components/water-supply/diagrams/afterFire_1200w.jpg 1200w"
+            srcset="@/assets/components/water-supply/diagrams/afterFire_400w.jpg 400w, @/assets/components/water-supply/diagrams/afterFire_800w.jpg 800w, @/assets/components/water-supply/diagrams/afterFire_1200w.jpg 1200w"
             type="image/jpeg"
             media="(max-width: 1200px)"
           >

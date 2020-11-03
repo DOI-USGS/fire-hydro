@@ -135,6 +135,23 @@
     margin: 20px;
   }
 
+  .chart-title-container {
+    background-color: $fireYellow;
+    padding: .5em 1em;
+    min-width: 350px;
+    max-width: 700px;
+    margin: auto;
+    position: relative;
+    p{
+      padding: 0;
+      margin: 0;
+    }
+    .chart-title{
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  }
+
   // Medium screens and up
   @media screen and (min-width: 601px){
     #app{

@@ -89,9 +89,15 @@
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 450 50"
+        viewBox="0 0 1000 3"
       >
-        <rect
+        <line id="axis-line"
+          x1="0"
+          y1="0"
+          x2="2000"
+          y2="0"
+        />
+        <!-- <rect
           class="timeline-title-box"
           x="20"
           y="-5"
@@ -109,8 +115,13 @@
           y="44"
           style="font-size: 1em; font-weight: 200"
         >1984 to 2020</text>
-      
+       -->
       </svg>
+      <div id="header-chart-title" class="chart-title-container">
+        <p class="chart-title">Area burned by wildfires in the Western U.S.</p>
+        <p>1984 to 2020</p>
+        <div class="fade-effect"></div>
+      </div>
     </div>
     <div 
       id="byline-wrapper" 
@@ -413,17 +424,18 @@ import * as d3Base from "d3";
               .style("opacity", "0")
           }
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
-          makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
+          // makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
+          makeElementAppear(this.d3.select("#axis-line"), 3000, 800);
           makeElementAppear(this.d3.select(".text-swap"), 4000, 1000);
 
-          this.d3.select(".timeline-title-box")
-          .attr("fill","none")
-          .attr("width", "0")
-          .transition()
-            .delay(3000)
-            .duration(2000)
-            .attr("width", "450")
-            .attr("fill", "rgb(245,169,60)");
+          // this.d3.select(".timeline-title-box")
+          // .attr("fill","none")
+          // .attr("width", "0")
+          // .transition()
+          //   .delay(3000)
+          //   .duration(2000)
+          //   .attr("width", "450")
+          //   .attr("fill", "rgb(245,169,60)");
 
           var dataStart = data_burn;
           var dataGroup = [
@@ -531,18 +543,41 @@ import * as d3Base from "d3";
     }
 
 #time-title {
-  #dataDrop {
-    margin-top: 0px;
-    color: black;
-    z-index:1;
-    display: block;
-    width: 280px;;
-    font-weight: 600;
-  }
+  margin: 10px;
+  @media screen and (max-width: 350px) {
+          width: 100vw;
+      }
 
-  #axes-svg{
-    display: block;
-    z-index:0;
+  // #dataDrop {
+  //   margin-top: 0px;
+  //   color: black;
+  //   z-index:1;
+  //   display: block;
+  //   width: 280px;;
+  //   font-weight: 600;
+  // }
+
+
+  #axes-svg {
+      margin-top: 0px;
+      z-index: 1;
+    }
+
+  #axis-line {
+    stroke-width: 4px;
+    stroke: $lightGray;
+  }
+  
+  .fade-effect {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: white;
+    animation: slide 5s cubic-bezier(.5,.5,0,1);
+    animation-fill-mode: forwards;
+    animation-delay: 5s;
   }
 
 }
@@ -587,22 +622,12 @@ select{
         font-style: italic;
         padding: 1em 0 0 0;
     }
-    #axes-svg {
-      margin-top: 0px;
-      z-index: 1;
-    }
 
     #crop-shape {
       z-index: 0;
     }
 
-    #time-title {
-      width: 350px;
-      float: left;
-      @media screen and (max-width: 350px) {
-          width: 100vw;
-      }
-    }
+
     #annotate-svg {
       position: absolute;
       bottom: 200px;
@@ -646,5 +671,14 @@ select{
           width:150px;
       }
 } */
+
+// Animation
+
+@keyframes slide {
+  0% { width: 100; }
+  60% { width: 100; }
+  90% { width: 0; }
+  100% { width: 0; }  
+}
 
 </style>

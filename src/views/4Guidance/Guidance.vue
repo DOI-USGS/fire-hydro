@@ -26,15 +26,9 @@
     >
       <div class="flex-item">
         <picture>
-          <!-- <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
+ <!--          <source
+            srcset="@/assets/images/examples/Buffalo-Creek-Fan.jpg 1200w"
             type="image/jpeg"
-            media="(max-width: 1200px)"
           > -->
           <img
             v-img:group-4
@@ -49,15 +43,9 @@
       </div>
       <div class="flex-item">
         <picture>
-          <!-- <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
+   <!--       <source
+            srcset="@/assets/images/examples/Gibraltar-Reservoir.jpg 1200w"
             type="image/jpeg"
-            media="(max-width: 1200px)"
           > -->
           <img
             v-img:group-4

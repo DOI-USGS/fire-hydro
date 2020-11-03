@@ -483,21 +483,21 @@ import * as d3Base from "d3";
     #header {
         position: relative;
         height: 1200px;
-        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_3000w.jpg);
+        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_2500w.png);
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
       @media screen and (max-width: 1000px) {
           height: 1200px;
-          /* background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.jpg); */
+          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.png);
       }
       @media screen and (max-width: 800px) {
           height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
-          /* background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.jpg); */
+          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.png);
       }
       @media screen and (max-width: 400px) {
           height: 1000px;

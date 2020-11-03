@@ -11,7 +11,9 @@
     <div id="mappy">
       <div id="map-container">
         <div class="chart-title-container ">
-          <p class="chart-title">Important Watersheds and Wildfire in the Western U.S.</p>
+          <p class="chart-title">
+            Important Watersheds and Wildfire in the Western U.S.
+          </p>
           <p>1984 - 2020</p>
         </div>
         <div class="caption-container">
@@ -21,7 +23,6 @@
           <p class="caption">
             <span class="lowlight">Click the play button</span> to replay the animation.
           </p>
-
         </div>     
         <svg
           id="map-legend"

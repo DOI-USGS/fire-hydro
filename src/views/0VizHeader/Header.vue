@@ -12,7 +12,8 @@
           id="annotate-svg"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 150"
-          width="200px" height="150px"
+          width="200px"
+          height="150px"
         >
           <g transform="translate(10 0)">
             <rect
@@ -48,9 +49,9 @@
                 d="M21.66,35.31c-4.93-.6-9.89-1-14.82-1.63a2,2,0,0,0-2,2,2.07,2.07,0,0,0,2,2c4.93.6,9.89,1,14.82,1.63a2,2,0,0,0,2-2,2.07,2.07,0,0,0-2-2Z"
                 style="fill: rgb(245,169,60)"
               />
-              </g>
-              </g>
-              </svg>
+            </g>
+          </g>
+        </svg>
       </div>
 
       <div id="time_line" />
@@ -78,29 +79,39 @@
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 450 50"
+        viewBox="0 0 1000 3"
       >
-        <rect
+        <line id="axis-line"
+          x1="0"
+          y1="0"
+          x2="2000"
+          y2="0"
+        />
+        <!-- <rect
           class="timeline-title-box"
-          x="0"
+          x="20"
           y="-5"
           height="60"
         />
         <text
           class="text-swap"
-          x="7"
+          x="30"
           y="24"
-          style="font-size: 1.3em; font-weight: 600"
-        >Area burned by wildfires</text>
-
+          style="font-size: 1.2em; font-weight: 600"
+        >Area burned by wildfires in the Western U.S.</text>
         <text
           class="timeline-title"
-          x="7"
+          x="30"
           y="44"
-          style="font-size: 1.3em; font-weight: 600"
-        >in the western U.S. from 1984 to 2020</text>
-      
+          style="font-size: 1em; font-weight: 200"
+        >1984 to 2020</text>
+       -->
       </svg>
+      <div id="header-chart-title" class="chart-title-container">
+        <p class="chart-title">Area burned by wildfires in the Western U.S.</p>
+        <p>1984 to 2020</p>
+        <div class="fade-effect"></div>
+      </div>
     </div>
     <div 
       id="byline-wrapper" 
@@ -402,17 +413,18 @@ import * as d3Base from "d3";
               .style("opacity", "0")
           }
           makeElementAppear(this.d3.select("#annotate-container"), 4500, 1000);
-          makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
+          // makeElementAppear(this.d3.select(".timeline-title"), 4000, 1000);
+          makeElementAppear(this.d3.select("#axis-line"), 3000, 800);
           makeElementAppear(this.d3.select(".text-swap"), 4000, 1000);
 
-          this.d3.select(".timeline-title-box")
-          .attr("fill","none")
-          .attr("width", "0")
-          .transition()
-            .delay(3000)
-            .duration(2000)
-            .attr("width", "450")
-            .attr("fill", "rgb(245,169,60)");
+          // this.d3.select(".timeline-title-box")
+          // .attr("fill","none")
+          // .attr("width", "0")
+          // .transition()
+          //   .delay(3000)
+          //   .duration(2000)
+          //   .attr("width", "450")
+          //   .attr("fill", "rgb(245,169,60)");
 
           var dataStart = data_burn;
           var dataGroup = [
@@ -425,9 +437,9 @@ import * as d3Base from "d3";
           this.d3.select("#crop-shape")
             .append('path')
               .attr("id", "charty")
-              .attr('d', makeArea(dataBox))
-              .style('fill', 'white')
-              .style("opacity", "1");
+              .attr('d', makeArea(dataBox));
+              // .style('fill', 'white')
+              // .style("opacity", "1");
               
           //morph path to include burn area over time shape
           this.d3.select("#charty")
@@ -505,20 +517,52 @@ import * as d3Base from "d3";
     }
 
 #time-title {
-  #dataDrop {
-    margin-top: 0px;
-    color: black;
-    z-index:1;
-    display: block;
-    width: 280px;;
-    font-weight: 600;
+  margin: 10px;
+  @media screen and (max-width: 350px) {
+          width: 100vw;
+      }
+
+  // #dataDrop {
+  //   margin-top: 0px;
+  //   color: black;
+  //   z-index:1;
+  //   display: block;
+  //   width: 280px;;
+  //   font-weight: 600;
+  // }
+
+
+  #axes-svg {
+      margin-top: 0px;
+      z-index: 1;
+    }
+
+  #axis-line {
+    stroke-width: 4px;
+    stroke: $lightGray;
+  }
+  
+  .fade-effect {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: white;
+    animation: slide 5s cubic-bezier(.5,.5,0,1);
+    animation-fill-mode: forwards;
+    animation-delay: 5s;
   }
 
-  #axes-svg{
-    display: block;
-    z-index:0;
-  }
+}
 
+#charty {
+  fill: white;
+  opacity: 1;
+}
+
+#path1 {
+  stroke-linejoin: miter;
 }
 
 select{
@@ -552,22 +596,12 @@ select{
         font-style: italic;
         padding: 1em 0 0 0;
     }
-    #axes-svg {
-      margin-top: 0px;
-      z-index: 1;
-    }
 
     #crop-shape {
       z-index: 0;
     }
 
-    #time-title {
-      width: 350px;
-      float: left;
-      @media screen and (max-width: 350px) {
-          width: 100vw;
-      }
-    }
+
     #annotate-svg {
       position: absolute;
       bottom: 200px;
@@ -611,5 +645,14 @@ select{
           width:150px;
       }
 } */
+
+// Animation
+
+@keyframes slide {
+  0% { width: 100; }
+  60% { width: 100; }
+  90% { width: 0; }
+  100% { width: 0; }  
+}
 
 </style>

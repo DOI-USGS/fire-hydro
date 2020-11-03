@@ -4,19 +4,19 @@
       <p>Other Visualizations of Interest</p>
       <div class="footer-viz-links">
         <a
-          :href="LinkOne"
+          href="https://labs.waterdata.usgs.gov/visualizations/hurricane-maria/index.html"
         >
           <figure>
-            <figcaption>U.S. Water Use from 1950 - 2015</figcaption>
+            <figcaption>Hurricane Maria's Water Footprint</figcaption>
             <img
-              src="@/assets/components/PreFooterVisualizationsLinks/images/WU.png"
+              src="@/assets/components/PreFooterVisualizationsLinks/images/thumbnailMaria.png"
               alt=""
               loading="lazy"
             >
           </figure>
         </a>
         <a
-          :href="LinkTwo"
+          href="https://labs.waterdata.usgs.gov/visualizations/gages-through-the-ages/index.html#/"
         >
           <figure>
             <figcaption>Gages Through the Ages</figcaption>
@@ -35,12 +35,12 @@
 <script>
     export default {
         name: 'PreFooterVisualizationsLinks',
-        data() {
-            return {
-                LinkOne: process.env.VUE_APP_FOOTER_LINK_1,
-                LinkTwo: process.env.VUE_APP_FOOTER_LINK_2
-            };
-        }
+        // data() {
+        //     return {
+        //         LinkOne: process.env.VUE_APP_FOOTER_LINK_1,
+        //         LinkTwo: process.env.VUE_APP_FOOTER_LINK_2
+        //     };
+        // }
     }
 </script>
 

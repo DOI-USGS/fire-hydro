@@ -5,7 +5,7 @@
     >
       <div id="water-supply-header">
         <h2>How wildfires <span class="lowlight">change watersheds</span></h2>
-        <p>Forests, to a hydrologist’s eye, act as both a sponge and a filter. When rain falls on a forest, trees and other plants use the water to grow and reproduce. Leaves and branches, as well as leaf litter on the forest floor, intercept water before it reaches the ground and protect the soil from erosion. When water reaches the soil, it is soaked up like a sponge thanks to organic matter in the soil. The water is slowly released to streams, which helps recharge groundwater aquifers and reduces reduce risks of rapid flooding. As the water moves through soil and rock, sediment and other chemicals are filtered out. Water flowing from forested watersheds often needs only minimal treatment before drinking.</p>
+        <p>Forests, to a hydrologist’s eye, act as both a sponge and a filter. When rain falls on a forest, trees and other plants use the water to grow and reproduce. Leaves and branches, as well as leaf litter on the forest floor, intercept water before it reaches the ground and protect the soil from erosion. When water reaches soil, it is soaked up then slowly released to streams, which helps recharge groundwater aquifers and reduce the risks of rapid flooding. As the water moves through soil and rock, the soil and rock act as a filter, removing contaminants. Water flowing from forested watersheds often needs only minimal treatment before drinking.</p>
       </div>
     </div>
     <div
@@ -14,20 +14,16 @@
     >
       <div class="flex-item">
         <picture>
+
           <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
+            srcset="@/assets/components/water-supply/diagrams/beforeFire_400w.jpg 400w, @/assets/components/water-supply/diagrams/beforeFire_800w.jpg 800w, @/assets/components/water-supply/diagrams/beforeFire_1200w.jpg 1200w"
             type="image/jpeg"
             media="(max-width: 1200px)"
           >
           <img 
             id="water-supply-before"
             v-img:group-3 
-            src="@/assets/components/water-supply/diagrams/beforeFire.jpg" 
+            src="@/assets/components/water-supply/diagrams/beforeFire_1200w.jpg" 
             alt="Diagram showing how water flows before a fire"
             loading="lazy"
           >
@@ -38,20 +34,16 @@
       </div>
       <div class="flex-item">
         <picture>
+          
           <source
-            srcset="@/assets/components/water-supply/diagrams/afterFire_1200w.webp 1200w"
-            type="image/webp"
-            media="(max-width: 1200px)"
-          >
-          <source
-            srcset="@/assets/components/water-supply/diagrams/afterFire_1200w.jpg 1200w"
+            srcset="@/assets/components/water-supply/diagrams/afterFire_400w.jpg 400w, @/assets/components/water-supply/diagrams/afterFire_800w.jpg 800w, @/assets/components/water-supply/diagrams/afterFire_1200w.jpg 1200w"
             type="image/jpeg"
             media="(max-width: 1200px)"
           >
           <img 
             id="water-supply-after"
             v-img:group-3 
-            src="@/assets/components/water-supply/diagrams/afterFire.jpg" 
+            src="@/assets/components/water-supply/diagrams/afterFire_1200w.jpg" 
             alt="Diagram showing how water flows after a fire"
             loading="lazy"
           >

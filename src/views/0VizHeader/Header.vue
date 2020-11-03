@@ -53,17 +53,7 @@
           </g>
         </svg>
       </div>
-      <!-- <div id="annotate-container-1997">
-          <svg xmlns="http://www.w3.org/2000/svg" id="annotate-svg-1997" viewBox="0 0 301.84 171.66" width="260px" height="175px"> 
-            <g transform="translate(0 0)" >
-                <rect width="250" height="53.81" style="fill: #f5a93c"/>
-                <text transform="translate(7.55 26.41)" style="font-size: 1em; font-weight: 200" >In 1997, under 0.45 million acres burned,<tspan x="0" y="15">the least in recent history </tspan></text>
-                <path d="M191.44,62.81a410.41,410.41,0,0,1-15.68,82.92Q172.42,157,168.41,168c-.7,1.93,2.38,2.76,3.07.85a408.05,408.05,0,0,0,20.43-82q1.69-11.94,2.71-24c.18-2-3-2-3.18,0Z" style="fill: #f5a93c"/>
-                <path d="M170.72,169.44a70.12,70.12,0,0,1-7.78-17.84,1.51,1.51,0,0,0-2.9.8A73.11,73.11,0,0,0,168.13,171c1,1.64,3.61.14,2.59-1.51Z" style="fill: #f5a93c"/>
-                <path d="M170.3,171.13a46.76,46.76,0,0,0,19.17-10.84c1.42-1.33-.71-3.44-2.12-2.13a43.41,43.41,0,0,1-17.85,10.08,1.5,1.5,0,0,0,.8,2.89Z" style="fill: #f5a93c"/>
-            </g>
-          </svg>
-      </div> -->
+
       <div id="time_line" />
       
       <svg
@@ -98,25 +88,7 @@
           x2="2000"
           y2="0"
         />
-        <!-- <rect
-          class="timeline-title-box"
-          x="20"
-          y="-5"
-          height="60"
-        />
-        <text
-          class="text-swap"
-          x="30"
-          y="24"
-          style="font-size: 1.2em; font-weight: 600"
-        >Area burned by wildfires in the Western U.S.</text>
-        <text
-          class="timeline-title"
-          x="30"
-          y="44"
-          style="font-size: 1em; font-weight: 200"
-        >1984 to 2020</text>
-       -->
+
       </svg>
       <div
         id="header-chart-title"
@@ -159,7 +131,6 @@ import * as d3Base from "d3";
         mounted() {
           this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
           this.makeChartMorph(); // begin script when window loads
-          this.update();
         },
       methods: {
         setPanels() {
@@ -175,156 +146,44 @@ import * as d3Base from "d3";
 
           // create data - this would be better if read in directly from csv
           //data for area chart - area burned
-          var data_burn = [{x: 0, y: 89}, 
-                      {x: 2.78, y: 70}, 
-                      {x: 5.56, y: 84}, 
+          var data_burn = [{x: 0, y: 90}, 
+                      {x: 2.78, y: 71}, 
+                      {x: 5.56, y: 85}, 
                       {x: 8.33, y: 80}, 
-                      {x: 11.11, y: 57}, 
+                      {x: 11.11, y: 59}, 
                       {x: 13.88, y: 91}, 
                       {x: 16.67, y: 89}, 
                       {x: 19.44, y: 94}, 
                       {x: 22.22, y: 85}, 
-                      {x: 25.00, y: 92}, 
-                      {x: 27.78, y: 72}, 
-                      {x: 30.56, y: 89}, 
-                      {x: 33.33, y: 53}, 
+                      {x: 25.00, y: 93}, 
+                      {x: 27.78, y: 73}, 
+                      {x: 30.56, y: 90}, 
+                      {x: 33.33, y: 55}, 
                       {x: 36.11, y: 95}, 
-                      {x: 38.89, y: 92}, 
-                      {x: 41.67, y: 61}, 
-                      {x: 44.44, y: 43}, 
-                      {x: 47.22, y: 75}, 
-                      {x: 50.00, y: 57}, 
-                      {x: 52.78, y: 62}, 
-                      {x: 55.55, y: 88}, 
-                      {x: 58.33, y: 58}, 
-                      {x: 61.11, y: 24}, 
-                      {x: 63.89, y: 10}, 
-                      {x: 66.67, y: 67}, 
+                      {x: 38.89, y: 93}, 
+                      {x: 41.67, y: 62}, 
+                      {x: 44.44, y: 45}, 
+                      {x: 47.22, y: 76}, 
+                      {x: 50.00, y: 58}, 
+                      {x: 52.78, y: 63}, 
+                      {x: 55.55, y: 89}, 
+                      {x: 58.33, y: 59}, 
+                      {x: 61.11, y: 27}, 
+                      {x: 63.89, y: 13}, 
+                      {x: 66.67, y: 68}, 
                       {x: 69.44, y: 83}, 
-                      {x: 72.22, y: 83}, 
-                      {x: 75.00, y: 48}, 
-                      {x: 77.78, y: 6}, 
+                      {x: 72.22, y: 84}, 
+                      {x: 75.00, y: 50}, 
+                      {x: 77.78, y: 9}, 
                       {x: 80.56, y: 67}, 
-                      {x: 83.33, y: 70}, 
-                      {x: 86.11, y: 56}, 
-                      {x: 88.88, y: 70}, 
-                      {x: 91.67, y: 13}, 
-                      {x: 94.44, y: 34}, 
+                      {x: 83.33, y: 71}, 
+                      {x: 86.11, y: 58}, 
+                      {x: 88.88, y: 71}, 
+                      {x: 91.67, y: 16}, 
+                      {x: 94.44, y: 36}, 
                       {x: 97.22, y: 82}, 
                       {x: 100.0, y: 0}];
 
-          var data_mean = [{x: 0, y: 99}, 
-                      {x: 2.78, y: 90}, 
-                      {x: 5.56, y: 97}, 
-                      {x: 8.33, y: 90}, 
-                      {x: 11.11, y: 61}, 
-                      {x: 13.88, y: 100}, 
-                      {x: 16.67, y: 89}, 
-                      {x: 19.44, y: 99}, 
-                      {x: 22.22, y: 90}, 
-                      {x: 25.00, y: 77}, 
-                      {x: 27.78, y: 91}, 
-                      {x: 30.56, y: 91}, 
-                      {x: 33.33, y: 77}, 
-                      {x: 36.11, y: 88}, 
-                      {x: 38.89, y: 97}, 
-                      {x: 41.67, y: 80}, 
-                      {x: 44.44, y: 83}, 
-                      {x: 47.22, y: 93}, 
-                      {x: 50.00, y: 63}, 
-                      {x: 52.78, y: 80}, 
-                      {x: 55.55, y: 89}, 
-                      {x: 58.33, y: 83}, 
-                      {x: 61.11, y: 80}, 
-                      {x: 63.89, y: 71}, 
-                      {x: 66.67, y: 83}, 
-                      {x: 69.44, y: 87}, 
-                      {x: 72.22, y: 94}, 
-                      {x: 75.00, y: 79}, 
-                      {x: 77.78, y: 70}, 
-                      {x: 80.56, y: 79}, 
-                      {x: 83.33, y: 80}, 
-                      {x: 86.11, y: 70}, 
-                      {x: 88.88, y: 83}, 
-                      {x: 91.67, y: 69}, 
-                      {x: 94.44, y: 61}, 
-                      {x: 97.22, y: 88}, 
-                      {x: 100.0, y: 0}];
-
-          var dataLine_mean = [[0, 99], 
-                      [2.78, 90], 
-                      [5.56, 97], 
-                      [8.33, 90], 
-                      [11.11, 61], 
-                      [13.88, 100], 
-                      [16.67, 89], 
-                      [19.44, 99], 
-                      [22.22, 90], 
-                      [25.00, 77], 
-                      [27.78, 91], 
-                      [30.56, 91], 
-                      [33.33, 77], 
-                      [36.11, 88], 
-                      [38.89, 97], 
-                      [41.67, 80], 
-                      [44.44, 83], 
-                      [47.22, 93], 
-                      [50.00, 63], 
-                      [52.78, 80], 
-                      [55.55, 89], 
-                      [58.33, 83], 
-                      [61.11, 80], 
-                      [63.89, 71], 
-                      [66.67, 83], 
-                      [69.44, 87], 
-                      [72.22, 94], 
-                      [75.00, 79], 
-                      [77.78, 70], 
-                      [80.56, 79], 
-                      [83.33, 80], 
-                      [86.11, 70], 
-                      [88.88, 83], 
-                      [91.67, 69], 
-                      [94.44, 61], 
-                      [97.22, 88], 
-                      [100.0, 0]];
-           var dataLine_max = [[0, 98], 
-                      [2.78, 89], 
-                      [5.56, 94], 
-                      [8.33, 94], 
-                      [11.11, 53], 
-                      [13.88, 99], 
-                      [16.67, 93], 
-                      [19.44, 87], 
-                      [22.22, 86], 
-                      [25.00, 97], 
-                      [27.78, 84], 
-                      [30.56, 97], 
-                      [33.33, 79], 
-                      [36.11, 100], 
-                      [38.89, 98], 
-                      [41.67, 78], 
-                      [44.44, 78], 
-                      [47.22, 93], 
-                      [50.00, 92], 
-                      [52.78, 87], 
-                      [55.55, 97], 
-                      [58.33, 86], 
-                      [61.11, 73], 
-                      [63.89, 44], 
-                      [66.67, 85], 
-                      [69.44, 91], 
-                      [72.22, 71], 
-                      [75.00, 79], 
-                      [77.78, 46], 
-                      [80.56, 85], 
-                      [83.33, 73], 
-                      [86.11, 84], 
-                      [88.88, 83], 
-                      [91.67, 63], 
-                      [94.44, 78], 
-                      [97.22, 90], 
-                      [100.0, 0]];
 
           // empty box for spacing
           var dataBox = [{x: 0, y: 150}, 
@@ -366,41 +225,41 @@ import * as d3Base from "d3";
                       {x: 100.0, y: 150}];
 
           //this is the same as the area top line but just a line
-          var dataLine_burn = [[0, 89], 
-                      [2.78, 70], 
-                      [5.56, 84], 
+          var dataLine_burn = [[0, 90], 
+                      [2.78, 71], 
+                      [5.56, 85], 
                       [8.33, 80], 
-                      [11.11, 57], 
+                      [11.11, 59], 
                       [13.88, 91], 
                       [16.67, 89], 
                       [19.44, 94], 
                       [22.22, 85], 
-                      [25.00, 92], 
-                      [27.78, 72], 
-                      [30.56, 89], 
-                      [33.33, 53], 
+                      [25.00, 93], 
+                      [27.78, 73], 
+                      [30.56, 90], 
+                      [33.33, 55], 
                       [36.11, 95], 
-                      [38.89, 92], 
-                      [41.67, 61], 
-                      [44.44, 43], 
-                      [47.22, 75], 
-                      [50.00, 57], 
-                      [52.78, 62], 
-                      [55.55, 88], 
-                      [58.33, 58], 
-                      [61.11, 24], 
-                      [63.89, 10], 
-                      [66.67, 67], 
+                      [38.89, 93], 
+                      [41.67, 62], 
+                      [44.44, 45], 
+                      [47.22, 76], 
+                      [50.00, 58], 
+                      [52.78, 63], 
+                      [55.55, 89], 
+                      [58.33, 59], 
+                      [61.11, 27], 
+                      [63.89, 13], 
+                      [66.67, 68], 
                       [69.44, 83], 
-                      [72.22, 83], 
-                      [75.00, 48], 
-                      [77.78, 6], 
-                      [80.56, 66], 
-                      [83.33, 70], 
-                      [86.11, 56], 
-                      [88.88, 70], 
-                      [91.67, 13], 
-                      [94.44, 34], 
+                      [72.22, 84], 
+                      [75.00, 50], 
+                      [77.78, 9], 
+                      [80.56, 67], 
+                      [83.33, 71], 
+                      [86.11, 58], 
+                      [88.88, 71], 
+                      [91.67, 16], 
+                      [94.44, 36], 
                       [97.22, 82], 
                       [100.0, 0]];
           
@@ -449,21 +308,6 @@ import * as d3Base from "d3";
             [2, 'data_mean', "Largest wildfires"],
             [3, 'dataBox', "Average wildfire area"]];
 
-          //drop down menu to change data
-         /*  var dropdown = this.d3.select("#dataDrop")
-
-          var options = dropdown.selectAll('option')
-            .data(dataGroup)
-            .enter()
-            .append('option')
-            .attr('value', (d) => d[1])
-            .text((d) => d[2]);
-
-          options.property("selected", function(d) {
-            return(d[1] === dataStart)
-          });
-
-          dropdown.on("change", function(d) {console.log(d)}); */
 
           // Add the initial path for area using negative space
           this.d3.select("#crop-shape")
@@ -501,8 +345,6 @@ import * as d3Base from "d3";
           };
          drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"), this.d3.select(".text-swap"), this.d3.select(".text-swap-mean"));
 
-          makeElementAppear(dropdown, 4000, 1000);
-
 
         }
         
@@ -529,22 +371,31 @@ import * as d3Base from "d3";
     #header {
         position: relative;
         height: 1200px;
-        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_3000w.jpg);
+        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_2500w.png);
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        -webkit-background-size:cover; 
       @media screen and (max-width: 1000px) {
           height: 1200px;
+          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.png);
       }
       @media screen and (max-width: 800px) {
           height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
+          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.png);
       }
       @media screen and (max-width: 400px) {
           height: 1000px;
+      }
+      @supports (-webkit-touch-callout: inherit) {
+        background-attachment: scroll;
+        h1 {
+          color: rgb(245,169,60);
+        }
       }
     }
 
@@ -553,15 +404,6 @@ import * as d3Base from "d3";
   @media screen and (max-width: 350px) {
           width: 100vw;
       }
-
-  // #dataDrop {
-  //   margin-top: 0px;
-  //   color: black;
-  //   z-index:1;
-  //   display: block;
-  //   width: 280px;;
-  //   font-weight: 600;
-  // }
 
 
   #axes-svg {
@@ -638,12 +480,7 @@ select{
       position: absolute;
       bottom: 200px;
     }
-/*     #annotate-svg-1997 {
-      position: absolute;
-      bottom: 52%;
-      left: 29vw;
 
-    } */
 #annotate-container {
   width: 200px;
   float: right;
@@ -660,23 +497,7 @@ select{
           width:150px;
       }
 }
-/* #annotate-container-1997 {
-  position: relative;
-  width:100%;
-  height: 100%;
-  @media screen and (max-width: 1000px) {
-          margin-top: 0px;
-      }
-      @media screen and (max-width: 800px) {
-          width:180px;
-      }
-      @media screen and (max-width: 600px) {
-          width:170px;
-      }
-      @media screen and (max-width: 400px) {
-          width:150px;
-      }
-} */
+
 
 // Animation
 

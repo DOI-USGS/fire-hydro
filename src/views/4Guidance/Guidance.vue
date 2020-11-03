@@ -11,13 +11,10 @@
           Sedimentation, eutrophication, and metal mobilization in reservoirs,
         </li>
         <li class="styled-li">
-          Impaired water-treatment efficiency,
+          Impaired water-treatment efficiency, and/or
         </li>
         <li class="styled-li">
-          Stream habitat alteration, and/or
-        </li>
-        <li class="styled-li">
-          Fish kills from impaired water quality
+          Stream habitat alteration
         </li>
       </ul>
       <p>After the <a href="https://www.usgs.gov/media/images/burned-watersheds-buffalo-creek-alluvial-fan">Buffalo Creek Fire</a> in 1996 and the <a href="https://pubs.usgs.gov/sir/2012/5267/pdf/sir2012-5267.pdf">Hayman Fire</a> in 2002, substantial sediment loads were delivered to a downstream reservoir that provides water to millions of people in and near Denver, Colorado. Over <a href="https://pubs.usgs.gov/wri/2001/4122/report.pdf">$26 million</a> was then spent on dredging the sediment to restore water storage capacity of the reservoir. After the <a href="https://earthobservatory.nasa.gov/images/event/18845/zaca-wildfire-southern-california">Zaca Fire</a> in 2007, water treatment costs for the City of Santa Barbara, California, <a href="https://www.waterboards.ca.gov/drinking_water/programs/districts/docs/mendocino/05_jdensmore_post_fire_impacts_wq_treatment.pdf">increased by a factor of 60,</a> from $33,000 to $2.1 million per year.</p>
@@ -112,15 +109,17 @@
           Establish alternative water supplies
         </li>
         <li class="styled-li">
-          Plan and install pre-sedimentation basins
+          Plan and install pre-sedimentation basins to minimize delivery of eroded ash and sediment to reservoirs
         </li>
         <li class="styled-li">
           Increase sedimentation capacity
         </li>
         <li class="styled-li">
-          Install real-time monitoring networks
+          Collaborate with land and fire managers to identify and prioritize fuel treatments to reduce the potential for large, severe wildfires
         </li>
-        <!-- <li class="styled-li">Work with land and fire management to prioritize fuels treatments to lessen the chance of large, severe fires in the water supply watershed</li> -->
+        <li class="styled-li">
+          Install real-time monitoring networks that can send alerts of high rainfall intensity, flooding, or high turbidity, which can inform decision making about water infrastructure management during storm events
+        </li>
       </ul>
     </div>
   </section>

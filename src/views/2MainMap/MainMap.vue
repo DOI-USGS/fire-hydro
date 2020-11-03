@@ -865,7 +865,7 @@
       </div>    
       <div class="caption-container flex-container">
         <p class="caption">
-          Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020.<br/>
+          Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020.<br>
           Important water supply watersheds, based on amount of surface water supply generated and withdrawn (IMP_R >= 50), from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn">U.S. Department of Agriculture's Forest to Faucets.</a>
         </p>
       </div>       

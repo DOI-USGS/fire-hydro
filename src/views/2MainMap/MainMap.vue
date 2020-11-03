@@ -10,6 +10,19 @@
     </div>
     <div id="mappy">
       <div id="map-container">
+        <div class="chart-title-container ">
+          <p class="chart-title">Important Watersheds and Wildfire in the Western U.S.</p>
+          <p>1984 - 2020</p>
+        </div>
+        <div class="caption-container">
+          <p class="caption ">
+            <span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year.
+          </p>
+          <p class="caption">
+            <span class="lowlight">Click the play button</span> to replay the animation.
+          </p>
+
+        </div>     
         <svg
           id="map-legend"
           xmlns="http://www.w3.org/2000/svg"
@@ -849,13 +862,7 @@
           
         </svg>     
       </div>    
-      <div id="caption-container flex-container">
-        <p class="bold-caption caption flex-item">
-          <span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year.
-        </p>
-        <p class="bold-caption caption flex-item">
-          <span class="lowlight">Click the play button</span> to replay the animation.
-        </p>
+      <div class="caption-container flex-container">
         <p class="caption">
           Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters">National Interagency Fire Center,</a> 1984-2020.
         </p>
@@ -1402,7 +1409,7 @@ import * as d3Base from "d3";
   }
 }
 
-#caption-container{
+.caption-container{
   padding: 0 0 4em 0;
 }
 

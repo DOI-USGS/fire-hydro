@@ -101,8 +101,8 @@
           class="text-swap"
           x="30"
           y="24"
-          style="font-size: 1.3em; font-weight: 600"
-        >Area burned by wildfires</text>
+          style="font-size: 1.2em; font-weight: 600"
+        >Area burned by wildfires in the Western U.S.</text>
         <text
           class="timeline-title"
           x="30"

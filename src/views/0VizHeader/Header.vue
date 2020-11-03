@@ -49,10 +49,21 @@
                 d="M21.66,35.31c-4.93-.6-9.89-1-14.82-1.63a2,2,0,0,0-2,2,2.07,2.07,0,0,0,2,2c4.93.6,9.89,1,14.82,1.63a2,2,0,0,0,2-2,2.07,2.07,0,0,0-2-2Z"
                 style="fill: rgb(245,169,60)"
               />
-            </g>
-          </g>
-        </svg>
+              </g>
+              </g>
+              </svg>
       </div>
+      <!-- <div id="annotate-container-1997">
+          <svg xmlns="http://www.w3.org/2000/svg" id="annotate-svg-1997" viewBox="0 0 301.84 171.66" width="260px" height="175px"> 
+            <g transform="translate(0 0)" >
+                <rect width="250" height="53.81" style="fill: #f5a93c"/>
+                <text transform="translate(7.55 26.41)" style="font-size: 1em; font-weight: 200" >In 1997, under 0.45 million acres burned,<tspan x="0" y="15">the least in recent history </tspan></text>
+                <path d="M191.44,62.81a410.41,410.41,0,0,1-15.68,82.92Q172.42,157,168.41,168c-.7,1.93,2.38,2.76,3.07.85a408.05,408.05,0,0,0,20.43-82q1.69-11.94,2.71-24c.18-2-3-2-3.18,0Z" style="fill: #f5a93c"/>
+                <path d="M170.72,169.44a70.12,70.12,0,0,1-7.78-17.84,1.51,1.51,0,0,0-2.9.8A73.11,73.11,0,0,0,168.13,171c1,1.64,3.61.14,2.59-1.51Z" style="fill: #f5a93c"/>
+                <path d="M170.3,171.13a46.76,46.76,0,0,0,19.17-10.84c1.42-1.33-.71-3.44-2.12-2.13a43.41,43.41,0,0,1-17.85,10.08,1.5,1.5,0,0,0,.8,2.89Z" style="fill: #f5a93c"/>
+            </g>
+          </svg>
+      </div> -->
       <div id="time_line" />
       
       <svg
@@ -75,7 +86,6 @@
       </svg>
     </div> 
     <div id="time-title">
-      <!-- <select id="dataDrop"></select> -->
       <svg
         id="axes-svg"
         xmlns="http://www.w3.org/2000/svg"
@@ -92,13 +102,7 @@
           x="30"
           y="24"
           style="font-size: 1.3em; font-weight: 600"
-        >Area burned by wildfires in the Western U.S.</text>
-        <!-- <text
-          class="text-swap-mean"
-          x="7"
-          y="24"
-          style="font-size: 1.3em; font-weight: 600"
-        >Average wildfire size</text> -->
+        >Area burned by wildfires</text>
         <text
           class="timeline-title"
           x="30"
@@ -457,16 +461,9 @@ import * as d3Base from "d3";
               .delay(1000)
               .duration(3000)
               .attr("d", makeArea(dataStart));
-            /* .transition()
-              .delay(5000)
-              .duration(2000)
-              .attr("d", makeArea(data_mean)) */
-
-          this.d3.select(".text-swap-mean")
-          .attr("fill","none");
 
           //animate line drawing across top
-          function drawLine(top_line,text_annotate, title_text_burn, title_text_mean) {
+          function drawLine(top_line) {
              top_line
             .attr('d', line(dataLine_burn))
             .attr("stroke", "none")
@@ -480,32 +477,8 @@ import * as d3Base from "d3";
               .duration(2000)
               .attr("stroke","rgb(245,169,60)")
               .attr("stroke-linejoin", "miter")
+              .attr("stroke-miterlimit", "20")
               .attr("stroke-dashoffset","0px");
-            /* .transition()
-              .attr('d', line(dataLine_mean))
-              .delay(4000)
-              .duration(2000)
-              .attr("stroke","rgb(245,169,60)");
- */
-      /*         text_annotate
-              .transition()
-                .delay(9000)
-                .duration(1000)
-                .attr("opacity", 0)
-
-              title_text_burn
-              .transition()
-                .delay(9000)
-                .duration(500)
-                .attr("opacity", 0)
-
-              title_text_mean
-              .attr("opacity", 0)
-              .transition()
-                .delay(9500)
-                .duration(1000)
-                .attr("fill","black")
-                .attr("opacity", 1); */
 
           };
          drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"), this.d3.select(".text-swap"), this.d3.select(".text-swap-mean"));
@@ -634,7 +607,13 @@ select{
       position: absolute;
       bottom: 200px;
     }
-#annotate-container{
+/*     #annotate-svg-1997 {
+      position: absolute;
+      bottom: 52%;
+      left: 29vw;
+
+    } */
+#annotate-container {
   width: 200px;
   float: right;
   @media screen and (max-width: 1000px) {
@@ -650,5 +629,22 @@ select{
           width:150px;
       }
 }
+/* #annotate-container-1997 {
+  position: relative;
+  width:100%;
+  height: 100%;
+  @media screen and (max-width: 1000px) {
+          margin-top: 0px;
+      }
+      @media screen and (max-width: 800px) {
+          width:180px;
+      }
+      @media screen and (max-width: 600px) {
+          width:170px;
+      }
+      @media screen and (max-width: 400px) {
+          width:150px;
+      }
+} */
 
 </style>

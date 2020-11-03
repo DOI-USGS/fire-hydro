@@ -52,17 +52,7 @@
               </g>
               </svg>
       </div>
-      <!-- <div id="annotate-container-1997">
-          <svg xmlns="http://www.w3.org/2000/svg" id="annotate-svg-1997" viewBox="0 0 301.84 171.66" width="260px" height="175px"> 
-            <g transform="translate(0 0)" >
-                <rect width="250" height="53.81" style="fill: #f5a93c"/>
-                <text transform="translate(7.55 26.41)" style="font-size: 1em; font-weight: 200" >In 1997, under 0.45 million acres burned,<tspan x="0" y="15">the least in recent history </tspan></text>
-                <path d="M191.44,62.81a410.41,410.41,0,0,1-15.68,82.92Q172.42,157,168.41,168c-.7,1.93,2.38,2.76,3.07.85a408.05,408.05,0,0,0,20.43-82q1.69-11.94,2.71-24c.18-2-3-2-3.18,0Z" style="fill: #f5a93c"/>
-                <path d="M170.72,169.44a70.12,70.12,0,0,1-7.78-17.84,1.51,1.51,0,0,0-2.9.8A73.11,73.11,0,0,0,168.13,171c1,1.64,3.61.14,2.59-1.51Z" style="fill: #f5a93c"/>
-                <path d="M170.3,171.13a46.76,46.76,0,0,0,19.17-10.84c1.42-1.33-.71-3.44-2.12-2.13a43.41,43.41,0,0,1-17.85,10.08,1.5,1.5,0,0,0,.8,2.89Z" style="fill: #f5a93c"/>
-            </g>
-          </svg>
-      </div> -->
+
       <div id="time_line" />
       
       <svg
@@ -142,7 +132,6 @@ import * as d3Base from "d3";
         mounted() {
           this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
           this.makeChartMorph(); // begin script when window loads
-          this.update();
         },
       methods: {
         setPanels() {
@@ -158,41 +147,41 @@ import * as d3Base from "d3";
 
           // create data - this would be better if read in directly from csv
           //data for area chart - area burned
-          var data_burn = [{x: 0, y: 89}, 
-                      {x: 2.78, y: 70}, 
-                      {x: 5.56, y: 84}, 
+          var data_burn = [{x: 0, y: 90}, 
+                      {x: 2.78, y: 71}, 
+                      {x: 5.56, y: 85}, 
                       {x: 8.33, y: 80}, 
-                      {x: 11.11, y: 57}, 
+                      {x: 11.11, y: 59}, 
                       {x: 13.88, y: 91}, 
                       {x: 16.67, y: 89}, 
                       {x: 19.44, y: 94}, 
                       {x: 22.22, y: 85}, 
-                      {x: 25.00, y: 92}, 
-                      {x: 27.78, y: 72}, 
-                      {x: 30.56, y: 89}, 
-                      {x: 33.33, y: 53}, 
+                      {x: 25.00, y: 93}, 
+                      {x: 27.78, y: 73}, 
+                      {x: 30.56, y: 90}, 
+                      {x: 33.33, y: 55}, 
                       {x: 36.11, y: 95}, 
-                      {x: 38.89, y: 92}, 
-                      {x: 41.67, y: 61}, 
-                      {x: 44.44, y: 43}, 
-                      {x: 47.22, y: 75}, 
-                      {x: 50.00, y: 57}, 
-                      {x: 52.78, y: 62}, 
-                      {x: 55.55, y: 88}, 
-                      {x: 58.33, y: 58}, 
-                      {x: 61.11, y: 24}, 
-                      {x: 63.89, y: 10}, 
-                      {x: 66.67, y: 67}, 
+                      {x: 38.89, y: 93}, 
+                      {x: 41.67, y: 62}, 
+                      {x: 44.44, y: 45}, 
+                      {x: 47.22, y: 76}, 
+                      {x: 50.00, y: 58}, 
+                      {x: 52.78, y: 63}, 
+                      {x: 55.55, y: 89}, 
+                      {x: 58.33, y: 59}, 
+                      {x: 61.11, y: 27}, 
+                      {x: 63.89, y: 13}, 
+                      {x: 66.67, y: 68}, 
                       {x: 69.44, y: 83}, 
-                      {x: 72.22, y: 83}, 
-                      {x: 75.00, y: 48}, 
-                      {x: 77.78, y: 6}, 
+                      {x: 72.22, y: 84}, 
+                      {x: 75.00, y: 50}, 
+                      {x: 77.78, y: 9}, 
                       {x: 80.56, y: 67}, 
-                      {x: 83.33, y: 70}, 
-                      {x: 86.11, y: 56}, 
-                      {x: 88.88, y: 70}, 
-                      {x: 91.67, y: 13}, 
-                      {x: 94.44, y: 34}, 
+                      {x: 83.33, y: 71}, 
+                      {x: 86.11, y: 58}, 
+                      {x: 88.88, y: 71}, 
+                      {x: 91.67, y: 16}, 
+                      {x: 94.44, y: 36}, 
                       {x: 97.22, y: 82}, 
                       {x: 100.0, y: 0}];
 
@@ -431,21 +420,6 @@ import * as d3Base from "d3";
             [2, 'data_mean', "Largest wildfires"],
             [3, 'dataBox', "Average wildfire area"]];
 
-          //drop down menu to change data
-         /*  var dropdown = this.d3.select("#dataDrop")
-
-          var options = dropdown.selectAll('option')
-            .data(dataGroup)
-            .enter()
-            .append('option')
-            .attr('value', (d) => d[1])
-            .text((d) => d[2]);
-
-          options.property("selected", function(d) {
-            return(d[1] === dataStart)
-          });
-
-          dropdown.on("change", function(d) {console.log(d)}); */
 
           // Add the initial path for area using negative space
           this.d3.select("#crop-shape")
@@ -483,8 +457,6 @@ import * as d3Base from "d3";
           };
          drawLine(this.d3.select("#path1"), this.d3.select("#burn_2020"), this.d3.select(".text-swap"), this.d3.select(".text-swap-mean"));
 
-          makeElementAppear(dropdown, 4000, 1000);
-
 
         }
         
@@ -518,12 +490,14 @@ import * as d3Base from "d3";
         background-size: cover;
       @media screen and (max-width: 1000px) {
           height: 1200px;
+          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.jpg);
       }
       @media screen and (max-width: 800px) {
           height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
+          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.jpg);
       }
       @media screen and (max-width: 400px) {
           height: 1000px;

@@ -7,9 +7,9 @@
           :href="LinkOne"
         >
           <figure>
-            <figcaption>Water Science and Management in the Delaware River Basin</figcaption>
+            <figcaption>U.S. Water Use from 1950 - 2015</figcaption>
             <img
-              src="@/assets/components/PreFooterVisualizationsLinks/images/DRB_400w.jpg"
+              src="@/assets/components/PreFooterVisualizationsLinks/images/WU.png"
               alt=""
               loading="lazy"
             >

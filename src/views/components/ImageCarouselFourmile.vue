@@ -1,5 +1,5 @@
 <template>
-  <carousel
+ <!--  <carousel
     id="image-slider"
     :autoplay="true"
     :autoplay-hover-pause="true"
@@ -80,7 +80,7 @@
         </picture>
       </div>
     </slide>
-  </carousel>
+  </carousel> -->
 </template>
 
 <script>

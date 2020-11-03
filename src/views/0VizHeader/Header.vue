@@ -376,6 +376,7 @@ import * as d3Base from "d3";
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        -webkit-background-size:cover; 
       @media screen and (max-width: 1000px) {
           height: 1200px;
           background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.png);

@@ -145,9 +145,10 @@
     p{
       padding: 0;
       margin: 0;
+      font-size: .8em;
     }
     .chart-title{
-      font-size: 1.1em;
+      font-size: 1em;
       font-weight: bold;
     }
   }

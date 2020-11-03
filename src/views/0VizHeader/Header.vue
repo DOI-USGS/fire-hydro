@@ -81,7 +81,8 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1000 3"
       >
-        <line id="axis-line"
+        <line
+          id="axis-line"
           x1="0"
           y1="0"
           x2="2000"
@@ -107,10 +108,15 @@
         >1984 to 2020</text>
        -->
       </svg>
-      <div id="header-chart-title" class="chart-title-container">
-        <p class="chart-title">Area burned by wildfires in the Western U.S.</p>
+      <div
+        id="header-chart-title"
+        class="chart-title-container"
+      >
+        <p class="chart-title">
+          Area burned by wildfires in the Western U.S.
+        </p>
         <p>1984 to 2020</p>
-        <div class="fade-effect"></div>
+        <div class="fade-effect" />
       </div>
     </div>
     <div 

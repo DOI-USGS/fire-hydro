@@ -88,25 +88,7 @@
           x2="2000"
           y2="0"
         />
-        <!-- <rect
-          class="timeline-title-box"
-          x="20"
-          y="-5"
-          height="60"
-        />
-        <text
-          class="text-swap"
-          x="30"
-          y="24"
-          style="font-size: 1.2em; font-weight: 600"
-        >Area burned by wildfires in the Western U.S.</text>
-        <text
-          class="timeline-title"
-          x="30"
-          y="44"
-          style="font-size: 1em; font-weight: 200"
-        >1984 to 2020</text>
-       -->
+
       </svg>
       <div
         id="header-chart-title"
@@ -508,14 +490,14 @@ import * as d3Base from "d3";
         background-size: cover;
       @media screen and (max-width: 1000px) {
           height: 1200px;
-          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.jpg);
+          /* background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.jpg); */
       }
       @media screen and (max-width: 800px) {
           height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
-          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.jpg);
+          /* background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.jpg); */
       }
       @media screen and (max-width: 400px) {
           height: 1000px;

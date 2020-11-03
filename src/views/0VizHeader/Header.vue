@@ -376,6 +376,7 @@ import * as d3Base from "d3";
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        -webkit-background-size:cover; 
       @media screen and (max-width: 1000px) {
           height: 1200px;
           background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.png);
@@ -390,6 +391,12 @@ import * as d3Base from "d3";
       @media screen and (max-width: 400px) {
           height: 1000px;
       }
+      @supports (-webkit-touch-callout: inherit) {
+        background-attachment: scroll;
+        h1 {
+          color: rgb(245,169,60);
+        }
+      }
     }
 
 #time-title {
@@ -397,15 +404,6 @@ import * as d3Base from "d3";
   @media screen and (max-width: 350px) {
           width: 100vw;
       }
-
-  // #dataDrop {
-  //   margin-top: 0px;
-  //   color: black;
-  //   z-index:1;
-  //   display: block;
-  //   width: 280px;;
-  //   font-weight: 600;
-  // }
 
 
   #axes-svg {
@@ -482,12 +480,7 @@ select{
       position: absolute;
       bottom: 200px;
     }
-/*     #annotate-svg-1997 {
-      position: absolute;
-      bottom: 52%;
-      left: 29vw;
 
-    } */
 #annotate-container {
   width: 200px;
   float: right;
@@ -504,23 +497,7 @@ select{
           width:150px;
       }
 }
-/* #annotate-container-1997 {
-  position: relative;
-  width:100%;
-  height: 100%;
-  @media screen and (max-width: 1000px) {
-          margin-top: 0px;
-      }
-      @media screen and (max-width: 800px) {
-          width:180px;
-      }
-      @media screen and (max-width: 600px) {
-          width:170px;
-      }
-      @media screen and (max-width: 400px) {
-          width:150px;
-      }
-} */
+
 
 // Animation
 

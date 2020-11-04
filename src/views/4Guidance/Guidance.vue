@@ -26,7 +26,7 @@
     >
       <div class="flex-item">
         <picture>
- <!--          <source
+          <!--          <source
             srcset="@/assets/images/examples/Buffalo-Creek-Fan.jpg 1200w"
             type="image/jpeg"
           > -->
@@ -43,7 +43,7 @@
       </div>
       <div class="flex-item">
         <picture>
-   <!--       <source
+          <!--       <source
             srcset="@/assets/images/examples/Gibraltar-Reservoir.jpg 1200w"
             type="image/jpeg"
           > -->

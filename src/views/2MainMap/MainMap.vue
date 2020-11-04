@@ -862,13 +862,13 @@
           </g>
           
         </svg>     
-      </div>    
+        </div>
       <div class="caption-container flex-container">
         <p class="caption">
           Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters" target="_blank">National Interagency Fire Center,</a> 1984-2020.<br/>
           Important water supply watersheds, based on amount of surface water supply generated and withdrawn (IMP_R >= 50), from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn" target="_blank">U.S. Department of Agriculture's Forest to Faucets.</a>
         </p>
-      </div>       
+      </div>        
     </div>
     <div class="text-content">
       <p>However, financial and societal costs don’t stop when the flames go out.  Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas. Wildfires are natural in many ecosystems, but have increased in size, severity, and frequency.  These hotter, bigger fires increase the risk of flood hazards, erosion, and impaired water quality.</p>
@@ -1411,10 +1411,14 @@ import * as d3Base from "d3";
 .caption-container{
   padding: 0 0 4em 0;
 }
-
+#mappy {
+  width:90vw;
+  margin: auto;
+}
 #firemap  {
   width: 80%;
   height: auto;
+  max-height: 60vh;
   @media screen and (min-width: 600px) {
     width: 1000px;
     margin: auto;
@@ -1465,6 +1469,8 @@ import * as d3Base from "d3";
   width: 80vw;
 }
 .fire-timeseries-2 {
-  width: 80vw;
+  width: 60vw;
+  margin: auto;
+  max-height: 25vh;
 }
 </style>

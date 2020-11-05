@@ -24,8 +24,8 @@
             />
             <text
               id="text-2020"
-              transform="translate(7.55 19.61)"
-              style="font-size: 1em; font-weight: 200"
+              transform="translate(15 19.61)"
+              style="font-size: .9em; font-weight: 200"
             >Over 8 million acres <tspan
               x="0"
               y="15"
@@ -98,6 +98,7 @@
           Area burned by wildfires in the Western U.S.
         </p>
         <p>1984 to 2020</p>
+        <p>Last update Nov 1, 2020</p>
         <div class="fade-effect" />
       </div>
     </div>

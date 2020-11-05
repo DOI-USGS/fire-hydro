@@ -5,7 +5,12 @@
     >
       <div id="main-map-header">
         <h2>Wildfires pose a <span class="lowlight">growing risk</span> to our Nation’s water supplies</h2>
-        <p>Wildfires are a natural process in many ecosystems, playing an important role in nutrient cycling and other ecological interactions. But the size, <a href="https://www.usgs.gov/centers/eros/science/monitoring-trends-burn-severity?qt-science_center_objects=0#qt-science_center_objects">severity</a>, and the length of the fire season have increased substantially in the western U.S. over the past few decades, and these trends are predicted to continue. The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Nearly $2 billion has been spent to suppress these fires, and thousands of people have evacuated their homes.</p>
+        <p>
+          Wildfires are a natural process in many ecosystems, playing an important role in nutrient cycling and other ecological interactions. But the size, <a
+            href="https://www.usgs.gov/centers/eros/science/monitoring-trends-burn-severity?qt-science_center_objects=0#qt-science_center_objects"
+            target="_blank"
+          >severity</a>, and the length of the fire season have increased substantially in the western U.S. over the past few decades, and these trends are predicted to continue. The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Nearly $2 billion has been spent to suppress these fires, and thousands of people have evacuated their homes.
+        </p>
       </div>
     </div>
     <div id="mappy">
@@ -862,11 +867,17 @@
           </g>
           
         </svg>     
-        </div>
+      </div>
       <div class="caption-container flex-container">
         <p class="caption">
-          Fire perimeter data from <a href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters" target="_blank">National Interagency Fire Center,</a> 1984-2020.<br/>
-          Important water supply watersheds, based on amount of surface water supply generated and withdrawn (IMP_R >= 50), from <a href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn" target="_blank">U.S. Department of Agriculture's Forest to Faucets.</a>
+          Fire perimeter data from <a
+            href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters"
+            target="_blank"
+          >National Interagency Fire Center,</a> 1984-2020.<br>
+          Important water supply watersheds, based on amount of surface water supply generated and withdrawn (Importance >= 50), from <a
+            href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn"
+            target="_blank"
+          >U.S. Department of Agriculture's Forest to Faucets.</a>
         </p>
       </div>        
     </div>

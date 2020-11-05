@@ -138,7 +138,6 @@
   .chart-title-container {
     background-color: $fireYellow;
     padding: .5em 1em;
-    min-width: 350px;
     max-width: 700px;
     margin: auto;
     position: relative;

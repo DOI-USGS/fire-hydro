@@ -2,7 +2,9 @@
   <div id="header-wrapper">
     <div id="header">
       <div class="text-content">
-        <h1 id="title">{{ title }}</h1>
+        <h1 id="title">
+          {{ title }}
+        </h1>
         <p id="subheader">
           Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas are impacted by the effects of wildfire. <br><br>To help water providers and land managers prepare for impacts from wildfire on water supplies, the U.S. Geological Survey is working to measure and predict post-fire water quality and quantity. 
         </p>

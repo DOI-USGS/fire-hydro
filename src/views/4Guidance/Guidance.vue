@@ -17,7 +17,24 @@
           Stream habitat alteration
         </li>
       </ul>
-      <p>After the <a href="https://www.usgs.gov/media/images/burned-watersheds-buffalo-creek-alluvial-fan" target="_blank">Buffalo Creek Fire</a> in 1996 and the <a href="https://pubs.usgs.gov/sir/2012/5267/pdf/sir2012-5267.pdf" target="_blank">Hayman Fire</a> in 2002, substantial sediment loads were delivered to a downstream reservoir that provides water to millions of people in and near Denver, Colorado. Over <a href="https://pubs.usgs.gov/wri/2001/4122/report.pdf" target="_blank">$26 million</a> was then spent on dredging the sediment to restore water storage capacity of the reservoir. After the <a href="https://earthobservatory.nasa.gov/images/event/18845/zaca-wildfire-southern-california" target="_blank">Zaca Fire</a> in 2007, water treatment costs for the City of Santa Barbara, California, <a href="https://www.waterboards.ca.gov/drinking_water/programs/districts/docs/mendocino/05_jdensmore_post_fire_impacts_wq_treatment.pdf" target="_blank">increased by a factor of 60,</a> from $33,000 to $2.1 million per year.</p>
+      <p>
+        After the <a
+          href="https://www.usgs.gov/media/images/burned-watersheds-buffalo-creek-alluvial-fan"
+          target="_blank"
+        >Buffalo Creek Fire</a> in 1996 and the <a
+          href="https://pubs.usgs.gov/sir/2012/5267/pdf/sir2012-5267.pdf"
+          target="_blank"
+        >Hayman Fire</a> in 2002, substantial sediment loads were delivered to a downstream reservoir that provides water to millions of people in and near Denver, Colorado. Over <a
+          href="https://pubs.usgs.gov/wri/2001/4122/report.pdf"
+          target="_blank"
+        >$26 million</a> was then spent on dredging the sediment to restore water storage capacity of the reservoir. After the <a
+          href="https://earthobservatory.nasa.gov/images/event/18845/zaca-wildfire-southern-california"
+          target="_blank"
+        >Zaca Fire</a> in 2007, water treatment costs for the City of Santa Barbara, California, <a
+          href="https://www.waterboards.ca.gov/drinking_water/programs/districts/docs/mendocino/05_jdensmore_post_fire_impacts_wq_treatment.pdf"
+          target="_blank"
+        >increased by a factor of 60,</a> from $33,000 to $2.1 million per year.
+      </p>
     </div>
     
     <div
@@ -26,7 +43,7 @@
     >
       <div class="flex-item">
         <picture>
- <!--          <source
+          <!--          <source
             srcset="@/assets/images/examples/Buffalo-Creek-Fan.jpg 1200w"
             type="image/jpeg"
           > -->
@@ -43,7 +60,7 @@
       </div>
       <div class="flex-item">
         <picture>
-   <!--       <source
+          <!--       <source
             srcset="@/assets/images/examples/Gibraltar-Reservoir.jpg 1200w"
             type="image/jpeg"
           > -->

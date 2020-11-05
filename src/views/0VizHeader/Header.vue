@@ -2,7 +2,7 @@
   <div id="header-wrapper">
     <div id="header">
       <div class="text-content">
-        <h1>{{ title }}</h1>
+        <h1 id="title">{{ title }}</h1>
         <p id="subheader">
           Communities across the United States and the globe rely on clean water flowing from forested watersheds. But these water source areas can be impacted by the effects of wildfire. <br><br>In order to help water providers and land managers prepare for impacts from wildfire on our water supplies, the U.S. Geological Survey is working to measure and predict post-fire water quality and quantity. 
         </p>
@@ -15,7 +15,7 @@
           width="200px"
           height="150px"
         >
-          <g transform="translate(10 0)">
+          <g transform="translate(-10 0)">
             <rect
               id="box-2020"
               width="160"
@@ -389,12 +389,14 @@ import * as d3Base from "d3";
           background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.png);
       }
       @media screen and (max-width: 400px) {
-          height: 1000px;
+          height: 1200px;
       }
       @supports (-webkit-touch-callout: inherit) {
         background-attachment: scroll;
-        h1 {
-          color: rgb(245,169,60);
+        #title {
+          background-color: rgb(245,169,60);
+          padding: 80px 20px 20px 20px;
+          margin: 100px 0 100px 0;
         }
       }
     }
@@ -479,6 +481,7 @@ select{
     #annotate-svg {
       position: absolute;
       bottom: 200px;
+      right: 0;
     }
 
 #annotate-container {

@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="text-content">
-      <p>Not every watershed faces the same impacts to water supplies. Many factors affect the potential for post-wildfire flooding and water-quality issues in a watershed, such as: </p>
+      <p>Not every watershed that experiences a wildfire faces the same impacts to water supplies. Many factors affect the potential for post-wildfire flooding and water-quality issues in a watershed, such as: </p>
       <ul class="styled-li">
         <li class="styled-li">
           Slope steepness
@@ -105,25 +105,25 @@
       <p>Water managers do have tools available to mitigate and adapt to the impacts of wildfires within a watershed. Potential adaptation strategies for water-treatment facilities include:</p>
       <ul class="styled-li">
         <li class="styled-li">
-          Fill off-channel water-supply reservoirs prior to high-intensity rainfall season
+          Filling off-channel water-supply reservoirs prior to high-intensity rainfall season
         </li>
         <li class="styled-li">
-          Close intakes when forecasts predict high-intensity rain storms
+          Closing intakes when forecasts predict high-intensity rain storms
         </li>
         <li class="styled-li">
-          Establish alternative water supplies
+          Establishing alternative water supplies
         </li>
         <li class="styled-li">
-          Plan and install pre-sedimentation basins to minimize delivery of eroded ash and sediment to reservoirs
+          Planning and installing pre-sedimentation basins to minimize delivery of eroded ash and sediment to reservoirs
         </li>
         <li class="styled-li">
-          Increase sedimentation capacity
+          Increasing sedimentation capacity
         </li>
         <li class="styled-li">
-          Collaborate with land and fire managers to identify and prioritize fuel treatments to reduce the potential for large, severe wildfires
+          Collaborating with land and fire managers to identify and prioritize fuel treatments to reduce the potential for large, severe wildfires
         </li>
         <li class="styled-li">
-          Install real-time monitoring networks that can send alerts of high rainfall intensity, flooding, or high turbidity, which can inform decision making about water infrastructure management during storm events
+          Installing real-time monitoring networks that can send alerts of high rainfall intensity, flooding, or high turbidity, which can inform decision making about water infrastructure management during storm events
         </li>
       </ul>
     </div>

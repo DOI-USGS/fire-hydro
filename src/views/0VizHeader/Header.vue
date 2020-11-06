@@ -100,7 +100,7 @@
           Area burned by wildfires in the Western U.S.
         </p>
         <p>1984 to 2020</p>
-        <p>Last update Nov 1, 2020</p>
+        <p>Last update Nov 6, 2020</p>
         <div class="fade-effect" />
       </div>
     </div>

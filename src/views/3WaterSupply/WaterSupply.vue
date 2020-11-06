@@ -5,7 +5,7 @@
     >
       <div id="water-supply-header">
         <h2>How wildfires <span class="lowlight">change watersheds</span></h2>
-        <p>Forests, to a hydrologist’s eye, act as both a sponge and a filter. When rain falls on a forest, trees and other plants use the water to grow and reproduce. Leaves and branches, as well as leaf litter on the forest floor, intercept water before it reaches the ground and protect the soil from erosion. When water reaches soil, it is soaked up then slowly released to streams, which helps recharge groundwater aquifers and reduce the risks of rapid flooding. As the water moves through soil and rock, the soil and rock act as a filter, removing contaminants. Water flowing from forested watersheds often needs only minimal treatment before drinking.</p>
+        <p>Forests, to a hydrologist’s eye, act as both a sponge and a filter. When rain falls on a forest, trees and other plants use the water to grow and reproduce. Leaves and branches, as well as layers of leaf litter on the forest floor, intercept water before it reaches the ground and protect the soil from erosion. When water reaches soil, it is soaked up then slowly released to streams, which helps recharge groundwater aquifers and reduce the risks of rapid flooding. As the water moves through soil and rock, the soil and rock act as a filter, removing contaminants. Water flowing from forested watersheds often needs only minimal treatment before drinking.</p>
       </div>
     </div>
     <div
@@ -58,7 +58,7 @@
         <a
           href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016WR019110"
           target="_blank"
-        >Wildfires short-circuit these sponge and filter functions.</a>  A wildfire burns the vegetation and leaf litter on the forest floor, causing more rainfall to directly fall on the soil surface.  Heat from the wildfire redistributes organic substances in vegetation and soil, making the soil hydrophobic (“water-hating”). Impacts from soil heating also make the soil less porous and less able to soak up rainfall. Thus, after a wildfire burns through a landscape, much of the rainfall does not soak into the soil, but instead moves over the surface rapidly as “overland flow.”
+        >Wildfires short-circuit these sponge and filter functions.</a>  A wildfire burns up the vegetation and leaf litter on the forest floor, causing more rainfall to directly fall on the soil surface.  Heat from the wildfire redistributes organic substances in vegetation and soil, making the soil hydrophobic (“water-hating”). Impacts from soil heating also make the soil less porous and less able to soak up rainfall. Thus, after a wildfire burns through a landscape, much of the rainfall does not soak into the soil, but instead moves over the surface rapidly as runoff or “overland flow.”
       </p>
       <p>
         This rapidly moving water can pick up and <a

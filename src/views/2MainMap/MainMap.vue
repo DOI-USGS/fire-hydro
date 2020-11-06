@@ -9,7 +9,8 @@
           Wildfires are a natural process in many ecosystems, playing an important role in nutrient cycling and other ecological interactions. But the size, <a
             href="https://www.usgs.gov/centers/eros/science/monitoring-trends-burn-severity?qt-science_center_objects=0#qt-science_center_objects"
             target="_blank"
-          >severity</a>, and the length of the fire season have increased substantially in the western U.S. over the past few decades, and these trends are predicted to continue. The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Nearly $2 billion has been spent to suppress these fires, and thousands of people have evacuated their homes.
+          >severity</a>, and the length of the fire season have increased substantially in the western U.S. over the past few decades, and these trends are predicted to continue.</p>
+        <p>The year 2020 provided stark evidence that wildfires are changing the landscape of America. Over 8 million acres – almost the size of Connecticut and New Jersey combined – were ablaze this year, including the largest recorded fires in California and Colorado history. Wildfires burned watersheds on the western side of the Cascade Mountains in Oregon, a region that is typically very wet and where fires are rare. Over $3.2 billion has been spent to suppress these fires nationally, and thousands of people have evacuated their homes.
         </p>
       </div>
     </div>
@@ -17,7 +18,7 @@
       <div id="map-container">
         <div class="chart-title-container ">
           <p class="chart-title">
-            Important Watersheds and Wildfire in the Western U.S.
+            Wildfire in the Western U.S. in relation to Important Watersheds
           </p>
           <p>1984 - 2020</p>
         </div>

@@ -7,6 +7,12 @@
     <Guidance />
     <USGS />
     <Resources />
+    <img 
+      id="thumbnail"
+      src="@/assets/images/scar-thumb.jpg" 
+      alt="metatag thumbnail"
+      loading="lazy"
+    >
   </div>
 </template>
 
@@ -262,4 +268,8 @@
     text-underline-offset: 3px;
     text-decoration-style: wavy;
   }
+
+#thumbnail {
+  display: none;
+}
 </style>

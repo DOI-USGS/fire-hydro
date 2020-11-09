@@ -270,6 +270,6 @@
   }
 
 #thumbnail {
-  display: none;
+  opacity: 0;
 }
 </style>

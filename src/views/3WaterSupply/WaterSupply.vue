@@ -29,10 +29,10 @@
           >
         </picture>
         <p class="caption">
-          A forested watershed's ability to absorb and filter precipitation is key to providing enough clean water to residents reliant on this water source. 
-          <!-- <a
-            href="./../../assets/components/water-supply/diagrams/beforeFire_1200w.jpg" 
-          >Download a blank version.</a> -->
+          A forested watershed's ability to absorb and filter precipitation is key to providing enough clean water to residents reliant on this water source. <a
+            href="src/assets/components/water-supply/diagrams/beforeFire-blank.jpg"
+            download
+          >Download a blank version.</a>
         </p>
       </div>
       <div class="flex-item">
@@ -52,11 +52,10 @@
           >
         </picture>
         <p class="caption">
-          But after a fire, the ground cover, soil properties, and water flow patterns are all different.  
-          <!-- <a
-            href="@/assets/components/water-supply/diagrams/diagrams.zip" 
+          But after a fire, the ground cover, soil properties, and water flow patterns are all different.  <a
+            href="src/assets/components/water-supply/diagrams/afterFire-blank.jpg"
             download
-          >Download a blank version.</a> -->
+          >Download a blank version.</a>
         </p>
       </div>
     </div>

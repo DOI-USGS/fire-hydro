@@ -1,0 +1,39 @@
+[
+  {
+    "name": "fire-hydro",
+    "organization": "U.S. Geological Survey",
+    "description": "A single-page visual website about the impacts of wildfires in the Western US on water supply and water quality. ",
+    "version": "main",
+    "status": "Production",
+    "permissions": {
+      "usageType": "openSource",
+      "licenses": [
+        {
+          "name": "Public Domain, CC0-1.0",
+          "URL": "https://github.com/usgs-makerspace/fire-hydro/blob/main/LICENSE.md"
+        }
+      ]
+    },
+    "homepageURL": "https://github.com/usgs-makerspace/fire-hydro/",
+    "downloadURL": "https://github.com/usgs-makerspace/fire-hydro/archive/refs/heads/main.zip",
+    "disclaimerURL": "https://github.com/usgs-makerspace/fire-hydro/blob/main/DISCLAIMER.md",
+    "repositoryURL": "https://github.com/usgs-makerspace/fire-hydro.git",
+    "vcs": "git",
+    "laborHours": 70,
+    "tags": [
+      "R",
+      "USGS"
+    ],
+    "languages": [
+      "R",
+      "Vue"
+    ],
+    "contact": {
+      "name": "Cee Nell",
+      "email": "cnell@usgs.gov"
+    },
+    "date": {
+      "metadataLastUpdated": "2023-05-04"
+    }
+  }
+]

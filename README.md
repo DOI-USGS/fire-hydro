@@ -2,6 +2,8 @@
 
 A visual story featuring USGS Water Resources Mission Area research from hydrologists Sheila Murphy, Brian Ebel, and others.  The graphics visualize data about the 2020 wildfire season and important watersheds, and provides guidance for water providers on adapting to the increasingly complex impacts of wildfires within those watersheds. 
 
+Website can be found here: https://labs.waterdata.usgs.gov/visualizations/fire-hydro/index.html#/
+
 Download blank versions of the diagrams here.  All diagrams and photos are free to use.  
 
 ## Before Fire

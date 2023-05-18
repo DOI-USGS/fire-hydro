@@ -1,6 +1,6 @@
-FROM debian:stretch
+FROM artifactory.wma.chs.usgs.gov/docker-official-mirror/debian:stable
 
-LABEL maintainer="makerspace-team@usgs.gov"
+LABEL maintainer="gw-w_vizlab@usgs.gov"
 
 # Run updates and install curl
 RUN apt-get update && \

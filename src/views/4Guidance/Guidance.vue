@@ -43,7 +43,7 @@
     >
       <div class="flex-item">
         <picture>
-                   <source
+          <source
             srcset="@/assets/images/examples/Buffalo-Creek-Fan_400w.jpg 400w,
             @/assets/images/examples/Buffalo-Creek-Fan_800w.jpg 800w,
             @/assets/images/examples/Buffalo-Creek-Fan.jpg 1500w"
@@ -62,7 +62,7 @@
       </div>
       <div class="flex-item">
         <picture>
-                <source
+          <source
             srcset="@/assets/images/examples/Gibraltar-Reservoir_400w.jpg 400w,
             @/assets/images/examples/Gibraltar-Reservoir_800w.jpg 800w,
             @/assets/images/examples/Gibraltar-Reservoir.jpg 1500w"

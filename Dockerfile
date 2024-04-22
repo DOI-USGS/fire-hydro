@@ -9,7 +9,7 @@ RUN apt-get update && \
       apt-get purge -y --auto-remove && \
       apt-get clean
 
-# Enable the NodeSource repository and install nodejs v20
+# Enable the NodeSource repository and install nodejs version 20 (current LTS as of April 2024)
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
       apt-get install -y nodejs
 

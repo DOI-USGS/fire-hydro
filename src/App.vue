@@ -3,7 +3,7 @@
     <WindowSize v-if="checkTypeOfEnv === '-test build-'" />
     <HeaderUSWDSBanner />
     <HeaderUSGS />
-    <ShutdownBanner />
+    <!-- <ShutdownBanner /> -->
     <InternetExplorerPage v-if="isInternetExplorer" />
     <WorkInProgressWarning v-if="checkTypeOfEnv !== '' & !isInternetExplorer" /> <!-- an empty string in this case means the 'prod' version of the application   -->
     <router-view
@@ -19,7 +19,7 @@
     import WindowSize from "./components/WindowSize";
     import HeaderUSWDSBanner from './components/HeaderUSWDSBanner';
     import HeaderUSGS from './components/HeaderUSGS';
-    import ShutdownBanner from './components/ShutdownBanner';
+    // import ShutdownBanner from './components/ShutdownBanner';
     import InternetExplorerPage from './components/InternetExplorerPage';
     import WorkInProgressWarning from './components/WorkInProgressWarning';
     import PreFooterVisualizationsLinks from './components/PreFooterVisualizationsLinks';
@@ -32,7 +32,7 @@
             WindowSize,
             HeaderUSWDSBanner,
             HeaderUSGS,
-            ShutdownBanner,
+            // ShutdownBanner,
             InternetExplorerPage,
             WorkInProgressWarning,
             PreFooterVisualizationsLinks,

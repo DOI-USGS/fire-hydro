@@ -247,12 +247,18 @@
         </svg>
 
         <!-- Fire map SVG loaded at runtime to reduce bundle size -->
-        <div
-          id="firemap-container"
-          role="figure"
-          aria-label="Interactive map of the western United States showing wildfire burn perimeters from 1984 to 2020, overlaid on important water supply watersheds. Total burned area has generally increased over time, with 2020 being the largest on record at over 8 million acres."
-          v-html="fireMapSvg"
-        />
+        <div id="firemap-wrapper">
+          <div
+            id="firemap-container"
+            role="figure"
+            aria-label="Interactive map of the western United States showing wildfire burn perimeters from 1984 to 2020, overlaid on important water supply watersheds. Total burned area has generally increased over time, with 2020 being the largest on record at over 8 million acres."
+            v-html="fireMapSvg"
+          />
+          <span
+            id="year-ticker"
+            aria-live="polite"
+          >{{ currentYear }}</span>
+        </div>
       </div>
       <div class="caption-container flex-container">
         <p class="caption">
@@ -279,6 +285,7 @@ import * as d3 from 'd3';
 
 const publicPath = import.meta.env.BASE_URL;
 const fireMapSvg = ref('');
+const currentYear = ref('');
 
 // chart dimensions
 const chart_margin = {top: 5, right: 5, bottom: 40, left: 120};
@@ -289,15 +296,20 @@ const y = d3.scaleLinear().range([chart_height, 0]);
 let isPlaying = false;
 let tooltip = null;
 const yearList = [];
+let currentYearIndex = 0;
+let animationTimer = null;
+const animationInterval = 800;
 
 onMounted(async () => {
   // Load fire map SVG at runtime to avoid bundling ~1.5MB of path data
   const response = await fetch(publicPath + 'data/fire_map.svg');
   fireMapSvg.value = await response.text();
 
-  // Wait for DOM update then initialize D3
+  // Wait for DOM update and a frame for browser to parse the SVG
   await nextTick();
-  setPanels();
+  requestAnimationFrame(() => {
+    setPanels();
+  });
 });
 
 function setPanels() {
@@ -311,7 +323,8 @@ function callback(data) {
   addTooltip();
   createBarChart(csv_burn);
   makeFireInteractive(csv_burn);
-  animateChart_Map();
+  // Start initial animation using the step-based system
+  resumeAnimation();
 }
 
 function makeYearList(csv_burn) {
@@ -321,7 +334,7 @@ function makeYearList(csv_burn) {
 }
 
 function addTooltip() {
-  tooltip = d3.selectAll(".tooltip")
+  tooltip = d3.select("#firemap-container").selectAll(".tooltip")
     .attr("class", "tooltip")
     .attr('text-anchor', 'end')
     .attr('text-align', 'right')
@@ -405,7 +418,8 @@ function createBarChart(csv_burn) {
 function createPlayButton(chart) {
   let button = chart.append("g")
     .attr("transform", "translate(0,0)")
-    .attr("class", "play_button");
+    .attr("class", "play_button")
+    .style("cursor", "pointer");
 
   button.append("rect")
     .attr("width", 50)
@@ -413,33 +427,154 @@ function createPlayButton(chart) {
     .attr("rx", 4)
     .style("fill", 'rgb(250,109,49)');
 
+  // Play icon (triangle)
   button.append("path")
+    .attr("class", "play-icon")
     .attr("d", "M15 10 L15 40 L35 25 Z")
     .style("fill", "#ffffff");
 
+  // Pause icon (two bars) - hidden initially
+  button.append("path")
+    .attr("class", "pause-icon")
+    .attr("d", "M14 10 L14 40 L22 40 L22 10 Z M28 10 L28 40 L36 40 L36 10 Z")
+    .style("fill", "#ffffff")
+    .style("display", "none");
+
   button.append("title")
-    .text("replay animation");
+    .text("play/pause animation");
 
   button.on("mousedown", function() {
-    pressButton(isPlaying);
+    togglePlayPause();
   });
 }
 
-function pressButton(playing) {
-  if (playing === false) {
-    animateChart_Map();
+function togglePlayPause() {
+  if (isPlaying) {
+    pauseAnimation();
+  } else {
+    resumeAnimation();
   }
 }
 
-function resetPlayButton() {
+function resumeAnimation() {
+  isPlaying = true;
+
+  // Show pause icon, hide play icon
+  d3.select(".play-icon").style("display", "none");
+  d3.select(".pause-icon").style("display", null);
+
+  let button_rect = d3.selectAll(".play_button").selectAll("rect");
+  button_rect.style("fill", "#d6d6d6");
+
+  // If we're at the end, restart from beginning
+  if (currentYearIndex >= yearList.length) {
+    currentYearIndex = 0;
+    resetMapState();
+  }
+
+  // Position year text elements - hidden by default
+  d3.select("#firemap-container").selectAll(".text-year")
+    .style("display", "none");
+
+  stepAnimation();
+}
+
+function pauseAnimation() {
   isPlaying = false;
+
+  if (animationTimer) {
+    clearTimeout(animationTimer);
+    animationTimer = null;
+  }
+
+  // Show play icon, hide pause icon
+  d3.select(".play-icon").style("display", null);
+  d3.select(".pause-icon").style("display", "none");
+
+  // Restore button color
   d3.selectAll(".play_button").selectAll("rect")
     .style("fill", 'rgb(250,109,49)');
 }
 
+function resetPlayButton() {
+  isPlaying = false;
+  currentYearIndex = 0;
+  if (animationTimer) {
+    clearTimeout(animationTimer);
+    animationTimer = null;
+  }
+  d3.selectAll(".play_button").selectAll("rect")
+    .style("fill", 'rgb(250,109,49)');
+  d3.select(".play-icon").style("display", null);
+  d3.select(".pause-icon").style("display", "none");
+}
+
+function resetMapState() {
+  // Reset bars
+  d3.selectAll("g").selectAll(".fire-bars")
+    .attr("y", chart_height)
+    .attr("height", 0);
+
+  // Reset fires
+  d3.select("#firemap-container").selectAll(".fire")
+    .style("fill", "None")
+    .style("stroke", "None");
+
+  // Reset year text
+  d3.select("#firemap-container").selectAll(".text-year")
+    .style("display", "none");
+  currentYear.value = '';
+}
+
+function stepAnimation() {
+  if (!isPlaying || currentYearIndex >= yearList.length) {
+    if (currentYearIndex >= yearList.length) {
+      resetPlayButton();
+    }
+    return;
+  }
+
+  let colorDuration = 200;
+  let appearDuration = animationInterval - colorDuration;
+  let yr = yearList[currentYearIndex];
+
+  // Animate the bar for this year
+  d3.select(".bar.year" + yr)
+    .transition()
+    .duration(appearDuration)
+    .attr("height", function(d) { return chart_height - y(d.area_acres); })
+    .attr("y", function(d) { return y(d.area_acres); })
+    .style("fill", "rgb(250,109,49)")
+    .style("stroke", "rgb(235,98,40)")
+    .transition()
+    .duration(colorDuration)
+    .style("fill", "rgba(245,169,60,0.8)")
+    .style("stroke", "rgba(235,156,42,0.8)");
+
+  // Animate the fire perimeter for this year
+  d3.select("#firemap-container").select(".fire.year" + yr)
+    .transition()
+    .duration(0)
+    .style("fill", "rgb(250,109,49)")
+    .style("stroke", "rgb(235,98,40)")
+    .transition()
+    .duration(colorDuration)
+    .delay(appearDuration)
+    .style("fill", "rgba(245,169,60,0.8)")
+    .style("stroke", "rgba(235,156,42,0.8)");
+
+  // Update the year ticker
+  currentYear.value = yr;
+
+  currentYearIndex++;
+
+  // Schedule next step
+  animationTimer = setTimeout(stepAnimation, animationInterval);
+}
+
 function makeFireInteractive(csv_burn) {
   // D3 v7: event handlers receive (event, d)
-  d3.selectAll(".firemap").selectAll(".fire")
+  d3.select("#firemap-container").selectAll(".fire")
     .data(csv_burn)
     .on("click", function(event, d) { highlight_year(d, isPlaying); })
     .on("mouseover", function(event, d) { highlight_year(d, isPlaying); })
@@ -457,6 +592,7 @@ function mousemove(data, playing) {
 function highlight_year(data, playing) {
   if (playing === false) {
     tooltip.style("opacity", 1);
+    currentYear.value = data.YEAR;
 
     d3.selectAll(".fire.year" + data.YEAR)
       .style("fill", "rgb(250,109,49)")
@@ -466,24 +602,19 @@ function highlight_year(data, playing) {
     d3.selectAll(".bar.year" + data.YEAR)
       .style("fill", "rgb(250,109,49)")
       .style("stroke", "rgb(235,98,40)");
-
-    d3.selectAll(".label" + data.YEAR)
-      .style("fill", "rgb(250,109,49)")
-      .style("opacity", 1)
-      .raise();
   }
 }
 
 function dehighlight_year(data, playing) {
   if (playing === false) {
     tooltip.style("opacity", 0);
+    currentYear.value = '';
 
     for (let i = 0; i < yearList.length; i++) {
       let current_year = parseFloat(data.YEAR);
       let selected_year = parseFloat(yearList[i]);
       if (current_year > selected_year) {
         d3.selectAll(".fire.year" + selected_year).raise();
-        d3.selectAll(".label" + selected_year).raise();
       }
     }
 
@@ -496,84 +627,16 @@ function dehighlight_year(data, playing) {
       .style("stroke", "rgba(235,156,42,0.6)")
       .raise();
 
-    d3.selectAll(".label" + data.YEAR)
-      .style("fill", "#ffffff")
-      .raise();
-
     for (let i = 0; i < yearList.length; i++) {
       let current_year = parseFloat(data.YEAR);
       let selected_year = parseFloat(yearList[i]);
       if (current_year < selected_year) {
         d3.selectAll(".fire.year" + selected_year).raise();
-        d3.selectAll(".label" + selected_year).raise();
       }
     }
   }
 }
 
-function animateChart_Map() {
-  isPlaying = true;
-
-  let button_rect = d3.selectAll(".play_button").selectAll("rect");
-  button_rect.style("fill", "#d6d6d6");
-
-  let animationInterval = 800;
-  let colorDuration = 200;
-  let appearDuration = animationInterval - colorDuration;
-  let num_years = 37;
-
-  let bars = d3.selectAll("g").selectAll(".fire-bars");
-
-  bars.attr("y", chart_height).attr("height", 0);
-
-  bars.transition()
-    .duration(appearDuration)
-    .delay(function(d, i) { return i * animationInterval; })
-    .attr("height", function(d) { return chart_height - y(d.area_acres); })
-    .attr("y", function(d) { return y(d.area_acres); })
-    .style("fill", "rgb(250,109,49)")
-    .style("stroke", "rgb(235,98,40)")
-    .transition()
-    .duration(colorDuration)
-    .style("fill", "rgba(245,169,60,0.8)")
-    .style("stroke", "rgba(235,156,42,0.8)");
-
-  let fires = d3.selectAll(".firemap").selectAll(".fire");
-
-  fires.style("fill", "None").style("stroke", "None");
-
-  fires.transition()
-    .duration(0)
-    .delay(function(d, i) { return i * animationInterval; })
-    .style("fill", "rgb(250,109,49)")
-    .style("stroke", "rgb(235,98,40)")
-    .transition()
-    .duration(colorDuration)
-    .delay(function(d, i) { return animationInterval - colorDuration; })
-    .style("fill", "rgba(245,169,60,0.8)")
-    .style("stroke", "rgba(235,156,42,0.8)");
-
-  let yearText = d3.selectAll(".text-year");
-
-  yearText
-    .attr("font-size", "40px")
-    .attr('x', 550)
-    .attr('y', 50)
-    .style("fill", "rgba(0,0,0,0)");
-
-  yearText.transition()
-    .duration(300)
-    .delay(function(d, i) { return i * animationInterval; })
-    .style("fill", "rgb(250,109,49)")
-    .transition()
-    .duration(500)
-    .delay(function(d, i) { return animationInterval - 500; })
-    .style("fill", "rgba(0,0,0,0)");
-
-  button_rect.transition()
-    .delay(animationInterval * num_years)
-    .on("end", resetPlayButton);
-}
 </script>
 
 <style scoped lang="scss">
@@ -607,21 +670,6 @@ function animateChart_Map() {
   font-weight: lighter;
 
 }
-#basemap  {
-
-  fill: none;
-  stroke: none; 
-  stroke-linecap: round; 
-  stroke-linejoin: round; 
-  stroke-width: 1;
-
-  #states {
-    stroke-width: 1.75;
-    stroke: #fcfcfc; 
-    fill: #f0f0f0;
-  }
-
-}
 #map-container {
   padding: 4em 0 0 0;
   width: 90%;
@@ -643,43 +691,89 @@ function animateChart_Map() {
   width:90vw;
   margin: auto;
 }
-#firemap  {
-  width: 80%;
-  height: auto;
-  max-height: 60vh;
-  @media screen and (min-width: 600px) {
-    width: 1000px;
-    margin: auto;
-    padding: 0 4em 0 4em;
-  }
-}
-.fire {
-  stroke-width: 0.5px;
-  stroke-linecap: round; 
-  stroke-linejoin: round; 
-}
-.tooltip {
-    fill: $fireRed;
-    font-family: sans-serif;
-    font-size: 20px;
-    text-align: right;
-    font-weight: bold;
-    line-height: 1em;
-}
-#text-year  {
-    font-size: 36px;
-    fill: $fireRed;
-    font-weight: 500;
-}
-.IMP  {
-  fill: #97c4cf;
-  stroke: #82b1bd;
-  stroke-width: 0.3px;
-  opacity:  0.6;
-}
 
 </style>
 <style lang="scss">
+/* Styles for dynamically loaded fire map SVG (v-html) */
+#firemap-wrapper {
+  position: relative;
+}
+#year-ticker {
+  position: absolute;
+  top: 0;
+  right: 25%;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(250, 109, 49);
+  font-family: 'Source Sans Pro', sans-serif;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  text-align: right;
+}
+#year-ticker:empty {
+  opacity: 0;
+}
+#firemap-container {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  @media screen and (min-width: 600px) {
+    width: 1000px;
+    padding: 0 4em 0 4em;
+  }
+}
+#firemap {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+}
+#basemap {
+  fill: none;
+  stroke: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1;
+
+  #states {
+    stroke-width: 1.75;
+    stroke: #fcfcfc;
+    fill: #f0f0f0;
+  }
+}
+.fire {
+  fill: none;
+  stroke: none;
+  stroke-width: 0.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+.fire-bars {
+  cursor: pointer;
+}
+.play_button {
+  cursor: pointer;
+}
+.tooltip {
+  fill: rgb(250,109,49);
+  font-family: sans-serif;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  line-height: 1em;
+}
+.text-year {
+  font-size: 36px;
+  fill: rgb(250,109,49);
+  font-weight: 500;
+}
+.IMP {
+  fill: #97c4cf;
+  stroke: #82b1bd;
+  stroke-width: 0.3px;
+  opacity: 0.6;
+}
 .chartAxisText {
   fill: #4f4f4f; /* #4f4f4f */
   font-size: 1em;

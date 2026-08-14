@@ -1,3 +1,6 @@
+@import './common.css'; /* USGS Viz ID Stylesheet */
+@import './custom.css'; /* USGS Viz ID Stylesheet */
+
 /* Global styles for fire-hydro */
 
 #app {

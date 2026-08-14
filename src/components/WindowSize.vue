@@ -1,21 +1,13 @@
 <template>
   <section id="window-size-component">
-    <p>window width {{ windowWidth }} -- height {{ windowHeight }}</p>
+    <p>window width {{ windowSizeStore.windowWidth }} -- height {{ windowSizeStore.windowHeight }}</p>
   </section>
 </template>
 
-<script>
-export default {
-    name: 'WindowSize',
-    computed: {
-        windowWidth: function() {
-            return this.$store.state.windowWidth
-        },
-        windowHeight: function () {
-            return this.$store.state.windowHeight
-        }
-    }
-}
+<script setup>
+import { useWindowSizeStore } from '@/stores/WindowSizeStore';
+
+const windowSizeStore = useWindowSizeStore();
 </script>
 
 <style scoped lang="scss">

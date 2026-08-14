@@ -890,476 +890,299 @@
   </section>
 </template>
 
-<script>
-import * as d3Base from "d3";
-    export default {
-        name: 'MainMap',
-        data() {
-          return {
-            // set public path
-            publicPath: process.env.BASE_URL, // this is need for the data files in the public folder, this allows the application to find the files when on different deployment roots
-            
-            // assign d3 plugins to the d3 instance
-            d3: null, // this is used so that we can assign d3 plugins to the d3 instance
-            
-            // define global variables instantiated in next section
-            chart_margin: {top: 5, right: 5, bottom: 40, left: 120},
-            chart_width: null,
-            chart_height: null,
-            y: null,
-            isPlaying: null,
-            tooltip: null,
-            yearList: []
-          }
-        },
-       mounted() {
-        // load d3 plugins
-        this.d3 = Object.assign(d3Base); // this loads d3 plugins with webpack
-          
-        // instantiate global variables
-        this.chart_height = 216.00 - this.chart_margin.top - this.chart_margin.bottom;
-        this.chart_width = 720.00 - this.chart_margin.right - this.chart_margin.left;
-        this.y = this.d3.scaleLinear()
-          // set range of possible output values
-          .range([this.chart_height, 0])
+<script setup>
+import { ref, onMounted } from 'vue';
+import * as d3 from 'd3';
 
-        // begin script when window loads
-        this.setPanels();
+const publicPath = import.meta.env.BASE_URL;
 
-       },
-      methods: {
-        setPanels() {
-          const self = this;
+// chart dimensions
+const chart_margin = {top: 5, right: 5, bottom: 40, left: 120};
+const chart_height = 216.00 - chart_margin.top - chart_margin.bottom;
+const chart_width = 720.00 - chart_margin.right - chart_margin.left;
+const y = d3.scaleLinear().range([chart_height, 0]);
 
-          let promises = [this.d3.csv(self.publicPath + "data/fire_timeseries.csv")]
-          Promise.all(promises).then(self.callback);
-        },
-        callback(data) {          
-          let csv_burn = data[0];
+let isPlaying = false;
+let tooltip = null;
+const yearList = [];
 
-          // populate list of years
-          this.makeYearList(csv_burn);
+onMounted(() => {
+  setPanels();
+});
 
-          // add tooltip to map
-          this.addTooltip();
+function setPanels() {
+  let promises = [d3.csv(publicPath + "data/fire_timeseries.csv")];
+  Promise.all(promises).then(callback);
+}
 
-          // create bar chart
-          this.createBarChart(csv_burn);
-         
-          // append data and click and mouseover functionality to fire perimeters
-          this.makeFireInteractive(csv_burn);
+function callback(data) {
+  let csv_burn = data[0];
+  makeYearList(csv_burn);
+  addTooltip();
+  createBarChart(csv_burn);
+  makeFireInteractive(csv_burn);
+  animateChart_Map();
+}
 
-          // add play button
-          //this.createPlayButton();
+function makeYearList(csv_burn) {
+  for (let i = 0; i < csv_burn.length; i++) {
+    yearList.push(csv_burn[i]['YEAR']);
+  }
+}
 
-          // SHOULD BE TRIGGERED BY INTERSECTION OBSERVER
-          // animate bar chart and map
-          this.animateChart_Map();
+function addTooltip() {
+  tooltip = d3.selectAll(".tooltip")
+    .attr("class", "tooltip")
+    .attr('text-anchor', 'end')
+    .attr('text-align', 'right')
+    .attr('x', 636)
+    .attr('y', 75);
+}
 
-        },
-        makeYearList(csv_burn){
-          const self = this;
+function createBarChart(csv_burn) {
+  var chart = d3.select("#map-container")
+    .append("svg")
+    .attr("viewBox", [0, 0, (chart_width + chart_margin.right + chart_margin.left),
+          (chart_height + chart_margin.top + chart_margin.bottom)].join(' '))
+    .attr("class", "fire-timeseries-2");
+  let g = chart.append("g")
+    .attr("class", "transformedBarChart")
+    .attr("transform", "translate(" + chart_margin.left + "," + chart_margin.top + ")");
 
-          for (var i=0; i<csv_burn.length; i++){
-            var val = csv_burn[i]['YEAR'];
-            self.yearList.push(val);
-          };
-        },
-        addTooltip() {
-          const self = this;
+  var x = d3.scaleBand()
+    .range([0, chart_width])
+    .domain(csv_burn.map(function(d) { return d.YEAR; }))
+    .padding(0.1);
 
-          // set text element appended to basemap svg, without coordinates, to be global tooltip
-          self.tooltip = this.d3.selectAll(".tooltip")
-            .attr("class", "tooltip")
-            .attr('text-anchor', 'end')
-            .attr('text-align', 'right')
-            .attr('x', 636)
-            .attr('y', 75)
-        },
-        createBarChart(csv_burn) {
-          const self = this;
-  
-          // build d3 bar chart
-          var chart = this.d3.select("#map-container")
-            .append("svg")
-            .attr("viewBox", [0, 0, (this.chart_width +  this.chart_margin.right + this.chart_margin.left), 
-                  (this.chart_height + this.chart_margin.top + this.chart_margin.bottom)].join(' '))
-            .attr("class", "fire-timeseries-2");
-          let g = chart.append("g")
-            .attr("class", "transformedBarChart")
-            .attr("transform", "translate(" + this.chart_margin.left + "," + this.chart_margin.top + ")");
+  var domainArrayY = [];
+  for (let i = 0; i < csv_burn.length; i++) {
+    domainArrayY.push(parseFloat(csv_burn[i]['area_acres']));
+  }
 
-          // build x scale for bars
-          var x = this.d3.scaleBand()
-              // set range of possible output values
-              .range([0, this.chart_width])
-              // define range of input values
-              .domain(csv_burn.map(function(d) { return d.YEAR; }))
-              // add padding between bars
-              .padding(0.1);
+  let dataMax = Math.round(Math.max(...domainArrayY));
+  y.domain([0, dataMax]);
 
-          // build array of all values of the area_acres
-          var domainArrayY = [];
-            for (var i=0; i<csv_burn.length; i++){
-              var val = parseFloat(csv_burn[i]['area_acres']);
-              domainArrayY.push(val);
-            };
+  g.append("g")
+    .attr("class", "chartAxis bottom")
+    .attr("transform", "translate(0," + chart_height + ")")
+    .call(d3.axisBottom(x).tickValues(['1990', '2000', '2010', '2020']).tickSize(3))
+    .select(".domain").remove();
 
-          // get max value in array
-          let dataMax;
-          dataMax = Math.round(Math.max(...domainArrayY));
+  chart.selectAll(".tick line").attr("stroke", "#ffffff");
 
-          // build y scale for bars using global y variable
-          this.y.domain([0, dataMax]);
+  g.append("g")
+    .attr("class", "chartAxis left")
+    .attr("transform", "translate(0,0)")
+    .call(d3.axisLeft(y).ticks(10, "s").tickSize(-chart_width))
+    .select(".domain").remove();
 
-          // define yAxis generator
-          var yAxis = this.d3.axisLeft()
-            .scale(self.y);
+  chart.selectAll(".tick line").attr("stroke-width", 1).attr("stroke-dasharray", "1, 15").attr("opacity", "0.5");
 
-          // place the x axis
-          g.append("g")
-            .attr("class", "chartAxis bottom")
-            .attr("transform", "translate(0," + this.chart_height + ")")
-            .call(this.d3.axisBottom(x).tickValues(['1990', '2000', '2010', '2020' ]).tickSize(3))
-            .select(".domain").remove()
+  chart.select(".chartAxis.bottom")
+    .append('text')
+    .attr('transform', 'translate(' + chart_width / 2 + ', 30)')
+    .attr("text-anchor", "middle")
+    .attr("class", "chartAxisText bottom")
+    .text("Year");
 
-          // make all x-axis ticks white
-          chart.selectAll(".tick line").attr("stroke", "#ffffff")
+  chart.select(".chartAxis.left")
+    .append('text')
+    .attr("y", -30)
+    .attr("x", -chart_height / 2)
+    .attr("text-anchor", "middle")
+    .attr("class", "chartAxisText left")
+    .text("Acres burned in the West")
+    .attr("transform", "rotate(-90)");
 
-          // place the y axis and format tick labels
-          g.append("g")
-            .attr("class", "chartAxis left")
-            // offset axis slightly to align closer to last bar
-            .attr("transform", "translate(" + 0 + "," + 0 + ")")
-            // give ticks k number format 
-            .call(this.d3.axisLeft(self.y).ticks(10, "s").tickSize(- this.chart_width))
-            .select(".domain").remove()
+  // D3 v7: event handlers receive (event, d) instead of (d)
+  g.selectAll(".fire-bars")
+    .data(csv_burn)
+    .enter()
+    .append("rect")
+    .attr("class", function(d) { return "fire-bars bar year" + d.YEAR; })
+    .attr("width", x.bandwidth())
+    .attr("x", function(d) { return x(d.YEAR); })
+    .on("click", function(event, d) { highlight_year(d, isPlaying); })
+    .style("fill", "rgb(250,109,49)")
+    .style("stroke", "rgb(235,98,40)")
+    .on("mouseover", function(event, d) { highlight_year(d, isPlaying); })
+    .on("mousemove", function(event, d) { mousemove(d, isPlaying); })
+    .on("mouseout", function(event, d) { dehighlight_year(d, isPlaying); });
 
-          // set the size and styling of the y axis tick mark lines
-          chart.selectAll(".tick line").attr("stroke-width", 1).attr("stroke-dasharray", ("1, 15")).attr("opacity","0.5")
+  createPlayButton(chart);
+}
 
-          // place the x axis title
-          chart.select(".chartAxis.bottom")
-            .append('text')
-            .attr('transform', 'translate(' + self.chart_width/2 + ', ' + 30 + ')')
-            .attr("text-anchor", "middle")
-            .attr("class", "chartAxisText bottom")
-            .text("Year")
+function createPlayButton(chart) {
+  let button = chart.append("g")
+    .attr("transform", "translate(0,0)")
+    .attr("class", "play_button");
 
-          // place and rotate the y axis label
-          chart.select(".chartAxis.left")
-            .append('text')
-            .attr("y", -30)
-            .attr("x", -self.chart_height/2)
-            .attr("text-anchor", "middle")
-            .attr("class", "chartAxisText left")
-            .text("Acres burned in the West")
-            .attr("transform", "rotate(-90)")
+  button.append("rect")
+    .attr("width", 50)
+    .attr("height", 50)
+    .attr("rx", 4)
+    .style("fill", 'rgb(250,109,49)');
 
-          // generate bars for bar chart and add mousover functionality
-          var bars = g.selectAll(".fire-bars") // make an empty selection
-            // bind data to elements
-            .data(csv_burn)
-            // create an element for each datum
-            .enter()
-            // append a rectangle for each element
-            .append("rect")
-            // assign a class to each element for styling
-            .attr("class", function(d) {
-              return "fire-bars bar year" + d.YEAR
-            })
-            .attr("width", x.bandwidth())
-            .attr("x", function(d) {
-              return x(d.YEAR)
-            })
-            .on("click", function(d){
-              self.highlight_year(d, self.isPlaying)
-            })
-            .style("fill", "rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)")
-            .on("mouseover", function(d) {
-              self.highlight_year(d, self.isPlaying)
-            })
-            .on("mousemove", function(d){
-              self.mousemove(d, self.isPlaying)
-            })
-            .on("mouseout", function(d) {
-              self.dehighlight_year(d, self.isPlaying)
-            })
+  button.append("path")
+    .attr("d", "M15 10 L15 40 L35 25 Z")
+    .style("fill", "#ffffff");
 
-          // add play button
-          self.createPlayButton(chart)
+  button.append("title")
+    .text("replay animation");
 
-        },
-        createPlayButton(chart) {
-          const self = this;
+  button.on("mousedown", function() {
+    pressButton(isPlaying);
+  });
+}
 
-          // append button svg to chart
-          let button = chart.append("g")
-            .attr("transform", "translate(" + 0 + "," + 0 + ")")
-            .attr("class", "play_button")
+function pressButton(playing) {
+  if (playing === false) {
+    animateChart_Map();
+  }
+}
 
-          // add background rectangle with rounded edges
-          button
-            .append("rect")
-              .attr("width", 50)
-              .attr("height", 50)
-              .attr("rx", 4)
-              .style("fill", 'rgb(250,109,49)');
+function resetPlayButton() {
+  isPlaying = false;
+  d3.selectAll(".play_button").selectAll("rect")
+    .style("fill", 'rgb(250,109,49)');
+}
 
-          // add arrow
-          button
-            .append("path")
-              .attr("d", "M15 10 L15 40 L35 25 Z")
-              .style("fill", "#ffffff");
+function makeFireInteractive(csv_burn) {
+  // D3 v7: event handlers receive (event, d)
+  d3.selectAll(".firemap").selectAll(".fire")
+    .data(csv_burn)
+    .on("click", function(event, d) { highlight_year(d, isPlaying); })
+    .on("mouseover", function(event, d) { highlight_year(d, isPlaying); })
+    .on("mousemove", function(event, d) { mousemove(d, isPlaying); })
+    .on("mouseout", function(event, d) { dehighlight_year(d, isPlaying); });
+}
 
-          // append hover title
-          button
-            .append("title")
-              .text("replay animation")
+function mousemove(data, playing) {
+  if (playing === false) {
+    let acres_burned = d3.format(',')(Math.round(data.area_acres / 1000000 * 10) / 10) + ' million acres';
+    tooltip.text(acres_burned);
+  }
+}
 
-          // append click event to trigger animation
-          // IF animation is not already playing
-          button
-            .on("mousedown", function() {
-              self.pressButton(self.isPlaying)
-            });
-          
-        },
-        pressButton(playing) {
-          const self = this;
+function highlight_year(data, playing) {
+  if (playing === false) {
+    tooltip.style("opacity", 1);
 
-          // trigger animation if animation is not already playing
-          if (playing == false) {
-            self.animateChart_Map()
-          }
-        },
-        resetPlayButton() {
-          const self = this;
+    d3.selectAll(".fire.year" + data.YEAR)
+      .style("fill", "rgb(250,109,49)")
+      .style("stroke", "rgb(235,98,40)")
+      .raise();
 
-          // reset global playing variable to false now that animation is complete
-          self.isPlaying = false;
+    d3.selectAll(".bar.year" + data.YEAR)
+      .style("fill", "rgb(250,109,49)")
+      .style("stroke", "rgb(235,98,40)");
 
-          // undim button
-          let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
-            .style("fill", 'rgb(250,109,49)')
+    d3.selectAll(".label" + data.YEAR)
+      .style("fill", "rgb(250,109,49)")
+      .style("opacity", 1)
+      .raise();
+  }
+}
 
-        },
-        makeFireInteractive(csv_burn) {
-          const self = this;
-          
-          // append data to fire perimeters
-          var fires = this.d3.selectAll(".firemap").selectAll(".fire") /*.selectAll(".fire_perimeters").selectAll("g")*/
-            .data(csv_burn)
-            .on("click", function(d){
-              self.highlight_year(d, self.isPlaying)
-            })
-            .on("mouseover", function(d) {
-              self.highlight_year(d, self.isPlaying)
-            })
-            .on("mousemove", function(d){
-              self.mousemove(d, self.isPlaying)
-            })
-            .on("mouseout", function(d) {
-              self.dehighlight_year(d, self.isPlaying)
-            })
+function dehighlight_year(data, playing) {
+  if (playing === false) {
+    tooltip.style("opacity", 0);
 
-        },
-        mousemove(data, playing) {
-          const self = this;
-          
-          // trigger mouseover actions if animation is not already playing
-          if (playing == false) {
-            let acres_burned = this.d3.format(',')(Math.round(data.area_acres/1000000*10)/10) + ' million acres' /* data.area_acres*10)/10 */
-
-            // bind mouse coordinates and acreage to tooltip
-            self.tooltip
-              .text(acres_burned)
-          }
-        },
-        highlight_year(data, playing){
-          const self = this;
-
-          // trigger mouseover actions if animation is not already playing
-          if (playing == false) {
-            // make tooltip visible
-            self.tooltip
-              .style("opacity", 1);
-
-            // select all fire perimeters in that year
-            this.d3.selectAll(".fire.year" + data.YEAR)
-              .style("fill", " rgb(250,109,49)")
-              .style("stroke", "rgb(235,98,40)")
-              .raise();
-
-            // select the bar chart bar for that year
-            this.d3.selectAll(".bar.year" + data.YEAR)
-              .style("fill", " rgb(250,109,49)")
-              .style("stroke", "rgb(235,98,40)");
-
-            // show the text element for that year
-            this.d3.selectAll(".label" + data.YEAR)
-              .style("fill", "rgb(250,109,49)")
-              .style("opacity", 1)
-              .raise()
-          }
-        },
-        dehighlight_year(data, playing){
-          const self = this;
-
-          // trigger mouseout actions if animation is not already playing
-          if (playing == false) {
-            // hide tooltip
-            self.tooltip
-              .style("opacity", 0)
-
-            // raise previous years of fires and associated text in order
-            for (var i=0; i<self.yearList.length; i++){
-              let current_year = parseFloat(data.YEAR)
-              let selected_year = parseFloat(self.yearList[i])
-              let fire_selected_year = this.d3.selectAll(".fire.year" + selected_year)
-              let text_selected_year = this.d3.selectAll(".label" + selected_year)
-              if (current_year > selected_year) {
-                fire_selected_year.raise();
-                text_selected_year.raise();
-              }
-            };      
-
-            // revert color of bars
-            this.d3.selectAll(".bar.year" + data.YEAR)
-              .style("fill", "rgba(245,169,60,0.8)")
-              .style("stroke", "rgba(235,156,42,0.8)")
-
-            // revert color of fire perimeter and raise to correct position
-            this.d3.selectAll(".fire.year" + data.YEAR)
-              .style("fill", "rgba(245,169,60,0.6)")
-              .style("stroke", "rgba(235,156,42,0.6)")
-              .raise()
-
-            // hide year label and raise to correct position
-            this.d3.selectAll(".label" + data.YEAR)
-              .style("fill", "#ffffff")
-              .raise()
-
-            // raise subsequent years of fires and associated text in order
-            for (var i=0; i<self.yearList.length; i++){
-              let current_year = parseFloat(data.YEAR)
-              let selected_year = parseFloat(self.yearList[i])
-              let fire_selected_year = this.d3.selectAll(".fire.year" + selected_year)
-              let text_selected_year = this.d3.selectAll(".label" + selected_year)
-              if (current_year < selected_year) {
-                fire_selected_year.raise();
-                text_selected_year.raise();
-              }
-            };            
-
-
-          }
-        },
-        animateChart_Map() {
-          const self = this; 
-
-          // set indicator for play button
-          self.isPlaying = true
-
-          // dim play button rectanlge
-          let button_rect = this.d3.selectAll(".play_button").selectAll("rect")
-          button_rect
-            .style("fill", "#d6d6d6")
-
-          // set parameters for animation transitions
-          let animationInterval = 800
-          let colorDuration = 200
-          let appearDuration = animationInterval - colorDuration
-          let num_years = 37
-          
-          // select bar chart bars
-          let bars = this.d3.selectAll("g").selectAll(".fire-bars")
-         
-          // reset bars to height of 0 and y of chart_height
-          bars
-            .attr("y", this.chart_height)
-            .attr("height", 0)
-
-          // have bars appear and change color after appearance
-          bars
-            .transition()
-            .duration(appearDuration)
-            .delay(function(d, i){
-              return i*animationInterval
-            })
-            .attr("height", function(d){
-              return self.chart_height - self.y(d.area_acres)
-            })
-            .attr("y", function(d){
-              return self.y(d.area_acres)
-            })
-            .style("fill", "rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)")
-            .transition()
-            .duration(colorDuration)
-            .style("fill", "rgba(245,169,60,0.8)")
-            .style("stroke", "rgba(235,156,42,0.8)") 
-            
-          // select fire perimeters
-          let fires = this.d3.selectAll(".firemap").selectAll(".fire") /*.selectAll(".fire_perimeters").selectAll("g")*/
-
-          // reset fires to fill and stroke of none
-          fires
-            .style("fill", "None")
-            .style("stroke", "None")
-
-          // have fires appear and change color after appearance
-          fires
-            .transition()
-            .duration(0)
-            .delay(function(d, i){
-              return i * animationInterval
-            })
-            .style("fill", " rgb(250,109,49)")
-            .style("stroke", "rgb(235,98,40)")
-            .transition()
-            .duration(colorDuration) 
-            .delay(function(d, i){
-                return animationInterval - colorDuration
-              })
-            .style("fill", "rgba(245,169,60,0.8)")
-            .style("stroke", "rgba(235,156,42,0.8)")
-
-          // select the year text
-          let yearText = this.d3.selectAll(".text-year")
-
-          // reset text to fill of none
-          yearText
-            .attr("font-size", "40px")
-            .attr('x', 550)
-            .attr('y', 50)
-            .style("fill", "rgba(0,0,0,0)")
-
-          // have text appear and disappear with animation
-          yearText
-            .transition()
-            .delay(function(d, i){
-              return i * animationInterval
-            })
-            .style("fill", "rgb(250,109,49)")
-            .transition()
-            .duration(0)
-            .delay(function(d, i){
-              return animationInterval - colorDuration
-            })
-            .style("fill", "rgba(0,0,0,0)")
-
-          // once animation has completed, reset color of play button
-          button_rect
-            .transition()
-            .delay(animationInterval*num_years)
-            .on("end", self.resetPlayButton);
-
-        }
+    for (let i = 0; i < yearList.length; i++) {
+      let current_year = parseFloat(data.YEAR);
+      let selected_year = parseFloat(yearList[i]);
+      if (current_year > selected_year) {
+        d3.selectAll(".fire.year" + selected_year).raise();
+        d3.selectAll(".label" + selected_year).raise();
       }
     }
-      
+
+    d3.selectAll(".bar.year" + data.YEAR)
+      .style("fill", "rgba(245,169,60,0.8)")
+      .style("stroke", "rgba(235,156,42,0.8)");
+
+    d3.selectAll(".fire.year" + data.YEAR)
+      .style("fill", "rgba(245,169,60,0.6)")
+      .style("stroke", "rgba(235,156,42,0.6)")
+      .raise();
+
+    d3.selectAll(".label" + data.YEAR)
+      .style("fill", "#ffffff")
+      .raise();
+
+    for (let i = 0; i < yearList.length; i++) {
+      let current_year = parseFloat(data.YEAR);
+      let selected_year = parseFloat(yearList[i]);
+      if (current_year < selected_year) {
+        d3.selectAll(".fire.year" + selected_year).raise();
+        d3.selectAll(".label" + selected_year).raise();
+      }
+    }
+  }
+}
+
+function animateChart_Map() {
+  isPlaying = true;
+
+  let button_rect = d3.selectAll(".play_button").selectAll("rect");
+  button_rect.style("fill", "#d6d6d6");
+
+  let animationInterval = 800;
+  let colorDuration = 200;
+  let appearDuration = animationInterval - colorDuration;
+  let num_years = 37;
+
+  let bars = d3.selectAll("g").selectAll(".fire-bars");
+
+  bars.attr("y", chart_height).attr("height", 0);
+
+  bars.transition()
+    .duration(appearDuration)
+    .delay(function(d, i) { return i * animationInterval; })
+    .attr("height", function(d) { return chart_height - y(d.area_acres); })
+    .attr("y", function(d) { return y(d.area_acres); })
+    .style("fill", "rgb(250,109,49)")
+    .style("stroke", "rgb(235,98,40)")
+    .transition()
+    .duration(colorDuration)
+    .style("fill", "rgba(245,169,60,0.8)")
+    .style("stroke", "rgba(235,156,42,0.8)");
+
+  let fires = d3.selectAll(".firemap").selectAll(".fire");
+
+  fires.style("fill", "None").style("stroke", "None");
+
+  fires.transition()
+    .duration(0)
+    .delay(function(d, i) { return i * animationInterval; })
+    .style("fill", "rgb(250,109,49)")
+    .style("stroke", "rgb(235,98,40)")
+    .transition()
+    .duration(colorDuration)
+    .delay(function(d, i) { return animationInterval - colorDuration; })
+    .style("fill", "rgba(245,169,60,0.8)")
+    .style("stroke", "rgba(235,156,42,0.8)");
+
+  let yearText = d3.selectAll(".text-year");
+
+  yearText
+    .attr("font-size", "40px")
+    .attr('x', 550)
+    .attr('y', 50)
+    .style("fill", "rgba(0,0,0,0)");
+
+  yearText.transition()
+    .delay(function(d, i) { return i * animationInterval; })
+    .style("fill", "rgb(250,109,49)")
+    .transition()
+    .duration(0)
+    .delay(function(d, i) { return animationInterval - colorDuration; })
+    .style("fill", "rgba(0,0,0,0)");
+
+  button_rect.transition()
+    .delay(animationInterval * num_years)
+    .on("end", resetPlayButton);
+}
 </script>
 
 <style scoped lang="scss">

@@ -14,20 +14,14 @@
   </div>
 </template>
 
-<script>
-    export default {
-        name: 'WorkInProgressWarning',
-        data() {
-            return {
-                buttonText: 'I understand'
-            }
-        },
-        methods: {
-            toggleWarning() {
-                this.buttonText === 'I understand' ? this.buttonText = 'read in progress warning' : this.buttonText = 'I understand';
-            }
-        }
-    }
+<script setup>
+import { ref } from 'vue';
+
+const buttonText = ref('I understand');
+
+function toggleWarning() {
+  buttonText.value = buttonText.value === 'I understand' ? 'read in progress warning' : 'I understand';
+}
 </script>
 
 <style scoped lang="scss">

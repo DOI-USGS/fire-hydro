@@ -18,10 +18,7 @@
       item for which you are looking there.
     </p>
     <router-link to="/">
-      <button
-        v-ga="$ga.commands.trackName.bind(this, 'Button - 404', 'click', 'user went from error page to index')"
-        class="usa-button--inverse"
-      >
+      <button class="usa-button--inverse">
         {{ title }} main page
       </button>
     </router-link>
@@ -31,16 +28,8 @@
   </div>
 </template>
 
-<script>
-    export default {
-        name: 'Error404',
-        props: {
-            title: {
-                type: String,
-                default: process.env.VUE_APP_TITLE
-            }
-        }
-    }
+<script setup>
+const title = import.meta.env.VITE_APP_LONG_TITLE;
 </script>
 
 <style scoped lang="scss">

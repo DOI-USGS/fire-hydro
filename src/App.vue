@@ -1,74 +1,42 @@
 <template>
-  <div id="app">
-    <WindowSize v-if="checkTypeOfEnv === '-test build-'" />
+  <div>
+    <WindowSize v-if="typeOfEnv === '-test build-'" />
     <HeaderUSWDSBanner />
     <HeaderUSGS />
-    <!-- <ShutdownBanner /> -->
-    <InternetExplorerPage v-if="isInternetExplorer" />
-    <WorkInProgressWarning v-if="checkTypeOfEnv !== '' & !isInternetExplorer" /> <!-- an empty string in this case means the 'prod' version of the application   -->
-    <router-view
-      v-if="!isInternetExplorer & checkIfUSGSHeaderIsRendered"
-    />
-    <PreFooterVisualizationsLinks v-if="!isInternetExplorer" />
-    <PreFooterCodeLinks v-if="!isInternetExplorer" />
+    <WorkInProgressWarning v-if="typeOfEnv !== ''" />
+    <RouterView />
+    <PreFooterCodeLinks />
     <FooterUSGS />
   </div>
 </template>
 
-<script>
-    import WindowSize from "./components/WindowSize";
-    import HeaderUSWDSBanner from './components/HeaderUSWDSBanner';
-    import HeaderUSGS from './components/HeaderUSGS';
-    // import ShutdownBanner from './components/ShutdownBanner';
-    import InternetExplorerPage from './components/InternetExplorerPage';
-    import WorkInProgressWarning from './components/WorkInProgressWarning';
-    import PreFooterVisualizationsLinks from './components/PreFooterVisualizationsLinks';
-    import PreFooterCodeLinks from './components/PreFooterCodeLinks'
-       
+<script setup>
+  import { onMounted, onUnmounted } from "vue";
+  import { RouterView } from 'vue-router';
+  import WindowSize from "@/components/WindowSize.vue";
+  import HeaderUSWDSBanner from "@/components/HeaderUSWDSBanner.vue";
+  import HeaderUSGS from '@/components/HeaderUSGS.vue';
+  import WorkInProgressWarning from "@/components/WorkInProgressWarning.vue";
+  import PreFooterCodeLinks from "@/components/PreFooterCodeLinks.vue";
+  import FooterUSGS from '@/components/FooterUSGS.vue';
+  import { useWindowSizeStore } from '@/stores/WindowSizeStore';
 
-    export default {
-        name: 'App',
-        components: {
-            WindowSize,
-            HeaderUSWDSBanner,
-            HeaderUSGS,
-            // ShutdownBanner,
-            InternetExplorerPage,
-            WorkInProgressWarning,
-            PreFooterVisualizationsLinks,
-            PreFooterCodeLinks,
-            FooterUSGS: () => import(/*webpackChunkName: "usgs-footer"*/ "./components/FooterUSGS") // Have Webpack put the footer in a separate chunk so we can load it conditionally (with a v-if) if we desire
-        },
-        data() {
-            return {
-                isInternetExplorer: false
-            }
-        },
-        computed: {
-          checkIfUSGSHeaderIsRendered() {
-            return this.$store.state.usgsHeaderRendered;
-          },
-          checkTypeOfEnv() {
-              return process.env.VUE_APP_TIER
-          }
-        },
-        created() {
-            // We are ending support for Internet Explorer, so let's test to see if the browser used is IE.
-            this.$browserDetect.isIE ? this.isInternetExplorer = true : this.isInternetExplorer = false;
-            // Add window size tracking by adding a listener and a way to store the values in the Vuex state
-            window.addEventListener('resize', this.handleResize);
-            this.handleResize();
-        },
-        destroyed() {
-            window.removeEventListener('resize', this.handleResize);
-        },
-        methods: {
-            handleResize() {
-                this.$store.commit('recordWindowWidth', window.innerWidth);
-                this.$store.commit('recordWindowHeight', window.innerHeight);
-            }
-        }
-    }
+  const windowSizeStore = useWindowSizeStore();
+  const typeOfEnv = import.meta.env.VITE_APP_TIER;
+
+  function handleResize() {
+    windowSizeStore.windowWidth = window.innerWidth;
+    windowSizeStore.windowHeight = window.innerHeight;
+  }
+
+  onMounted(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', handleResize);
+  });
 </script>
 
 <style lang="scss">

@@ -50,7 +50,6 @@
             type="image/jpeg"
           >
           <img
-            v-img:group-4
             src="@/assets/images/examples/Buffalo-Creek-Fan.jpg" 
             alt="An alluvial fan caused by sediment erosion during a post-wildfire rainstorm near Denver, Colorado."
             loading="lazy"
@@ -69,7 +68,6 @@
             type="image/jpeg"
           >
           <img
-            v-img:group-4
             src="@/assets/images/examples/Gibraltar-Reservoir.jpg" 
             alt="Sediment from the Zaca Fire runoff has filled in much of the reservoir and reduced its water holding capacity."
             loading="lazy"
@@ -134,12 +132,8 @@
   </section>
 </template>
 
-<script>
-    export default {
-        name: 'Guidance'
-    }
+<script setup>
 </script>
 
 <style scoped lang="scss">
-
 </style>

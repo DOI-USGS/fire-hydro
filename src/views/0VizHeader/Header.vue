@@ -63,6 +63,8 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 120"
         preserveAspectRatio="none"
+        role="img"
+        aria-label="Animated area chart showing the silhouette of wildfire burn area in the western United States from 1984 to 2020"
       >
         <path id="path1" />
         <g id="axes" />

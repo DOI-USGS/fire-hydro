@@ -17,7 +17,11 @@
       </div>
     </div>
     <div id="mappy">
-      <div id="map-container">
+      <div
+        id="map-container"
+        role="figure"
+        aria-label="Bar chart showing acres burned by wildfires in the western United States each year from 1984 to 2020, with a trend of increasing burn area over time"
+      >
         <div class="chart-title-container ">
           <p class="chart-title">
             Wildfire in the Western U.S. in relation to Important Watersheds
@@ -37,6 +41,8 @@
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           viewBox="0 0 596.56 58.31"
+          role="img"
+          aria-label="Map legend showing symbols for area burned by wildfire and important water supply watersheds"
         >
           <g id="map-legend-group">
             <text
@@ -248,6 +254,8 @@
           viewBox="0 0 720 720"
           width="100%"
           height="100%"
+          role="img"
+          aria-label="Interactive map of the western United States showing wildfire burn perimeters from 1984 to 2020, overlaid on important water supply watersheds. Total burned area has generally increased over time, with 2020 being the largest on record at over 8 million acres."
         >
           <defs>
             <clipPath id="usa_clip">

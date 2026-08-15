@@ -1,6 +1,6 @@
 library(targets)
 
-tar_option_set(packages = c("tidyverse", "sf", "rmapshaper", "units", "arcgislayers", "tigris", "ggplot2"))
+tar_option_set(packages = c("tidyverse", "sf", "rmapshaper", "units", "arcgislayers", "tigris", "ggplot2", "terra", "elevatr"))
 
 # Load function scripts
 tar_source(c("01_fetch/src", "02_process/src", "03_visualize/src"))

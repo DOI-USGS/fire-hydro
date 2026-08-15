@@ -18,6 +18,26 @@ p3_targets_list <- list(
     compute_plot_bbox(p2_states_sf)
   ),
 
+  # Elevation over the plot extent. Split from the hillshade build so retuning
+  # the sun angle or exaggeration doesn't repeat the elevatr download.
+  geotargets::tar_terra_rast(
+    p3_plot_dem,
+    get_plot_dem(bbox = p3_plot_bbox)
+  ),
+
+  # Grayscale relief the Vue app multiply-blends behind the map SVG. Masked to
+  # the states so shading stops at the coastline and the national border.
+  tar_target(
+    p3_hillshade_png,
+    build_hillshade_png(
+      dem = p3_plot_dem,
+      bbox = p3_plot_bbox,
+      mask_sf = p2_states_sf,
+      out_png = "public/data/hillshade.png"
+    ),
+    format = "file"
+  ),
+
   # State outlines. Not simplified upstream, so simplify here.
   tar_target(
     p3_states_svg,

@@ -10,6 +10,108 @@ copy_to_public <- function(in_file, out_file) {
   out_file
 }
 
+#' Fetch a DEM covering the shared plot bbox
+#'
+#' Kept separate from the hillshade build so that tuning the sun angle or
+#' vertical exaggeration doesn't re-trigger the elevatr download.
+#'
+#' @param bbox sf bbox (with CRS); the shared plot extent
+#' @param res_m numeric; grid resolution in bbox CRS units (metres for 5070)
+#' @param z integer; elevatr zoom level — higher is finer and slower
+#' @param expand numeric; bbox padding in CRS units, so edge cells have
+#'   neighbours to compute slope from
+#'
+#' @returns SpatRaster; elevation on the plot grid
+#'
+get_plot_dem <- function(bbox, res_m = 2000, z = 6, expand = 10000) {
+  template <- terra::rast(
+    terra::ext(bbox["xmin"], bbox["xmax"], bbox["ymin"], bbox["ymax"]),
+    resolution = res_m, crs = sf::st_crs(bbox)$wkt
+  )
+  elevatr::get_elev_raster(template, z = z, expand = expand, clip = "tile") |>
+    terra::rast() |>
+    terra::project(template) |>
+    terra::resample(template) |>
+    setNames("dem")
+}
+
+#' Build a shaded-relief land PNG from a DEM, on the shared plot-bbox grid
+#'
+#' This is the map's land layer, not a blend overlay: the flat-terrain tone is
+#' baked in as `land_color` and everything outside `mask_sf` is written fully
+#' transparent. That lets it sit beneath the SVG without a blend mode, and
+#' means the SVG's states need no fill of their own — an opaque fill on top
+#' would hide the relief, and a blend mode would tint the perimeters too.
+#'
+#' @param dem SpatRaster; elevation raster
+#' @param bbox sf bbox (with CRS); the shared plot extent
+#' @param mask_sf sf; land polygons to confine the shading to (NULL for none)
+#' @param out_png character; path to write the RGBA PNG
+#' @param width_px integer; output width — 2x the 720px SVG width for retina
+#' @param land_color character; hex tone for flat terrain
+#' @param angle numeric; sun altitude (degrees above horizon)
+#' @param direction numeric; sun azimuth (degrees clockwise from north)
+#' @param shadow_floor numeric; darkest a shadow may go, as a fraction of
+#'   `land_color` — floored so deep shadows don't swallow the perimeters on top
+#' @param z_factor numeric; vertical exaggeration so gentle relief reads
+#'
+#' @returns character; `out_png`
+#'
+build_hillshade_png <- function(dem, bbox, mask_sf, out_png, width_px = 1440,
+                                land_color = "#f0f0f0",
+                                angle = 45, direction = 315,
+                                shadow_floor = 0.55, z_factor = 8) {
+  dir.create(dirname(out_png), recursive = TRUE, showWarnings = FALSE)
+  # Exaggerate elevation so gentle regional relief produces visible shading.
+  dem <- dem * z_factor
+  slope <- terra::terrain(dem, v = "slope", unit = "radians")
+  aspect <- terra::terrain(dem, v = "aspect", unit = "radians")
+  hs <- terra::shade(slope, aspect, angle = angle, direction = direction)
+
+  # Resample onto the exact plot-bbox grid so it registers with the SVG layers.
+  # Height comes from the bbox aspect ratio, the same way mapshaper derives the
+  # SVG viewBox height — hardcoding it would drift from the map.
+  height_px <- round(width_px *
+                       (bbox["ymax"] - bbox["ymin"]) /
+                       (bbox["xmax"] - bbox["xmin"]))
+  template <- terra::rast(
+    terra::ext(bbox["xmin"], bbox["xmax"], bbox["ymin"], bbox["ymax"]),
+    ncol = width_px, nrow = height_px, crs = sf::st_crs(bbox)$wkt
+  )
+  hs <- terra::resample(hs, template)
+
+  # Mask after resampling so the land edge falls on the same grid as the SVG.
+  if (!is.null(mask_sf)) {
+    mask_v <- terra::vect(sf::st_transform(mask_sf, sf::st_crs(bbox)))
+    land <- !is.na(terra::mask(hs * 0, mask_v))
+  } else {
+    land <- terra::setValues(hs, 1)
+  }
+
+  # Scale relative to mean (flat) terrain so average ground keeps land_color and
+  # only below-average slopes darken. Cap at 1 rather than letting sunlit faces
+  # blow out past the land tone into white.
+  ref <- terra::global(hs, "mean", na.rm = TRUE)[[1]]
+  shade_frac <- terra::clamp(hs / ref, shadow_floor, 1)
+
+  as_matrix <- function(r) matrix(terra::values(r), nrow = terra::nrow(r),
+                                  ncol = terra::ncol(r), byrow = TRUE)
+  s <- as_matrix(shade_frac)
+  a <- as_matrix(land)
+  # Flat interior cells with no DEM coverage still belong to the land mask, so
+  # give them the unshaded tone rather than dropping them out of the polygon.
+  s[is.na(s)] <- 1
+  a[is.na(a)] <- 0
+
+  rgb_land <- grDevices::col2rgb(land_color)[, 1] / 255
+  img <- array(0, dim = c(nrow(s), ncol(s), 4))
+  for (i in 1:3) img[, , i] <- rgb_land[i] * s
+  img[, , 4] <- a
+
+  png::writePNG(img, out_png)
+  out_png
+}
+
 #' Export an sf object as an SVG using mapshaper
 #' Follows the same pattern as gulf-hypoxia export_sf_layer_svg
 export_sf_layer_svg <- function(sf_obj, out_svg, bbox, id_column = NULL, 

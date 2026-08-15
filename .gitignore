@@ -27,4 +27,7 @@ yarn-error.log*
 _targets/
 01_fetch/out/
 02_process/out/
+02_process/in/
 03_visualize/out/
+
+.kiro/

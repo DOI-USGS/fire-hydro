@@ -67,8 +67,7 @@ p3_targets_list <- list(
       states_svg = p3_states_svg,
       watersheds_svg = p3_watersheds_svg,
       fire_svg = p3_fire_perimeters_svg,
-      out_svg = "public/data/fire_map.svg",
-      bbox = p3_plot_bbox
+      out_svg = "public/data/fire_map.svg"
     ),
     format = "file"
   )

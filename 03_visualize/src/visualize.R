@@ -141,13 +141,13 @@ assemble_fire_map_svg <- function(states_svg, watersheds_svg, fire_svg,
     ' aria-label="Map of the western United States showing wildfire perimeters',
     ' by year over important water supply watersheds">\n',
     # Paint order: grey state fill, then the watershed overlay on top of it,
-    # then fire perimeters above both, then the tooltip last so it never hides.
+    # then fire perimeters above both. The acreage readout lives in the Vue
+    # legend, so no text node is needed inside the SVG.
     '  <g id="basemap">\n',
     '    <g id="states">\n', states_content, '\n    </g>\n',
     '    <g class="IMP">\n', watersheds_content, '\n    </g>\n',
     '  </g>\n',
     '  <g class="fire_perimeters">\n', fire_content, '\n  </g>\n',
-    '  <text class="tooltip"></text>\n',
     '</svg>\n'
   )
 

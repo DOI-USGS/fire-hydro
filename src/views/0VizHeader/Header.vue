@@ -28,7 +28,7 @@
               id="text-2020"
               transform="translate(15 19.61)"
               style="font-size: .9em; font-weight: 200"
-            >Over 8 million acres <tspan
+            >Over 9 million acres <tspan
               x="0"
               y="15"
             >have burned in 2020, <tspan
@@ -64,7 +64,7 @@
         viewBox="0 0 100 120"
         preserveAspectRatio="none"
         role="img"
-        aria-label="Animated area chart showing the silhouette of wildfire burn area in the western United States from 1984 to 2020"
+        aria-label="Decorative animated silhouette suggesting the shape of wildfire burn area over time in the western United States"
       >
         <path id="path1" />
         <g id="axes" />
@@ -100,8 +100,7 @@
         <p class="chart-title">
           Area burned by wildfires in the Western U.S.
         </p>
-        <p>1984 to 2020</p>
-        <p>Last update Nov 6, 2020</p>
+        <p>1984 to 2022</p>
         <div class="fade-effect" />
       </div>
     </div>

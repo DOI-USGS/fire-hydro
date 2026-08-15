@@ -11,20 +11,51 @@ fetch_states_boundary <- function(out_dir, states) {
   out_file
 }
 
-#' Fetch fire perimeters from NIFC WFIGS Interagency Perimeters (ArcGIS Feature Server)
-#' Source: https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters/FeatureServer/0
-fetch_fire_perimeters <- function(out_gpkg) {
-  dir.create(dirname(out_gpkg), recursive = TRUE, showWarnings = FALSE)
+#' Fetch fire perimeters for a single year
+#' Tries the Full History service first (has older certified data).
+#' Falls back to the current Interagency Perimeters service for recent years.
+#' Uses a WHERE clause to query only the requested year — keeps downloads small.
+fetch_fire_perimeters_by_year <- function(year, out_dir) {
+  dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+  out_gpkg <- file.path(out_dir, paste0("fire_", year, ".gpkg"))
 
-  url <- paste0(
+  # Full history service (1984 through ~2 years ago)
+  history_url <- paste0(
+    "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/",
+    "WFIGS_-_Wildland_Fire_Perimeters_Full_History/FeatureServer/0"
+  )
+
+  # Current interagency perimeters (2021+ including current season)
+  current_url <- paste0(
     "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/",
     "WFIGS_Interagency_Perimeters/FeatureServer/0"
   )
 
-  fires <- arcgislayers::arc_open(url) |>
-    arcgislayers::arc_select()
+  where_clause <- paste0("FireDiscoveryDateTime >= DATE '", year, "-01-01' ",
+                         "AND FireDiscoveryDateTime < DATE '", year + 1, "-01-01'")
 
-  sf::st_write(fires, out_gpkg, delete_dsn = TRUE, quiet = TRUE)
+  # Try full history first
+
+  fires <- tryCatch({
+    layer <- arcgislayers::arc_open(history_url)
+    result <- arcgislayers::arc_select(layer, where = where_clause)
+    if (nrow(result) == 0) stop("No records in history")
+    result
+  }, error = function(e) {
+    # Fall back to current service for recent years
+    layer <- arcgislayers::arc_open(current_url)
+    arcgislayers::arc_select(layer, where = where_clause)
+  })
+
+  if (nrow(fires) > 0) {
+    sf::st_write(fires, out_gpkg, delete_dsn = TRUE, quiet = TRUE)
+  } else {
+    # Write empty gpkg so targets doesn't error
+    sf::st_write(sf::st_sf(geometry = sf::st_sfc(crs = 4326)), out_gpkg,
+                 delete_dsn = TRUE, quiet = TRUE)
+    message("No fire perimeters found for year ", year)
+  }
+
   out_gpkg
 }
 

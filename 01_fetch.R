@@ -2,7 +2,9 @@
 western_states <- c("CA", "WA", "NV", "UT", "CO", "AZ", "NM", "MT", "WY", "OR", "ID")
 
 # Year range for the fire record
-fire_years <- 1984:as.integer(format(Sys.Date(), "%Y"))
+# 2016+ are fetched from the WFIGS API (current interagency perimeters)
+# 1984-2015 use a static archive in 01_fetch/in/ (the old NIFC service was retired)
+fire_years_api <- 2016:as.integer(format(Sys.Date(), "%Y"))
 
 p1_targets_list <- list(
 
@@ -16,12 +18,21 @@ p1_targets_list <- list(
     format = "file"
   ),
 
-  # Vector of years to iterate over
+  # Historical fire perimeters from MTBS (1984-2022)
+  # MTBS maps all fires >=1000 acres in the West from 1984 to present
+  # Source: https://mtbs.gov/direct-download (Burned Area Boundaries)
+  tar_target(
+    p1_fire_history_gpkg,
+    fetch_mtbs_perimeters(
+      out_gpkg = "01_fetch/out/mtbs_fire_perimeters.gpkg"
+    ),
+    format = "file"
+  ),
 
-  tar_target(p1_fire_years, fire_years),
+  # Vector of API years to iterate over
+  tar_target(p1_fire_years, fire_years_api),
 
-  # Fetch fire perimeters per year (dynamic branching)
-  # Uses full history service for older years, current service for recent
+  # Fetch recent fire perimeters per year from WFIGS API (dynamic branching)
   tar_target(
     p1_fire_perimeters_gpkg,
     fetch_fire_perimeters_by_year(

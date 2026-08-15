@@ -11,46 +11,66 @@ fetch_states_boundary <- function(out_dir, states) {
   out_file
 }
 
-#' Fetch fire perimeters for a single year
-#' Tries the Full History service first (has older certified data).
-#' Falls back to the current Interagency Perimeters service for recent years.
-#' Uses a WHERE clause to query only the requested year — keeps downloads small.
+#' Fetch MTBS Burned Area Boundaries (national, 1984-present)
+#' Contains perimeters for all fires >= 1000 acres (West) and >= 500 acres (East)
+#' Source: https://mtbs.gov/direct-download → Burned Area Boundaries
+#' The direct download redirects to the Burn Severity Portal
+fetch_mtbs_perimeters <- function(out_gpkg) {
+
+  dir.create(dirname(out_gpkg), recursive = TRUE, showWarnings = FALSE)
+
+  # MTBS burned area boundaries direct download URL
+  url <- "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/MTBS_Fire/data/composite_data/burned_area_extent_shapefile/mtbs_perimeter_data.zip"
+
+  zip_path <- file.path(dirname(out_gpkg), "mtbs_perimeters.zip")
+  extract_dir <- file.path(dirname(out_gpkg), "mtbs_perimeters")
+
+  download.file(url, zip_path, mode = "wb", quiet = TRUE)
+  unzip(zip_path, exdir = extract_dir)
+
+  # Find the shapefile
+  shp_file <- list.files(extract_dir, pattern = "\\.shp$",
+                         full.names = TRUE, recursive = TRUE)[1]
+
+  fires <- sf::st_read(shp_file, quiet = TRUE)
+  sf::st_write(fires, out_gpkg, delete_dsn = TRUE, quiet = TRUE)
+
+  # Clean up zip
+
+  unlink(zip_path)
+  unlink(extract_dir, recursive = TRUE)
+
+  out_gpkg
+}
+
+#' Fetch fire perimeters for a single year from WFIGS Interagency Perimeters
+#' This service has data from ~2016 onward.
+#' Source: https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters/FeatureServer/0
 fetch_fire_perimeters_by_year <- function(year, out_dir) {
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
   out_gpkg <- file.path(out_dir, paste0("fire_", year, ".gpkg"))
 
-  # Full history service (1984 through ~2 years ago)
-  history_url <- paste0(
-    "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/",
-    "WFIGS_-_Wildland_Fire_Perimeters_Full_History/FeatureServer/0"
-  )
-
-  # Current interagency perimeters (2021+ including current season)
-  current_url <- paste0(
+  url <- paste0(
     "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/",
     "WFIGS_Interagency_Perimeters/FeatureServer/0"
   )
 
-  where_clause <- paste0("FireDiscoveryDateTime >= DATE '", year, "-01-01' ",
-                         "AND FireDiscoveryDateTime < DATE '", year + 1, "-01-01'")
-
-  # Try full history first
+  where_clause <- paste0(
+    "attr_FireDiscoveryDateTime >= '", year, "-01-01' ",
+    "AND attr_FireDiscoveryDateTime < '", year + 1, "-01-01'"
+  )
 
   fires <- tryCatch({
-    layer <- arcgislayers::arc_open(history_url)
-    result <- arcgislayers::arc_select(layer, where = where_clause)
-    if (nrow(result) == 0) stop("No records in history")
-    result
-  }, error = function(e) {
-    # Fall back to current service for recent years
-    layer <- arcgislayers::arc_open(current_url)
+    layer <- arcgislayers::arc_open(url)
     arcgislayers::arc_select(layer, where = where_clause)
+  }, error = function(e) {
+    message("Failed to fetch year ", year, ": ", conditionMessage(e))
+    sf::st_sf(geometry = sf::st_sfc(crs = 4326))
   })
 
   if (nrow(fires) > 0) {
     sf::st_write(fires, out_gpkg, delete_dsn = TRUE, quiet = TRUE)
   } else {
-    # Write empty gpkg so targets doesn't error
     sf::st_write(sf::st_sf(geometry = sf::st_sfc(crs = 4326)), out_gpkg,
                  delete_dsn = TRUE, quiet = TRUE)
     message("No fire perimeters found for year ", year)

@@ -3,6 +3,13 @@ compute_plot_bbox <- function(states_sf) {
   sf::st_bbox(states_sf)
 }
 
+#' Copy a pipeline output into public/ for the Vue app to fetch at runtime
+copy_to_public <- function(in_file, out_file) {
+  dir.create(dirname(out_file), recursive = TRUE, showWarnings = FALSE)
+  file.copy(in_file, out_file, overwrite = TRUE)
+  out_file
+}
+
 #' Export an sf object as an SVG using mapshaper
 #' Follows the same pattern as gulf-hypoxia export_sf_layer_svg
 export_sf_layer_svg <- function(sf_obj, out_svg, bbox, id_column = NULL, 

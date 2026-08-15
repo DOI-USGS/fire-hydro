@@ -28,11 +28,23 @@ fetch_fire_perimeters <- function(out_gpkg) {
   out_gpkg
 }
 
-#' Fetch Forest to Faucets v2 important watersheds
-#' Source: https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn
+#' Fetch Forest to Faucets 2.0 important watersheds from USFS ArcGIS MapServer
+#' Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_ForeststoFaucets_02/MapServer/2
+#' HUC12 level data with importance rankings for surface drinking water supply
 fetch_forest_to_faucets <- function(out_gpkg) {
   dir.create(dirname(out_gpkg), recursive = TRUE, showWarnings = FALSE)
-  # TODO: download F2F2 data from USDA CloudVault
-  message("fetch_forest_to_faucets: stub - implement F2F download")
+
+  url <- paste0(
+    "https://apps.fs.usda.gov/arcx/rest/services/",
+    "EDW/EDW_ForeststoFaucets_02/MapServer/2"
+  )
+
+  f2f <- arcgislayers::arc_open(url) |>
+    arcgislayers::arc_select(
+      fields = c("HUC12", "NAME", "STATES", "IMP", "IMP_R",
+                 "FOREST", "PER_FOR", "Acres")
+    )
+
+  sf::st_write(f2f, out_gpkg, delete_dsn = TRUE, quiet = TRUE)
   out_gpkg
 }

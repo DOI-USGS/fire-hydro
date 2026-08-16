@@ -27,6 +27,56 @@ process_mtbs_fires <- function(gpkg, clip_boundary, keep_types) {
     drop_empty_geometry()
 }
 
+#' Clip WFIGS fire perimeters to the western states and tidy attributes
+#'
+#' Returns the same schema as process_mtbs_fires() — YEAR, incident,
+#' acres_reported, source — so the two can be bound at the display seam.
+#'
+#' WFIGS fields used: poly_IncidentName, poly_GISAcres,
+#' attr_FireDiscoveryDateTime. Source CRS is EPSG:4269.
+#'
+#' Duplicate perimeters: WFIGS carries both daily-progression and final
+#' perimeters, so one fire can appear many times. Records are unioned per
+#' (YEAR, incident) rather than reduced to a single "best" record. A daily
+#' perimeter is contained by its final, so the union collapses to the final and
+#' loses nothing, while two distinct fires sharing a name in one year both
+#' survive as parts of a multipolygon.
+#'
+#' Timezone: the service returns discovery times in UTC, but a GeoPackage round
+#' trip drops the tzone attribute, so R would format them in the pipeline
+#' machine's local zone. Formatting in UTC keeps the year assignment identical
+#' everywhere — a fire discovered just after midnight on January 1 UTC would
+#' otherwise land in the previous year on a US-local machine.
+process_wfigs_fires <- function(gpkg, clip_boundary) {
+  target_crs <- sf::st_crs(clip_boundary)
+
+  read_sf_norm(gpkg) |>
+    dplyr::transmute(
+      YEAR = as.integer(
+        format(attr_FireDiscoveryDateTime, "%Y", tz = "UTC")
+      ),
+      incident = stringr::str_squish(stringr::str_to_lower(poly_IncidentName)),
+      acres_reported = poly_GISAcres
+    ) |>
+    dplyr::filter(!is.na(YEAR), !is.na(incident), incident != "") |>
+    sf::st_transform(target_crs) |>
+    sf::st_make_valid() |>
+    dplyr::group_by(YEAR, incident) |>
+    dplyr::summarize(
+      # Largest perimeter in the group, which is the final one where a final
+      # exists. Used only for coverage QA; published acreage comes from
+      # dissolved geometry.
+      acres_reported = max(acres_reported, na.rm = TRUE),
+      .groups = "drop"
+    ) |>
+    dplyr::mutate(source = "WFIGS") |>
+    sf::st_make_valid() |>
+    sf::st_filter(clip_boundary, .predicate = sf::st_intersects) |>
+    sf::st_intersection(clip_boundary) |>
+    sf::st_make_valid() |>
+    drop_empty_geometry()
+}
+
 #' Dissolve one year of fire perimeters into a single simplified geometry
 #'
 #' Simplification runs per year so the branch caches independently. keep = 0.05
@@ -46,31 +96,63 @@ dissolve_fire_year <- function(fires_sf, year) {
   dissolved
 }
 
-#' Audit MTBS coverage per year so the completeness cutoff can be reviewed
+#' Audit MTBS coverage against WFIGS so the completeness cutoff can be reviewed
 #'
-#' MTBS maps seasons retrospectively, so the newest years are sparse until their
-#' mapping finishes. This writes counts alongside the current cutoff and a
-#' median-based ratio to make an undercount obvious at a glance.
-write_fire_coverage <- function(fires_sf, complete_through, out_csv) {
+#' MTBS maps seasons retrospectively, so recent years are sparse until their
+#' mapping finishes and the cutoff has to be re-judged each year.
+#'
+#' Read `mtbs_pct_of_wfigs`: values near 100 mean MTBS has finished that season,
+#' a large shortfall means it has not. WFIGS is current within days of a fire,
+#' which is what makes it a usable yardstick. A count-against-historical-median
+#' test cannot do this job — it reads a quiet fire season as an unmapped one.
+#'
+#' The two sources measure different things (satellite burned-area extent versus
+#' operational fire-line perimeter), so exact agreement is not expected and
+#' small departures either way are normal. WFIGS coverage starts in 2020, so
+#' earlier years have no comparison and are left blank.
+#'
+#' Acreage here is source-reported and used only for this diagnostic; published
+#' acreage comes from dissolved geometry in write_fire_timeseries().
+write_fire_coverage <- function(mtbs_sf, wfigs_sf, display_sf, out_csv) {
   dir.create(dirname(out_csv), recursive = TRUE, showWarnings = FALSE)
 
-  by_year <- fires_sf |>
+  summarize_source <- function(x, prefix) {
+    out <- x |>
+      sf::st_drop_geometry() |>
+      dplyr::group_by(YEAR) |>
+      dplyr::summarize(
+        n = dplyr::n_distinct(incident),
+        acres = round(sum(acres_reported, na.rm = TRUE)),
+        .groups = "drop"
+      )
+    names(out)[match(c("n", "acres"), names(out))] <-
+      paste0(prefix, "_", c("n", "acres"))
+    out
+  }
+
+  # Taken from the display set rather than re-deriving the seam rule, so this
+  # cannot drift out of step with what the site publishes.
+  published <- display_sf |>
     sf::st_drop_geometry() |>
     dplyr::group_by(YEAR) |>
-    dplyr::summarize(n_fires = dplyr::n_distinct(incident), .groups = "drop") |>
-    dplyr::arrange(YEAR)
+    dplyr::summarize(
+      published_source = paste(sort(unique(source)), collapse = "+"),
+      .groups = "drop"
+    )
 
-  # Compare against the median of years assumed complete
-  baseline <- stats::median(
-    by_year$n_fires[by_year$YEAR <= complete_through],
-    na.rm = TRUE
-  )
-
-  by_year |>
+  summarize_source(mtbs_sf, "mtbs") |>
+    dplyr::full_join(summarize_source(wfigs_sf, "wfigs"), by = "YEAR") |>
+    dplyr::left_join(published, by = "YEAR") |>
     dplyr::mutate(
-      treated_as_complete = YEAR <= complete_through,
-      pct_of_median = round(100 * n_fires / baseline)
+      mtbs_pct_of_wfigs = ifelse(
+        is.na(wfigs_acres) | wfigs_acres == 0 | is.na(mtbs_acres),
+        NA_real_,
+        round(100 * mtbs_acres / wfigs_acres)
+      ),
+      published_source = ifelse(is.na(published_source), "held back",
+                                published_source)
     ) |>
+    dplyr::arrange(YEAR) |>
     readr::write_csv(out_csv)
 
   out_csv
@@ -86,6 +168,10 @@ write_fire_coverage <- function(fires_sf, complete_through, out_csv) {
 #'
 #' Fire counts still come from the undissolved records, since dissolving
 #' destroys the per-incident rows.
+#'
+#' The `source` column travels with the series so the front end can mark which
+#' years came from which source. Dissolving by year drops it, so it is recovered
+#' from the undissolved records alongside the counts.
 write_fire_timeseries <- function(fires_by_year, fires_sf, out_csv) {
   dir.create(dirname(out_csv), recursive = TRUE, showWarnings = FALSE)
 
@@ -96,7 +182,11 @@ write_fire_timeseries <- function(fires_by_year, fires_sf, out_csv) {
   count_by_year <- fires_sf |>
     sf::st_drop_geometry() |>
     dplyr::group_by(YEAR) |>
-    dplyr::summarize(n_fires = dplyr::n_distinct(incident), .groups = "drop")
+    dplyr::summarize(
+      n_fires = dplyr::n_distinct(incident),
+      source = paste(sort(unique(source)), collapse = "+"),
+      .groups = "drop"
+    )
 
   area_by_year |>
     dplyr::left_join(count_by_year, by = "YEAR") |>

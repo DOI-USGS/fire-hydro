@@ -55,6 +55,61 @@ fetch_mtbs_perimeters <- function(out_gpkg) {
   out_gpkg
 }
 
+#' Fetch WFIGS interagency fire perimeters (national, 2020-present)
+#'
+#' Supplements MTBS for seasons MTBS has not finished mapping. WFIGS is the
+#' operational interagency feed, current within days of a fire, so it covers
+#' the trailing years MTBS is still working through.
+#'
+#' Structure (verified 2026-08):
+#'   - ~2,500 national wildfire records >= 1,000 acres since 2020
+#'   - Coverage begins 2020; 2016-2019 return zero records
+#'   - poly_FeatureCategory mixes "Wildfire Final Fire Perimeter" and
+#'     "Wildfire Daily Fire Perimeter", so one incident can appear several
+#'     times. Not filtered here — see process_wfigs_fires().
+#'   - attr_IrwinID is frequently NA, so it cannot carry the dedupe
+#'
+#' `min_acres` matches MTBS's effective mapping floor. Without it WFIGS would
+#' contribute thousands of small fires MTBS never records, and fire counts
+#' would jump at the source seam.
+#'
+#' Source: https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-interagency-fire-perimeters
+fetch_wfigs_perimeters <- function(out_gpkg, start_year, min_acres = 1000) {
+  dir.create(dirname(out_gpkg), recursive = TRUE, showWarnings = FALSE)
+
+  url <- paste0(
+    "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/",
+    "WFIGS_Interagency_Perimeters/FeatureServer/0"
+  )
+
+  # Only the fields the pipeline reads; the service carries ~100 attributes.
+  fields <- c(
+    "poly_IncidentName", "poly_GISAcres", "poly_FeatureCategory",
+    "attr_IncidentTypeCategory", "attr_FireDiscoveryDateTime", "attr_IrwinID"
+  )
+
+  # WF excludes prescribed burns, matching the incid_type filter on MTBS.
+  where <- sprintf(
+    paste0(
+      "attr_IncidentTypeCategory = 'WF' AND poly_GISAcres >= %s ",
+      "AND attr_FireDiscoveryDateTime >= timestamp '%d-01-01 00:00:00'"
+    ),
+    format(min_acres, scientific = FALSE), start_year
+  )
+
+  message("Downloading WFIGS interagency perimeters...")
+  perimeters <- arcgislayers::arc_open(url) |>
+    arcgislayers::arc_select(fields = fields, where = where, crs = 4269)
+
+  if (nrow(perimeters) == 0) {
+    stop("WFIGS query returned no features — check the service and filters")
+  }
+
+  sf::st_write(perimeters, out_gpkg, delete_dsn = TRUE, quiet = TRUE)
+
+  out_gpkg
+}
+
 #' Fetch USFS Forests to Faucets 2.0 HUC12 watersheds
 #'
 #' Verified structure (2026-08):

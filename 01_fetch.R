@@ -1,6 +1,11 @@
 # Western US states included in the analysis
 western_states <- c("CA", "WA", "NV", "UT", "CO", "AZ", "NM", "MT", "WY", "OR", "ID")
 
+# First year WFIGS carries usable coverage. Fetched from here rather than from
+# the first published year so the overlap with MTBS is available to the
+# coverage comparison in 02_process.
+wfigs_start_year <- 2020
+
 p1_targets_list <- list(
 
   # US states boundary (Census cartographic via tigris)
@@ -19,6 +24,17 @@ p1_targets_list <- list(
     p1_mtbs_gpkg,
     fetch_mtbs_perimeters(
       out_gpkg = "01_fetch/out/mtbs_fire_perimeters.gpkg"
+    ),
+    format = "file"
+  ),
+
+  # WFIGS Interagency Perimeters — operational perimeters, 2020 to present.
+  # Supplies the trailing years MTBS has not finished mapping.
+  tar_target(
+    p1_wfigs_gpkg,
+    fetch_wfigs_perimeters(
+      out_gpkg = "01_fetch/out/wfigs_fire_perimeters.gpkg",
+      start_year = wfigs_start_year
     ),
     format = "file"
   ),

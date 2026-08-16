@@ -2,16 +2,25 @@
 # it counts as wildfire for this story. Prescribed Fire and Other are excluded.
 fire_types_keep <- c("Wildfire", "Wildland Fire Use")
 
-# Last year MTBS considers fully mapped.
+# Last year MTBS has finished mapping.
 #
-# MTBS lags real time — as of 2026-08 their data availability page states the
-# 2023 and 2024 seasons are still being mapped, targeted for completion by end
-# of FY2026. Observed record counts agree: ~530 fires in 2022 vs 339 in 2023,
-# 51 in 2025, 20 in 2026.
+# MTBS lags real time and releases quarterly. Their data availability page
+# lists 2023 onward as in progress, but the data disagrees for 2023: MTBS holds
+# more western fires than WFIGS for that year and 98% of its acreage, so 2023
+# was a light season rather than an unmapped one. 2024 is still short of WFIGS
+# and 2025 is barely started, so both come from WFIGS below.
 #
-# Bump this after checking 02_process/out/fire_coverage.csv against
-# https://mtbs.gov/data-availability
-mtbs_complete_through <- 2022
+# Bump this after checking mtbs_pct_of_wfigs in 02_process/out/fire_coverage.csv
+# against https://mtbs.gov/data-availability — when a year approaches 100, MTBS
+# has caught up and that year should move back to MTBS.
+mtbs_complete_through <- 2023
+
+# Years published from WFIGS because MTBS has not finished them.
+#
+# A closed range rather than "everything after the MTBS cutoff": the current
+# calendar year is a partial season and would draw a misleadingly short bar.
+# Extend as seasons end, and drop years off the front as MTBS catches up.
+wfigs_display_years <- 2024:2025
 
 p2_targets_list <- list(
 
@@ -31,8 +40,7 @@ p2_targets_list <- list(
   ),
 
   # Every MTBS wildfire in the western states, all years. Kept unfiltered so
-  # coverage can be audited and so a future WFIGS supplement has a full
-  # baseline to join against.
+  # coverage can be audited against WFIGS below.
   tar_target(
     p2_fires_all,
     process_mtbs_fires(
@@ -42,26 +50,45 @@ p2_targets_list <- list(
     )
   ),
 
-  # Record counts per year with a completeness flag. This is the artifact to
-  # check each year to decide whether mtbs_complete_through can move.
+  # Every WFIGS wildfire in the western states, 2020 onward. Kept untrimmed so
+  # the coverage comparison can use the full overlap with MTBS.
   tar_target(
-    p2_fire_coverage_csv,
-    write_fire_coverage(
-      fires_sf = p2_fires_all,
-      complete_through = mtbs_complete_through,
-      out_csv = "02_process/out/fire_coverage.csv"
-    ),
-    format = "file"
+    p2_wfigs_fires_all,
+    process_wfigs_fires(
+      gpkg = p1_wfigs_gpkg,
+      clip_boundary = p2_clip_boundary
+    )
   ),
 
   # SEAM FOR MIXED SOURCES
-  # Everything downstream reads from this target. Today it is MTBS trimmed to
-  # complete years. To add WFIGS for the trailing incomplete years, bind it in
-  # here — the `source` column already exists to keep the origin of each
-  # perimeter distinguishable in the front end.
+  # Everything downstream reads from this target: MTBS through the years it has
+  # finished, WFIGS for the trailing years it has not. The `source` column
+  # carries the origin of each perimeter through to the front end.
+  #
+  # The two sources measure different things — MTBS maps satellite burned-area
+  # extent, WFIGS records operational fire-line perimeters — so this is a
+  # methodological break, not just a change of provider. They agree to within a
+  # few percent on annual totals where they overlap, which is what makes
+  # splicing them defensible.
   tar_target(
     p2_fires_display,
-    p2_fires_all |> dplyr::filter(YEAR <= mtbs_complete_through)
+    dplyr::bind_rows(
+      p2_fires_all |> dplyr::filter(YEAR <= mtbs_complete_through),
+      p2_wfigs_fires_all |> dplyr::filter(YEAR %in% wfigs_display_years)
+    )
+  ),
+
+  # MTBS vs WFIGS per year, plus which source each year shipped from. Review
+  # this each year to decide whether mtbs_complete_through can move.
+  tar_target(
+    p2_fire_coverage_csv,
+    write_fire_coverage(
+      mtbs_sf = p2_fires_all,
+      wfigs_sf = p2_wfigs_fires_all,
+      display_sf = p2_fires_display,
+      out_csv = "02_process/out/fire_coverage.csv"
+    ),
+    format = "file"
   ),
 
   # Years actually present after trimming — drives the branching below

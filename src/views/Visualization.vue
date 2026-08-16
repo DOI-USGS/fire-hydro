@@ -1,7 +1,6 @@
 <template>
   <div id="visualization">
     <Header />
-    <!-- <Intro /> -->
     <MainMap />
     <WaterSupply />
     <Guidance />
@@ -16,20 +15,15 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { defineAsyncComponent } from 'vue';
 
-    export default {
-        name: 'Visualization',
-        components: {
-            Header: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "header"*/ "./0VizHeader/Header"),
-            // Intro: () => import(/* webpackPrefetch: true */ /*webpackChunkName: "intro"*/ "./1Intro/Intro"),
-            MainMap: () => import(/*webpackChunkName: "mainmap"*/ "./2MainMap/MainMap"),
-            WaterSupply: () => import(/*webpackChunkName: "watersupply"*/ "./3WaterSupply/WaterSupply"),
-            Guidance: () => import( /*webpackChunkName: "guidance"*/ "./4Guidance/Guidance"),
-            USGS: () => import(/*webpackChunkName: "USGS"*/ "./5USGS/USGS"),
-            Resources: () => import(/*webpackChunkName: "resources"*/ "./Resources/Resources")
-        }
-    }
+const Header = defineAsyncComponent(() => import("./0VizHeader/Header.vue"));
+const MainMap = defineAsyncComponent(() => import("./2MainMap/MainMap.vue"));
+const WaterSupply = defineAsyncComponent(() => import("./3WaterSupply/WaterSupply.vue"));
+const Guidance = defineAsyncComponent(() => import("./4Guidance/Guidance.vue"));
+const USGS = defineAsyncComponent(() => import("./5USGS/USGS.vue"));
+const Resources = defineAsyncComponent(() => import("./Resources/Resources.vue"));
 </script>
 
 <style lang="scss">
@@ -42,8 +36,8 @@
   $darkGray: rgb(51,51,51);
   $usgsGreen: rgb(51,120,53);
   $usgsBlue: rgb(0,38,76);
-  $fireRed: rgb(250,109,49);
-  $fireRedlight: rgba(250,109,49,0.5);
+  $fireRed: rgb(190,70,20);
+  $fireRedlight: rgba(190,70,20,0.5);
   $fireYellow: rgb(245,169,60);
   $fireYellowlight: rgba(245,169,60,0.5);
 
@@ -114,8 +108,8 @@
  
 
   .caption {
-    // font-style: italic;
     font-size: .8em;
+    font-style: italic;
     padding: 1em 4em 0 4em; 
     margin: auto;
     text-align: left;
@@ -168,9 +162,6 @@
   }
 
 
-
-
-
   // General Layout  
 
   .text-content {
@@ -197,6 +188,8 @@
 
   .flex-item img {
     padding: 20px;
+    max-width: 100%;
+    height: auto;
   }
 
   @media (max-width: 600px) {
@@ -213,7 +206,7 @@
 
   // List Item Styling
   ul .styled-li {
-    list-style: none; /* Remove default bullets */
+    list-style: none;
     list-style-type: none;
   }
 
@@ -222,18 +215,16 @@
   }
 
   .styled-li li::before {
-    // content: "🔥";
-    content: "■";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    color: $fireRed; /* Change the color */
-    font-weight: bold; /* If you want it to be bold */
-    display: inline-block; /* Needed to add space between the bullet and the text */
-    width: 1.5em; /* Also needed for space (tweak if needed) */
-    margin-left: -1em; /* Also needed for space (tweak if needed) */
+    content: "■";
+    color: $fireRed;
+    font-weight: bold;
+    display: inline-block;
+    width: 1.5em;
+    margin-left: -1em;
   }
 
 
  // Link Styling
-  /* unvisited link */
   a{
     color: $fireRed;
     text-decoration-color: $fireYellow;
@@ -244,13 +235,11 @@
     text-decoration-color: $fireYellow;
   }
 
-  /* visited link */
   a:visited {
     color: $fireRedlight;
     text-decoration-color: $fireYellow;
   }
 
-  /* mouse over link */
   a:hover {
     cursor: pointer;
     text-decoration-color: $fireYellow;
@@ -259,7 +248,6 @@
     text-decoration-style: wavy;
   }
 
-  /* selected link */
   a:active {
     font-style: bold;
     color: black;

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TKQR8KP');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N69B8PH');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <!-- USWDS-init js -->
+    <script type="module" src="/node_modules/@uswds/uswds/dist/js/uswds-init.js"></script>
+    <!-- On beta, add robots tag to stop indexing. An empty string for VITE_APP_TIER means the 'prod' version of the application -->
+    <% if(VITE_APP_TIER !== ''){ %>
+      <meta name="robots" content="noindex,nofollow">
+    <% } %>
+    <title>%VITE_APP_LONG_TITLE%</title>
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="%VITE_APP_LONG_TITLE%">
+    <meta name="description" content="%VITE_APP_DESCRIPTION%">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://water.usgs.gov/vizlab/%VITE_APP_TITLE%">
+    <meta property="og:title" content="%VITE_APP_LONG_TITLE%">
+    <meta property="og:description" content="%VITE_APP_DESCRIPTION%">
+    <meta property="og:image" content="%VITE_APP_S3_PROD_URL%thumbnails/%VITE_APP_TITLE%_metacard.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://water.usgs.gov/vizlab/%VITE_APP_TITLE%">
+    <meta property="twitter:title" content="%VITE_APP_LONG_TITLE%">
+    <meta property="twitter:description" content="%VITE_APP_DESCRIPTION%">
+    <meta property="twitter:image" content="%VITE_APP_S3_PROD_URL%thumbnails/%VITE_APP_TITLE%_metacard.png">
+    <script type='application/ld+json'>
+      { "@context": "http://www.schema.org",
+        "@type": "WebSite",
+        "name": "%VITE_APP_LONG_TITLE%",
+        "url": "https://water.usgs.gov/vizlab/%VITE_APP_TITLE%",
+        "about": "%VITE_APP_DESCRIPTION%",
+        "datePublished": "",
+        "contributor": [
+        {
+          "@type": "Person",
+          "name": "Cee Nell",
+          "email": "cnell@usgs.gov",
+          "affiliation": {
+            "@type": "Organization",
+            "legalName": "U.S. Geological Survey"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Ellen Bechtel",
+          "email": "ebechtel@contractor.usgs.gov",
+          "affiliation": {
+            "@type": "Organization",
+            "legalName": "U.S. Geological Survey"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Hayley Corson-Dosch",
+          "email": "hcorson-dosch@usgs.gov",
+          "affiliation": {
+            "@type": "Organization",
+            "legalName": "U.S. Geological Survey"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Brian Ebel",
+          "email": "bebel@usgs.gov",
+          "affiliation": {
+            "@type": "Organization",
+            "legalName": "U.S. Geological Survey"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Deborah Martin",
+          "email": "damartin@usgs.gov",
+          "affiliation": {
+            "@type": "Organization",
+            "legalName": "U.S. Geological Survey"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Sheila Murphy",
+          "email": "sfmurphy@usgs.gov",
+          "affiliation": {
+            "@type": "Organization",
+            "legalName": "U.S. Geological Survey"
+          }
+        }]
+      },
+      "audience": { "@context": "http://schema.org", "@type": "Audience", "audienceType": "General public"},
+      "publisher": { "@context": "http://schema.org", "@type": "Organization", "legalName": "U.S. Geological Survey" },
+      "keywords": "wildfire, water, USGS, watershed, management"
+    </script>
+    <!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
+    <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=USGS" id="_fed_an_ua_tag"></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe sandbox src="https://www.googletagmanager.com/ns.html?id=GTM-TKQR8KP"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N69B8PH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <!-- USWDS js -->
+    <script type="module" src="/node_modules/@uswds/uswds/dist/js/uswds.js"></script>
+  </body>
+</html>

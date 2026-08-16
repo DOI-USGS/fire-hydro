@@ -84,10 +84,7 @@
   </div>
 </template>
 
-<script>
-    export default {
-        name: 'Resources',
-    }
+<script setup>
 </script>
 
 <style lang="scss" scoped>
@@ -112,7 +109,8 @@
 
 .research-li {
   margin: 20px 0;
-  list-style: none; /* Remove default bullets */
-  list-style-type: none;}
+  list-style: none;
+  list-style-type: none;
+}
 
 </style>

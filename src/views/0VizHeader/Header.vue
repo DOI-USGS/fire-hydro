@@ -16,6 +16,7 @@
           viewBox="0 0 200 150"
           width="200px"
           height="150px"
+          :style="{ right: annotateRight }"
         >
           <g transform="translate(-10 0)">
             <rect
@@ -100,7 +101,7 @@
         <p class="chart-title">
           Area burned by wildfires in the Western U.S.
         </p>
-        <p>1984 to 2022</p>
+        <p>{{ yearRange }}</p>
         <div class="fade-effect" />
       </div>
     </div>
@@ -116,24 +117,57 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import * as d3 from 'd3';
 
 const title = import.meta.env.VITE_APP_LONG_TITLE;
+const publicPath = import.meta.env.BASE_URL;
 
-onMounted(() => {
-  makeChartMorph();
+// Read from the data so it stays in step with the shape below it.
+const yearRange = ref('');
+
+// Horizontal position of the callout arrow, measured from the right edge. It
+// points at 2020 on the silhouette, so the offset depends on how many years the
+// series runs. Derived from the same rows the shape is built from so it tracks
+// the series length.
+const annotateRight = ref('5.3%');
+
+const ANNOTATED_YEAR = '2020';
+
+onMounted(async () => {
+  const rows = await d3.csv(publicPath + 'data/fire_timeseries.csv');
+  yearRange.value = `${rows[0].YEAR} to ${rows[rows.length - 1].YEAR}`;
+
+  // Same x mapping makeChartMorph uses, inverted because #annotate-svg is
+  // positioned from the right. It shares a containing block with #crop-shape,
+  // so the percentage refers to the same width for both.
+  const idx = rows.findIndex(function(d) { return d.YEAR === ANNOTATED_YEAR; });
+  if (idx >= 0 && rows.length > 1) {
+    annotateRight.value = `${100 - (idx / (rows.length - 1)) * 100}%`;
+  }
+
+  makeChartMorph(rows);
 });
 
-function makeChartMorph() {
-  // data for area chart - area burned
-  const data_burn = [{x: 0, y: 90}, {x: 2.78, y: 71}, {x: 5.56, y: 85}, {x: 8.33, y: 80}, {x: 11.11, y: 59}, {x: 13.88, y: 91}, {x: 16.67, y: 89}, {x: 19.44, y: 94}, {x: 22.22, y: 85}, {x: 25.00, y: 93}, {x: 27.78, y: 73}, {x: 30.56, y: 90}, {x: 33.33, y: 55}, {x: 36.11, y: 95}, {x: 38.89, y: 93}, {x: 41.67, y: 62}, {x: 44.44, y: 45}, {x: 47.22, y: 76}, {x: 50.00, y: 58}, {x: 52.78, y: 63}, {x: 55.55, y: 89}, {x: 58.33, y: 59}, {x: 61.11, y: 27}, {x: 63.89, y: 13}, {x: 66.67, y: 68}, {x: 69.44, y: 83}, {x: 72.22, y: 84}, {x: 75.00, y: 50}, {x: 77.78, y: 9}, {x: 80.56, y: 67}, {x: 83.33, y: 71}, {x: 86.11, y: 58}, {x: 88.88, y: 71}, {x: 91.67, y: 16}, {x: 94.44, y: 36}, {x: 97.22, y: 82}, {x: 100.0, y: 0}];
+function makeChartMorph(rows) {
+  // Built from the same timeseries the map's bar chart reads, so the
+  // silhouette and the chart stay in step as the pipeline updates.
+  const acres = rows.map(function(d) { return parseFloat(d.area_acres); });
+  const peak = Math.max(...acres);
+  const last = acres.length - 1;
 
-  // empty box for spacing
-  const dataBox = [{x: 0, y: 150}, {x: 2.78, y: 150}, {x: 5.56, y: 150}, {x: 8.33, y: 150}, {x: 11.11, y: 150}, {x: 13.88, y: 150}, {x: 16.67, y: 150}, {x: 19.44, y: 150}, {x: 22.22, y: 150}, {x: 25.00, y: 150}, {x: 27.78, y: 150}, {x: 30.56, y: 150}, {x: 33.33, y: 150}, {x: 36.11, y: 150}, {x: 38.89, y: 150}, {x: 41.67, y: 150}, {x: 44.44, y: 150}, {x: 47.22, y: 150}, {x: 50.00, y: 150}, {x: 52.78, y: 150}, {x: 55.55, y: 150}, {x: 58.33, y: 150}, {x: 61.11, y: 150}, {x: 63.89, y: 150}, {x: 66.67, y: 150}, {x: 69.44, y: 150}, {x: 72.22, y: 150}, {x: 75.00, y: 150}, {x: 77.78, y: 150}, {x: 80.56, y: 150}, {x: 83.33, y: 150}, {x: 86.11, y: 150}, {x: 88.88, y: 150}, {x: 91.67, y: 150}, {x: 94.44, y: 150}, {x: 97.22, y: 150}, {x: 100.0, y: 150}];
+  // y runs down from the top of the 0 0 100 120 viewBox and the area fills to
+  // y0 = 100, so the peak year sits at 0 and touches the top of the frame.
+  const data_burn = acres.map(function(a, i) {
+    return { x: (i / last) * 100, y: 100 - (a / peak) * 100 };
+  });
+
+  // empty box for spacing — same point count as the shape it morphs into, so
+  // the path interpolation is vertex to vertex
+  const dataBox = data_burn.map(function(d) { return { x: d.x, y: 150 }; });
 
   // line data
-  const dataLine_burn = [[0, 90], [2.78, 71], [5.56, 85], [8.33, 80], [11.11, 59], [13.88, 91], [16.67, 89], [19.44, 94], [22.22, 85], [25.00, 93], [27.78, 73], [30.56, 90], [33.33, 55], [36.11, 95], [38.89, 93], [41.67, 62], [44.44, 45], [47.22, 76], [50.00, 58], [52.78, 63], [55.55, 89], [58.33, 59], [61.11, 27], [63.89, 13], [66.67, 68], [69.44, 83], [72.22, 84], [75.00, 50], [77.78, 9], [80.56, 67], [83.33, 71], [86.11, 58], [88.88, 71], [91.67, 16], [94.44, 36], [97.22, 82], [100.0, 0]];
+  const dataLine_burn = data_burn.map(function(d) { return [d.x, d.y]; });
 
   const line = d3.line();
 
@@ -189,24 +223,10 @@ function makeChartMorph() {
 
 <style lang="scss">
 
-    // Import Colors
-    $white: rgb(255,255,255);
-    $none: rgba(255,255,255,0);
-    $black: rgb(0,0,0);  
-    $lightGray:rgb(237,237,237);
-    $mediumGray: rgb(100,100,100);
-    $darkGray: rgb(51,51,51);
-    $usgsGreen: rgb(51,120,53);
-    $usgsBlue: rgb(0,38,76);
-    $fireRed: rgb(250,109,49);
-    $fireRedlight: rgba(250,109,49,0.5);
-    $fireYellow: rgb(245,169,60);
-    $fireYellowlight: rgba(245,169,60,0.5);
-
     #header {
         position: relative;
         height: 1200px;
-        background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_2500w.png);
+        background-image: linear-gradient(0deg, var(--fire-yellow-wash) 40%, transparent 95%), url(../../assets/images/fieldphotos/scar_2500w.png);
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -214,14 +234,14 @@ function makeChartMorph() {
         -webkit-background-size:cover; 
       @media screen and (max-width: 1000px) {
           height: 1200px;
-          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_1000w.png);
+          background-image: linear-gradient(0deg, var(--fire-yellow-wash) 40%, transparent 95%), url(../../assets/images/fieldphotos/scar_1000w.png);
       }
       @media screen and (max-width: 800px) {
           height: 1100px;
       }
       @media screen and (max-width: 600px) {
           height: 1200px;
-          background-image: linear-gradient(0deg, $fireYellowlight 40%, $none 95%), url(../../assets/images/fieldphotos/scar_600w.png);
+          background-image: linear-gradient(0deg, var(--fire-yellow-wash) 40%, transparent 95%), url(../../assets/images/fieldphotos/scar_600w.png);
       }
       @media screen and (max-width: 400px) {
           height: 1200px;
@@ -249,7 +269,7 @@ function makeChartMorph() {
 
   #axis-line {
     stroke-width: 4px;
-    stroke: $lightGray;
+    stroke: var(--gray-light);
   }
   
   .fade-effect {
@@ -309,10 +329,13 @@ select{
       z-index: 0;
     }
 
+    /* The arrow points at 2020, partway in from the right end of the series.
+       `right` is set from the data in script setup (see annotateRight); this
+       value is only the pre-hydration fallback. */
     #annotate-svg {
       position: absolute;
       bottom: 200px;
-      right: 0;
+      right: 5.3%;
     }
 
 #annotate-container {

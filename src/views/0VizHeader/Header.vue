@@ -32,7 +32,7 @@
             >Over 9 million acres <tspan
               x="0"
               y="15"
-            >have burned in 2020, <tspan
+            >burned in 2020, <tspan
               x="0"
               y="30"
             >the most on record</tspan></tspan></text>

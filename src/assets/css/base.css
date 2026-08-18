@@ -1,0 +1,240 @@
+/* Site-wide element styling and shared layout classes.
+ *
+ * These apply across every view, so they live here rather than in a component's
+ * style block. Anything that only one view uses belongs in that view instead.
+ *
+ * Nothing here is scoped, and components rely on that: .text-content,
+ * .chart-title-container and .lowlight are used throughout the page views.
+ * Views override these with a more specific selector where they need to —
+ * MainMap's `.map-sidebar .chart-title-container` is the pattern to follow —
+ * so this file's rules can stay plain and low-specificity.
+ */
+
+/* --- Elements ------------------------------------------------------------ */
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--black);
+  background-color: var(--white);
+  line-height: 1.5;
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+}
+
+#app {
+  margin: 0 auto;
+}
+
+/* Full-height column so the footer settles below the content rather than
+   floating up on short pages. Not applied on small screens, where the stacked
+   layout is taller than the viewport anyway. */
+@media screen and (min-width: 601px) {
+  #app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* The title sits over the header illustration, so it scales down in steps to
+   keep from overrunning the artwork on narrow screens. */
+h1 {
+  color: var(--white);
+  font-size: 6em;
+  margin: 0;
+  padding: 200px 0 50px 0;
+  text-align: left;
+  line-height: 1em;
+}
+
+@media screen and (max-width: 1000px) {
+  h1 { font-size: 5em; padding: 180px 0 50px 0; }
+}
+@media screen and (max-width: 800px) {
+  h1 { font-size: 5.5em; padding: 170px 0 50px 0; }
+}
+@media screen and (max-width: 600px) {
+  h1 { font-size: 4em; padding: 160px 0 50px 0; }
+}
+@media screen and (max-width: 400px) {
+  h1 { font-size: 3em; padding: 140px 0 50px 0; }
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 80px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.4em;
+  padding-top: 0.5em;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 600px) {
+  h3 { font-size: 0.8em; }
+}
+
+li {
+  margin: 10px 0;
+}
+
+/* --- Links --------------------------------------------------------------- */
+
+/* Underline in yellow with the text in red: the yellow alone is too light to
+   carry the link on white, and the wavy hover echoes the fire motif. */
+a,
+a:link {
+  color: var(--fire-red);
+  text-decoration-color: var(--fire-yellow);
+}
+
+a:visited {
+  color: var(--fire-red-muted);
+  text-decoration-color: var(--fire-yellow);
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration-color: var(--fire-yellow);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-style: wavy;
+}
+
+a:active {
+  color: var(--black);
+  text-decoration-color: var(--fire-yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-style: wavy;
+}
+
+a button {
+  margin: 20px;
+}
+
+/* --- Layout -------------------------------------------------------------- */
+
+/* The reading measure for body copy. Every prose block on the page uses this. */
+.text-content {
+  min-width: 350px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2em 0 2em;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-around;
+  max-width: 100%;
+  margin: auto;
+}
+
+.flex-item {
+  flex: 1;
+  align-self: center;
+  text-align: center;
+  max-width: 90%;
+}
+
+.flex-item img {
+  padding: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Stack rather than shrink — side-by-side items get too narrow to read. */
+@media (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .flex-item {
+    flex: none;
+    padding: 0 0 1em 0;
+    height: 100%;
+  }
+}
+
+/* --- Text treatments ----------------------------------------------------- */
+
+/* Highlighter effect: a gradient that fills only the lower part of the line, so
+   it reads as a marker stroke rather than a filled background. */
+.lowlight {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, var(--fire-yellow-wash) 40%);
+  line-height: 1.3em;
+  padding: 0 5px;
+}
+
+.caption {
+  font-size: 0.8em;
+  font-style: italic;
+  padding: 1em 4em 0 4em;
+  margin: auto;
+  text-align: left;
+  max-width: 700px;
+}
+
+.bold-caption {
+  margin-bottom: 1em;
+  font-style: bold;
+}
+
+.button-header {
+  padding: 10px 0 0 0;
+  margin: 0;
+}
+
+.button-subheader {
+  font-style: italic;
+  color: var(--white);
+  font-size: 0.8em;
+}
+
+/* Yellow banner above a chart, carrying its title and year range. */
+.chart-title-container {
+  background-color: var(--fire-yellow);
+  padding: 0.5em 1em;
+  max-width: 700px;
+  margin: auto;
+  position: relative;
+}
+
+.chart-title-container p {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.chart-title-container .chart-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* --- Lists --------------------------------------------------------------- */
+
+/* Square red markers in place of the default bullet. */
+ul .styled-li {
+  list-style: none;
+  list-style-type: none;
+}
+
+.styled-li li::before {
+  content: "■";
+  color: var(--fire-red);
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1em;
+}

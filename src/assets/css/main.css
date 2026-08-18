@@ -1,13 +1,18 @@
-@import './common.css'; /* USGS Viz ID Stylesheet */
-@import './custom.css'; /* USGS Viz ID Stylesheet */
+/* Global stylesheet entry point, imported once in src/main.js.
+ *
+ * Order matters: fonts first (@import must precede all rules), then the USGS
+ * Viz ID vendor files, then this project's own layers. base.css comes last of
+ * the project files so its rules win ties against the vendor defaults.
+ *
+ * common.css and custom.css are the USGS Viz ID stylesheets. They are vendored
+ * and shouldn't be edited — override them from base.css instead.
+ */
 
-/* Global styles for fire-hydro */
+@import url("https://use.typekit.net/jja8kth.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
-#app {
-  margin: 0 auto;
-}
+@import './common.css';
+@import './custom.css';
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+@import './tokens.css';
+@import './base.css';

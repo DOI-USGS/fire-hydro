@@ -1,0 +1,46 @@
+/* Design tokens.
+ *
+ * Custom properties rather than SCSS variables so one definition reaches the
+ * global stylesheets and every component, scoped or not, without each file
+ * importing a partial. Before this, four components each declared their own
+ * copy of the palette and two of them disagreed on what `$fireRed` meant.
+ *
+ * Named by role, not by appearance — the orange and the red are not shades of
+ * one colour to be merged. The orange is a fill on the map and chart; the red
+ * is for text and links and is dark enough to pass AA on white. Swapping one
+ * for the other breaks either the visual weight or the contrast.
+ *
+ * The chart and map also set colours from JavaScript, in the COLOR object in
+ * MainMap.vue, because d3 needs concrete values. Those mirror the graphic
+ * tokens below and should be changed together.
+ */
+
+:root {
+  /* Fire palette — graphic fills for the map and chart */
+  --fire-orange: rgb(250, 109, 49);
+  --fire-orange-stroke: rgb(235, 98, 40);
+  --fire-yellow: rgb(245, 169, 60);
+  --fire-yellow-stroke: rgba(235, 156, 42, 0.8);
+  --fire-yellow-soft: rgba(245, 169, 60, 0.6);
+  --fire-yellow-wash: rgba(245, 169, 60, 0.5);
+
+  /* Fire palette — text weight, dark enough for AA on white */
+  --fire-red: rgb(190, 70, 20);
+  --fire-red-muted: rgba(190, 70, 20, 0.5);
+
+  /* Map layers */
+  --watershed-fill: #97c4cf;
+  --watershed-stroke: #82b1bd;
+  --state-border: #443f3d;
+
+  /* Neutrals */
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --gray-light: rgb(237, 237, 237);
+  --gray-dark: rgb(51, 51, 51);
+  --text-muted: #4f4f4f;
+  --rule: #e0e0e0;
+
+  /* Type */
+  --font-body: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}

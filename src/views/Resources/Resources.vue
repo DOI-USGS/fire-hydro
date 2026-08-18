@@ -89,19 +89,6 @@
 
 <style lang="scss" scoped>
 
-// Import Colors
-  $white: rgb(255,255,255);
-  $black: rgb(0,0,0);  
-  $lightGray:rgb(237,237,237);
-  $mediumGray: rgb(100,100,100);
-  $darkGray: rgb(51,51,51);
-  $usgsGreen: rgb(51,120,53);
-  $usgsBlue: rgb(0,38,76);
-  $fireRed: rgb(250,109,49);
-  $fireRedlight: rgba(250,109,49,0.5);
-  $fireYellow: rgb(245,169,60);
-  $fireYellowlight: rgba(245,169,60,0.5);
-
 
 #resources-section {
   margin-bottom: 100px;

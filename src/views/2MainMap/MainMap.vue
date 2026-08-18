@@ -20,259 +20,165 @@
       <div
         id="map-container"
         role="figure"
-        aria-label="Bar chart showing acres burned by wildfires in the western United States each year from 1984 to 2020, with a trend of increasing burn area over time"
+        :aria-label="`Bar chart showing acres burned by wildfires in the western United States each year from ${firstYear} to ${lastYear}, with a trend of increasing burn area over time`"
       >
-        <div class="chart-title-container ">
-          <p class="chart-title">
-            Wildfire in the Western U.S. in relation to Important Watersheds
-          </p>
-          <p>1984 - 2020</p>
-        </div>
-        <div class="caption-container">
-          <p class="caption ">
-            <span class="lowlight">Click or hover</span> to view areas burned by wildfire in each year.
-          </p>
-          <p class="caption">
-            <span class="lowlight">Click the play button</span> to replay the animation.
-          </p>
-        </div>     
-        <svg
-          id="map-legend"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 596.56 58.31"
-          role="img"
-          aria-label="Map legend showing symbols for area burned by wildfire and important water supply watersheds"
-        >
-          <g id="map-legend-group">
-            <text
-              transform="translate(190 13.21)"
-              class="legend-text"
-            >Area burned <tspan
-              x="0"
-              y="14"
-            >by wildfire</tspan></text>
-            <g
-              id="icon_fire"
-              transform="translate(140 0) scale(.7, .7)"
-            >
-              <path
-                d="M22.8 8.8c.3 0 .7.1 1-.4-.6-.2-.7-.3-.5-1s-.1-1.6.1-2.4c.1-.4 0-.8.5-.9s.6.4.9.6a1.7 1.7 0 01.3.9c0 .5.1 1 .7.7.4-.2 1.2-.3.5-1-.3-.4 0-.7.3-1a2 2 0 011.8-.4c1 .3 1.7 1 2.7 1.2a.6.6 0 01.5.6 1.8 1.8 0 00.9 1.6c.4.3.3.6.2 1s-.3 1.3.3 1.3c.8-.1 1.9.7 2.3-.6A1.9 1.9 0 0137 7.7c.8 0 .6-.4.5-1-.3-1.4.1-2 1.6-2a1.8 1.8 0 001.7-1c.4-.9 1-.7 1.3-.1a1.4 1.4 0 002 .4c1.1-.6 2-1.1 3.3-.3h.7c2-.2 1.8-.5 2.8 1.4.1.3.2.6.5.6v2.1c-1.3.8-2 .8-2.8-.3a2.1 2.1 0 00-2.1-.9c-.5 0-1 .1-1-.7 0-.1.3-1.1-.6-1s-.2.7-.2 1c0 .8-.2 1.5.3 2.1-.2.3-.5.2-.7.4h.3l.4-.4c.5 0 1 0 1 .8a1.4 1.4 0 01-1 1.4c-.5.1-1.5.2-.4 1 .4.3 0 .4-.2.6s-.8 0-.8.4c0 .9-1 1.6-.7 2.4.4 1-.3.9-.8 1.1s-.3-.5-.7-.4c.3.1.5.3.2.6-.7 0-1.4.1-1.8-.5-.9.8-.2 2-.7 2.8 0 .2.2.3.4.3l1.2.1c.4 0 .5.4.6.7.5.4.5 1.1.2 1.3-1.4.4-.2 1.6-.8 2.3-.2.2.3.5.5.4a1.5 1.5 0 012.1.5 1.3 1.3 0 002 .1c.7-.5.7-.2 1 .4.4 1 .4 2.4 2 2.5.2 0 .2.2.2.4s-.1.5-.3.4c-.6-.5-1.4.3-2-.3-.4-.5-.9-.1-1.3-.1-1.7 0-1.7 0-1.5-1.7h-2a.7.7 0 00-.7.5c0 .4.3.4.6.4.4 0 .5.3.8.6.4.4.5.8-.3 1-1.1.3-2.4.3-3.6.7-.8.4-1.5-.2-2.2-.8.6 1.3-.3 1.4-1 1.5s-.7-.5-.8-1l-.8-1.8a1.2 1.2 0 010-.8c.1-.7.5-1.3-.6-1.4-.4 0-.2-.4-.2-.6.2-1.2-.5-1.8-1.6-2s-.8-.3-.5-1.3 1.1-1.1 1.8-1.5l.4-.2c1 1.2 1.3-.3 2-.4l.3-.3c-.4-1.1.9-1.8.8-2.8 0-.7-.4-1.2-1.2-1.2-.5 0-.7-.1-.9-.7a2 2 0 00-1.6-1.7c-.8 0-1 .8-1.3 1.4-.7 1.2-1.3 2.6-3.2 2.3a1.6 1.6 0 00-.8.2c-1.5.7-2.6.4-3.2-1-.3-.8-.5-.5-1-.2s-1.1.6-1.5.2c-.7-1-1.8-.7-2.8-.7s-1.7-.4-2.6-.4c-.7 0-.8-2-.2-2.7.4-.5.5-1.2 1-1.7a.3.3 0 000-.5c-.3-.2-.5-.5-.2-.8a1 1 0 011-.2c.5.2 1.1.4 1.2.7.8 2 2.2 1 3.4 1 .3-.5.4-1 1-.5z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M34.8 4.7l-.8.5a1 1 0 01-1.6-.7l-.5-3h.5a8.5 8.5 0 003.6.7c1.4 0 .8 1.2.9 1.7a.9.9 0 01-1.4.5 1.2 1.2 0 00-.4 0c-.3 0-.2.2-.3.3z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M51.4 12.3h-2c-.6 0-.8-.4-.4-.8a2.3 2.3 0 012.4-1z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M32.4 52.9v.2h-6.7v-.3c1.3-.6 2.7-.2 4.1-.3a3.7 3.7 0 012.6.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M19 53.1c0-.2 0-.4.2-.5a23.3 23.3 0 015.5.1c.3 0 .2.2.3.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M40.3 53.1c0-.3 0-.6.3-.7a3.7 3.7 0 00.9.2c1.5 0 1.6 0 1.5-1.4 1.4.2.5 1.3.7 2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M16 52.9v.2h-3.5V53a4 4 0 013.6 0z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M24.7 52.7a13.8 13.8 0 01-5.5 0c.8-1 .3-2 0-3-.2-.6-.3-1 .1-1.6s-.3-.7-.2-1c.2-1.1-1-2-.5-3.1.3-.6-.7-.9-.8-1.4 0-.1-.1-.2 0-.2v-.1a1.9 1.9 0 001-2.7l.1-.4c.3-.1.5-.6 1-.4 1 .4 1 .3 1.7-.4-1-.2-1.1-1-1.6-1.6.2-1.6 1.7-1.8 2.8-2.4-1.1-.8-1.1-.8-2.4.2-.4-1.6-.2-2.3.8-3.2s1.9 0 2.6.3 1.9.4 2.2 1.4c.8-.5 1.7.1 2.5-.4s1.1-.3 1.2.6c.1.7.5.8 1.1.5a.9.9 0 011.3.6c.2.8.5 1 1.2 1a.5.5 0 01.6.4c.2.8.7 1.3.7 2.1 0 .6.6 1.4 0 1.7a2.4 2.4 0 01-2-.1 2.4 2.4 0 00-3.4 1.5 1.5 1.5 0 01-.5.8c-.6.4-1.2.7-1.2 1.6 0 .5-.8.5-1.3.6 1 1.5 1 2.2-.2 3.4-.5.5.3.6.2 1.2 0 .1-1-.4-.6.5.2.5-.8 0-1.1.6s-.4.3 0 .6c.2.1.5.4.2.6-.7.6-.3 1.2 0 1.8zM5.7 23.8l-1.6-1c-.2-.1-.7-.2-.5-.6s.5-1 1.1-.6a4.3 4.3 0 004 .2c1.7 1 1.7-.7 2-1.5a1.7 1.7 0 011-.7c1-.5 1.4-2 2.8-1.9.3 0 .7 0 .8.4s-.3.4-.4.6c-.4.7-1.2 1.2-1 2.3.1.5-.6 1 .2 1.5a1.8 1.8 0 001.8.2c.6-.2.8.1.6.6a4.3 4.3 0 00.7 3.8c.2.3.1.5-.4.6a6.7 6.7 0 00-1.3.3c-1 .4-1.7.9-1.6 2a.9.9 0 01-.3.8c-.9.8-2.2 1-3.2 1.6-1 .5-2.2-.2-3.1-.8a1.1 1.1 0 00-1.8.2 1.3 1.3 0 01-1.9.4 5.8 5.8 0 01-2.8-3.4c-.1-.7.3-1.2.7-1.2 1.2 0 1.6-1.2 2.6-1.5a1 1 0 00.4-.3c-.8-1.4 1-1 1.2-2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M32.4 52.9h-6.7c.2-.8 1-.9 1.4-1.3-.8-.3-.5-1.2-.9-1.7-.1-.2 0-.4.3-.4.6 0 .8-.5 1.2-.8 1.4-1.2 3.2-1.2 4.8-1.7a.5.5 0 01.7.4c0 .4.2 1-.3 1.2-.4 0-.4.3-.5.7a9.1 9.1 0 000 3.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M38.2 36.3c1.1 0 1.3 1 1.3 1.7a3 3 0 001.4 2.5c1 .6-.5 1.3.2 1.8.1.1-.6.3-.9.3a19.9 19.9 0 01-3-.2c-.7-.1-.7-.3-.6-.8a11 11 0 00.2-4.4c0-.5-.2-1 .4-1.1.5-.6.8-.2 1 .2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M38.2 36.3a.9.9 0 00-1-.2c-.2-.5 0-1.2-1-1.2-.5 0-.3-.7-.6-1.2a1.7 1.7 0 01-2.3.1 11 11 0 00-3.1-.8 6 6 0 002-1.6c.2-.4 1-.3 1.2.1.6.7 1 .7 1.4 0 .2-.4.6-.5 1-.7a1.7 1.7 0 01.7-.2 1.6 1.6 0 01.8.6c.2.4.4.8.8 1 .1.2.3.3.1.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M37 31.3c-.2 0-.3-.4-.5-.5a2.2 2.2 0 01-.5-.5c.1-.7.7-.4 1-.5 1.8-.3 3.4.7 5.4.5-.8.8-1.3 1.6.1 2 .5.1.3.5.2.7-.2.5-.9 1-1 1-1-1-2.2-.7-3.2-1l-.3-.3-.3-.6c-.5 0-.4-.7-.8-.8z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M49.2 43c-.2.6-.7.8-1.4.8a4.5 4.5 0 00-2.4.7c-.7.5-1.3 0-1.4-.6a3 3 0 00-1.9-2c-.1 0-.4-.1-.3-.3.3-.7 1.2-.8 1.5-1.6.2-.3.7 0 1 .4a12.4 12.4 0 005 2.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M16 52.9h-3.5a1.6 1.6 0 00-.6-1.2 1.6 1.6 0 01.1-2.4 1.4 1.4 0 012-.3c.2.1.5.2.4.5-.5 1.3.5.8 1 .8s1-.3 1 .2c.1.6.6 1.4-.1 2l-.2.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M41 43.6a1 1 0 011.2 1 2.3 2.3 0 01-1.8 2.2 4.3 4.3 0 01-2.8-1.2c-.2-.5.5-1.6 1.3-1.7a14.1 14.1 0 002.1-.3z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M43 51.2a1.1 1.1 0 01.4 1.4c-.2.5-.8.3-1.1.3-.6-.1-1.4.4-1.7-.5.3-.3 1-.4 0-.9s-1-1.2-.2-1.8c.4-.3.3-1.4 1.2-1s.4 1 .4 1.5c0 .8.9.4 1 1z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M9.4 5.2a1.5 1.5 0 01-1.8-1.3c-.1-.6 1-1.4 2-1.4s1.2 1 1.3 1.7c.2 1.2-.8.9-1.5 1z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M20.4 34.6c.4-1.3 1-1.8 2.2-.7.2.2.7 0 1 .5-.5.3-1 .7-1.6.6-.3 0-.5 0-.5.4s-.2.5-.5.4c-.8-.1-.9.5-1 1 0-.3 0-.7-.3-1 0-.5.9 0 .7-.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M17.1 15.6c0 .4 0 .7-.5 1s-.7-.2-1-.4c-.6-.5-.4-1.4-.9-2-.1-.2.2-.3.4-.3a2.1 2.1 0 012 1.7z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M41.2 19.3c-.4 0-.2-.6-.6-.7.5 0 .6-.5.9-.8a1.3 1.3 0 011.5-.4c.4 0 .2.5.2.8 0 .6-.5.6-.9.7s-1-.3-1 .4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M30.1 24.1a3.2 3.2 0 001.6.6c.2 0 .2.2.2.4a.6.6 0 01-.5.4 2.5 2.5 0 01-1.8-1c0-.3.1-.4.5-.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M47 18.6c-1 .8-1.7.7-2.4-.2.7-.6 1.5 0 2.2-.4.2.1 0 .4.3.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M47.2 2.7c.4-.3.8-.8 1.3-.5a.5.5 0 010 .4c-.4.4-.9.2-1.3 0z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M17.8 42.3v.3c-.6-.4-.5-1-.5-1.7.5.4.4 1 .5 1.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M41.5 16c.1-.8-.6-.4-.8-.6.7-.7 1-.3 1.3.4a.4.4 0 01-.5.1z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M18.7 37.7c-.4.2-.8.4-1.2 0 .4-.6.8 0 1.2-.1h.2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M22.8 8.8c-.4-.1-.7.2-1 .4.2-.3-.2-.4-.3-.7a1.8 1.8 0 011.3.3z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M16.3 39.4c.3.1.5.2.5.7-.4-.1-.7-.2-.6-.7z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M47 18.6c-.2-.1-.2-.4-.2-.6a.3.3 0 01.5 0c.2.2-.2.3-.2.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M36 30.3a.5.5 0 01.5.5h-.8z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M20.4 35.1c.4.3.4.4 0 .5l-.7.1c0-.5.6-.2.7-.6z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M18.7 37.7a.5.5 0 000-.1 1.7 1.7 0 011 0 1.7 1.7 0 01-1 .1z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M34.8 4.7c0-.3-.5-.4-.2-.7s.3.2.4.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M41.4 12.8a1.4 1.4 0 01-.8 2.1c-.4.1-.7-.6-.7-.9.1-1 1-.8 1.5-1.2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M39.8 23.5c-.7.7-1.2.5-1.7-.3.6 0 1.1.4 1.6.3z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M38.8 20a3.9 3.9 0 01-1.8 0 2.9 2.9 0 011.8 0z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M44.1 8.6l-.4-.4c0-.3.3-.1.5-.2h.7l-.2.6a1.7 1.7 0 00-.6 0z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M44.1 8.6c.2-.4.4-.3.6 0-.2.3-.4.5-.6 0z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M23 45.7c-1.2 2.1-1.1 2-2.6 1 1-.2 1.5-1.3 2.6-1.2.2 0 .2 0 0 .2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M23 45.7a.4.4 0 010-.2 3 3 0 001.3-.3v.1c-.3.6-.8.3-1.2.4z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M24.3 45.4a.4.4 0 000-.2l.6-.3v.3c0 .3-.3.2-.6.2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M24.4 34.8l-.2-.1c0-.1 0-.3.2-.2a.4.4 0 01.2.1c0 .1 0 .2-.2.2z"
-                fill="rgb(245,169,60)"
-              />
-              <path
-                d="M37 31.3c.6 0 .6.6.9.9-1 .3-.6-.6-.8-1z"
-                fill="rgb(245,169,60)"
-              />
-            </g>
-            <text
-              transform="translate(315.9 13)"
-              class="legend-text"
-            >Important water <tspan
-              x="0"
-              y="14"
-            >supply watersheds</tspan></text>
-            <polygon
-              transform="translate(136 0) scale(.7, .7)" 
-              points="234.74 7.93 234.95 7.93 235.56 8.11 236.18 8.47 236.8 8.47 236.8 9.02 237.62 9.02 238.03 9.38 238.44 9.38 238.44 9.93 238.03 10.47 238.24 10.47 238.24 11.56 237.83 12.1 237.83 12.65 237.62 12.65 237.62 13.01 237.21 13.55 237.21 13.92 236.8 14.46 236.8 14.64 236.39 15.01 235.97 15.37 235.97 15.73 235.77 15.73 235.77 16.28 235.36 16.28 235.36 16.82 234.95 17.18 234.95 17.91 234.53 18.09 234.12 18.09 234.12 19.36 234.74 19.36 235.15 19.72 235.36 19.91 235.97 19.91 236.39 20.09 236.39 20.99 235.97 20.99 235.97 21.72 235.77 22.08 235.77 22.81 236.59 22.81 237 23.17 236.59 23.53 236.59 23.9 237 23.9 237 24.44 237.62 24.98 238.03 24.98 238.03 25.71 238.44 26.07 238.86 26.25 239.27 26.25 239.47 26.62 240.09 26.44 240.71 26.44 240.71 27.34 241.12 27.34 241.12 27.89 241.53 27.89 241.53 28.07 242.15 28.07 242.36 28.43 242.36 28.8 242.77 28.8 242.77 29.52 242.36 29.7 241.74 30.43 241.33 30.61 241.33 31.15 241.12 31.34 241.12 31.7 240.5 31.88 240.3 31.88 239.68 32.6 239.47 32.97 239.27 33.33 238.86 33.33 238.65 33.51 237.83 33.51 237.83 34.42 237.42 34.6 237.21 34.6 236.8 35.15 236.39 35.51 236.39 35.87 236.18 35.87 235.77 36.96 235.77 38.23 235.15 38.23 234.74 38.05 234.12 38.05 233.3 38.41 232.89 38.23 232.68 38.23 232.27 37.87 231.03 37.68 230.42 37.68 230.42 37.87 229.8 38.23 229.18 38.59 228.56 38.95 228.15 38.95 227.74 39.14 227.33 39.5 226.71 39.68 226.09 40.04 225.68 40.59 226.3 40.77 226.92 40.59 227.74 40.22 228.56 40.22 228.98 40.04 231.65 40.04 232.27 39.86 232.48 39.86 233.3 40.04 233.5 40.59 233.92 40.95 234.12 41.31 234.74 41.31 234.74 41.68 233.92 42.22 233.3 42.4 232.68 42.95 232.06 43.13 231.86 43.67 231.45 44.03 231.45 44.4 231.03 44.58 231.03 44.94 230.62 45.3 230.01 45.3 229.59 45.67 229.18 45.67 228.77 46.03 228.77 46.57 229.18 46.94 229.39 47.3 230.01 48.21 230.01 49.48 230.42 49.66 230.42 50.02 230.21 50.57 230.21 50.93 229.59 50.93 229.18 50.38 228.56 50.2 228.56 49.66 228.15 49.48 228.15 48.21 227.74 48.02 227.74 47.66 227.33 46.94 227.33 46.57 226.92 46.21 226.92 45.12 227.33 44.22 227.74 43.85 226.71 43.85 225.89 44.22 225.89 44.4 225.48 44.94 225.48 45.85 225.07 46.57 224.45 47.3 223.42 47.84 222.8 48.57 222.8 48.93 222.6 49.11 222.6 50.02 222.39 50.2 222.39 50.75 222.18 50.75 222.18 50.93 221.77 51.29 221.36 51.29 221.36 52.56 220.95 52.56 220.95 52.92 220.54 53.29 220.13 52.92 219.92 52.74 219.3 52.74 219.1 52.56 219.1 52.02 218.68 51.65 218.27 51.65 218.07 51.47 217.66 51.11 217.66 50.75 216.83 50.75 216.42 50.38 216.21 50.56 215.8 50.56 215.8 50.02 215.19 49.66 214.57 49.48 214.57 49.66 214.16 49.66 214.16 49.48 213.54 49.48 213.54 50.2 212.92 50.2 212.51 50.56 212.3 50.93 212.1 50.93 212.1 50.56 211.69 50.2 211.27 50.2 211.07 49.84 211.07 48.93 210.66 48.75 210.66 47.12 210.25 46.94 209.42 46.94 209.22 46.03 209.22 45.85 209.42 45.85 209.42 45.12 207.98 45.12 207.36 44.76 207.36 44.58 207.16 44.22 206.13 44.22 205.92 44.03 205.72 43.67 205.51 43.67 205.1 43.49 205.1 43.13 204.89 42.95 204.89 42.04 205.1 41.68 205.31 41.86 205.92 41.86 205.92 40.95 206.75 40.59 207.57 40.59 207.57 39.86 207.78 39.86 207.78 38.95 207.36 38.77 207.36 37.68 207.78 37.5 207.36 36.78 207.36 36.6 207.16 36.05 207.16 35.51 206.75 35.14 206.75 34.42 206.95 34.06 206.95 33.51 206.75 33.69 206.34 33.69 206.13 33.33 206.13 32.42 206.54 32.42 206.54 31.52 206.95 31.33 206.95 30.06 206.75 29.7 205.92 29.7 205.72 29.34 205.1 28.98 204.89 28.79 204.89 28.43 204.48 28.25 203.87 27.34 203.87 26.25 202.22 26.25 201.81 26.44 201.81 26.07 201.4 26.07 200.98 25.53 200.98 25.17 200.57 24.62 200.16 24.62 200.16 24.44 199.75 23.9 199.75 23.17 200.16 22.81 200.37 22.81 200.37 22.45 199.95 21.72 199.95 20.45 200.37 20.45 200.78 20.27 201.4 20.27 201.4 20.09 202.01 19.72 202.63 19.72 202.63 19.36 203.04 19.36 203.45 19 203.87 19 203.87 18.64 204.48 18.64 204.48 18.27 204.89 18.09 205.1 17.73 205.72 17.73 205.92 17.36 207.36 17.36 207.78 17 208.39 16.28 209.22 15.91 210.25 15.91 210.45 15.37 211.07 15.37 211.69 14.82 212.72 14.82 213.13 14.46 213.54 14.1 214.36 13.37 214.77 13.19 215.8 12.1 216.01 12.1 216.42 11.74 217.04 11.38 218.27 10.83 218.69 10.47 219.3 9.74 219.71 9.38 220.54 8.47 220.33 8.47 220.33 7.93 220.95 7.57 220.95 7.02 221.36 6.48 221.57 6.3 221.57 5.75 221.98 5.03 221.98 3.76 222.39 3.4 222.6 3.4 223.21 3.76 223.01 4.12 223.21 4.12 224.04 4.67 224.65 4.85 224.65 5.39 224.86 5.39 225.89 5.93 226.92 6.12 227.12 6.3 227.74 6.66 228.98 6.66 228.98 6.48 230.42 6.48 230.42 6.12 231.03 6.12 231.03 5.75 231.24 5.75 231.86 5.39 232.89 5.39 233.3 5.03 233.5 5.03 233.5 5.39 233.92 5.57 234.33 5.75 234.12 6.12 234.33 6.3 234.33 6.66 234.74 6.84 234.74 7.75 234.74 7.93"
-              style="fill: #97c4cf; stroke: #82b1bd;"
-            />
+        <!-- Reading column (title, legend, chart) on the left, map on the
+             right. The map is portrait and the chart is wide, so side by side
+             lets the map use full viewport height. Stacks below 1100px. -->
+        <div class="map-layout">
+          <div class="map-sidebar">
+            <div class="chart-title-container">
+              <p class="chart-title">
+                Wildfire in the Western U.S. in relation to Important Watersheds
+              </p>
+              <p>{{ yearRange }}</p>
+            </div>
 
-          </g>
-          
-        </svg>
+            <div id="map-legend">
+              <!-- Scoped to the key items only; the usage prompt below the
+                   chart is guidance, not a legend entry. -->
+              <div
+                class="legend-items"
+                role="list"
+                aria-label="Map legend"
+              >
+                <div
+                  v-for="item in LEGEND"
+                  :key="item.key"
+                  class="legend-entry"
+                  role="listitem"
+                >
+                  <div class="legend-item">
+                    <svg
+                      class="legend-swatch"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        :class="item.swatchClass"
+                        :d="SWATCH[item.shape]"
+                      />
+                    </svg>
+                    <span
+                      v-if="item.key === 'current'"
+                      class="legend-text"
+                      aria-live="polite"
+                    >
+                      <span class="legend-year">{{ currentYear || '—' }}</span>
+                      <span class="legend-value">{{ currentAcres || 'select or play' }}</span>
+                    </span>
+                    <span
+                      v-else
+                      class="legend-text"
+                    >
+                      <span class="legend-label">{{ item.label }}</span>
+                      <span class="legend-value">{{ item.value }}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-        <!-- Fire map SVG loaded at runtime to reduce bundle size -->
-        <div id="firemap-wrapper">
+            </div>
+
+            <!-- D3 mounts the bar chart here. -->
+            <div id="bar-chart-mount" />
+
+            <!-- Play control and usage prompt share a row; both are about
+                 stepping through years. The button is HTML rather than drawn
+                 into the chart SVG so it gets real pixel sizing, native focus
+                 and keyboard handling. -->
+            <div class="chart-controls">
+              <button
+                type="button"
+                class="play-button"
+                :class="{ 'is-playing': isPlaying }"
+                :aria-label="isPlaying
+                  ? 'Pause the year-by-year animation'
+                  : 'Play the year-by-year animation'"
+                @click="togglePlayPause"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <!-- Centroid at x=12 so the triangle reads as centred. -->
+                  <path
+                    v-if="!isPlaying"
+                    d="M8.5 5 L8.5 19 L19 12 Z"
+                  />
+                  <path
+                    v-else
+                    d="M8 5 H11 V19 H8 Z M13 5 H16 V19 H13 Z"
+                  />
+                </svg>
+              </button>
+
+              <p class="legend-note">
+                <span class="legend-note__pointer">
+                  <span class="lowlight">Click or hover</span> the chart and map to view areas burned in each year.
+                </span>
+                <!-- Shown instead on touch screens, where hover does not
+                     exist. -->
+                <span class="legend-note__touch">
+                  <span class="lowlight">Tap a bar</span> to highlight that year on the map.
+                </span>
+              </p>
+            </div>
+
+            <!-- Attribution. The year ranges and the WFIGS clause come from
+                 the data, so they track the source seam as it moves. -->
+            <p class="chart-caption">
+              Fire perimeter data from <a
+                href="https://mtbs.gov"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Monitoring Trends in Burn Severity (MTBS)</a>
+              <span v-if="wfigsFromYear">
+                for {{ firstYear }}&ndash;{{ mtbsThroughYear }}, and from the
+                interagency <a
+                  href="https://data-nifc.opendata.arcgis.com/datasets/nifc::wfigs-interagency-fire-perimeters"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >WFIGS</a> perimeter feed for
+                {{ wfigsFromYear }}&ndash;{{ lastYear }}, which are incomplete as of 08/16/2026.
+              </span>
+              <span v-else>for {{ yearRange }}.</span>
+              Includes wildfires of 1,000 acres or more;
+              prescribed burns are excluded. Important water supply watersheds
+              (importance 50 or higher) from <a
+                href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >the U.S. Department of Agriculture's Forests to Faucets.</a>
+            </p>
+          </div>
+
+          <!-- Fire map SVG is fetched at runtime to keep it out of the
+               bundle. The hillshade is a sibling of the SVG, not an <image>
+               inside it, so it composites beneath rather than within the
+               SVG's own stacking context. -->
           <div
             id="firemap-container"
             role="figure"
-            aria-label="Interactive map of the western United States showing wildfire burn perimeters from 1984 to 2020, overlaid on important water supply watersheds. Total burned area has generally increased over time, with 2020 being the largest on record at over 8 million acres."
-            v-html="fireMapSvg"
-          />
-          <span
-            id="year-ticker"
-            aria-live="polite"
-          >{{ currentYear }}</span>
+            :aria-label="`Interactive map of the western United States showing wildfire burn perimeters from ${firstYear} to ${lastYear}, overlaid on important water supply watersheds and shaded relief. Total burned area has generally increased over this period.`"
+          >
+            <img
+              class="firemap-hillshade"
+              :src="publicPath + 'data/hillshade.png'"
+              alt=""
+              aria-hidden="true"
+            >
+            <div
+              id="firemap-svg"
+              v-html="fireMapSvg"
+            />
+          </div>
         </div>
       </div>
-      <div class="caption-container flex-container">
-        <p class="caption">
-          Fire perimeter data from <a
-            href="https://data-nifc.opendata.arcgis.com/datasets/wildfire-perimeters"
-            target="_blank"
-          >National Interagency Fire Center,</a> 1984-2020.<br>
-          Important water supply watersheds, based on amount of surface water supply generated and withdrawn (Importance >= 50), from <a
-            href="https://new.cloudvault.usda.gov/index.php/s/GKDoTosMaC2BeNn"
-            target="_blank"
-          >U.S. Department of Agriculture's Forest to Faucets.</a>
-        </p>
-      </div>        
     </div>
+    <br/>
+    <br/>
     <div class="text-content">
       <p>However, financial and societal costs don’t stop when the flames go out.  Wildfires can have enormous impacts on human lives, property, and infrastructure – as well as to our water supplies. Over 50% of the Nation’s drinking water comes from forested areas. Wildfires are natural in many ecosystems, but have increased in size, severity, and frequency.  These hotter, bigger fires increase the risk of flood hazards, erosion, and impaired water quality.</p>
     </div>   
@@ -280,25 +186,141 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import * as d3 from 'd3';
 
 const publicPath = import.meta.env.BASE_URL;
 const fireMapSvg = ref('');
 const currentYear = ref('');
 
-// chart dimensions
-const chart_margin = {top: 5, right: 5, bottom: 40, left: 120};
-const chart_height = 216.00 - chart_margin.top - chart_margin.bottom;
-const chart_width = 720.00 - chart_margin.right - chart_margin.left;
+// Read from the CSV so labels follow the data rather than hardcoded copy.
+const firstYear = ref('');
+const lastYear = ref('');
+
+// Where the series switches perimeter source. The pipeline publishes MTBS for
+// seasons it has finished mapping and WFIGS for the trailing ones, stamping
+// each row with its source; the caption reads the boundary from that. Both are
+// empty when the series is single-source.
+const mtbsThroughYear = ref('');
+const wfigsFromYear = ref('');
+
+// Acreage for the year being shown, from playback or hover.
+const currentAcres = ref('');
+const yearRange = computed(() =>
+  firstYear.value && lastYear.value ? `${firstYear.value}–${lastYear.value}` : ''
+);
+
+// Chart dimensions in viewBox units. The plot is primary and the viewBox is
+// derived from it, so changing a margin does not shrink the plot. The top
+// margin is a header band for the y-axis label; the left margin only has to
+// clear the tick labels, since that label is horizontal.
+const chart_margin = { top: 46, right: 8, bottom: 68, left: 46 };
+const chart_height = 171;
+// Gap between tick label and axis, and the advance width of the widest label
+// the "~s" format produces here ("8M"), in ems.
+const TICK_PADDING = 7;
+const TICK_LABEL_EMS = 1.5;
+// Clearance between the label and the left edge of the viewBox.
+const TICK_EDGE_PAD = 4;
+
+// Room the left margin needs for tick labels set at `units`.
+function leftMarginFor(units) {
+  return Math.ceil(units * TICK_LABEL_EMS) + TICK_PADDING + TICK_EDGE_PAD;
+}
+
+// The margin the chart was built with. scaleChartType respects it on resize,
+// since the drawn geometry does not move.
+let chart_left_margin = chart_margin.left;
+const view_height = chart_height + chart_margin.top + chart_margin.bottom;
 const y = d3.scaleLinear().range([chart_height, 0]);
 
-let isPlaying = false;
-let tooltip = null;
+// The chart is drawn in a 720-unit viewBox the browser scales to the column
+// width, so type sized in viewBox units renders unpredictably — at half scale a
+// 14-unit label is 7px. These are the intended on-screen sizes; scaleChartType
+// converts them through the measured scale.
+const CHART_TICK_PX = 13;
+const CHART_LABEL_PX = 15;
+
+// viewBox units per rendered pixel. Clamped so an unlaid-out or very narrow
+// column cannot blow the type up to fill the plot.
+function unitsPerPixel() {
+  const mount = document.getElementById('bar-chart-mount');
+  const width = mount ? mount.getBoundingClientRect().width : 0;
+  if (!width) return 1;
+  return Math.min(2.6, 720 / width);
+}
+
+// A media query cannot stand in for this: the column's width depends on the
+// map beside it, which is sized partly from the viewport *height*, so the same
+// viewport width can produce very different columns.
+function scaleChartType() {
+  const ratio = unitsPerPixel();
+  // The axis geometry is fixed once drawn, so the labels cannot outgrow the
+  // margin reserved for them — on a window narrowed after load they would
+  // otherwise run off the left edge of the viewBox.
+  const tick_units = Math.min(
+    CHART_TICK_PX * ratio,
+    (chart_left_margin - TICK_PADDING - TICK_EDGE_PAD) / TICK_LABEL_EMS
+  );
+  const mount = d3.select("#bar-chart-mount");
+  mount.selectAll(".tick text").style("font-size", tick_units + "px");
+  mount.selectAll(".chartAxisText").style("font-size", CHART_LABEL_PX * ratio + "px");
+}
+
+// Legend swatch outlines in a 24x24 box. Irregular on purpose: a rectangle
+// would imply tidy areas, when perimeters and watersheds are ragged. Both fire
+// states share one path so they read as the same phenomenon.
+const SWATCH = {
+  fire: 'M3.5 10.5 L7 5.5 L11.5 7 L15 3.5 L18.5 6 L17 10 L20.5 12.5 L19 17 L14 18.5 L11 16.5 L7.5 19.5 L4.5 16 L6 13 Z',
+  watershed: 'M11.5 2.5 C15 2 18 4 19 7 C20.5 9.5 19 11.5 20 14 C21 17 17.5 21 14 21.5 C10 22 6 19.5 4 16 C2 12.5 3 8 6 5.5 C7.5 4 9.5 3 11.5 2.5 Z'
+};
+
+// Legend rows, driven from data so the markup stays one template.
+const LEGEND = [
+  {
+    key: 'current',
+    shape: 'fire',
+    swatchClass: 'swatch--current',
+    label: '',
+    value: ''
+  },
+  {
+    key: 'total',
+    shape: 'fire',
+    swatchClass: 'swatch--past',
+    label: 'Total area burned',
+    value: ''
+  },
+  {
+    key: 'watershed',
+    shape: 'watershed',
+    swatchClass: 'swatch--watershed',
+    label: 'Important watersheds',
+    value: 'for water supply'
+  }
+];
+
+// Shared palette for the chart and map.
+const COLOR = {
+  activeFill: 'rgb(250,109,49)',
+  activeStroke: 'rgb(235,98,40)',
+  barFill: 'rgba(245,169,60,0.8)',
+  barStroke: 'rgba(235,156,42,0.8)',
+  fireFill: 'rgba(245,169,60,0.6)',
+  fireStroke: 'rgba(235,156,42,0.6)'
+};
+
+// Reactive so the play/pause button icon and styling follow it in the template.
+const isPlaying = ref(false);
 const yearList = [];
+const acresByYear = new Map();
+
+// Years playback has reached. Hover resets perimeters to their resting colour,
+// and this keeps a year playback has not shown yet from being revealed early.
+const revealedYears = new Set();
 let currentYearIndex = 0;
 let animationTimer = null;
-const animationInterval = 800;
+const animationInterval = 400;
 
 onMounted(async () => {
   // Load fire map SVG at runtime to avoid bundling ~1.5MB of path data
@@ -310,6 +332,26 @@ onMounted(async () => {
   requestAnimationFrame(() => {
     setPanels();
   });
+
+  window.addEventListener('resize', handleResize);
+});
+
+// Coalesced to a frame — resize fires continuously during a drag, and this
+// reads layout, which would otherwise force a reflow on every event.
+let resizeFrame = null;
+function handleResize() {
+  if (resizeFrame) return;
+  resizeFrame = requestAnimationFrame(() => {
+    resizeFrame = null;
+    scaleChartType();
+  });
+}
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+  if (resizeFrame) cancelAnimationFrame(resizeFrame);
+  // Leaving the timer running would keep stepping after the view is gone
+  if (animationTimer) clearTimeout(animationTimer);
 });
 
 function setPanels() {
@@ -320,40 +362,64 @@ function setPanels() {
 function callback(data) {
   let csv_burn = data[0];
   makeYearList(csv_burn);
-  addTooltip();
   createBarChart(csv_burn);
   makeFireInteractive(csv_burn);
-  // Start initial animation using the step-based system
   resumeAnimation();
 }
 
 function makeYearList(csv_burn) {
   for (let i = 0; i < csv_burn.length; i++) {
     yearList.push(csv_burn[i]['YEAR']);
+    // Keyed lookup so the animation can report acreage without re-scanning
+    // the parsed CSV on every step.
+    acresByYear.set(csv_burn[i]['YEAR'], parseFloat(csv_burn[i]['area_acres']));
+  }
+  firstYear.value = yearList[0];
+  lastYear.value = yearList[yearList.length - 1];
+
+  // Left blank when every row shares one source, so the caption falls back to
+  // crediting that source alone.
+  const yearsFrom = (name) => csv_burn
+    .filter(function(d) { return d.source === name; })
+    .map(function(d) { return d.YEAR; });
+  const mtbsYears = yearsFrom('MTBS');
+  const wfigsYears = yearsFrom('WFIGS');
+  if (mtbsYears.length && wfigsYears.length) {
+    mtbsThroughYear.value = mtbsYears[mtbsYears.length - 1];
+    wfigsFromYear.value = wfigsYears[0];
   }
 }
 
-function addTooltip() {
-  tooltip = d3.select("#firemap-container").selectAll(".tooltip")
-    .attr("class", "tooltip")
-    .attr('text-anchor', 'end')
-    .attr('text-align', 'right')
-    .attr('x', 636)
-    .attr('y', 75);
+// Years range from ~390k to ~9.2M acres, so units switch at 1M rather than
+// rendering the small years as "0.4 million acres".
+function formatAcres(acres) {
+  if (!acres || isNaN(acres)) return '';
+  if (acres >= 1e6) {
+    return `${d3.format('.1f')(acres / 1e6)} million acres`;
+  }
+  return `${d3.format(',')(Math.round(acres / 1000) * 1000)} acres`;
 }
 
 function createBarChart(csv_burn) {
-  var chart = d3.select("#map-container")
+  const ratio = unitsPerPixel();
+
+  // Tick labels are set in viewBox units that grow as the column narrows, so a
+  // left margin that clears them on a wide screen clips them on a phone. Widen
+  // it to fit the type this chart will actually be drawn with, never below the
+  // nominal value so wide layouts are unchanged.
+  chart_left_margin = Math.max(chart_margin.left, leftMarginFor(CHART_TICK_PX * ratio));
+  const plot_width = 720 - chart_left_margin - chart_margin.right;
+
+  var chart = d3.select("#bar-chart-mount")
     .append("svg")
-    .attr("viewBox", [0, 0, (chart_width + chart_margin.right + chart_margin.left),
-          (chart_height + chart_margin.top + chart_margin.bottom)].join(' '))
+    .attr("viewBox", [0, 0, 720, view_height].join(' '))
     .attr("class", "fire-timeseries-2");
   let g = chart.append("g")
     .attr("class", "transformedBarChart")
-    .attr("transform", "translate(" + chart_margin.left + "," + chart_margin.top + ")");
+    .attr("transform", "translate(" + chart_left_margin + "," + chart_margin.top + ")");
 
   var x = d3.scaleBand()
-    .range([0, chart_width])
+    .range([0, plot_width])
     .domain(csv_burn.map(function(d) { return d.YEAR; }))
     .padding(0.1);
 
@@ -373,31 +439,36 @@ function createBarChart(csv_burn) {
 
   chart.selectAll(".tick line").attr("stroke", "#ffffff");
 
+  // Four ticks, not ten: the plot is only 171 viewBox units tall, so ten
+  // labels land ~17 units apart and collide as soon as the type is scaled up
+  // for narrow screens. "~s" drops the trailing zeros a plain "s" leaves
+  // behind, so the axis reads 0, 2M, 4M rather than 0.0M, 2.0M.
   g.append("g")
     .attr("class", "chartAxis left")
     .attr("transform", "translate(0,0)")
-    .call(d3.axisLeft(y).ticks(10, "s").tickSize(-chart_width))
+    .call(d3.axisLeft(y)
+      .ticks(4)
+      .tickFormat(d3.format("~s"))
+      .tickSize(-plot_width)
+      // A negative tickSize makes the ticks span the plot as gridlines, which
+      // leaves d3 placing the labels 3 units off the axis — too close once the
+      // type scales up.
+      .tickPadding(7))
     .select(".domain").remove();
 
   chart.selectAll(".tick line").attr("stroke-width", 1).attr("stroke-dasharray", "1, 15").attr("opacity", "0.5");
 
-  chart.select(".chartAxis.bottom")
-    .append('text')
-    .attr('transform', 'translate(' + chart_width / 2 + ', 30)')
-    .attr("text-anchor", "middle")
-    .attr("class", "chartAxisText bottom")
-    .text("Year");
-
-  chart.select(".chartAxis.left")
-    .append('text')
-    .attr("y", -30)
-    .attr("x", -chart_height / 2)
-    .attr("text-anchor", "middle")
+  // Y-axis label, horizontal in the header band and left-aligned to the axis.
+  // The x axis needs no label — the ticks are self-evidently years.
+  chart.append('text')
+    .attr("x", chart_left_margin)
+    .attr("y", chart_margin.top - 12)
+    .attr("text-anchor", "start")
     .attr("class", "chartAxisText left")
-    .text("Acres burned in the West")
-    .attr("transform", "rotate(-90)");
+    .text("Acres burned in the West");
 
-  // D3 v7: event handlers receive (event, d) instead of (d)
+  // Bars are drawn at full height immediately so the whole distribution is
+  // readable before and during playback; the animation only recolours them.
   g.selectAll(".fire-bars")
     .data(csv_burn)
     .enter()
@@ -405,51 +476,28 @@ function createBarChart(csv_burn) {
     .attr("class", function(d) { return "fire-bars bar year" + d.YEAR; })
     .attr("width", x.bandwidth())
     .attr("x", function(d) { return x(d.YEAR); })
-    .on("click", function(event, d) { highlight_year(d, isPlaying); })
-    .style("fill", "rgb(250,109,49)")
-    .style("stroke", "rgb(235,98,40)")
-    .on("mouseover", function(event, d) { highlight_year(d, isPlaying); })
-    .on("mousemove", function(event, d) { mousemove(d, isPlaying); })
-    .on("mouseout", function(event, d) { dehighlight_year(d, isPlaying); });
+    .attr("y", function(d) { return y(d.area_acres); })
+    .attr("height", function(d) { return chart_height - y(d.area_acres); })
+    .style("fill", COLOR.barFill)
+    .style("stroke", COLOR.barStroke)
+    .on("click", function(event, d) { highlight_year(d, isPlaying.value); })
+    .on("mouseover", function(event, d) { highlight_year(d, isPlaying.value); });
 
-  createPlayButton(chart);
-}
-
-function createPlayButton(chart) {
-  let button = chart.append("g")
-    .attr("transform", "translate(0,0)")
-    .attr("class", "play_button")
-    .style("cursor", "pointer");
-
-  button.append("rect")
-    .attr("width", 50)
-    .attr("height", 50)
-    .attr("rx", 4)
-    .style("fill", 'rgb(250,109,49)');
-
-  // Play icon (triangle)
-  button.append("path")
-    .attr("class", "play-icon")
-    .attr("d", "M15 10 L15 40 L35 25 Z")
-    .style("fill", "#ffffff");
-
-  // Pause icon (two bars) - hidden initially
-  button.append("path")
-    .attr("class", "pause-icon")
-    .attr("d", "M14 10 L14 40 L22 40 L22 10 Z M28 10 L28 40 L36 40 L36 10 Z")
-    .style("fill", "#ffffff")
-    .style("display", "none");
-
-  button.append("title")
-    .text("play/pause animation");
-
-  button.on("mousedown", function() {
-    togglePlayPause();
+  // Dismissal is bound to the container, not each bar: per-bar mouseout can be
+  // skipped when the pointer crosses between adjacent bars.
+  chart.on("mouseleave", function () {
+    if (!isPlaying.value) clearHighlight();
   });
+
+  // Bars and axes scale with the viewBox; only type needs correcting. The
+  // second pass covers the case where the column is not laid out yet, which
+  // makes the first measurement read 0.
+  scaleChartType();
+  requestAnimationFrame(scaleChartType);
 }
 
 function togglePlayPause() {
-  if (isPlaying) {
+  if (isPlaying.value) {
     pauseAnimation();
   } else {
     resumeAnimation();
@@ -457,14 +505,7 @@ function togglePlayPause() {
 }
 
 function resumeAnimation() {
-  isPlaying = true;
-
-  // Show pause icon, hide play icon
-  d3.select(".play-icon").style("display", "none");
-  d3.select(".pause-icon").style("display", null);
-
-  let button_rect = d3.selectAll(".play_button").selectAll("rect");
-  button_rect.style("fill", "#d6d6d6");
+  isPlaying.value = true;
 
   // If we're at the end, restart from beginning
   if (currentYearIndex >= yearList.length) {
@@ -480,40 +521,30 @@ function resumeAnimation() {
 }
 
 function pauseAnimation() {
-  isPlaying = false;
+  isPlaying.value = false;
 
   if (animationTimer) {
     clearTimeout(animationTimer);
     animationTimer = null;
   }
-
-  // Show play icon, hide pause icon
-  d3.select(".play-icon").style("display", null);
-  d3.select(".pause-icon").style("display", "none");
-
-  // Restore button color
-  d3.selectAll(".play_button").selectAll("rect")
-    .style("fill", 'rgb(250,109,49)');
 }
 
 function resetPlayButton() {
-  isPlaying = false;
+  isPlaying.value = false;
   currentYearIndex = 0;
   if (animationTimer) {
     clearTimeout(animationTimer);
     animationTimer = null;
   }
-  d3.selectAll(".play_button").selectAll("rect")
-    .style("fill", 'rgb(250,109,49)');
-  d3.select(".play-icon").style("display", null);
-  d3.select(".pause-icon").style("display", "none");
 }
 
 function resetMapState() {
-  // Reset bars
-  d3.selectAll("g").selectAll(".fire-bars")
-    .attr("y", chart_height)
-    .attr("height", 0);
+  // Bars keep their height — only the highlight colour resets, so the chart
+  // stays readable between plays.
+  d3.selectAll(".fire-bars")
+    .interrupt()
+    .style("fill", COLOR.barFill)
+    .style("stroke", COLOR.barStroke);
 
   // Reset fires
   d3.select("#firemap-container").selectAll(".fire")
@@ -524,10 +555,11 @@ function resetMapState() {
   d3.select("#firemap-container").selectAll(".text-year")
     .style("display", "none");
   currentYear.value = '';
+  currentAcres.value = '';
 }
 
 function stepAnimation() {
-  if (!isPlaying || currentYearIndex >= yearList.length) {
+  if (!isPlaying.value || currentYearIndex >= yearList.length) {
     if (currentYearIndex >= yearList.length) {
       resetPlayButton();
     }
@@ -538,33 +570,35 @@ function stepAnimation() {
   let appearDuration = animationInterval - colorDuration;
   let yr = yearList[currentYearIndex];
 
-  // Animate the bar for this year
+  // Highlight this year's bar, then let it settle back. No height animation —
+  // the bars are already drawn, so the walkthrough reads as a moving highlight
+  // across a complete chart rather than a chart building itself.
   d3.select(".bar.year" + yr)
-    .transition()
-    .duration(appearDuration)
-    .attr("height", function(d) { return chart_height - y(d.area_acres); })
-    .attr("y", function(d) { return y(d.area_acres); })
-    .style("fill", "rgb(250,109,49)")
-    .style("stroke", "rgb(235,98,40)")
-    .transition()
-    .duration(colorDuration)
-    .style("fill", "rgba(245,169,60,0.8)")
-    .style("stroke", "rgba(235,156,42,0.8)");
-
-  // Animate the fire perimeter for this year
-  d3.select("#firemap-container").select(".fire.year" + yr)
-    .transition()
-    .duration(0)
-    .style("fill", "rgb(250,109,49)")
-    .style("stroke", "rgb(235,98,40)")
+    .interrupt()
+    .style("fill", COLOR.activeFill)
+    .style("stroke", COLOR.activeStroke)
     .transition()
     .duration(colorDuration)
     .delay(appearDuration)
-    .style("fill", "rgba(245,169,60,0.8)")
-    .style("stroke", "rgba(235,156,42,0.8)");
+    .style("fill", COLOR.barFill)
+    .style("stroke", COLOR.barStroke);
 
-  // Update the year ticker
+  // Perimeters accumulate — each year flashes red then settles, so the map
+  // builds up while the bar highlight tracks alongside it.
+  d3.select("#firemap-container").select(".fire.year" + yr)
+    .interrupt()
+    .style("fill", COLOR.activeFill)
+    .style("stroke", COLOR.activeStroke)
+    .transition()
+    .duration(colorDuration)
+    .delay(appearDuration)
+    .style("fill", COLOR.fireFill)
+    .style("stroke", COLOR.fireStroke);
+
+  // Update the legend readout
   currentYear.value = yr;
+  currentAcres.value = formatAcres(acresByYear.get(yr));
+  revealedYears.add(yr);
 
   currentYearIndex++;
 
@@ -573,103 +607,74 @@ function stepAnimation() {
 }
 
 function makeFireInteractive(csv_burn) {
-  // D3 v7: event handlers receive (event, d)
   d3.select("#firemap-container").selectAll(".fire")
     .data(csv_burn)
-    .on("click", function(event, d) { highlight_year(d, isPlaying); })
-    .on("mouseover", function(event, d) { highlight_year(d, isPlaying); })
-    .on("mousemove", function(event, d) { mousemove(d, isPlaying); })
-    .on("mouseout", function(event, d) { dehighlight_year(d, isPlaying); });
+    .on("click", function(event, d) { highlight_year(d, isPlaying.value); })
+    .on("mouseover", function(event, d) { highlight_year(d, isPlaying.value); });
+
+  // Perimeters for different years overlap heavily, and highlight_year calls
+  // raise() which reorders them. Both make per-perimeter mouseout unreliable,
+  // so clearing happens once on leaving the map.
+  d3.select("#firemap-container")
+    .on("mouseleave", function () {
+      if (!isPlaying.value) clearHighlight();
+    });
 }
 
-function mousemove(data, playing) {
-  if (playing === false) {
-    let acres_burned = d3.format(',')(Math.round(data.area_acres / 1000000 * 10) / 10) + ' million acres';
-    tooltip.text(acres_burned);
-  }
+// Returns everything to its resting state. Clearing all years on every
+// highlight is what guarantees a single active year; resetting only the year
+// that fired would leave a bar lit whenever a leave event is missed.
+function clearHighlight() {
+  // Bars are always drawn at full height, so all of them can reset outright.
+  d3.selectAll(".fire-bars")
+    .interrupt()
+    .style("fill", COLOR.barFill)
+    .style("stroke", COLOR.barStroke);
+
+  // Perimeters only return to visible if playback has reached them.
+  d3.select("#firemap-container").selectAll(".fire")
+    .interrupt()
+    .each(function () {
+      const match = (this.getAttribute("class") || "").match(/year(\d{4})/);
+      const shown = match && revealedYears.has(match[1]);
+      d3.select(this)
+        .style("fill", shown ? COLOR.fireFill : "None")
+        .style("stroke", shown ? COLOR.fireStroke : "None");
+    });
+
+  currentYear.value = '';
+  currentAcres.value = '';
 }
 
 function highlight_year(data, playing) {
-  if (playing === false) {
-    tooltip.style("opacity", 1);
-    currentYear.value = data.YEAR;
+  if (playing) return;
 
-    d3.selectAll(".fire.year" + data.YEAR)
-      .style("fill", "rgb(250,109,49)")
-      .style("stroke", "rgb(235,98,40)")
-      .raise();
+  clearHighlight();
 
-    d3.selectAll(".bar.year" + data.YEAR)
-      .style("fill", "rgb(250,109,49)")
-      .style("stroke", "rgb(235,98,40)");
-  }
+  currentYear.value = data.YEAR;
+  currentAcres.value = formatAcres(parseFloat(data.area_acres));
+
+  // raise() reorders the DOM, which is why per-element mouseout is unreliable
+  // here. Dismissal is handled by mouseleave on the containers instead.
+  d3.select("#firemap-container").selectAll(".fire.year" + data.YEAR)
+    .style("fill", COLOR.activeFill)
+    .style("stroke", COLOR.activeStroke)
+    .raise();
+
+  d3.selectAll(".bar.year" + data.YEAR)
+    .style("fill", COLOR.activeFill)
+    .style("stroke", COLOR.activeStroke);
 }
 
-function dehighlight_year(data, playing) {
-  if (playing === false) {
-    tooltip.style("opacity", 0);
-    currentYear.value = '';
-
-    for (let i = 0; i < yearList.length; i++) {
-      let current_year = parseFloat(data.YEAR);
-      let selected_year = parseFloat(yearList[i]);
-      if (current_year > selected_year) {
-        d3.selectAll(".fire.year" + selected_year).raise();
-      }
-    }
-
-    d3.selectAll(".bar.year" + data.YEAR)
-      .style("fill", "rgba(245,169,60,0.8)")
-      .style("stroke", "rgba(235,156,42,0.8)");
-
-    d3.selectAll(".fire.year" + data.YEAR)
-      .style("fill", "rgba(245,169,60,0.6)")
-      .style("stroke", "rgba(235,156,42,0.6)")
-      .raise();
-
-    for (let i = 0; i < yearList.length; i++) {
-      let current_year = parseFloat(data.YEAR);
-      let selected_year = parseFloat(yearList[i]);
-      if (current_year < selected_year) {
-        d3.selectAll(".fire.year" + selected_year).raise();
-      }
-    }
-  }
-}
 
 </script>
 
 <style scoped lang="scss">
 
-  // Import Colors
-  $white: rgb(255,255,255);
-  $black: rgb(0,0,0);  
-  $lightGray:rgb(237,237,237);
-  $mediumGray: rgb(100,100,100);
-  $darkGray: rgb(51,51,51);
-  $usgsGreen: rgb(51,120,53);
-  $usgsBlue: rgb(0,38,76);
-  $fireRed: rgb(250,109,49);
-  $fireRedlight: rgba(250,109,49,0.5);
-  $fireYellow: rgb(245,169,60);
-  $fireYellowlight: rgba(245,169,60,0.5);
-
 #main-map-section   {
   position: relative;
 }
 
-#map-legend-group {
-  @media screen and (max-width: 600px) {
-    transform: translate(-140px) scale(1.6)
-  }
-}
-.legend-text {
-  fill: #4f4f4f;
-  font-size:  12px;
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  font-weight: lighter;
-
-}
 #map-container {
   padding: 4em 0 0 0;
   width: 90%;
@@ -692,42 +697,281 @@ function dehighlight_year(data, playing) {
   margin: auto;
 }
 
+/* These widths compound — 90vw, then 90% of that, then the layout's padding —
+   which on a phone leaves the content about two thirds of the screen. Full
+   width here; .map-layout's padding still holds it off the page edge. */
+@media screen and (max-width: 700px) {
+  #mappy {
+    width: 100%;
+  }
+  #map-container {
+    width: 100%;
+  }
+}
+
 </style>
 <style lang="scss">
 /* Styles for dynamically loaded fire map SVG (v-html) */
-#firemap-wrapper {
-  position: relative;
+/* Legend column left, map right. align-items:center balances the legend
+   against the tall portrait map. */
+.map-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
-#year-ticker {
-  position: absolute;
-  top: 0;
-  right: 25%;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: rgb(250, 109, 49);
+
+/* Reading column: title, legend, chart. Fills what the map leaves, with a
+   floor that keeps the wide bar chart legible and a ceiling so the map still
+   dominates on very wide screens. */
+.map-sidebar {
+  flex: 1 1 0;
+  min-width: 20rem;
+  max-width: 44rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Set once for the whole column so children inherit it. */
   font-family: 'Source Sans Pro', sans-serif;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  opacity: 1;
-  text-align: right;
 }
-#year-ticker:empty {
-  opacity: 0;
+
+.chart-caption {
+  margin: 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+  max-width: none;
+  text-align: left;
+  font-style: normal;
 }
-#firemap-container {
-  width: 80%;
-  height: auto;
-  margin: auto;
-  @media screen and (min-width: 600px) {
-    width: 1000px;
-    padding: 0 4em 0 4em;
+.chart-caption a {
+  font-weight: 600;
+  font-size: inherit;
+}
+
+
+/* Overrides the em-based sizing from Visualization.vue, whose cascade made the
+   title depend on an ancestor font-size. Pinned in rem against the legend's
+   0.95rem body. */
+.map-sidebar .chart-title-container {
+  max-width: none;
+  padding: 0.6rem 0.9rem;
+}
+.map-sidebar .chart-title-container .chart-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.map-sidebar .chart-title-container p {
+  font-size: 0.9rem;
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  /* Indented to line up with the text inside the title banner above it. */
+  padding-left: 0.9rem;
+}
+
+/* Play control and prompt on one line. The prompt takes the remaining width
+   and wraps within it rather than pushing the button around. */
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0rem;
+  /* Same indent as the legend items and the title banner text, so the button
+     lines up with the column above it. Padding on the row rather than a margin
+     on the button keeps the prompt's wrapped lines on the same edge. */
+  padding-left: 0.9rem;
+}
+
+/* 44px square to meet the minimum touch target. flex:0 0 auto keeps it square
+   when the prompt wraps, and the flex centring seats the fixed-size icon. */
+.play-button {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: var(--fire-orange);
+  color: var(--white);
+  cursor: pointer;
+}
+
+/* Grey while playing. The icon darkens with it — white on grey is unreadable. */
+.play-button.is-playing {
+  background: #d6d6d6;
+  color: var(--gray-dark);
+}
+
+/* Scoped under #map-container to outrank its `svg { fill: none; width: 100% }`.
+   Without the ID that rule wins on specificity and the icon renders unfilled
+   and stretched to the whole button. */
+#map-container .play-button svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Visible focus ring; the default outline is easy to lose against the chart. */
+.play-button:focus-visible {
+  outline: 2px solid var(--fire-red);
+  outline-offset: 2px;
+}
+
+/* Guidance rather than a key entry, so it is set smaller than legend labels. */
+.legend-note {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+/* One of the two is shown at a time; see the touch breakpoint below. */
+.legend-note__touch {
+  display: none;
+}
+
+/* Phone-sized: no hover, so the wording switches to addressing taps. */
+@media screen and (max-width: 700px) {
+  .legend-note__pointer {
+    display: none;
+  }
+  .legend-note__touch {
+    display: inline;
   }
 }
-#firemap {
-  width: 100%;
-  height: auto;
-  max-height: 60vh;
+
+/* Swatch and label. align-items:start keeps the swatch on the label's first
+   line rather than centring against two. */
+.legend-item {
+  display: grid;
+  grid-template-columns: 1.7rem 1fr;
+  gap: 0.7rem;
+  align-items: start;
 }
+
+.legend-swatch {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: none;
+  overflow: visible; /* stroke sits on the path edge, so don't clip it */
+}
+
+/* Fills mirror the map. stroke-width is in viewBox units, which scale to well
+   under a pixel at this size, hence the heavier value. */
+.legend-swatch path {
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.swatch--current {
+  fill: var(--fire-orange);
+  stroke: var(--fire-orange-stroke);
+}
+.swatch--past {
+  fill: var(--fire-yellow-soft);
+  stroke: var(--fire-yellow-stroke);
+}
+.swatch--watershed {
+  fill: var(--watershed-fill);
+  stroke: var(--watershed-stroke);
+}
+
+.legend-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  color: var(--text-muted);
+}
+
+
+.legend-label {
+  font-weight: 600;
+}
+
+/* Second line of every legend row: acreage on the current-year row, a
+   qualifier on the others. */
+.legend-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  min-height: 1.35em; /* reserves the line so rows don't shift when it clears */
+}
+
+
+/* Doubles as the legend key for the active swatch, so it is sized as the
+   primary label rather than a caption. */
+.legend-year {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--fire-red); /* darker than the swatch to clear AA on white */
+  font-variant-numeric: tabular-nums;
+}
+
+/* Positioning context for the hillshade. fit-content shrinks the box to the
+   svg, so the absolutely positioned raster registers with the map. */
+#firemap-container {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  line-height: 0; /* kills the inline-descender gap under the svg */
+  flex: 0 0 auto; /* sized by the svg's aspect ratio, not by flex growth */
+}
+
+/* Shaded relief, and the land layer rather than an overlay: the flat-terrain
+   tone is baked into the PNG and everything off-land is transparent, so it
+   needs no blend mode. Same bbox and aspect ratio as the SVG, so inset:0
+   aligns them. */
+.firemap-hillshade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Held back so the relief stays a texture rather than competing with the
+     perimeters for attention. */
+  opacity: 0.6;
+  pointer-events: none; /* clicks and hovers belong to the perimeters */
+}
+
+/* Static elements paint under the absolutely positioned hillshade without an
+   explicit stacking position. */
+#firemap-svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* The map is 720x845 portrait — mapshaper derives height from the western
+   states bbox. Driving size from aspect-ratio avoids the letterboxing that
+   width:100% + max-height produces.
+
+   Width is the smallest of a viewport-height fit, the map's natural size, and a
+   share of the row. The last limit matters: sizing on height alone lets a tall
+   window push the map to its cap and squeeze the reading column to its floor,
+   which leaves the bar chart drawing a 720-unit viewBox into ~350px. */
+#firemap {
+  display: block;
+  margin: 0 auto;
+  aspect-ratio: 720 / 845;
+  width: min(66.5vh, 720px, 46vw);
+  height: auto;
+  max-width: 100%;
+}
+
 #basemap {
   fill: none;
   stroke: none;
@@ -735,10 +979,14 @@ function dehighlight_year(data, playing) {
   stroke-linejoin: round;
   stroke-width: 1;
 
+  /* Borders only; the land tone comes from the hillshade PNG beneath, and any
+     fill here would cover the relief. Dark on the light land tone carries at a
+     hairline weight, keeping the borders as reference rather than a graphic
+     element competing with the fire perimeters. */
   #states {
-    stroke-width: 1.75;
-    stroke: #fcfcfc;
-    fill: #f0f0f0;
+    stroke-width: 0.75;
+    stroke: var(--state-border);
+    fill: none;
   }
 }
 .fire {
@@ -752,47 +1000,147 @@ function dehighlight_year(data, playing) {
 .fire-bars {
   cursor: pointer;
 }
-.play_button {
-  cursor: pointer;
-}
-.tooltip {
-  fill: rgb(250,109,49);
-  font-family: sans-serif;
-  font-size: 20px;
-  text-align: right;
-  font-weight: bold;
-  line-height: 1em;
-}
 .text-year {
   font-size: 36px;
-  fill: rgb(250,109,49);
+  fill: var(--fire-orange);
   font-weight: 500;
 }
 .IMP {
-  fill: #97c4cf;
-  stroke: #82b1bd;
+  fill: var(--watershed-fill);
+  stroke: var(--watershed-stroke);
   stroke-width: 0.3px;
   opacity: 0.6;
 }
+/* viewBox units, not page pixels. scaleChartType overwrites both from the
+   measured column width, so these are only the pre-measurement fallback. */
 .chartAxisText {
-  fill: #4f4f4f; /* #4f4f4f */
-  font-size: 1em;
-  font-weight: bold;
+  fill: var(--text-muted);
+  font-size: 16px;
+  font-weight: 700;
 }
 .tick text{
-  fill: #4f4f4f;
-  font-size: 12px;
+  fill: var(--text-muted);
+  font-size: 14px;
 }
 .tick {
-  fill: #4f4f4f;
+  fill: var(--text-muted);
 }
 .caption-container  {
   padding: 2em;
   width: 80vw;
 }
+/* Fills the reading column so it stays aligned with the legend above it. */
 .fire-timeseries-2 {
-  width: 60vw;
-  margin: auto;
-  max-height: 25vh;
+  display: block;
+  width: 100%;
+  height: auto;
 }
+
+/* --- Stacked layout -------------------------------------------------------
+   Last in the file so it overrides the two-column rules above, several of which
+   are ID selectors that a media query alone would not outrank.
+
+   The map is a sibling of .map-sidebar, so seating it between the legend and
+   the chart means collapsing those levels: display:contents promotes the
+   sidebar's children into the grid, and order then sequences all of them. The
+   breakpoint sits above the phone range because a portrait map beside a wide
+   bar chart needs real width for both. */
+@media screen and (max-width: 1100px) {
+  .map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 1.5rem;
+    /* display:contents takes .map-sidebar out of the inheritance chain, so
+       this moves up to the grid. */
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .map-sidebar {
+    display: contents;
+  }
+
+  /* Title, legend, map, chart, controls, caption. The legend sits directly
+     above the map so the ticking year readout stays in view during playback. */
+  .map-sidebar .chart-title-container { order: 1; }
+  #map-legend { order: 2; }
+  #firemap-container { order: 3; }
+  #bar-chart-mount { order: 4; }
+  .chart-controls { order: 5; }
+  .chart-caption { order: 6; }
+
+  /* Each block spans the single column, capped to a readable measure. */
+  .map-sidebar .chart-title-container,
+  #map-legend,
+  .chart-controls,
+  #bar-chart-mount,
+  .chart-caption {
+    width: 100%;
+    max-width: 44rem;
+  }
+
+  /* Width-driven here: a portrait map sized off viewport height would push the
+     bar chart below the fold. Capped so it doesn't balloon. */
+  #firemap-container {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  #firemap {
+    height: auto;
+    width: 100%;
+  }
+
+  /* The grid gap separates these blocks, so their own leading would double up. */
+  .chart-caption {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  /* All that holds the content off the page edge once the wrappers collapse. */
+  .map-layout {
+    padding: 0 0.75rem;
+  }
+
+  /* Compact legend: rows fold onto single lines so the key costs less scroll
+     before the map appears. */
+  .legend-items {
+    gap: 0.5rem;
+  }
+
+  .legend-item {
+    grid-template-columns: 1.4rem 1fr;
+    gap: 0.55rem;
+    align-items: center;
+  }
+
+  .legend-swatch {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* Label and value share a line rather than stacking; wrap lets longer pairs
+     fall to a second line instead of widening the column. */
+  .legend-text {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+
+  /* The reserved line only exists to stop the stacked rows shifting as the
+     readout changes; side by side, the row height no longer depends on it. */
+  .legend-value {
+    min-height: 0;
+  }
+
+  .legend-year {
+    font-size: 1.45rem;
+  }
+
+  .legend-note {
+    font-size: 0.8rem;
+  }
+}
+
 </style>

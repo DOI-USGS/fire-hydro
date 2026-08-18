@@ -110,7 +110,7 @@
       class="text-content"
     >
       <p class="byline">
-        U.S. Geological Survey<br>Water Resources Mission Area
+        U.S. Geological Survey<br>Water Resources Mission Area<br><span class="pub-date">Published {{ datePublished }} (last updated: {{ dateUpdated }})</span>
       </p>
     </div>
   </div>
@@ -122,6 +122,11 @@ import * as d3 from 'd3';
 
 const title = import.meta.env.VITE_APP_LONG_TITLE;
 const publicPath = import.meta.env.BASE_URL;
+
+// Keep these in step with CHANGELOG.md: the original release (1.0.0) and the
+// most recent release entry.
+const datePublished = 'November 5, 2020';
+const dateUpdated = 'August 16, 2026';
 
 // Read from the data so it stays in step with the shape below it.
 const yearRange = ref('');
@@ -323,6 +328,10 @@ select{
     .byline {
         font-style: italic;
         padding: 1em 0 0 0;
+    }
+
+    .pub-date {
+        color: var(--gray-dark);
     }
 
     #crop-shape {
